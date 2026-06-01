@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7d5b76ef564b84a98adf16d4bfc26f, type: 3}
   m_Name: JobData 2
   m_EditorClassIdentifier: Assembly-CSharp::Freeline.JobData
-  jobTitle: 
-  clientName: 
+  jobTitle: "Kapak tasar\u0131m\u0131"
+  clientName: c studio
   durationHours: 3
   basePayout: 200
   energyCost: 35

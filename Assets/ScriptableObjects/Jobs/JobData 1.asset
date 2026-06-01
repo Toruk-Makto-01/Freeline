@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7d5b76ef564b84a98adf16d4bfc26f, type: 3}
   m_Name: JobData 1
   m_EditorClassIdentifier: Assembly-CSharp::Freeline.JobData
-  jobTitle: 
-  clientName: 
+  jobTitle: "Karakter tasla\u011F\u0131"
+  clientName: b studio
   durationHours: 2
   basePayout: 120
   energyCost: 25

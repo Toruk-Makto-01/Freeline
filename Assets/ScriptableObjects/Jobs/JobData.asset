@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7d5b76ef564b84a98adf16d4bfc26f, type: 3}
   m_Name: JobData
   m_EditorClassIdentifier: Assembly-CSharp::Freeline.JobData
-  jobTitle: 
-  clientName: 
+  jobTitle: "Basit ikon \xE7izimi"
+  clientName: a studio
   durationHours: 1
   basePayout: 50
   energyCost: 15

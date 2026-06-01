@@ -35,14 +35,29 @@ namespace Freeline
             var jm  = gm.JobManager;
             var save = gm.SaveManager.CurrentData;
 
+            // If a job was already started via the UI, skip straight to completion.
+            if (jm.ActiveJob != null)
+            {
+                string activeTitle  = jm.ActiveJob.jobTitle;
+                float  coinsBefore  = save.currentCoins;
+                jm.CompleteJob();
+                Debug.Log(
+                    $"[DebugTest] J → Completed active job: '{activeTitle}' | " +
+                    $"Payout: +{save.currentCoins - coinsBefore:F0} coins | " +
+                    $"Time: {gm.TimeManager.GetFormattedTime()} | " +
+                    $"Energy: {gm.EnergyManager.CurrentEnergy:F0}/{gm.EnergyManager.MaxEnergy:F0}"
+                );
+                return;
+            }
+
             if (jm.CurrentBoardJobs.Count == 0)
             {
                 Debug.LogWarning("[DebugTest] J pressed — no jobs on board. Add JobData assets to JobManager.");
                 return;
             }
 
-            JobData job = jm.CurrentBoardJobs[0];
-            float coinsBefore = save.currentCoins;
+            JobData job         = jm.CurrentBoardJobs[0];
+            float coinsBefore2  = save.currentCoins;
 
             Debug.Log(
                 $"[DebugTest] J → Starting job: '{job.jobTitle}' | " +
@@ -67,7 +82,7 @@ namespace Freeline
 
             jm.CompleteJob();
 
-            float payout = save.currentCoins - coinsBefore;
+            float payout = save.currentCoins - coinsBefore2;
             Debug.Log(
                 $"[DebugTest] J → Job complete | " +
                 $"Payout: +{payout:F0} coins | " +

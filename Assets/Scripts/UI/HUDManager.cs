@@ -8,6 +8,35 @@ using UnityEngine.UI;
 
 namespace Freeline
 {
+    // Attached to each nav button GO by BuildHUDHierarchy.
+    // Holds a serialized HUDManager reference so the wiring survives domain reload
+    // without needing UnityEventTools or persistent-listener APIs.
+    public class HUDNavButton : MonoBehaviour
+    {
+        public enum NavTarget { Draw, Webtoon, Sleep, Shop, Home }
+
+        [SerializeField] internal HUDManager hud;
+        [SerializeField] internal NavTarget  target;
+
+        void Awake()
+        {
+            GetComponent<Button>().onClick.AddListener(OnClick);
+        }
+
+        private void OnClick()
+        {
+            if (hud == null) return;
+            switch (target)
+            {
+                case NavTarget.Draw:    hud.OnDrawClicked();    break;
+                case NavTarget.Webtoon: hud.OnWebtoonClicked(); break;
+                case NavTarget.Sleep:   hud.OnSleepClicked();   break;
+                case NavTarget.Shop:    hud.OnShopClicked();    break;
+                case NavTarget.Home:    hud.OnHomeClicked();    break;
+            }
+        }
+    }
+
     public class HUDManager : MonoBehaviour
     {
         // -------------------------------------------------------------------------
@@ -25,6 +54,9 @@ namespace Freeline
         [Header("Top Panel — Economy")]
         [SerializeField] private TextMeshProUGUI coinText;
         [SerializeField] private TextMeshProUGUI gemText;
+
+        [Header("Panels")]
+        [SerializeField] private JobBoardPanel jobBoardPanel;
 
         [Header("Bottom Nav Bar")]
         [SerializeField] private Button drawButton;
@@ -60,12 +92,6 @@ namespace Freeline
             gm.EnergyManager.OnEnergyChanged        += HandleEnergyChanged;
             gm.JobManager.OnJobCompleted            += HandleJobCompleted;
             gm.WebtoonManager.OnPassiveIncomeEarned += HandlePassiveIncome;
-
-            drawButton.onClick.AddListener(OnDrawClicked);
-            webtoonButton.onClick.AddListener(OnWebtoonClicked);
-            sleepButton.onClick.AddListener(OnSleepClicked);
-            shopButton.onClick.AddListener(OnShopClicked);
-            homeButton.onClick.AddListener(OnHomeClicked);
 
             SetActiveNavButton(homeButton);
             RefreshAll();
@@ -148,19 +174,20 @@ namespace Freeline
         // Nav button handlers
         // -------------------------------------------------------------------------
 
-        private void OnDrawClicked()
+        internal void OnDrawClicked()
         {
+            Debug.Log("[HUD] Draw button clicked");
             SetActiveNavButton(drawButton);
-            Debug.Log("[HUD] Navigate to DrawingDesk");
+            jobBoardPanel?.Show();
         }
 
-        private void OnWebtoonClicked()
+        internal void OnWebtoonClicked()
         {
             SetActiveNavButton(webtoonButton);
             Debug.Log("[HUD] Navigate to WebtoonStudio");
         }
 
-        private void OnSleepClicked()
+        internal void OnSleepClicked()
         {
             SetActiveNavButton(sleepButton);
             bool slept = GameManager.Instance.TimeManager.TrySleep();
@@ -169,13 +196,13 @@ namespace Freeline
                 : "[HUD] Sleep not available yet (before 21:00).");
         }
 
-        private void OnShopClicked()
+        internal void OnShopClicked()
         {
             SetActiveNavButton(shopButton);
             Debug.Log("[HUD] Navigate to Shop");
         }
 
-        private void OnHomeClicked()
+        internal void OnHomeClicked()
         {
             SetActiveNavButton(homeButton);
             Debug.Log("[HUD] Navigate to Apartment");
@@ -349,6 +376,20 @@ namespace Freeline
             sleepButton   = BuildNavButton("SLEEP",   bar.transform, 0.40f, 0.60f, NavSleep,   true);
             shopButton    = BuildNavButton("SHOP",    bar.transform, 0.60f, 0.80f, NavDefault, false);
             homeButton    = BuildNavButton("HOME",    bar.transform, 0.80f, 1.00f, NavDefault, false);
+
+            AttachNavHandler(drawButton,    HUDNavButton.NavTarget.Draw);
+            AttachNavHandler(webtoonButton, HUDNavButton.NavTarget.Webtoon);
+            AttachNavHandler(sleepButton,   HUDNavButton.NavTarget.Sleep);
+            AttachNavHandler(shopButton,    HUDNavButton.NavTarget.Shop);
+            AttachNavHandler(homeButton,    HUDNavButton.NavTarget.Home);
+        }
+
+        private void AttachNavHandler(Button btn, HUDNavButton.NavTarget target)
+        {
+            var handler    = btn.gameObject.AddComponent<HUDNavButton>();
+            handler.hud    = this;
+            handler.target = target;
+            EditorUtility.SetDirty(btn.gameObject);
         }
 
         private static Button BuildNavButton(string label, Transform parent,
