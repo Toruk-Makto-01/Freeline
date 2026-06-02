@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace Freeline
 {
+    /// <summary>
+    /// Yiyecek tüketiminin iş hızına ve süresine etkisini tanımlayan veri yapısı.
+    /// <see cref="EnergyManager.EatFood"/> çağrısıyla aktif buff listesine eklenir.
+    /// </summary>
     [Serializable]
     public struct EnergyBuff
     {
@@ -14,32 +18,58 @@ namespace Freeline
         public float durationHours;
     }
 
-    // Runs before SaveManager (order 0) so energy is reset before SaveManager captures state
-    // on OnNewDayStarted — keeps the auto-save capturing a clean new-morning snapshot.
+    /// <summary>
+    /// Oyuncunun enerji, açlık ve yiyecek buff durumlarını yönetir.
+    /// Enerji tükenmesi iş başlatmayı engeller; açlık enerji yenileme verimini düşürür.
+    /// </summary>
+    /// <remarks>
+    /// DefaultExecutionOrder(-10): SaveManager'dan önce çalışması gerekir.
+    /// OnNewDayStarted tetiklendiğinde enerji önce buradan sıfırlanır,
+    /// ardından SaveManager bu temiz sabah anlık görüntüsünü kaydeder.
+    /// </remarks>
     [DefaultExecutionOrder(-10)]
     public class EnergyManager : MonoBehaviour
     {
         [SerializeField] private EnergyConfig config;
 
+        /// <summary>Anlık enerji değeri (0 – <see cref="MaxEnergy"/> aralığında).</summary>
         public float CurrentEnergy { get; private set; }
+
+        /// <summary>Maksimum enerji kapasitesi; <see cref="EnergyConfig"/> üzerinden okunur.</summary>
         public float MaxEnergy     => config.maxEnergy;
 
-        // True if no food has been consumed for longer than the hunger threshold.
+        /// <summary>
+        /// Son yemekten bu yana geçen süre açlık eşiğini (<see cref="EnergyConfig.hungerThresholdHours"/>)
+        /// aştıysa <c>true</c> döner. Açken enerji yenilemesi cezalı çalışır.
+        /// </summary>
         public bool  IsHungry          => _hoursSinceLastFood >= config.hungerThresholdHours;
+
+        /// <summary>Son yemekten bu yana geçen oyun içi saat miktarı.</summary>
         public float HoursSinceLastFood => _hoursSinceLastFood;
 
-        // (currentEnergy, maxEnergy)
+        /// <summary>
+        /// Enerji değeri her değiştiğinde tetiklenir.
+        /// Parametreler: (mevcut enerji, maksimum enerji).
+        /// </summary>
         public event Action<float, float> OnEnergyChanged;
 
-        // Fires once when energy drops to or below energyDepletionWarningThreshold.
-        // Resets if energy recovers above the threshold.
+        /// <summary>
+        /// Enerji ilk kez uyarı eşiğine düştüğünde bir kez tetiklenir.
+        /// Enerji eşiğin üzerine çıkarsa bayrak sıfırlanır ve tekrar tetiklenebilir hale gelir.
+        /// </summary>
         public event Action OnLowEnergy;
 
-        // Fires once when energy hits 0. Resets if energy is restored above 0.
+        /// <summary>
+        /// Enerji ilk kez 0'a düştüğünde bir kez tetiklenir.
+        /// Enerji 0'ın üzerine çıkarsa bayrak sıfırlanır.
+        /// JobManager bu event'i dinleyerek iş başlatmayı engeller.
+        /// </summary>
         public event Action OnEnergyDepleted;
 
         private readonly List<ActiveBuff> _activeBuffs = new();
         private float _hoursSinceLastFood;
+
+        // Bu iki bayrak, tek seferlik event'lerin aynı eşikte defalarca ateşlenmesini önler.
         private bool  _lowEnergyFired;
         private bool  _depletedFired;
 
@@ -63,39 +93,63 @@ namespace Freeline
             time.OnNewDayStarted -= HandleNewDay;
         }
 
-        // Called by SaveManager after loading a save file.
+        /// <summary>
+        /// Kayıt dosyasından yüklenen enerji ve açlık durumunu uygular.
+        /// SaveManager, oyun yüklendikten sonra bu metodu çağırır.
+        /// </summary>
+        /// <param name="energy">Kaydedilen enerji değeri.</param>
+        /// <param name="hoursSinceLastFood">Son yemekten bu yana geçen kaydedilmiş süre.</param>
         public void LoadState(float energy, float hoursSinceLastFood)
         {
             _hoursSinceLastFood = Mathf.Max(0f, hoursSinceLastFood);
             CurrentEnergy       = Mathf.Clamp(energy, 0f, config.maxEnergy);
+            // Yüklenirken eşik bayrakları mevcut enerji durumuna göre ayarlanır;
+            // böylece zaten düşük enerjide yüklenen bir oyun yanlış event tetiklemez.
             _lowEnergyFired     = CurrentEnergy <= config.energyDepletionWarningThreshold;
             _depletedFired      = CurrentEnergy <= 0f;
             OnEnergyChanged?.Invoke(CurrentEnergy, config.maxEnergy);
         }
 
-        // Called by JobManager when a task completes.
+        /// <summary>
+        /// Belirtilen miktarda enerji tüketir.
+        /// JobManager, bir iş tamamlandığında bu metodu çağırır.
+        /// </summary>
+        /// <param name="amount">Tüketilecek enerji miktarı.</param>
         public void ConsumeEnergy(float amount)
         {
             if (amount <= 0f) return;
             SetEnergy(CurrentEnergy - amount);
         }
 
-        // Called by food or sleep items. Applies hunger penalty if applicable.
+        /// <summary>
+        /// Enerjiyi yeniler; açlık cezası varsa etkin miktar düşürülür.
+        /// Yiyecek veya uyku eylemleri bu metodu kullanır.
+        /// </summary>
+        /// <param name="amount">İstenen yenileme miktarı (açlık cezasından önce).</param>
         public void RestoreEnergy(float amount)
         {
             if (amount <= 0f) return;
+            // Açken enerji yenilemek cezalıdır; yiyecek yemek bu cezayı önler.
             float effective = IsHungry ? amount * config.hungerPenaltyMultiplier : amount;
             SetEnergy(CurrentEnergy + effective);
         }
 
-        // Mechanical energy restore that bypasses the hunger penalty (e.g. job abandon refund).
+        /// <summary>
+        /// Açlık cezasını atlayarak enerjiyi doğrudan yeniler.
+        /// Yalnızca iş terk etme geri ödemesi gibi mekanik geri iadeler için kullanılır.
+        /// </summary>
+        /// <param name="amount">Doğrudan eklenecek enerji miktarı.</param>
         public void RestoreEnergyDirect(float amount)
         {
             if (amount <= 0f) return;
             SetEnergy(CurrentEnergy + amount);
         }
 
-        // Called when player consumes a food item. Resets hunger clock and registers the speed buff.
+        /// <summary>
+        /// Oyuncu bir yiyecek tükettiğinde çağrılır.
+        /// Açlık saatini sıfırlar ve hız buff'ını aktif buff listesine ekler.
+        /// </summary>
+        /// <param name="buff">Yiyeceğin sağladığı hız ve süre verisi.</param>
         public void EatFood(EnergyBuff buff)
         {
             _hoursSinceLastFood = 0f;
@@ -103,7 +157,11 @@ namespace Freeline
                 _activeBuffs.Add(new ActiveBuff(buff));
         }
 
-        // Combined job-speed multiplier from all active food buffs. Returns 1 when no buffs are active.
+        /// <summary>
+        /// Tüm aktif buff'ların çarpımsal hız çarpanını döndürür.
+        /// Hiç buff yoksa 1 (normal hız) döner.
+        /// <see cref="DrawingMinigame"/> bu değeri dolgu hızını ölçeklendirmek için kullanır.
+        /// </summary>
         public float GetCurrentSpeedMultiplier()
         {
             if (_activeBuffs.Count == 0) return 1f;
@@ -113,16 +171,21 @@ namespace Freeline
             return result;
         }
 
+        /// <summary>
+        /// Enerji değerini sıkıştırır, event'leri tetikler ve tek-seferlik bayrakları yönetir.
+        /// Tüm enerji değişimleri bu merkezi metod üzerinden geçer.
+        /// </summary>
         private void SetEnergy(float value)
         {
             float previous = CurrentEnergy;
             CurrentEnergy = Mathf.Clamp(value, 0f, config.maxEnergy);
 
+            // Gerçek bir değişim olmadıysa event tetiklemekten kaçın.
             if (Mathf.Approximately(previous, CurrentEnergy)) return;
 
             OnEnergyChanged?.Invoke(CurrentEnergy, config.maxEnergy);
 
-            // Reset one-shot flags when energy recovers past their thresholds.
+            // Enerji eşiğin üzerine çıktıysa bayrakları sıfırla; böylece tekrar düşünce yeniden tetiklenebilir.
             if (CurrentEnergy > config.energyDepletionWarningThreshold)
                 _lowEnergyFired = false;
             if (CurrentEnergy > 0f)
@@ -141,9 +204,12 @@ namespace Freeline
             }
         }
 
+        /// <summary>
+        /// Yeni gün başladığında enerjiyi tam doldurur ve buff listesini temizler.
+        /// Açlık saati sıfırlanmaz — akşam yemek yemeden uyuyan oyuncu sabah aç uyanır.
+        /// </summary>
         private void HandleNewDay(int day)
         {
-            // Energy fully restores on sleep. Hunger persists — skipping dinner means waking up hungry.
             CurrentEnergy  = config.maxEnergy;
             _lowEnergyFired = false;
             _depletedFired  = false;
@@ -151,12 +217,15 @@ namespace Freeline
             OnEnergyChanged?.Invoke(CurrentEnergy, config.maxEnergy);
         }
 
+        /// <summary>
+        /// Zaman ilerlediğinde açlık saatini günceller ve süresi dolan buff'ları kaldırır.
+        /// </summary>
         private void HandleTimeAdvanced(float previousHour, float newHour)
         {
             float delta = newHour - previousHour;
             _hoursSinceLastFood += delta;
 
-            // Expire active buffs, iterating backwards to allow safe removal.
+            // Süresi dolan buff'ları kaldırırken indeksi bozmamak için sondan başa iterasyon yapılır.
             for (int i = _activeBuffs.Count - 1; i >= 0; i--)
             {
                 _activeBuffs[i].remainingHours -= delta;
@@ -165,6 +234,10 @@ namespace Freeline
             }
         }
 
+        /// <summary>
+        /// Çalışma zamanında takip edilen aktif buff örneği.
+        /// <see cref="EnergyBuff"/> struct'ının değişebilir kopyasıdır.
+        /// </summary>
         private class ActiveBuff
         {
             public readonly float speedMultiplier;

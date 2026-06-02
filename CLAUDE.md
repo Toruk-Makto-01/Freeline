@@ -111,3 +111,9 @@ Data/          ← JSON configs, save templates
 
 ### Next Task
 - **Job Board UI** — panel showing the 3 current board jobs, select/start flow, refresh button, energy-blocked state feedback.
+
+## Code Documentation Standards
+- All classes and public/internal methods must have `/// <summary>` XML comments in Turkish
+- Inline `//` comments only where the WHY is non-obvious — no narration comments
+- New files must follow this standard from the start
+- Existing files are documented incrementally as they are touched

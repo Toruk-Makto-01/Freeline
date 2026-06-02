@@ -3,26 +3,47 @@ using UnityEngine;
 
 namespace Freeline
 {
-    // Runs before SaveManager (order 0) so decay and passive income are written to
-    // SaveData before it is flushed to disk on OnNewDayStarted.
+    /// <summary>
+    /// Webtoon bölümü üretimini, takipçi kazanımını, günlük çürümeyi
+    /// ve pasif coin gelirini yönetir.
+    /// Takipçi sayısı SaveData üzerindeki <see cref="WebtoonData"/> nesnesinde saklanır.
+    /// </summary>
+    /// <remarks>
+    /// DefaultExecutionOrder(-5): SaveManager'dan (order 0) önce çalışır.
+    /// OnNewDayStarted tetiklendiğinde çürüme ve pasif gelir hesabı burada yapılır;
+    /// ardından SaveManager bu değerleri diske yazar.
+    /// </remarks>
     [DefaultExecutionOrder(-5)]
     public class WebtoonManager : MonoBehaviour
     {
         [SerializeField] private WebtoonConfig config;
 
-        // Additive multiplier bonus from equipment/decorations (e.g. 0.2 = +20% follower gain).
-        // Set by the equipment system when better drawing tools are equipped.
+        /// <summary>
+        /// Çizim masası ekipmanından gelen takipçi kazanım bonusu (katkı çarpanı).
+        /// Örnek: 0.2 → %20 ek kazanım. Ekipman sistemi tarafından dışarıdan atanır.
+        /// </summary>
         public float equipmentQualityBonus;
 
-        // (chapterNumber, followerDelta, wasViral)
+        /// <summary>
+        /// Bir bölüm yayınlandığında tetiklenir.
+        /// Parametreler: (bölüm numarası, takipçi artışı, viral mi).
+        /// </summary>
         public event Action<int, float, bool> OnChapterPublished;
 
-        // Amount of passive income earned at the start of each new day.
+        /// <summary>
+        /// Her yeni günün başında kazanılan pasif gelir miktarıyla tetiklenir.
+        /// HUD coin animasyonu için kullanılabilir.
+        /// </summary>
         public event Action<float> OnPassiveIncomeEarned;
 
-        // (currentFollowers, delta) — positive on gain, negative on decay.
+        /// <summary>
+        /// Takipçi sayısı değiştiğinde tetiklenir.
+        /// Parametreler: (güncel takipçi sayısı, değişim miktarı — kazanımda pozitif, çürümede negatif).
+        /// </summary>
         public event Action<float, float> OnFollowersChanged;
 
+        // SaveData'ya her erişimde property üzerinden ulaşılır; yerel referans saklanmaz.
+        // SaveData nesnesi yeniden oluşturulursa eski referans geçersiz kalır.
         private WebtoonData Webtoon => GameManager.Instance.SaveManager.CurrentData.webtoonData;
 
         void Start()
@@ -36,9 +57,15 @@ namespace Freeline
             GameManager.Instance.TimeManager.OnNewDayStarted -= HandleNewDay;
         }
 
-        // Player initiates a chapter production session.
-        // highQuality = true → spends 2× hours, applies qualityTimeMultiplier to follower gain.
-        // Returns false if the player does not have enough energy.
+        /// <summary>
+        /// Oyuncunun bir bölüm üretim oturumu başlatmasını işler.
+        /// Zaman ilerletir, enerji tüketir ve <see cref="PublishChapter"/>'ı çağırır.
+        /// Yüksek kalite modunda iki kat süre harcar ama daha fazla takipçi kazandırır.
+        /// </summary>
+        /// <param name="highQuality">
+        /// <c>true</c> ise 2× saat ve <see cref="WebtoonConfig.qualityTimeMultiplier"/> uygulanır.
+        /// </param>
+        /// <returns>Enerji yeterliyse <c>true</c>, yetersizse <c>false</c>.</returns>
         public bool ProduceChapter(bool highQuality = false)
         {
             EnergyManager em = GameManager.Instance.EnergyManager;
@@ -46,8 +73,9 @@ namespace Freeline
 
             float hours = config.chapterProductionHours * (highQuality ? 2f : 1f);
 
-            // AdvanceTime may trigger a new day synchronously (decay + income applied).
-            // PublishChapter then resets daysSinceLastChapter afterwards — correct order.
+            // AdvanceTime gün sonunu senkron tetikleyebilir; bu durumda çürüme ve pasif gelir
+            // HandleNewDay içinde uygulanır. PublishChapter ardından daysSinceLastChapter'ı
+            // sıfırlar — doğru sıralama budur.
             GameManager.Instance.TimeManager.AdvanceTime(hours);
             em.ConsumeEnergy(config.chapterEnergyCost);
 
@@ -55,12 +83,16 @@ namespace Freeline
             return true;
         }
 
-        // Calculates follower change, updates WebtoonData, and fires events.
-        // Exposed publicly for scripted events or debug use.
+        /// <summary>
+        /// Takipçi değişimini hesaplar, <see cref="WebtoonData"/>'yı günceller ve event'leri tetikler.
+        /// Betiklenmiş olaylar veya hata ayıklama için public olarak erişilebilir.
+        /// </summary>
+        /// <param name="highQuality">Kalite çarpanının uygulanıp uygulanmayacağı.</param>
         public void PublishChapter(bool highQuality = false)
         {
             bool wasViral = UnityEngine.Random.value < config.viralChanceBase;
 
+            // Tüm çarpanlar sırayla uygulanır: ekipman bonusu → kalite → viral şans.
             float gain = config.baseFollowerGainPerChapter
                 * (1f + equipmentQualityBonus)
                 * (highQuality ? config.qualityTimeMultiplier : 1f)
@@ -75,9 +107,15 @@ namespace Freeline
             OnChapterPublished?.Invoke(wt.totalChaptersPublished, gain, wasViral);
         }
 
-        // Current expected daily passive income based on today's follower count.
+        /// <summary>
+        /// Güncel takipçi sayısına göre beklenen günlük pasif geliri döndürür.
+        /// UI'ın "bugün kazanacaksın" göstergesinde kullanılabilir.
+        /// </summary>
         public float GetDailyPassiveIncome() => Webtoon.followers * config.dailyIncomePerFollower;
 
+        /// <summary>
+        /// Her yeni gün başında çürümeyi uygular ve pasif geliri hesaplayarak SaveData'ya yazar.
+        /// </summary>
         private void HandleNewDay(int day)
         {
             WebtoonData wt = Webtoon;
@@ -89,22 +127,27 @@ namespace Freeline
             if (income > 0f)
             {
                 SaveData save = GameManager.Instance.SaveManager.CurrentData;
-                save.currentCoins  += income;
+                save.currentCoins   += income;
                 wt.lifetimeEarnings += income;
                 OnPassiveIncomeEarned?.Invoke(income);
             }
         }
 
+        /// <summary>
+        /// Bekleme süresi grace period'u aştıysa takipçi çürümesini uygular.
+        /// Çürüme negatif bir delta olarak <see cref="OnFollowersChanged"/>'a bildirilir.
+        /// </summary>
         private void ApplyFollowerDecay(WebtoonData wt)
         {
+            // Grace period içindeyse ya da hiç takipçi yoksa çürüme uygulanmaz.
             if (wt.daysSinceLastChapter <= config.decayGracePeriodDays) return;
             if (wt.followers <= 0f) return;
 
-            float decay          = wt.followers * config.followerDecayPerMissedDay;
-            float previousCount  = wt.followers;
-            wt.followers         = Mathf.Max(0f, wt.followers - decay);
+            float decay         = wt.followers * config.followerDecayPerMissedDay;
+            float previousCount = wt.followers;
+            wt.followers        = Mathf.Max(0f, wt.followers - decay);
 
-            float delta = wt.followers - previousCount; // negative
+            float delta = wt.followers - previousCount; // her zaman negatif
             OnFollowersChanged?.Invoke(wt.followers, delta);
         }
     }

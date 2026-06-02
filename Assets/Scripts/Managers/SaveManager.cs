@@ -4,20 +4,31 @@ using UnityEngine;
 
 namespace Freeline
 {
+    /// <summary>
+    /// Oyun verilerini diske kaydeder ve diskten yükler.
+    /// Veriler JSON formatında <c>Application.persistentDataPath</c> altına yazılır.
+    /// Her yeni günde otomatik kayıt tetiklenir.
+    /// </summary>
     public class SaveManager : MonoBehaviour
     {
         private const string SaveFileName = "freeline_save.json";
 
+        // persistentDataPath platforma göre değişir; sabit string yerine çalışma zamanında birleştiriliyor.
         private string SavePath => Path.Combine(Application.persistentDataPath, SaveFileName);
 
-        // The live save data object. Populated by LoadGame() or NewGame() before play begins.
+        /// <summary>
+        /// Bellekteki aktif kayıt nesnesi.
+        /// <see cref="LoadGame"/> veya yeni oyun başlatılmadan önce <c>null</c>'dır.
+        /// JobManager ve WebtoonManager bu nesneye doğrudan yazarak anlık değişiklikleri saklar.
+        /// </summary>
         public SaveData CurrentData { get; private set; }
 
         void Start()
         {
-            // OnNewDayStarted fires after TimeManager has incremented day+hour and after
-            // EnergyManager has reset energy (guaranteed by EnergyManager's DefaultExecutionOrder(-10)).
-            // This gives us a clean new-morning snapshot to persist.
+            // OnNewDayStarted, TimeManager gün sayacını artırdıktan VE
+            // EnergyManager enerjiyi sıfırladıktan sonra tetiklenir
+            // (EnergyManager DefaultExecutionOrder(-10) ile önce çalışır).
+            // Bu sıralama sayesinde sabah anlık görüntüsü temiz biçimde kaydedilir.
             GameManager.Instance.TimeManager.OnNewDayStarted += HandleNewDayStarted;
         }
 
@@ -27,8 +38,12 @@ namespace Freeline
             GameManager.Instance.TimeManager.OnNewDayStarted -= HandleNewDayStarted;
         }
 
-        // Reads the save file from disk. Returns a fresh SaveData if no file exists.
-        // Call this at game startup, then call ApplyToManagers() to restore state.
+        /// <summary>
+        /// Kayıt dosyasını diskten okur ve <see cref="CurrentData"/>'yı doldurur.
+        /// Dosya yoksa yeni bir oyun verisiyle başlar.
+        /// Başlangıçta çağrılmalı; ardından <see cref="ApplyToManagers"/> ile durum geri yüklenir.
+        /// </summary>
+        /// <returns>Yüklenen ya da yeni oluşturulan <see cref="SaveData"/>.</returns>
         public SaveData LoadGame()
         {
             if (!File.Exists(SavePath))
@@ -45,20 +60,26 @@ namespace Freeline
             }
             catch (Exception e)
             {
+                // Bozuk kayıt dosyası oyunu kitlememeli; hata loglanır ve temiz başlanır.
                 Debug.LogError($"[SaveManager] Load failed: {e.Message}. Starting fresh.");
                 CurrentData = NewGame();
                 return CurrentData;
             }
         }
 
-        // Captures current manager state then writes to disk.
+        /// <summary>
+        /// Yöneticilerden güncel değerleri alır ve diske yazar.
+        /// </summary>
         public void SaveGame()
         {
             CaptureFromManagers();
             WriteToDisk();
         }
 
-        // Deletes the save file and resets CurrentData to defaults. Debug / reset use only.
+        /// <summary>
+        /// Kayıt dosyasını siler ve <see cref="CurrentData"/>'yı varsayılan değerlere sıfırlar.
+        /// Yalnızca hata ayıklama ve oyun sıfırlama için kullanılır.
+        /// </summary>
         public void DeleteSave()
         {
             if (File.Exists(SavePath))
@@ -68,7 +89,10 @@ namespace Freeline
             Debug.Log("[SaveManager] Save deleted.");
         }
 
-        // Pushes CurrentData values back into all managers. Call after LoadGame() at startup.
+        /// <summary>
+        /// <see cref="CurrentData"/> içindeki değerleri ilgili yöneticilere uygular.
+        /// Oyun başlangıcında <see cref="LoadGame"/> çağrısının hemen ardından çağrılır.
+        /// </summary>
         public void ApplyToManagers()
         {
             if (CurrentData == null) return;
@@ -83,11 +107,14 @@ namespace Freeline
                 CurrentData.hoursSinceLastFood
             );
 
-            // JobManager and WebtoonManager read/write SaveData directly; no LoadState calls needed.
-            // Add LevelManager etc. here as they are built.
+            // JobManager ve WebtoonManager SaveData'ya doğrudan yazıp okur; ayrı LoadState gerekmez.
+            // Yeni sistemler (örn. LevelManager) eklendikçe burada çağrı eklenmeli.
         }
 
-        // Pulls current values from all managers into CurrentData. Call before SaveGame().
+        /// <summary>
+        /// Yöneticilerdeki güncel değerleri <see cref="CurrentData"/>'ya çeker.
+        /// <see cref="WriteToDisk"/> çağrısından önce çağrılır.
+        /// </summary>
         public void CaptureFromManagers()
         {
             if (CurrentData == null) CurrentData = new SaveData();
@@ -100,13 +127,20 @@ namespace Freeline
             CurrentData.currentEnergy      = energy.CurrentEnergy;
             CurrentData.hoursSinceLastFood = energy.HoursSinceLastFood;
 
-            // currentCoins, totalJobsCompleted, playerLevel, webtoonData — written directly to
-            // SaveData by JobManager and WebtoonManager; no capture step needed here.
-            // currentGems — same pattern when that system is built.
+            // currentCoins, totalJobsCompleted, playerLevel, webtoonData —
+            // bu alanlar JobManager ve WebtoonManager tarafından doğrudan SaveData'ya yazılır;
+            // burada ayrıca yakalanmalarına gerek yok.
         }
 
+        /// <summary>
+        /// Varsayılan değerlerle dolu yeni bir <see cref="SaveData"/> nesnesi oluşturur.
+        /// </summary>
         private SaveData NewGame() => new SaveData();
 
+        /// <summary>
+        /// <see cref="CurrentData"/>'yı JSON'a dönüştürüp diske yazar.
+        /// Yazma hatası oyunu durdurmaz; yalnızca loglanır.
+        /// </summary>
         private void WriteToDisk()
         {
             try
@@ -120,7 +154,10 @@ namespace Freeline
             }
         }
 
-        // Auto-save on new day. EnergyManager has already reset before this fires.
+        /// <summary>
+        /// Yeni gün başladığında otomatik kayıt yapar.
+        /// Bu noktada EnergyManager zaten enerjiyi sıfırlamış, TimeManager günü ilerlemiştir.
+        /// </summary>
         private void HandleNewDayStarted(int newDay)
         {
             SaveGame();

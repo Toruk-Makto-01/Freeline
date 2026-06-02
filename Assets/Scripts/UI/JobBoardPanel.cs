@@ -9,6 +9,10 @@ using UnityEngine.UI;
 
 namespace Freeline
 {
+    /// <summary>
+    /// Pano üzerindeki her iş kartının UI referanslarını bir arada tutar.
+    /// <see cref="JobBoardPanel"/> tarafından oluşturulur ve doldurulur.
+    /// </summary>
     public class JobBoardPanel : MonoBehaviour
     {
         [System.Serializable]
@@ -55,6 +59,7 @@ namespace Freeline
         private static readonly Color CloseBtn     = new Color(0.45f, 0.12f, 0.12f, 1.00f);
         private static readonly Color RefreshBtn   = new Color(0.18f, 0.18f, 0.30f, 1.00f);
 
+        // Seçili kartın indeksi; hiçbir kart seçili değilse -1.
         private int _selectedIndex = -1;
 
         // -------------------------------------------------------------------------
@@ -69,6 +74,8 @@ namespace Freeline
             for (int i = 0; i < cards.Length; i++)
             {
                 int idx = i;
+                // Lambda'da döngü değişkenini kapamak yerine yerel kopya kullanılır;
+                // aksi takdirde tüm düğmeler son indeksi yakalar.
                 cards[i].selectButton.onClick.AddListener(() => OnSelectClicked(idx));
             }
         }
@@ -104,6 +111,10 @@ namespace Freeline
         // Public API
         // -------------------------------------------------------------------------
 
+        /// <summary>
+        /// Paneli görünür yapar, kart seçimini sıfırlar ve güncel pano içeriğini doldurur.
+        /// HUDManager'daki Draw düğmesine basıldığında çağrılır.
+        /// </summary>
         public void Show()
         {
             _selectedIndex = -1;
@@ -112,12 +123,17 @@ namespace Freeline
             UpdateRefreshButton();
         }
 
+        /// <summary>Paneli gizler.</summary>
         public void Hide() => gameObject.SetActive(false);
 
         // -------------------------------------------------------------------------
-        // Card population
+        // Kart doldurma
         // -------------------------------------------------------------------------
 
+        /// <summary>
+        /// İş listesindeki verileri kart UI elemanlarına yazar.
+        /// Panodaki iş sayısı kart sayısından azsa fazlalık kartlar gizlenir.
+        /// </summary>
         private void PopulateCards(IReadOnlyList<JobData> jobs)
         {
             bool blocked = GameManager.Instance.EnergyManager.CurrentEnergy <= 0f;
@@ -145,6 +161,9 @@ namespace Freeline
             }
         }
 
+        /// <summary>
+        /// Kartın seçili/engelli durumuna göre arka plan rengini ve düğme görselini günceller.
+        /// </summary>
         private static void RefreshCardVisuals(JobCardRefs card, bool selected, bool blocked)
         {
             card.root.GetComponent<Image>().color             = selected ? CardSelected : CardBg;
@@ -153,6 +172,9 @@ namespace Freeline
             card.selectLabel.text                             = blocked ? "NO ENERGY" : "SELECT";
         }
 
+        /// <summary>
+        /// Yenileme düğmesinin metnini ve etkileşilebilirliğini kalan yenileme hakkına göre günceller.
+        /// </summary>
         private void UpdateRefreshButton()
         {
             int left = GameManager.Instance.JobManager.RefreshesRemaining;
@@ -160,6 +182,7 @@ namespace Freeline
             refreshButton.interactable = left > 0;
         }
 
+        /// <summary>Zorluk seviyesine karşılık gelen rengi döndürür.</summary>
         private static Color DifficultyColor(JobDifficulty d) => d switch
         {
             JobDifficulty.Beginner     => DiffBeginner,
@@ -168,9 +191,13 @@ namespace Freeline
         };
 
         // -------------------------------------------------------------------------
-        // Button handlers
+        // Düğme işleyiciler
         // -------------------------------------------------------------------------
 
+        /// <summary>
+        /// Seçim düğmesine basıldığında ilgili işi seçip hemen başlatmayı dener.
+        /// SelectJob başarılı olursa StartJob çağrılır; enerji yetersizse her ikisi de reddeder.
+        /// </summary>
         private void OnSelectClicked(int index)
         {
             var jm = GameManager.Instance.JobManager;
@@ -178,6 +205,9 @@ namespace Freeline
                 jm.StartJob();
         }
 
+        /// <summary>
+        /// Pano yenileme isteğini JobManager'a iletir ve düğme etiketini günceller.
+        /// </summary>
         private void OnRefreshClicked()
         {
             GameManager.Instance.JobManager.RefreshJobBoard();
@@ -185,9 +215,13 @@ namespace Freeline
         }
 
         // -------------------------------------------------------------------------
-        // Event handlers
+        // Event işleyiciler
         // -------------------------------------------------------------------------
 
+        /// <summary>
+        /// Pano yenilendiğinde seçimi sıfırlar ve panel açıksa kartları yeniden doldurur.
+        /// Panel kapalıysa doldurma atlanır; Show() açılışta zaten dolduracak.
+        /// </summary>
         private void HandleBoardRefreshed(IReadOnlyList<JobData> jobs)
         {
             _selectedIndex = -1;
@@ -195,6 +229,9 @@ namespace Freeline
             UpdateRefreshButton();
         }
 
+        /// <summary>
+        /// Bir iş seçildiğinde ilgili kartı seçili olarak işaretler ve görselleri günceller.
+        /// </summary>
         private void HandleJobSelected(JobData job)
         {
             var jobs = GameManager.Instance.JobManager.CurrentBoardJobs;
@@ -204,18 +241,28 @@ namespace Freeline
             if (gameObject.activeSelf) PopulateCards(jobs);
         }
 
+        /// <summary>
+        /// İş başladığında paneli gizler; mini-oyun devralır.
+        /// </summary>
         private void HandleJobStarted(JobData job)
         {
             Debug.Log($"[JobBoard] Job started: {job.jobTitle}");
             Hide();
         }
 
+        /// <summary>
+        /// Enerji tükendiğinde panel açıksa kartları yeniden boyar (SELECT → NO ENERGY).
+        /// </summary>
         private void HandleEnergyBlocked()
         {
             if (gameObject.activeSelf)
                 PopulateCards(GameManager.Instance.JobManager.CurrentBoardJobs);
         }
 
+        /// <summary>
+        /// Enerji değiştiğinde panel açıksa kartları günceller.
+        /// Enerji sıfırdan pozitife geçişte düğmeleri yeniden etkinleştirmek için gereklidir.
+        /// </summary>
         private void HandleEnergyChanged(float current, float max)
         {
             if (gameObject.activeSelf)
@@ -243,18 +290,19 @@ namespace Freeline
         [ContextMenu("Build Job Board Hierarchy")]
         private void BuildJobBoardHierarchy()
         {
+            // Eski çocuk nesneleri temizle; temiz yeniden inşa için gerekli.
             while (transform.childCount > 0)
                 DestroyImmediate(transform.GetChild(0).gameObject);
 
-            // This object should stretch to fill the parent Canvas
+            // Bu nesne ebeveyn Canvas'ı tamamen kaplamalıdır.
             Stretch(GetComponent<RectTransform>());
 
-            // Full-screen blocker (dark scrim — intercepts raycasts behind the panel)
+            // Tam ekran karartma katmanı — panel arkasındaki dokunuşları yakalar.
             var blocker = NewUIObject("Blocker", transform);
             blocker.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.55f);
             Stretch(blocker.GetComponent<RectTransform>());
 
-            // Panel — 900 × 1400, centered
+            // Ortalanmış panel — 900 × 1400.
             var panel = NewUIObject("Panel", transform);
             panel.AddComponent<Image>().color = PanelBg;
             var panelRT = panel.GetComponent<RectTransform>();
@@ -264,7 +312,7 @@ namespace Freeline
             panelRT.sizeDelta        = new Vector2(900f, 1400f);
             panelRT.anchoredPosition = Vector2.zero;
 
-            // Close button — 90 × 90, top-right corner
+            // Kapat düğmesi — sağ üst köşe, 90 × 90.
             closeButton = BuildIconButton("CloseButton", panel.transform, "X", CloseBtn);
             var closeRT = closeButton.GetComponent<RectTransform>();
             closeRT.anchorMin        = new Vector2(1f, 1f);
@@ -273,13 +321,13 @@ namespace Freeline
             closeRT.sizeDelta        = new Vector2(90f, 90f);
             closeRT.anchoredPosition = new Vector2(-16f, -16f);
 
-            // Header — full width, 120 px tall, 24 px from panel top
+            // Başlık metni — tam genişlik, 120 px, panelin üstünden 24 px aşağıda.
             headerText = NewTMP("HeaderText", panel.transform,
                                 "AVAILABLE JOBS", 60f, TextAlignmentOptions.Center);
             headerText.fontStyle = FontStyles.Bold;
             PositionFromTop(headerText.rectTransform, 0f, 1f, 24f, 120f, 0f);
 
-            // Divider — 2 px at 150 px from panel top
+            // Ayırıcı çizgi — panelin üstünden 150 px, 2 px yükseklik.
             var divider = NewUIObject("Divider", panel.transform);
             divider.AddComponent<Image>().color = new Color(1f, 1f, 1f, 0.12f);
             var divRT = divider.GetComponent<RectTransform>();
@@ -289,7 +337,7 @@ namespace Freeline
             divRT.offsetMin = new Vector2(0f, -152f);
             divRT.offsetMax = new Vector2(0f, -150f);
 
-            // 3 job cards — 840 × 340, 20 px gap, first starts at 170 px from panel top
+            // 3 iş kartı — 840 × 340, 20 px boşlukla istiflenmiş, 170 px'den başlar.
             cards = new JobCardRefs[3];
             const float CardH  = 340f;
             const float GapV   =  20f;
@@ -299,7 +347,7 @@ namespace Freeline
                 cards[i] = BuildJobCard($"JobCard_{i}", panel.transform,
                                         StartY - i * (CardH + GapV), CardH);
 
-            // Refresh button — 700 × 88, 28 px from panel bottom
+            // Yenileme düğmesi — 700 × 88, panelin altından 28 px yukarıda.
             var refreshGO  = NewUIObject("RefreshButton", panel.transform);
             var refreshImg = refreshGO.AddComponent<Image>();
             refreshImg.color    = RefreshBtn;
@@ -320,8 +368,11 @@ namespace Freeline
             Debug.Log("[JobBoard] Hierarchy built and SerializeField references populated.");
         }
 
-        // Builds one 840 × cardHeight job card anchored to the panel top.
-        // anchoredY is the distance from the panel top to the card's top edge (negative).
+        /// <summary>
+        /// Tek bir iş kartı oluşturur: başlık, müşteri adı, istatistik satırı,
+        /// zorluk rozeti ve seçim düğmesi.
+        /// </summary>
+        /// <param name="anchoredY">Panel üstünden kartın üst kenarına mesafe (negatif).</param>
         private static JobCardRefs BuildJobCard(string name, Transform parent,
                                                 float anchoredY, float cardHeight)
         {
@@ -334,17 +385,17 @@ namespace Freeline
             rt.sizeDelta        = new Vector2(840f, cardHeight);
             rt.anchoredPosition = new Vector2(0f, anchoredY);
 
-            // Title — bold, full width, 18 px from card top
+            // Başlık — kalın, tam genişlik, kartın üstünden 18 px.
             var title = NewTMP("TitleText", go.transform, "Job Title", 44f, TextAlignmentOptions.Left);
             title.fontStyle = FontStyles.Bold;
             PositionFromTop(title.rectTransform, 0f, 1f, 18f, 60f, 24f);
 
-            // Client — muted, full width, 86 px from card top
+            // Müşteri adı — soluk renk, kartın üstünden 86 px.
             var client = NewTMP("ClientText", go.transform, "Client Name", 26f, TextAlignmentOptions.Left);
             client.color = new Color(0.65f, 0.65f, 0.75f, 1f);
             PositionFromTop(client.rectTransform, 0f, 1f, 86f, 40f, 24f);
 
-            // Stats row — TIME (left), COINS (center), ENERGY (right), 138 px from card top
+            // İstatistik satırı — SÜRE (sol), COIN (orta), ENERJİ (sağ), kartın üstünden 138 px.
             var time = NewTMP("TimeText", go.transform, "TIME: 2h", 28f, TextAlignmentOptions.Left);
             time.rectTransform.anchorMin        = new Vector2(0f, 1f);
             time.rectTransform.anchorMax        = new Vector2(0f, 1f);
@@ -366,7 +417,7 @@ namespace Freeline
             energy.rectTransform.sizeDelta        = new Vector2(250f, 40f);
             energy.rectTransform.anchoredPosition = new Vector2(-24f, -138f);
 
-            // Difficulty badge — bold, colored, 192 px from card top
+            // Zorluk rozeti — kalın, renkli, kartın üstünden 192 px.
             var diff = NewTMP("DiffText", go.transform, "BEGINNER", 30f, TextAlignmentOptions.Left);
             diff.fontStyle = FontStyles.Bold;
             diff.color     = DiffBeginner;
@@ -376,7 +427,7 @@ namespace Freeline
             diff.rectTransform.sizeDelta        = new Vector2(380f, 44f);
             diff.rectTransform.anchoredPosition = new Vector2(24f, -192f);
 
-            // SELECT button — 600 × 72, 20 px from card bottom, centered
+            // SELECT düğmesi — 600 × 72, kartın altından 20 px, ortalanmış.
             var btnGO  = NewUIObject("SelectButton", go.transform);
             var btnImg = btnGO.AddComponent<Image>();
             btnImg.color = SelectBtn;
@@ -408,8 +459,9 @@ namespace Freeline
             };
         }
 
-        // Positions an element by anchoring its top edge to the parent top,
-        // stretching horizontally between xMin and xMax, with padH pixel inset per side.
+        /// <summary>
+        /// Elemanı üst kenara sabitler; yatayda xMin–xMax arasında, padH piksel iç dolguyla yerleştirir.
+        /// </summary>
         private static void PositionFromTop(RectTransform rt,
                                             float xMin, float xMax,
                                             float topOffset, float height, float padH)
@@ -421,6 +473,7 @@ namespace Freeline
             rt.offsetMax = new Vector2(-padH, -topOffset);
         }
 
+        /// <summary>Metin etiketli küçük simge düğmesi oluşturur (örn. kapat düğmesi).</summary>
         private static Button BuildIconButton(string name, Transform parent,
                                               string label, Color bg)
         {
@@ -435,8 +488,9 @@ namespace Freeline
             return btn;
         }
 
-        // ---- UI helpers (Editor-time only) ----
+        // ---- UI yardımcıları (yalnızca Editor zamanı) ----
 
+        /// <summary>RectTransform bileşeni olan boş bir UI nesnesi oluşturur.</summary>
         private static GameObject NewUIObject(string name, Transform parent)
         {
             var go = new GameObject(name, typeof(RectTransform));
@@ -444,6 +498,7 @@ namespace Freeline
             return go;
         }
 
+        /// <summary>Belirtilen metin ve boyutla yapılandırılmış bir TextMeshProUGUI bileşeni oluşturur.</summary>
         private static TextMeshProUGUI NewTMP(string name, Transform parent,
                                               string text, float fontSize,
                                               TextAlignmentOptions align)
@@ -454,10 +509,11 @@ namespace Freeline
             tmp.fontSize      = fontSize;
             tmp.color         = Color.white;
             tmp.alignment     = align;
-            tmp.raycastTarget = false;
+            tmp.raycastTarget = false; // Metin elementleri tıklama olaylarını engellemez.
             return tmp;
         }
 
+        /// <summary>RectTransform'u ebeveynine tam germe (stretch-stretch) olarak ayarlar.</summary>
         private static void Stretch(RectTransform rt)
         {
             rt.anchorMin = Vector2.zero;

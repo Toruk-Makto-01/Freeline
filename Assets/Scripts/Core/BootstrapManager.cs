@@ -37,8 +37,15 @@ using UnityEngine;
 
 namespace Freeline
 {
-    // Runs before all manager Start() methods so LoadGame/ApplyToManagers happen
-    // before JobManager.Start() calls GenerateJobBoard (which reads playerLevel from SaveData).
+    /// <summary>
+    /// Oyun başlangıç sırasını yönetir: kayıt yükleme, yönetici başlatma ve ilk sahne geçişi.
+    /// Tüm yöneticilerin <c>Start()</c> metotlarından önce çalışması zorunludur;
+    /// aksi takdirde JobManager, playerLevel henüz yüklenmeden panoyu oluşturur.
+    /// </summary>
+    /// <remarks>
+    /// DefaultExecutionOrder(-100): Diğer tüm yöneticilerden önce çalışmasını garantiler.
+    /// Akış: LoadGame → ApplyToManagers → SetState(Apartment) → GenerateJobBoard → LogStatus.
+    /// </remarks>
     [DefaultExecutionOrder(-100)]
     public class BootstrapManager : MonoBehaviour
     {
@@ -52,13 +59,18 @@ namespace Freeline
 
             gm.SetState(GameState.Apartment);
 
-            // Explicit board generation with the now-loaded playerLevel.
-            // JobManager.Start() will also call this; both produce the same filtered set.
+            // playerLevel artık SaveData'dan yüklendiği için pano doğru filtreyle oluşturulur.
+            // JobManager.Start() da GenerateJobBoard çağırır; her ikisi aynı filtrelenmiş seti üretir,
+            // dolayısıyla çift çağrı işlevsel bir sorun yaratmaz.
             gm.JobManager.GenerateJobBoard();
 
             LogStatus();
         }
 
+        /// <summary>
+        /// Bootstrap tamamlandıktan sonra konsola özet bir durum raporu yazar.
+        /// Yalnızca başlangıç doğrulaması içindir; oyun akışını etkilemez.
+        /// </summary>
         private void LogStatus()
         {
             var gm     = GameManager.Instance;

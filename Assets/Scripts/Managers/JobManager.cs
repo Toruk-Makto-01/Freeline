@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace Freeline
 {
+    /// <summary>
+    /// İş sisteminin durum makinesini tanımlar.
+    /// Akış: Idle → BoardShowing → JobSelected → JobActive → (tamamlama/terk) → BoardShowing.
+    /// </summary>
     public enum JobState
     {
         Idle,
@@ -12,30 +16,68 @@ namespace Freeline
         JobActive
     }
 
+    /// <summary>
+    /// Komisyon iş panosunu ve iş yaşam döngüsünü yönetir.
+    /// İş seçimi, başlatma, tamamlama ve terk etme işlemlerini koordine eder;
+    /// enerji yeterliliğini denetler ve kazancı SaveData'ya yazar.
+    /// </summary>
     public class JobManager : MonoBehaviour
     {
         [SerializeField] private JobConfig     config;
         [SerializeField] private List<JobData> allJobs;
 
+        /// <summary>Şu anda aktif olan iş; iş yokken <c>null</c>.</summary>
         public JobData              ActiveJob        { get; private set; }
+
+        /// <summary>İş sisteminin anlık durumu.</summary>
         public JobState             CurrentJobState  { get; private set; }
+
+        /// <summary>Panoda görünen mevcut iş listesine salt-okunur erişim.</summary>
         public IReadOnlyList<JobData> CurrentBoardJobs => _currentBoardJobs;
+
+        /// <summary>Bugün kalan yenileme hakkı sayısı.</summary>
         public int                  RefreshesRemaining => config.maxDailyRefreshes - _refreshesUsedToday;
 
-        // Set by the skill system when the early-finish bonus is unlocked.
+        /// <summary>
+        /// Erken bitirme bonusu aktifse <c>true</c> yapılır.
+        /// Beceri sistemi tarafından dışarıdan set edilir; <see cref="CalculatePayout"/> bunu okur.
+        /// </summary>
         public bool earlyFinishBonusActive;
 
-        // (board snapshot) — fired whenever the board is generated or refreshed.
+        /// <summary>
+        /// Pano oluşturulduğunda veya yenilendiğinde tetiklenir; güncel iş listesini taşır.
+        /// </summary>
         public event Action<IReadOnlyList<JobData>> OnJobBoardRefreshed;
+
+        /// <summary>Panodaki bir iş seçildiğinde tetiklenir (henüz başlamamış).</summary>
         public event Action<JobData>                OnJobSelected;
+
+        /// <summary>
+        /// İş aktif hale geçtiğinde tetiklenir.
+        /// <see cref="DrawingMinigame"/> bu event'i dinleyerek kendini gösterir.
+        /// </summary>
         public event Action<JobData>                OnJobStarted;
-        public event Action<JobData, float>         OnJobCompleted;    // (job, finalPayout)
+
+        /// <summary>
+        /// İş başarıyla tamamlandığında tetiklenir.
+        /// Parametreler: (tamamlanan iş, nihai ödeme miktarı).
+        /// </summary>
+        public event Action<JobData, float>         OnJobCompleted;
+
+        /// <summary>Oyuncu iş ortasında vazgeçtiğinde tetiklenir; ödeme yapılmaz.</summary>
         public event Action<JobData>                OnJobAbandoned;
-        // Fired when SelectJob or StartJob is blocked because energy is 0.
+
+        /// <summary>
+        /// <see cref="SelectJob"/> veya <see cref="StartJob"/> enerji yetersizliği nedeniyle
+        /// reddedildiğinde tetiklenir. UI'ın uyarı göstermesi için kullanılabilir.
+        /// </summary>
         public event Action                         OnJobBlockedByEnergy;
 
         private readonly List<JobData> _currentBoardJobs = new();
         private int  _refreshesUsedToday;
+
+        // EnergyManager'dan gelen OnEnergyDepleted / OnEnergyChanged event'leriyle güncellenir.
+        // Anlık CurrentEnergy sorgusu yerine bayrak tutmak, her karede erişimi önler.
         private bool _energyDepleted;
 
         void Start()
@@ -57,10 +99,13 @@ namespace Freeline
             GameManager.Instance.TimeManager.OnNewDayStarted -= HandleNewDay;
         }
 
-        // Picks up to config.boardSize jobs the player is currently eligible for.
-        // Safe to call at any time outside of an active job.
+        /// <summary>
+        /// Oyuncunun mevcut seviyesine uygun işlerden rastgele bir pano oluşturur.
+        /// Aktif iş yokken her zaman çağrılabilir.
+        /// </summary>
         public void GenerateJobBoard()
         {
+            // SaveData henüz yoksa (ilk yeni oyun) seviyeyi 1 kabul et.
             int playerLevel = GameManager.Instance.SaveManager.CurrentData?.playerLevel ?? 1;
 
             var eligible = new List<JobData>();
@@ -81,8 +126,11 @@ namespace Freeline
             OnJobBoardRefreshed?.Invoke(_currentBoardJobs);
         }
 
-        // Pick a job from the current board. Returns false if the index is invalid,
-        // the player has no energy, or a job is already active.
+        /// <summary>
+        /// Panodaki bir işi seçer; durum makinesini <see cref="JobState.JobSelected"/>'a taşır.
+        /// Geçersiz indeks, aktif iş veya sıfır enerji durumunda <c>false</c> döner.
+        /// </summary>
+        /// <param name="boardIndex">Panodaki işin sıfır tabanlı indeksi.</param>
         public bool SelectJob(int boardIndex)
         {
             if (CurrentJobState == JobState.JobActive) return false;
@@ -100,8 +148,11 @@ namespace Freeline
             return true;
         }
 
-        // Validates that energy covers the cost and transitions into the active state.
-        // The mini-game scene should start after receiving OnJobStarted.
+        /// <summary>
+        /// Seçili işi başlatır; enerji maliyetini doğrular ve durumu <see cref="JobState.JobActive"/>'e taşır.
+        /// <see cref="OnJobStarted"/> tetiklendikten sonra mini-oyun kendini göstermelidir.
+        /// </summary>
+        /// <returns>İş başarıyla başlatıldıysa <c>true</c>, enerji yetersizse <c>false</c>.</returns>
         public bool StartJob()
         {
             if (ActiveJob == null || CurrentJobState != JobState.JobSelected) return false;
@@ -117,16 +168,19 @@ namespace Freeline
             return true;
         }
 
-        // Called by the mini-game system when the player succeeds.
-        // Handles all side-effects: time, energy, payout, save data, board refresh.
+        /// <summary>
+        /// Mini-oyun sistemi tarafından oyuncu başarıyla tamamladığında çağrılır.
+        /// Zaman ilerletme, enerji tüketimi, kazanç hesaplama ve pano yenileme işlemlerini yürütür.
+        /// </summary>
         public void CompleteJob()
         {
             if (ActiveJob == null || CurrentJobState != JobState.JobActive) return;
 
             JobData completedJob = ActiveJob;
 
-            // Clear active state BEFORE AdvanceTime so that if a new day is triggered
-            // synchronously inside AdvanceTime, HandleNewDay won't encounter a stale JobActive state.
+            // AdvanceTime çağrısından ÖNCE aktif durumu temizle.
+            // AdvanceTime gün sonunu tetiklerse HandleNewDay senkron çalışır;
+            // o noktada JobActive durumunda kalmak panoyu yenilememesine neden olur.
             ActiveJob       = null;
             CurrentJobState = JobState.Idle;
 
@@ -141,14 +195,17 @@ namespace Freeline
 
             OnJobCompleted?.Invoke(completedJob, payout);
 
-            // If AdvanceTime triggered a new day, HandleNewDay already called GenerateJobBoard.
-            // Only generate here if we're still in Idle (no new-day board was generated).
+            // AdvanceTime yeni bir gün tetiklediyse HandleNewDay zaten GenerateJobBoard'u çağırdı.
+            // Hâlâ Idle'daysa (yeni gün açılmadıysa) panoyu burada yenile.
             if (CurrentJobState == JobState.Idle)
                 GenerateJobBoard();
         }
 
-        // Called when the player quits mid-job. No payout, no time advance.
-        // Returns 50% of the energy cost as a mechanical refund (bypasses hunger penalty).
+        /// <summary>
+        /// Oyuncu iş ortasında vazgeçtiğinde çağrılır.
+        /// Ödeme yapılmaz, zaman ilerlemez; enerji maliyetinin %50'si iade edilir.
+        /// İade açlık cezasını atlatmak için <see cref="EnergyManager.RestoreEnergyDirect"/> kullanır.
+        /// </summary>
         public void AbandonJob()
         {
             if (ActiveJob == null || CurrentJobState != JobState.JobActive) return;
@@ -163,8 +220,10 @@ namespace Freeline
             OnJobAbandoned?.Invoke(abandonedJob);
         }
 
-        // Re-rolls the board. Returns false if the daily refresh limit is reached
-        // or a job is currently active.
+        /// <summary>
+        /// Panoyu yeniden rastgele oluşturur.
+        /// Günlük yenileme limiti dolmuşsa veya aktif iş varsa <c>false</c> döner.
+        /// </summary>
         public bool RefreshJobBoard()
         {
             if (CurrentJobState == JobState.JobActive) return false;
@@ -175,6 +234,10 @@ namespace Freeline
             return true;
         }
 
+        /// <summary>
+        /// İşin nihai ödemesini hesaplar.
+        /// Erken bitirme bonusu aktifse bahşiş çarpanı eklenir.
+        /// </summary>
         private float CalculatePayout(JobData job)
         {
             if (earlyFinishBonusActive)
@@ -182,17 +245,28 @@ namespace Freeline
             return job.basePayout;
         }
 
+        /// <summary>
+        /// EnergyManager'dan enerji tükendiği bildirimi geldiğinde bayrağı set eder
+        /// ve UI'ı bilgilendirmek için <see cref="OnJobBlockedByEnergy"/>'yi tetikler.
+        /// </summary>
         private void HandleEnergyDepleted()
         {
             _energyDepleted = true;
             OnJobBlockedByEnergy?.Invoke();
         }
 
+        /// <summary>
+        /// Enerji yeniden pozitif bir değere çıktığında enerji-tükenme bayrağını sıfırlar.
+        /// </summary>
         private void HandleEnergyChanged(float current, float max)
         {
             if (current > 0f) _energyDepleted = false;
         }
 
+        /// <summary>
+        /// Yeni gün başladığında günlük yenileme sayacını ve enerji bayrağını sıfırlar,
+        /// ardından yeni bir pano oluşturur.
+        /// </summary>
         private void HandleNewDay(int day)
         {
             _refreshesUsedToday = 0;
@@ -200,6 +274,10 @@ namespace Freeline
             GenerateJobBoard();
         }
 
+        /// <summary>
+        /// Listeyi yerinde Fisher-Yates algoritmasıyla karıştırır.
+        /// Her çağrıda farklı bir pano sıralaması garantiler.
+        /// </summary>
         private static void Shuffle<T>(List<T> list)
         {
             for (int i = list.Count - 1; i > 0; i--)

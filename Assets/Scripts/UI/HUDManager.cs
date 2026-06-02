@@ -8,11 +8,17 @@ using UnityEngine.UI;
 
 namespace Freeline
 {
-    // Attached to each nav button GO by BuildHUDHierarchy.
-    // Holds a serialized HUDManager reference so the wiring survives domain reload
-    // without needing UnityEventTools or persistent-listener APIs.
+    /// <summary>
+    /// Alt navigasyon çubuğundaki her düğmeye bağlanan yardımcı bileşen.
+    /// Tıklama olayını <see cref="HUDManager"/>'ın ilgili metoduna iletir.
+    /// </summary>
+    /// <remarks>
+    /// HUDManager referansı SerializeField olarak saklanır; bu sayede domain reload sonrasında
+    /// referans kaybolmaz. UnityEvent veya persistent-listener API'si kullanılmaz.
+    /// </remarks>
     public class HUDNavButton : MonoBehaviour
     {
+        /// <summary>Düğmenin hangi ekrana veya eyleme yönlendireceğini belirler.</summary>
         public enum NavTarget { Draw, Webtoon, Sleep, Shop, Home }
 
         [SerializeField] internal HUDManager hud;
@@ -23,6 +29,9 @@ namespace Freeline
             GetComponent<Button>().onClick.AddListener(OnClick);
         }
 
+        /// <summary>
+        /// Düğmeye tıklandığında <see cref="HUDManager"/> üzerindeki ilgili metodu çağırır.
+        /// </summary>
         private void OnClick()
         {
             if (hud == null) return;
@@ -37,6 +46,11 @@ namespace Freeline
         }
     }
 
+    /// <summary>
+    /// Oyunun kalıcı HUD'unu yönetir: üst bilgi paneli (saat, enerji, açlık, coin, gem)
+    /// ve alt navigasyon çubuğu (5 düğme).
+    /// Yöneticilerden gelen event'leri dinler ve yalnızca değişen elemanı günceller.
+    /// </summary>
     public class HUDManager : MonoBehaviour
     {
         // -------------------------------------------------------------------------
@@ -77,6 +91,7 @@ namespace Freeline
         private static readonly Color EnergyBg     = new Color(0.12f, 0.12f, 0.18f, 0.80f);
         private static readonly Color HungerWarn   = new Color(1.00f, 0.38f, 0.18f, 1.00f);
 
+        // Şu anda aktif (seçili) nav düğmesi; renk geri alımı için saklanır.
         private Button _activeNavButton;
 
         // -------------------------------------------------------------------------
@@ -110,13 +125,19 @@ namespace Freeline
         }
 
         // -------------------------------------------------------------------------
-        // Full refresh — reads every manager and syncs every element.
-        // Called once on init; also callable after scene transitions or save loads.
+        // Tam yenileme — tüm yöneticileri okur ve her elemanı senkronize eder.
+        // Başlangıçta bir kez çağrılır; sahne geçişleri veya kayıt yüklemelerinden
+        // sonra da çağrılabilir.
         // -------------------------------------------------------------------------
 
+        /// <summary>
+        /// HUD'daki tüm elemanları yöneticilerden okunan güncel değerlerle senkronize eder.
+        /// Başlangıçta ve sahne geçişlerinden sonra çağrılır.
+        /// </summary>
         public void RefreshAll()
         {
             var gm = GameManager.Instance;
+            // SaveData henüz yüklenmemişse erken çık; null referans hatasını önler.
             if (gm?.SaveManager?.CurrentData == null) return;
 
             UpdateClock();
@@ -127,53 +148,72 @@ namespace Freeline
         }
 
         // -------------------------------------------------------------------------
-        // Targeted updaters
+        // Hedefli güncelleyiciler — yalnızca ilgili elemanı yeniler.
         // -------------------------------------------------------------------------
 
+        /// <summary>Saat metnini TimeManager'dan okuyarak günceller.</summary>
         private void UpdateClock()
             => clockText.text = GameManager.Instance.TimeManager.GetFormattedTime();
 
+        /// <summary>Enerji slider'ını mevcut ve maksimum değerlerle senkronize eder.</summary>
         private void UpdateEnergy(float current, float max)
         {
             energySlider.maxValue = max;
             energySlider.value    = current;
         }
 
+        /// <summary>
+        /// Açlık durumuna göre metin ve rengi günceller.
+        /// Açken turuncu uyarı rengi gösterilir.
+        /// </summary>
         private void UpdateHunger(bool hungry)
         {
             hungerText.text  = hungry ? "FOOD: HUNGRY" : "FOOD: OK";
             hungerText.color = hungry ? HungerWarn  : Color.white;
         }
 
+        /// <summary>Coin metnini tam sayıya yuvarlanmış değerle günceller.</summary>
         private void UpdateCoins(float coins)
             => coinText.text = $"COIN: {Mathf.FloorToInt(coins)}";
 
+        /// <summary>Gem metnini günceller.</summary>
         private void UpdateGems(int gems)
             => gemText.text = $"GEM: {gems}";
 
         // -------------------------------------------------------------------------
-        // Event handlers
+        // Event işleyiciler
         // -------------------------------------------------------------------------
 
+        /// <summary>Zaman ilerlediğinde saati yeniler.</summary>
         private void HandleTimeAdvanced(float prev, float next) => UpdateClock();
+
+        /// <summary>Yeni gün başladığında saati yeniler.</summary>
         private void HandleNewDayStarted(int day)               => UpdateClock();
 
+        /// <summary>Enerji değiştiğinde slider'ı ve açlık göstergesini günceller.</summary>
         private void HandleEnergyChanged(float current, float max)
         {
             UpdateEnergy(current, max);
             UpdateHunger(GameManager.Instance.EnergyManager.IsHungry);
         }
 
+        /// <summary>
+        /// İş tamamlandığında coin metnini günceller.
+        /// Payout değeri event parametresinden değil, SaveData'dan okunur;
+        /// bu sayede diğer kaynaklardan gelen coin değişimleri de yansıtılır.
+        /// </summary>
         private void HandleJobCompleted(JobData job, float payout)
             => UpdateCoins(GameManager.Instance.SaveManager.CurrentData.currentCoins);
 
+        /// <summary>Pasif gelir kazanıldığında coin metnini günceller.</summary>
         private void HandlePassiveIncome(float amount)
             => UpdateCoins(GameManager.Instance.SaveManager.CurrentData.currentCoins);
 
         // -------------------------------------------------------------------------
-        // Nav button handlers
+        // Nav düğmesi işleyiciler
         // -------------------------------------------------------------------------
 
+        /// <summary>Çizim iş panosunu açar ve Draw düğmesini aktif olarak işaretler.</summary>
         internal void OnDrawClicked()
         {
             Debug.Log("[HUD] Draw button clicked");
@@ -181,12 +221,17 @@ namespace Freeline
             jobBoardPanel?.Show();
         }
 
+        /// <summary>Webtoon stüdyosuna geçişi başlatır.</summary>
         internal void OnWebtoonClicked()
         {
             SetActiveNavButton(webtoonButton);
             Debug.Log("[HUD] Navigate to WebtoonStudio");
         }
 
+        /// <summary>
+        /// Uyuma isteğini TimeManager'a iletir.
+        /// Uyku penceresi dışındaysa sessizce reddedilir ve log yazılır.
+        /// </summary>
         internal void OnSleepClicked()
         {
             SetActiveNavButton(sleepButton);
@@ -196,24 +241,31 @@ namespace Freeline
                 : "[HUD] Sleep not available yet (before 21:00).");
         }
 
+        /// <summary>Mağaza ekranına geçişi başlatır.</summary>
         internal void OnShopClicked()
         {
             SetActiveNavButton(shopButton);
             Debug.Log("[HUD] Navigate to Shop");
         }
 
+        /// <summary>Ana daire ekranına geçişi başlatır.</summary>
         internal void OnHomeClicked()
         {
             SetActiveNavButton(homeButton);
             Debug.Log("[HUD] Navigate to Apartment");
         }
 
+        /// <summary>
+        /// Önceki aktif düğmenin rengini varsayılana döndürür, yeni düğmeyi mavi aktif renge boyar.
+        /// Uyku düğmesi varsayılan rengi farklı olduğu için ayrı ele alınır.
+        /// </summary>
         private void SetActiveNavButton(Button btn)
         {
             if (_activeNavButton != null)
             {
                 var prevImg = _activeNavButton.GetComponent<Image>();
                 if (prevImg != null)
+                    // Uyku düğmesi diğerlerinden farklı bir varsayılan renge sahip.
                     prevImg.color = (_activeNavButton == sleepButton) ? NavSleep : NavDefault;
             }
 
@@ -233,7 +285,7 @@ namespace Freeline
         [ContextMenu("Build HUD Hierarchy")]
         private void BuildHUDHierarchy()
         {
-            // Clear existing children
+            // Eski çocuk nesneleri temizle; temiz yeniden inşa için gerekli.
             while (transform.childCount > 0)
                 DestroyImmediate(transform.GetChild(0).gameObject);
 
@@ -248,6 +300,10 @@ namespace Freeline
 
         // ---- Canvas / CanvasScaler / GraphicRaycaster ----
 
+        /// <summary>
+        /// Canvas bileşenlerini kurar: ScreenSpaceOverlay, 1080×1920 referans çözünürlük,
+        /// sortingOrder 10 (DrawingMinigame Canvas'ının altında kalır).
+        /// </summary>
         private static void SetupCanvas(GameObject go)
         {
             Canvas canvas = go.GetComponent<Canvas>();
@@ -259,17 +315,21 @@ namespace Freeline
             if (scaler == null) scaler = go.AddComponent<CanvasScaler>();
             scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1080f, 1920f);
-            scaler.matchWidthOrHeight  = 0.5f;
+            scaler.matchWidthOrHeight  = 0.5f; // Hem genişlik hem yükseklik oranını dengeler.
 
             if (go.GetComponent<GraphicRaycaster>() == null)
                 go.AddComponent<GraphicRaycaster>();
         }
 
-        // ---- Top panel ----
+        // ---- Üst panel ----
 
+        /// <summary>
+        /// Ekranın üstüne sabitlenen bilgi panelini oluşturur:
+        /// saat, enerji slider'ı, açlık göstergesi, coin ve gem metinleri.
+        /// </summary>
         private void BuildTopPanel()
         {
-            // Panel background — anchored to top, full width, 200px tall
+            // Panel arka planı — üste sabitli, tam genişlik, 200 piksel yükseklik.
             var panel = NewUIObject("TopPanel", transform);
             var img   = panel.AddComponent<Image>();
             img.color = PanelBg;
@@ -279,11 +339,11 @@ namespace Freeline
             rt.offsetMin        = new Vector2(0f, -200f);
             rt.offsetMax        = new Vector2(0f,    0f);
 
-            // Clock text — left 17%, full height, with inner padding
+            // Saat metni — sol %17, iç dolgu ile.
             clockText = NewTMP("ClockText", panel.transform, "09:00", 52f, TextAlignmentOptions.Center);
             AnchorPadded(clockText.rectTransform, 0.00f, 0f, 0.17f, 1f, 16f, 8f);
 
-            // Energy container — 17–42%, holds slider + label stacked
+            // Enerji konteyner — %17–42, slider ve etiket dikey olarak istiflenmiş.
             var energyContainer = NewUIObject("EnergyContainer", panel.transform);
             AnchorPadded(energyContainer.GetComponent<RectTransform>(), 0.17f, 0f, 0.42f, 1f, 8f, 8f);
 
@@ -302,36 +362,40 @@ namespace Freeline
             labelRT.offsetMin = Vector2.zero;
             labelRT.offsetMax = Vector2.zero;
 
-            // Hunger text — 42–62%
+            // Açlık metni — %42–62.
             hungerText = NewTMP("HungerText", panel.transform, "FOOD: OK", 32f, TextAlignmentOptions.Center);
             AnchorPadded(hungerText.rectTransform, 0.42f, 0f, 0.62f, 1f, 8f, 8f);
 
-            // Coin text — 62–80%
+            // Coin metni — %62–80.
             coinText = NewTMP("CoinText", panel.transform, "COIN: 0", 34f, TextAlignmentOptions.Center);
             AnchorPadded(coinText.rectTransform, 0.62f, 0f, 0.80f, 1f, 8f, 8f);
 
-            // Gem text — 80–100%
+            // Gem metni — %80–100.
             gemText = NewTMP("GemText", panel.transform, "GEM: 0", 34f, TextAlignmentOptions.Center);
             AnchorPadded(gemText.rectTransform, 0.80f, 0f, 1.00f, 1f, 8f, 8f);
         }
 
+        /// <summary>
+        /// Etkileşimsiz enerji slider'ı oluşturur.
+        /// Slider bileşeni fillRect üzerinden fill görselini canlandırır; tutamaç kullanılmaz.
+        /// </summary>
         private Slider BuildEnergySlider(string name, Transform parent)
         {
             var root   = NewUIObject(name, parent);
             var slider = root.AddComponent<Slider>();
-            slider.interactable = false;
+            slider.interactable = false; // Oyuncu slider'ı sürükleyemez; yalnızca görsel amaçlı.
             slider.direction    = Slider.Direction.LeftToRight;
             slider.minValue     = 0f;
             slider.maxValue     = 100f;
             slider.value        = 100f;
 
-            // Dark background track
+            // Koyu arka plan şeridi.
             var bg    = NewUIObject("Background", root.transform);
             var bgImg = bg.AddComponent<Image>();
             bgImg.color = EnergyBg;
             Stretch(bg.GetComponent<RectTransform>());
 
-            // Fill Area (defines the animatable region with inset)
+            // Fill Area — Slider'ın animasyon için kullandığı iç bölge (inset ile).
             var fillArea   = NewUIObject("Fill Area", root.transform);
             var fillAreaRT = fillArea.GetComponent<RectTransform>();
             fillAreaRT.anchorMin = new Vector2(0f, 0.15f);
@@ -339,7 +403,7 @@ namespace Freeline
             fillAreaRT.offsetMin = new Vector2(4f, 0f);
             fillAreaRT.offsetMax = new Vector2(-4f, 0f);
 
-            // Fill image — Slider animates fillRT.anchorMax.x
+            // Fill görüntüsü — Slider, fillRT.anchorMax.x değerini değiştirerek dolumu canlandırır.
             var fill    = NewUIObject("Fill", fillArea.transform);
             var fillImg = fill.AddComponent<Image>();
             fillImg.color = EnergyFill;
@@ -348,19 +412,23 @@ namespace Freeline
             fillRT.anchorMax = new Vector2(1f, 1f);
             fillRT.offsetMin = Vector2.zero;
             fillRT.offsetMax = Vector2.zero;
-            fillRT.pivot     = new Vector2(0f, 0.5f);
+            fillRT.pivot     = new Vector2(0f, 0.5f); // Soldan sağa dolum için pivot sol kenarda olmalı.
 
             slider.fillRect   = fillRT;
-            slider.handleRect = null;    // No handle
+            slider.handleRect = null; // Tutamaç gizlenir; bu bir durum çubuğu, sürüklenebilir kontrol değil.
 
             return slider;
         }
 
-        // ---- Bottom nav bar ----
+        // ---- Alt navigasyon çubuğu ----
 
+        /// <summary>
+        /// Ekranın altına sabitlenen 5 düğmeli navigasyon çubuğunu oluşturur
+        /// ve her düğmeye <see cref="HUDNavButton"/> bileşeni ekler.
+        /// </summary>
         private void BuildBottomNavBar()
         {
-            // Panel background — anchored to bottom, full width, 180px tall
+            // Çubuk arka planı — alta sabitli, tam genişlik, 180 piksel yükseklik.
             var bar   = NewUIObject("BottomNavBar", transform);
             var img   = bar.AddComponent<Image>();
             img.color = PanelBg;
@@ -370,7 +438,7 @@ namespace Freeline
             rt.offsetMin = new Vector2(0f, 0f);
             rt.offsetMax = new Vector2(0f, 180f);
 
-            // Five equal-width buttons
+            // Beş eşit genişlikte düğme; her biri %20'lik bir dilim kaplar.
             drawButton    = BuildNavButton("DRAW",    bar.transform, 0.00f, 0.20f, NavDefault, false);
             webtoonButton = BuildNavButton("WEBTOON", bar.transform, 0.20f, 0.40f, NavDefault, false);
             sleepButton   = BuildNavButton("SLEEP",   bar.transform, 0.40f, 0.60f, NavSleep,   true);
@@ -384,6 +452,9 @@ namespace Freeline
             AttachNavHandler(homeButton,    HUDNavButton.NavTarget.Home);
         }
 
+        /// <summary>
+        /// Düğmeye <see cref="HUDNavButton"/> ekler ve bu HUDManager'a bağlar.
+        /// </summary>
         private void AttachNavHandler(Button btn, HUDNavButton.NavTarget target)
         {
             var handler    = btn.gameObject.AddComponent<HUDNavButton>();
@@ -392,6 +463,9 @@ namespace Freeline
             EditorUtility.SetDirty(btn.gameObject);
         }
 
+        /// <summary>
+        /// Tek bir nav çubuğu düğmesi oluşturur: arka plan, Unity geçiş renkleri ve etiket metni.
+        /// </summary>
         private static Button BuildNavButton(string label, Transform parent,
                                              float xMin, float xMax,
                                              Color bgColor, bool isSleep)
@@ -403,7 +477,8 @@ namespace Freeline
             var btn = go.AddComponent<Button>();
             btn.targetGraphic = img;
 
-            // Suppress Unity's default colour-tint transitions; HUDManager drives colour manually
+            // Unity'nin varsayılan renk geçiş sistemi devre dışı bırakılır;
+            // aktif düğme rengi HUDManager tarafından manuel olarak yönetilir.
             var colors              = btn.colors;
             colors.normalColor      = Color.white;
             colors.highlightedColor = new Color(1f, 1f, 1f, 0.85f);
@@ -411,14 +486,12 @@ namespace Freeline
             colors.fadeDuration     = 0.05f;
             btn.colors              = colors;
 
-            // Anchor within the nav bar
             var rt = go.GetComponent<RectTransform>();
             rt.anchorMin = new Vector2(xMin, 0f);
             rt.anchorMax = new Vector2(xMax, 1f);
             rt.offsetMin = new Vector2(2f, 2f);
-            rt.offsetMax = new Vector2(-2f, isSleep ? 14f : 0f); // sleep peeks above bar
+            rt.offsetMax = new Vector2(-2f, isSleep ? 14f : 0f); // Uyku düğmesi çubuktan hafifçe taşar.
 
-            // Label
             var tmp = NewTMP("Label", go.transform, label, isSleep ? 30f : 24f, TextAlignmentOptions.Center);
             tmp.fontStyle = isSleep ? FontStyles.Bold : FontStyles.Normal;
             Stretch(tmp.rectTransform);
@@ -426,8 +499,9 @@ namespace Freeline
             return btn;
         }
 
-        // ---- UI helpers (Editor-time only) ----
+        // ---- UI yardımcıları (yalnızca Editor zamanı) ----
 
+        /// <summary>RectTransform bileşeni olan boş bir UI nesnesi oluşturur.</summary>
         private static GameObject NewUIObject(string name, Transform parent)
         {
             var go = new GameObject(name, typeof(RectTransform));
@@ -435,6 +509,7 @@ namespace Freeline
             return go;
         }
 
+        /// <summary>Belirtilen metin ve boyutla yapılandırılmış bir TextMeshProUGUI bileşeni oluşturur.</summary>
         private static TextMeshProUGUI NewTMP(string name, Transform parent,
                                               string text, float fontSize,
                                               TextAlignmentOptions align)
@@ -445,10 +520,11 @@ namespace Freeline
             tmp.fontSize  = fontSize;
             tmp.color     = Color.white;
             tmp.alignment = align;
-            tmp.raycastTarget = false;
+            tmp.raycastTarget = false; // Metin elementleri tıklama olaylarını engellemez.
             return tmp;
         }
 
+        /// <summary>RectTransform'u ebeveynine tam germe (stretch-stretch) olarak ayarlar.</summary>
         private static void Stretch(RectTransform rt)
         {
             rt.anchorMin = Vector2.zero;
@@ -457,7 +533,9 @@ namespace Freeline
             rt.offsetMax = Vector2.zero;
         }
 
-        // Anchor with uniform pixel padding on all sides
+        /// <summary>
+        /// RectTransform'u belirtilen anchor aralığına ve piksel dolguya göre konumlandırır.
+        /// </summary>
         private static void AnchorPadded(RectTransform rt,
                                          float xMin, float yMin, float xMax, float yMax,
                                          float padH, float padV)
