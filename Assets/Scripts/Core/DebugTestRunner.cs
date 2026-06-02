@@ -80,6 +80,12 @@ namespace Freeline
                 return;
             }
 
+            if (jm.CurrentJobState != JobState.JobActive)
+            {
+                Debug.LogWarning("[DebugTest] State is not JobActive after StartJob (" + jm.CurrentJobState + ") — aborting CompleteJob.");
+                return;
+            }
+
             jm.CompleteJob();
 
             float payout = save.currentCoins - coinsBefore2;

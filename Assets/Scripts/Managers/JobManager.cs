@@ -159,7 +159,11 @@ namespace Freeline
 
             if (_energyDepleted || GameManager.Instance.EnergyManager.CurrentEnergy < ActiveJob.energyCost)
             {
+                // JobSelected 'ta takılı kalmaktan kaçın; panoyu yeniden gösterilebilir hale getir.
+                ActiveJob       = null;
+                CurrentJobState = JobState.BoardShowing;
                 OnJobBlockedByEnergy?.Invoke();
+                OnJobBoardRefreshed?.Invoke(_currentBoardJobs);
                 return false;
             }
 
