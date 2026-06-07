@@ -19,7 +19,7 @@ namespace Freeline
     public class HUDNavButton : MonoBehaviour
     {
         /// <summary>Düğmenin hangi ekrana veya eyleme yönlendireceğini belirler.</summary>
-        public enum NavTarget { Draw, Webtoon, Sleep, Shop, Home }
+        public enum NavTarget { Draw, Webtoon, Sleep, Exhibition, Home }
 
         [SerializeField] internal HUDManager hud;
         [SerializeField] internal NavTarget  target;
@@ -37,11 +37,11 @@ namespace Freeline
             if (hud == null) return;
             switch (target)
             {
-                case NavTarget.Draw:    hud.OnDrawClicked();    break;
-                case NavTarget.Webtoon: hud.OnWebtoonClicked(); break;
-                case NavTarget.Sleep:   hud.OnSleepClicked();   break;
-                case NavTarget.Shop:    hud.OnShopClicked();    break;
-                case NavTarget.Home:    hud.OnHomeClicked();    break;
+                case NavTarget.Draw:       hud.OnDrawClicked();       break;
+                case NavTarget.Webtoon:    hud.OnWebtoonClicked();    break;
+                case NavTarget.Sleep:      hud.OnSleepClicked();      break;
+                case NavTarget.Exhibition: hud.OnExhibitionClicked(); break;
+                case NavTarget.Home:       hud.OnHomeClicked();       break;
             }
         }
     }
@@ -70,14 +70,16 @@ namespace Freeline
         [SerializeField] private TextMeshProUGUI gemText;
 
         [Header("Panels")]
-        [SerializeField] private JobBoardPanel jobBoardPanel;
-        [SerializeField] private DrawMenuPanel drawMenuPanel;
+        [SerializeField] private JobBoardPanel              jobBoardPanel;
+        [SerializeField] private DrawMenuPanel              drawMenuPanel;
+        [SerializeField] private ExhibitionNotificationPanel exhibitionNotificationPanel;
+        [SerializeField] private ExhibitionInfoPanel         exhibitionInfoPanel;
 
         [Header("Bottom Nav Bar")]
         [SerializeField] private Button drawButton;
         [SerializeField] private Button webtoonButton;
         [SerializeField] private Button sleepButton;
-        [SerializeField] private Button shopButton;
+        [SerializeField] private Button exhibitionButton;
         [SerializeField] private Button homeButton;
 
         // -------------------------------------------------------------------------
@@ -242,11 +244,14 @@ namespace Freeline
                 : "[HUD] Sleep not available yet (before 21:00).");
         }
 
-        /// <summary>Mağaza ekranına geçişi başlatır.</summary>
-        internal void OnShopClicked()
+        // Sergi günüyse bildirim popup'ını, değilse bilgi panelini gösterir
+        internal void OnExhibitionClicked()
         {
-            SetActiveNavButton(shopButton);
-            Debug.Log("[HUD] Navigate to Shop");
+            SetActiveNavButton(exhibitionButton);
+            if (GameManager.Instance.ExhibitionManager.IsExhibitionDay)
+                exhibitionNotificationPanel?.Show();
+            else
+                exhibitionInfoPanel?.Show();
         }
 
         /// <summary>Ana daire ekranına geçişi başlatır.</summary>
@@ -440,17 +445,104 @@ namespace Freeline
             rt.offsetMax = new Vector2(0f, 180f);
 
             // Beş eşit genişlikte düğme; her biri %20'lik bir dilim kaplar.
-            drawButton    = BuildNavButton("DRAW",    bar.transform, 0.00f, 0.20f, NavDefault, false);
-            webtoonButton = BuildNavButton("WEBTOON", bar.transform, 0.20f, 0.40f, NavDefault, false);
-            sleepButton   = BuildNavButton("SLEEP",   bar.transform, 0.40f, 0.60f, NavSleep,   true);
-            shopButton    = BuildNavButton("SHOP",    bar.transform, 0.60f, 0.80f, NavDefault, false);
-            homeButton    = BuildNavButton("HOME",    bar.transform, 0.80f, 1.00f, NavDefault, false);
+            drawButton       = BuildNavButton("DRAW",    bar.transform, 0.00f, 0.20f, NavDefault, false);
+            webtoonButton    = BuildNavButton("WEBTOON", bar.transform, 0.20f, 0.40f, NavDefault, false);
+            sleepButton      = BuildNavButton("SLEEP",   bar.transform, 0.40f, 0.60f, NavSleep,   true);
+            exhibitionButton = BuildNavButton("SERGI",   bar.transform, 0.60f, 0.80f, NavDefault, false);
+            homeButton       = BuildNavButton("HOME",    bar.transform, 0.80f, 1.00f, NavDefault, false);
 
-            AttachNavHandler(drawButton,    HUDNavButton.NavTarget.Draw);
-            AttachNavHandler(webtoonButton, HUDNavButton.NavTarget.Webtoon);
-            AttachNavHandler(sleepButton,   HUDNavButton.NavTarget.Sleep);
-            AttachNavHandler(shopButton,    HUDNavButton.NavTarget.Shop);
-            AttachNavHandler(homeButton,    HUDNavButton.NavTarget.Home);
+            AttachNavHandler(drawButton,       HUDNavButton.NavTarget.Draw);
+            AttachNavHandler(webtoonButton,    HUDNavButton.NavTarget.Webtoon);
+            AttachNavHandler(sleepButton,      HUDNavButton.NavTarget.Sleep);
+            AttachNavHandler(exhibitionButton, HUDNavButton.NavTarget.Exhibition);
+            AttachNavHandler(homeButton,       HUDNavButton.NavTarget.Home);
+        }
+
+        // Mevcut sahneye yalnızca SERGI düğmesini ekler; başka hiçbir şeye dokunmaz.
+        // Build HUD Hierarchy çalıştırılmadan önce var olan inspector atamalarını korur.
+        [ContextMenu("Add Exhibition Nav Button")]
+        private void AddExhibitionNavButton()
+        {
+            var navBar = transform.Find("BottomNavBar");
+            if (navBar == null)
+            {
+                Debug.LogError("[HUD] BottomNavBar bulunamadı. Önce Build HUD Hierarchy çalıştırın.");
+                return;
+            }
+
+            if (navBar.Find("SERGIButton") != null)
+            {
+                Debug.LogWarning("[HUD] SERGIButton zaten mevcut; işlem iptal edildi.");
+                return;
+            }
+
+            // Mevcut 5 düğmeyi 1/6 genişliğe yeniden boyutlandır
+            const float W = 1f / 6f;
+            ResizeNavButton(navBar, "DRAWButton",    0*W, 1*W);
+            ResizeNavButton(navBar, "WEBTOONButton", 1*W, 2*W);
+            ResizeNavButton(navBar, "SLEEPButton",   2*W, 3*W);
+            ResizeNavButton(navBar, "SHOPButton",    4*W, 5*W);
+            ResizeNavButton(navBar, "HOMEButton",    5*W, 6*W);
+
+            // SERGI düğmesini oluştur; SLEEP'ten hemen sonra sibling sırasına ekle
+            exhibitionButton = BuildNavButton("SERGI", navBar, 3*W, 4*W, NavDefault, false);
+            var sleepTf = navBar.Find("SLEEPButton");
+            if (sleepTf != null)
+                exhibitionButton.transform.SetSiblingIndex(sleepTf.GetSiblingIndex() + 1);
+
+            AttachNavHandler(exhibitionButton, HUDNavButton.NavTarget.Exhibition);
+
+            EditorUtility.SetDirty(gameObject);
+            Debug.Log("[HUD] SERGIButton eklendi; tüm nav düğmeleri 1/6 genişliğe ayarlandı.");
+        }
+
+        // Hangi SerializeField slotlarının boş olduğunu loglar — hiyerarşiyi bozmaz.
+        [ContextMenu("Validate Slots")]
+        private void ValidateSlots()
+        {
+            int empty = 0;
+            void Check(UnityEngine.Object obj, string name)
+            {
+                if (obj == null) { Debug.LogWarning($"[HUD] Slot boş: {name}"); empty++; }
+            }
+
+            Check(clockText,                   nameof(clockText));
+            Check(energySlider,                nameof(energySlider));
+            Check(energyLabel,                 nameof(energyLabel));
+            Check(hungerText,                  nameof(hungerText));
+            Check(coinText,                    nameof(coinText));
+            Check(gemText,                     nameof(gemText));
+            Check(jobBoardPanel,               nameof(jobBoardPanel));
+            Check(drawMenuPanel,               nameof(drawMenuPanel));
+            Check(exhibitionNotificationPanel, nameof(exhibitionNotificationPanel));
+            Check(exhibitionInfoPanel,         nameof(exhibitionInfoPanel));
+            Check(drawButton,                  nameof(drawButton));
+            Check(webtoonButton,               nameof(webtoonButton));
+            Check(sleepButton,                 nameof(sleepButton));
+            Check(exhibitionButton,            nameof(exhibitionButton));
+            Check(homeButton,                  nameof(homeButton));
+
+            if (empty == 0)
+                Debug.Log("[HUD] Tüm slotlar dolu.");
+            else
+                Debug.LogWarning($"[HUD] {empty} slot boş — yukarıdaki uyarılara bakın.");
+        }
+
+        // BottomNavBar içindeki bir düğmenin yatay anchor aralığını günceller.
+        // Dikey anchor ve offsetler korunur; yalnızca xMin/xMax değişir.
+        private static void ResizeNavButton(Transform navBar, string buttonName,
+            float xMin, float xMax)
+        {
+            var t = navBar.Find(buttonName);
+            if (t == null)
+            {
+                Debug.LogWarning($"[HUD] ResizeNavButton: '{buttonName}' bulunamadı.");
+                return;
+            }
+            var rt       = t.GetComponent<RectTransform>();
+            rt.anchorMin = new Vector2(xMin, rt.anchorMin.y);
+            rt.anchorMax = new Vector2(xMax, rt.anchorMax.y);
+            EditorUtility.SetDirty(t.gameObject);
         }
 
         /// <summary>

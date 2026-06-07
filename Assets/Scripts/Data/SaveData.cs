@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Freeline
 {
@@ -24,6 +25,9 @@ namespace Freeline
         public WebtoonData webtoonData      = new WebtoonData();
         public int         totalJobsCompleted = 0;
         public int         playerLevel        = 1;
+
+        // --- Exhibition ---
+        public List<ExhibitionStock> exhibitionStock = new List<ExhibitionStock>();
 
         // --- Expansion slots (populate as systems are built) ---
         // public List<string>            unlockedDecorationIds = new();

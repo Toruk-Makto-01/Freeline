@@ -33,6 +33,10 @@ namespace Freeline
         [Header("Buttons")]
         [SerializeField] private Button cancelButton;
 
+        [Header("Back Panel References")]
+        [SerializeField] private WebtoonPanel    webtoonPanel;    // iptal sonrası geri dönülecek panel
+        [SerializeField] private ExhibitionPanel exhibitionPanel; // iptal sonrası geri dönülecek panel
+
         [Header("Settings")]
         [SerializeField] private float fillRate  = 0.25f; // saniyede dolma oranı (1× hızda)
         [SerializeField] private float drainRate = 0f;    // Awake'te fillRate / 3 olarak hesaplanır
@@ -154,14 +158,28 @@ namespace Freeline
             HidePanel();
         }
 
-        /// <summary>
-        /// İptal düğmesine basıldığında işi terk eder.
-        /// HidePanel, OnJobAbandoned event'i üzerinden çağrılır; burada çağrılmaz.
-        /// </summary>
+        // İptal düğmesine basıldığında moda göre davranır.
+        // Webtoon/Exhibition modlarında aktif bir Freelance işi yoktur; AbandonJob çağrılamaz.
         private void OnCancelPressed()
         {
             if (!_active) return;
-            JM.AbandonJob();
+            if (_mode == MinigameMode.Webtoon)
+            {
+                HidePanel();
+                webtoonPanel?.Show();
+            }
+            else if (_mode == MinigameMode.Exhibition)
+            {
+                // Callback'i null'layarak tamamlanmadan çıkıldığını ExhibitionPanel'e bildirir.
+                _onExhibitionComplete = null;
+                HidePanel();
+                exhibitionPanel?.Show();
+            }
+            else
+            {
+                // HidePanel, OnJobAbandoned event'i üzerinden çağrılır; burada çağrılmaz.
+                JM.AbandonJob();
+            }
         }
 
         /// <summary>
