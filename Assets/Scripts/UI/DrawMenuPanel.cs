@@ -23,8 +23,9 @@ namespace Freeline
         [SerializeField] private Button exhibitionButton;
 
         [Header("Panels")]
-        [SerializeField] private JobBoardPanel jobBoardPanel;
-        [SerializeField] private WebtoonPanel  webtoonPanel;
+        [SerializeField] private JobBoardPanel  jobBoardPanel;
+        [SerializeField] private WebtoonPanel   webtoonPanel;
+        [SerializeField] private ExhibitionPanel exhibitionPanel;
 
         // Blocker ve Panel doğrudan çocukları; builder yeniden çalıştırılmasa da
         // isimle bulunur. Root GO asla SetActive(false) yapılmaz; böylece bu nesnenin
@@ -103,9 +104,8 @@ namespace Freeline
 
         private void OnExhibitionClicked()
         {
+            exhibitionPanel?.Show();
             Hide();
-            // Sergi Ürünü paneli henüz hazır değil; ileride ExhibitionPanel.Show() buraya gelecek.
-            Debug.Log("[DrawMenu] Sergi Ürünü panel — yapım aşamasında.");
         }
 
         // =========================================================================

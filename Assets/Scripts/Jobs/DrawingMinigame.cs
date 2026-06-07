@@ -13,7 +13,7 @@ namespace Freeline
     /// </summary>
     public class DrawingMinigame : MonoBehaviour
     {
-        public enum MinigameMode { Freelance, Webtoon }
+        public enum MinigameMode { Freelance, Webtoon, Exhibition }
 
         // Her çağrıda GameManager üzerinden erişilir; yerel referans saklanmaz.
         private static JobManager JM => GameManager.Instance.JobManager;
@@ -37,10 +37,11 @@ namespace Freeline
         [SerializeField] private float fillRate  = 0.25f; // saniyede dolma oranı (1× hızda)
         [SerializeField] private float drainRate = 0f;    // Awake'te fillRate / 3 olarak hesaplanır
 
-        private float       _progress; // 0–1 arası dolum ilerlemesi
-        private bool        _active;   // mini-oyun şu an çalışıyor mu
-        private JobData     _job;      // aktif iş verisi; Webtoon modunda null kalır
-        private MinigameMode _mode;    // tamamlandığında hangi yöneticinin çağrılacağını belirler
+        private float        _progress;                 // 0–1 arası dolum ilerlemesi
+        private bool         _active;                  // mini-oyun şu an çalışıyor mu
+        private JobData      _job;                     // aktif iş verisi; Webtoon/Exhibition modunda null kalır
+        private MinigameMode _mode;                    // tamamlandığında hangi yöneticinin çağrılacağını belirler
+        private System.Action _onExhibitionComplete;   // Exhibition tamamlandığında ExhibitionPanel.OnProductionComplete çağrılır
 
         void Awake()
         {
@@ -112,6 +113,21 @@ namespace Freeline
             panel.SetActive(true);
         }
 
+        // ExhibitionPanel.OnProduceClicked tarafından çağrılır; tamamlandığında onComplete callback'i tetiklenir.
+        public void ShowForExhibition(ExhibitionProductData product, System.Action onComplete = null)
+        {
+            _mode                   = MinigameMode.Exhibition;
+            _job                    = null;
+            _onExhibitionComplete   = onComplete;
+            _progress               = 0f;
+            _active                 = true;
+            jobTitleText.text       = product.productName;
+            clientNameText.text     = product.productType.ToString();
+            payoutText.text         = $"{product.basePrice} coin";
+            timeCostText.text       = $"{product.productionHours:F1}h";
+            panel.SetActive(true);
+        }
+
         // WebtoonPanel.OnProduceClicked tarafından çağrılır; JobManager event zincirini atlar.
         public void ShowForWebtoon()
         {
@@ -159,6 +175,13 @@ namespace Freeline
             {
                 GameManager.Instance.WebtoonManager.ProduceChapter();
                 // Freelance modundaki gibi OnJobCompleted event zinciri yok; panel doğrudan gizlenir.
+                HidePanel();
+            }
+            else if (_mode == MinigameMode.Exhibition)
+            {
+                // Stok artışı callback üzerinden ExhibitionPanel'e bildirilir; bu sınıf paneli tanımaz.
+                _onExhibitionComplete?.Invoke();
+                _onExhibitionComplete = null;
                 HidePanel();
             }
             else
