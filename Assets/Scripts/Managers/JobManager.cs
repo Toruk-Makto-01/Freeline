@@ -205,6 +205,30 @@ namespace Freeline
                 GenerateJobBoard();
         }
 
+        // Mini-oyun tarafından zaten hesaplanmış finalPayout ile işi tamamlar.
+        // CompleteJob'dan tek farkı CalculatePayout'u atlamasıdır.
+        public void CompleteJobWithPayout(float finalPayout)
+        {
+            if (ActiveJob == null || CurrentJobState != JobState.JobActive) return;
+
+            JobData completedJob = ActiveJob;
+            ActiveJob       = null;
+            CurrentJobState = JobState.Idle;
+
+            var gm = GameManager.Instance;
+            gm.TimeManager.AdvanceTime(completedJob.durationHours);
+            gm.EnergyManager.ConsumeEnergy(completedJob.energyCost);
+
+            SaveData save = gm.SaveManager.CurrentData;
+            save.currentCoins       += finalPayout;
+            save.totalJobsCompleted += 1;
+
+            OnJobCompleted?.Invoke(completedJob, finalPayout);
+
+            if (CurrentJobState == JobState.Idle)
+                GenerateJobBoard();
+        }
+
         /// <summary>
         /// Oyuncu iş ortasında vazgeçtiğinde çağrılır.
         /// Ödeme yapılmaz, zaman ilerlemez; enerji maliyetinin %50'si iade edilir.
