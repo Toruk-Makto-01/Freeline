@@ -110,10 +110,14 @@ Data/          ← JSON configs, save templates
 - **HUD emoji warnings:** `coinText`, `gemText`, `hungerText` placeholder strings changed from emoji to plain text (`COIN:`, `GEM:`, `FOOD:`). Real icons will be sprites.
 
 ### Next Task
-- **Job Board UI** — panel showing the 3 current board jobs, select/start flow, refresh button, energy-blocked state feedback.
+- Draw menu redesign: tablet icon opens 3-button menu (Freelance, Webtoon, Sergi Ürünü)
+- Line Trace minigame (Level 2)
+- Webtoon detail panel
+- Exhibition product production panel
 
 ## Code Documentation Standards
-- All classes and public/internal methods must have `/// <summary>` XML comments in Turkish
-- Inline `//` comments only where the WHY is non-obvious — no narration comments
+- Use plain `//` comments, not `/// <summary>` XML style
+- Comment only where the WHY is non-obvious — no narration
 - New files must follow this standard from the start
 - Existing files are documented incrementally as they are touched
+- Comments in Turkish

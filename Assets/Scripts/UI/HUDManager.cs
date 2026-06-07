@@ -71,6 +71,7 @@ namespace Freeline
 
         [Header("Panels")]
         [SerializeField] private JobBoardPanel jobBoardPanel;
+        [SerializeField] private DrawMenuPanel drawMenuPanel;
 
         [Header("Bottom Nav Bar")]
         [SerializeField] private Button drawButton;
@@ -213,12 +214,12 @@ namespace Freeline
         // Nav düğmesi işleyiciler
         // -------------------------------------------------------------------------
 
-        /// <summary>Çizim iş panosunu açar ve Draw düğmesini aktif olarak işaretler.</summary>
+        /// <summary>Çizim menüsünü açar ve Draw düğmesini aktif olarak işaretler.</summary>
         internal void OnDrawClicked()
         {
             Debug.Log("[HUD] Draw button clicked");
             SetActiveNavButton(drawButton);
-            jobBoardPanel?.Show();
+            drawMenuPanel?.Show();
         }
 
         /// <summary>Webtoon stüdyosuna geçişi başlatır.</summary>
