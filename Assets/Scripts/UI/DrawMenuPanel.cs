@@ -24,6 +24,7 @@ namespace Freeline
 
         [Header("Panels")]
         [SerializeField] private JobBoardPanel jobBoardPanel;
+        [SerializeField] private WebtoonPanel  webtoonPanel;
 
         // Blocker ve Panel doğrudan çocukları; builder yeniden çalıştırılmasa da
         // isimle bulunur. Root GO asla SetActive(false) yapılmaz; böylece bu nesnenin
@@ -96,9 +97,8 @@ namespace Freeline
 
         private void OnWebtoonClicked()
         {
+            webtoonPanel?.Show();
             Hide();
-            // Webtoon paneli henüz hazır değil; ileride WebtoonPanel.Show() buraya gelecek.
-            Debug.Log("[DrawMenu] Webtoon panel — yapım aşamasında.");
         }
 
         private void OnExhibitionClicked()

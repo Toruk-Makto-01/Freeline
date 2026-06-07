@@ -13,6 +13,8 @@ namespace Freeline
     /// </summary>
     public class DrawingMinigame : MonoBehaviour
     {
+        public enum MinigameMode { Freelance, Webtoon }
+
         // Her çağrıda GameManager üzerinden erişilir; yerel referans saklanmaz.
         private static JobManager JM => GameManager.Instance.JobManager;
 
@@ -35,9 +37,10 @@ namespace Freeline
         [SerializeField] private float fillRate  = 0.25f; // saniyede dolma oranı (1× hızda)
         [SerializeField] private float drainRate = 0f;    // Awake'te fillRate / 3 olarak hesaplanır
 
-        private float   _progress; // 0–1 arası dolum ilerlemesi
-        private bool    _active;   // mini-oyun şu an çalışıyor mu
-        private JobData _job;      // aktif iş verisi
+        private float       _progress; // 0–1 arası dolum ilerlemesi
+        private bool        _active;   // mini-oyun şu an çalışıyor mu
+        private JobData     _job;      // aktif iş verisi; Webtoon modunda null kalır
+        private MinigameMode _mode;    // tamamlandığında hangi yöneticinin çağrılacağını belirler
 
         void Awake()
         {
@@ -101,10 +104,25 @@ namespace Freeline
         private void HandleJobStarted(JobData job)
         {
             if (job.jobType != JobType.SlideBar) return;
+            _mode     = MinigameMode.Freelance;
             _job      = job;
             _progress = 0f;
             _active   = true;
             PopulateInfo(job);
+            panel.SetActive(true);
+        }
+
+        // WebtoonPanel.OnProduceClicked tarafından çağrılır; JobManager event zincirini atlar.
+        public void ShowForWebtoon()
+        {
+            _mode              = MinigameMode.Webtoon;
+            _job               = null;
+            _progress          = 0f;
+            _active            = true;
+            jobTitleText.text   = "Yeni Webtoon Bölümü";
+            clientNameText.text = string.Empty;
+            payoutText.text     = string.Empty;
+            timeCostText.text   = string.Empty;
             panel.SetActive(true);
         }
 
@@ -137,7 +155,17 @@ namespace Freeline
         private void Finish()
         {
             _active = false;
-            JM.CompleteJob();
+            if (_mode == MinigameMode.Webtoon)
+            {
+                GameManager.Instance.WebtoonManager.ProduceChapter();
+                // Freelance modundaki gibi OnJobCompleted event zinciri yok; panel doğrudan gizlenir.
+                HidePanel();
+            }
+            else
+            {
+                JM.CompleteJob();
+                // HidePanel, OnJobCompleted event'i üzerinden HandleJobEnded'da çağrılır.
+            }
         }
 
         /// <summary>İş bilgilerini panel etiketlerine yazar.</summary>

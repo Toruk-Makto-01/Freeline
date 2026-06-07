@@ -36,6 +36,7 @@ namespace Freeline
         [Header("Header")]
         [SerializeField] private TextMeshProUGUI headerText;
         [SerializeField] private Button          closeButton;
+        [SerializeField] private DrawMenuPanel   drawMenuPanel;
 
         [Header("Job Cards")]
         [SerializeField] private JobCardRefs[] cards = new JobCardRefs[3];
@@ -43,6 +44,7 @@ namespace Freeline
         [Header("Footer")]
         [SerializeField] private Button          refreshButton;
         [SerializeField] private TextMeshProUGUI refreshLabel;
+        [SerializeField] private Button          backButton;
 
         // -------------------------------------------------------------------------
         // Colors
@@ -68,7 +70,8 @@ namespace Freeline
 
         void Awake()
         {
-            closeButton.onClick.AddListener(Hide);
+            closeButton.onClick.AddListener(OnCloseClicked);
+            backButton.onClick.AddListener(OnCloseClicked);
             refreshButton.onClick.AddListener(OnRefreshClicked);
 
             for (int i = 0; i < cards.Length; i++)
@@ -194,6 +197,12 @@ namespace Freeline
         // Düğme işleyiciler
         // -------------------------------------------------------------------------
 
+        private void OnCloseClicked()
+        {
+            Hide();
+            drawMenuPanel?.Show();
+        }
+
         /// <summary>
         /// Seçim düğmesine basıldığında ilgili işi seçip hemen başlatmayı dener.
         /// SelectJob başarılı olursa StartJob çağrılır; enerji yetersizse her ikisi de reddeder.
@@ -283,6 +292,7 @@ namespace Freeline
         //       HeaderText    — full width, 120 px tall, 24 px from top
         //       Divider       — 2 px separator at 150 px from top
         //       JobCard_0..2  — 840 × 340, stacked with 20 px gaps, start at 170 px
+        //       BackButton    — 700 × 80, 132 px from bottom (above Refresh)
         //       RefreshButton — 700 × 88, 28 px from bottom
         // =========================================================================
 
@@ -346,6 +356,23 @@ namespace Freeline
             for (int i = 0; i < 3; i++)
                 cards[i] = BuildJobCard($"JobCard_{i}", panel.transform,
                                         StartY - i * (CardH + GapV), CardH);
+
+            // GERİ düğmesi — 700 × 80, panelin altından 132 px yukarıda (Refresh'in üstünde, 16 px boşlukla).
+            var backGO  = NewUIObject("BackButton", panel.transform);
+            var backImg = backGO.AddComponent<Image>();
+            backImg.color = RefreshBtn;
+            backButton    = backGO.AddComponent<Button>();
+            backButton.targetGraphic = backImg;
+            var backRT = backGO.GetComponent<RectTransform>();
+            backRT.anchorMin        = new Vector2(0.5f, 0f);
+            backRT.anchorMax        = new Vector2(0.5f, 0f);
+            backRT.pivot            = new Vector2(0.5f, 0f);
+            backRT.sizeDelta        = new Vector2(700f, 80f);
+            backRT.anchoredPosition = new Vector2(0f, 132f);
+
+            var backLabel = NewTMP("BackLabel", backGO.transform, "GERİ", 36f, TextAlignmentOptions.Center);
+            backLabel.fontStyle = FontStyles.Bold;
+            Stretch(backLabel.rectTransform);
 
             // Yenileme düğmesi — 700 × 88, panelin altından 28 px yukarıda.
             var refreshGO  = NewUIObject("RefreshButton", panel.transform);
