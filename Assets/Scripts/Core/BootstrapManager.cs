@@ -1,27 +1,42 @@
 // =============================================================================
-// BOOTSTRAP SCENE SETUP INSTRUCTIONS
+// SCENE SETUP INSTRUCTIONS
 // =============================================================================
 //
-// Create the following GameObjects in the Bootstrap scene:
+// --- Bootstrap Scene ---
 //
 // [1] "Managers" GameObject
 //     Components (all on the same object):
-//       - GameManager      → assign all five manager slots in the Inspector
-//       - TimeManager      → assign TimeConfig SO
-//       - EnergyManager    → assign EnergyConfig SO
-//       - SaveManager      → no SO needed
-//       - JobManager       → assign JobConfig SO, populate All Jobs list with JobData assets
-//       - WebtoonManager   → assign WebtoonConfig SO
+//       - GameManager       → assign all manager slots in the Inspector
+//       - TimeManager       → assign TimeConfig SO
+//       - EnergyManager     → assign EnergyConfig SO
+//       - SaveManager       → no SO needed
+//       - JobManager        → assign JobConfig SO, populate All Jobs list with JobData assets
+//       - WebtoonManager    → assign WebtoonConfig SO
+//       - ExhibitionManager → assign ExhibitionConfig SO (if applicable)
+//       - BootstrapManager  → no references needed (uses GameManager.Instance)
+//     Note: DontDestroyOnLoad is set on this GameObject via GameManager.Awake —
+//           all components survive the transition to Apartment scene automatically.
 //
-// [2] "Bootstrap" GameObject
+// [2] "DebugTools" GameObject  (Editor testing only)
 //     Components:
-//       - BootstrapManager → no references needed (uses GameManager.Instance)
+//       - DebugTestRunner   → no references needed
 //
-// [3] "DebugTools" GameObject  (Editor testing only)
+// --- Apartment Scene ---
+//
+// [1] "EventSystem" GameObject
 //     Components:
-//       - DebugTestRunner  → no references needed
+//       - EventSystem
+//       - InputSystemUIInputModule (Input System package)
 //
-// ScriptableObjects to create (right-click in Project window):
+// [2] "HUD_Canvas" GameObject
+//     Components:
+//       - Canvas (Screen Space – Overlay, ref res 1080×1920)
+//       - CanvasScaler
+//       - GraphicRaycaster
+//       - HUDManager → assign all panel and button refs in the Inspector
+//     Children: all UI panels (JobBoardPanel, DrawMenuPanel, etc.)
+//
+// --- ScriptableObjects to create (right-click in Project window) ---
 //   Freeline/Config/Time Config      → Assets/ScriptableObjects/Config/TimeConfig
 //   Freeline/Config/Energy Config    → Assets/ScriptableObjects/Config/EnergyConfig
 //   Freeline/Config/Job Config       → Assets/ScriptableObjects/Config/JobConfig
@@ -34,17 +49,19 @@
 // =============================================================================
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Freeline
 {
     /// <summary>
-    /// Oyun başlangıç sırasını yönetir: kayıt yükleme, yönetici başlatma ve ilk sahne geçişi.
+    /// Oyun başlangıç sırasını yönetir: kayıt yükleme, yönetici başlatma ve Apartment sahnesine geçiş.
     /// Tüm yöneticilerin <c>Start()</c> metotlarından önce çalışması zorunludur;
     /// aksi takdirde JobManager, playerLevel henüz yüklenmeden panoyu oluşturur.
     /// </summary>
     /// <remarks>
     /// DefaultExecutionOrder(-100): Diğer tüm yöneticilerden önce çalışmasını garantiler.
-    /// Akış: LoadGame → ApplyToManagers → SetState(Apartment) → GenerateJobBoard → LogStatus.
+    /// Akış: LoadGame → ApplyToManagers → GenerateJobBoard → LogStatus → LoadScene("Apartment").
+    /// Yöneticiler DontDestroyOnLoad ile korunduğundan sahne geçişinde hayatta kalır.
     /// </remarks>
     [DefaultExecutionOrder(-100)]
     public class BootstrapManager : MonoBehaviour
@@ -57,14 +74,15 @@ namespace Freeline
             save.LoadGame();
             save.ApplyToManagers();
 
-            gm.SetState(GameState.Apartment);
-
             // playerLevel artık SaveData'dan yüklendiği için pano doğru filtreyle oluşturulur.
             // JobManager.Start() da GenerateJobBoard çağırır; her ikisi aynı filtrelenmiş seti üretir,
             // dolayısıyla çift çağrı işlevsel bir sorun yaratmaz.
             gm.JobManager.GenerateJobBoard();
 
             LogStatus();
+
+            // Yöneticiler DontDestroyOnLoad ile korunduğu için geçişte kaybolmaz.
+            SceneManager.LoadScene("Apartment");
         }
 
         /// <summary>

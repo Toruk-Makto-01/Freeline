@@ -19,9 +19,16 @@ namespace Freeline
         /// <summary>
         /// Bellekteki aktif kayıt nesnesi.
         /// <see cref="LoadGame"/> veya yeni oyun başlatılmadan önce <c>null</c>'dır.
-        /// JobManager ve WebtoonManager bu nesneye doğrudan yazarak anlık değişiklikleri saklar.
+        /// JobManager ve WebtoonManager coin/gem değişikliklerinde
+        /// doğrudan CurrentData yerine <see cref="AddCoins"/> / <see cref="SetGems"/> kullanmalıdır.
         /// </summary>
         public SaveData CurrentData { get; private set; }
+
+        /// <summary>Coin miktarı değiştiğinde tetiklenir; yeni tam coin değerini taşır.</summary>
+        public event Action<int> OnCoinsChanged;
+
+        /// <summary>Gem miktarı değiştiğinde tetiklenir; yeni gem değerini taşır.</summary>
+        public event Action<int> OnGemsChanged;
 
         void Start()
         {
@@ -74,6 +81,37 @@ namespace Freeline
         {
             CaptureFromManagers();
             WriteToDisk();
+        }
+
+        /// <summary>
+        /// Coin miktarını belirtilen değer kadar artırır (negatif değer azaltır) ve
+        /// <see cref="OnCoinsChanged"/> event'ini tetikler.
+        /// </summary>
+        public void AddCoins(float amount)
+        {
+            if (CurrentData == null) return;
+            CurrentData.currentCoins += amount;
+            OnCoinsChanged?.Invoke(Mathf.FloorToInt(CurrentData.currentCoins));
+        }
+
+        /// <summary>
+        /// Coin miktarını verilen değere ayarlar ve <see cref="OnCoinsChanged"/> event'ini tetikler.
+        /// </summary>
+        public void SetCoins(float value)
+        {
+            if (CurrentData == null) return;
+            CurrentData.currentCoins = value;
+            OnCoinsChanged?.Invoke(Mathf.FloorToInt(CurrentData.currentCoins));
+        }
+
+        /// <summary>
+        /// Gem miktarını belirtilen değer kadar artırır ve <see cref="OnGemsChanged"/> event'ini tetikler.
+        /// </summary>
+        public void AddGems(int amount)
+        {
+            if (CurrentData == null) return;
+            CurrentData.currentGems += amount;
+            OnGemsChanged?.Invoke(CurrentData.currentGems);
         }
 
         /// <summary>

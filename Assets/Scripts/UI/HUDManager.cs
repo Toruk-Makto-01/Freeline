@@ -1,600 +1,591 @@
+// APARTMENT SCENE SETUP
+// 1. Create new scene: File > New Scene > Basic (Built-in) → save as Assets/Scenes/Apartment.unity
+// 2. Delete default Main Camera if present
+// 3. Create empty GameObject → name it "HUD" → add HUDManager component
+// 4. Right-click HUD in Inspector → "Build HUD Hierarchy"
+// 5. Add scene to Build Settings (File > Build Settings > Add Open Scenes)
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Freeline
 {
-    /// <summary>
-    /// Alt navigasyon çubuğundaki her düğmeye bağlanan yardımcı bileşen.
-    /// Tıklama olayını <see cref="HUDManager"/>'ın ilgili metoduna iletir.
-    /// </summary>
-    /// <remarks>
-    /// HUDManager referansı SerializeField olarak saklanır; bu sayede domain reload sonrasında
-    /// referans kaybolmaz. UnityEvent veya persistent-listener API'si kullanılmaz.
-    /// </remarks>
-    public class HUDNavButton : MonoBehaviour
+    public class HUDManager : MonoBehaviour
     {
-        /// <summary>Düğmenin hangi ekrana veya eyleme yönlendireceğini belirler.</summary>
-        public enum NavTarget { Draw, Webtoon, Sleep, Exhibition, Home }
+        // Canvas
+        private const float RefWidth      = 1080f;
+        private const float RefHeight     = 1920f;
 
-        [SerializeField] internal HUDManager hud;
-        [SerializeField] internal NavTarget  target;
+        // TopPanel
+        private const float TopPanelH     = 320f;
+        private const float BottomNavBarH = 200f;
+
+        // ClockDial
+        private const float ClockDialSize    = 280f;
+        private const float ClockDialOffsetX = 20f;
+
+        // StatBlock
+        private const float StatBlockLeftEdge = 320f;  // ClockDialOffsetX + ClockDialSize + padding
+        private const float Row1H             = 110f;
+        private const float Row2H             = 80f;
+
+        // EnergyBar / HungerBar
+        private const float StatBarH          = 60f;
+
+        // AddBtn (Row2)
+        private const float AddBtnSize        = 48f;
+
+        // Saat → derece çevirimi: 24 saat × 15° = 360° tam tur
+        private const float HoursToDegreesMultiplier = 15f;
+
+        // BottomNavBar
+        private const float NavSlotW          = 216f;   // RefWidth / 5
+        private const float NavBtnStdSize     = 160f;
+        private const float NavBtnSleepSize   = 200f;
+        private const float NavBtnSleepRise   = 60f;    // NavBtn_Sleep protrudes above BottomNavBar
+        private const float NavLabelFontSize  = 28f;
+
+        // -------------------------------------------------------------------------
+        // SerializeField refs
+        // -------------------------------------------------------------------------
+
+        [SerializeField] private RectTransform topPanel;
+        [SerializeField] private RectTransform bottomNavBar;
+
+        [Header("Top Panel")]
+        [SerializeField] private RectTransform clockDialRect;
+        [SerializeField] private Image          clockHandImg;
+        [SerializeField] private Image          energyBarFill;
+        [SerializeField] private Image          hungerBarFill;
+        [SerializeField] private TMPro.TextMeshProUGUI followerText;
+        [SerializeField] private TMPro.TextMeshProUGUI coinText;
+        [SerializeField] private TMPro.TextMeshProUGUI gemText;
+
+        [Header("Bottom Nav Bar")]
+        [SerializeField] private Button navBtnDraw;
+        [SerializeField] private Button navBtnPhone;
+        [SerializeField] private Button navBtnSleep;
+        [SerializeField] private Button navBtnShop;
+        [SerializeField] private Button navBtnHome;
+
+        [Header("Panels")]
+        [SerializeField] private PhonePanel phonePanel;
+
+        // -------------------------------------------------------------------------
+        // Singleton
+        // -------------------------------------------------------------------------
+
+        public static HUDManager Instance { get; private set; }
 
         void Awake()
         {
-            GetComponent<Button>().onClick.AddListener(OnClick);
-        }
-
-        /// <summary>
-        /// Düğmeye tıklandığında <see cref="HUDManager"/> üzerindeki ilgili metodu çağırır.
-        /// </summary>
-        private void OnClick()
-        {
-            if (hud == null) return;
-            switch (target)
+            if (Instance != null && Instance != this)
             {
-                case NavTarget.Draw:       hud.OnDrawClicked();       break;
-                case NavTarget.Webtoon:    hud.OnWebtoonClicked();    break;
-                case NavTarget.Sleep:      hud.OnSleepClicked();      break;
-                case NavTarget.Exhibition: hud.OnExhibitionClicked(); break;
-                case NavTarget.Home:       hud.OnHomeClicked();       break;
+                Destroy(gameObject);
+                return;
             }
+
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-    }
 
-    /// <summary>
-    /// Oyunun kalıcı HUD'unu yönetir: üst bilgi paneli (saat, enerji, açlık, coin, gem)
-    /// ve alt navigasyon çubuğu (5 düğme).
-    /// Yöneticilerden gelen event'leri dinler ve yalnızca değişen elemanı günceller.
-    /// </summary>
-    public class HUDManager : MonoBehaviour
-    {
-        // -------------------------------------------------------------------------
-        // Inspector references — populated by [Build HUD Hierarchy] or manually
-        // -------------------------------------------------------------------------
-
-        [Header("Top Panel — Time")]
-        [SerializeField] private TextMeshProUGUI clockText;
-
-        [Header("Top Panel — Energy")]
-        [SerializeField] private Slider          energySlider;
-        [SerializeField] private TextMeshProUGUI energyLabel;
-        [SerializeField] private TextMeshProUGUI hungerText;
-
-        [Header("Top Panel — Economy")]
-        [SerializeField] private TextMeshProUGUI coinText;
-        [SerializeField] private TextMeshProUGUI gemText;
-
-        [Header("Panels")]
-        [SerializeField] private JobBoardPanel              jobBoardPanel;
-        [SerializeField] private DrawMenuPanel              drawMenuPanel;
-        [SerializeField] private ExhibitionNotificationPanel exhibitionNotificationPanel;
-        [SerializeField] private ExhibitionInfoPanel         exhibitionInfoPanel;
-
-        [Header("Bottom Nav Bar")]
-        [SerializeField] private Button drawButton;
-        [SerializeField] private Button webtoonButton;
-        [SerializeField] private Button sleepButton;
-        [SerializeField] private Button exhibitionButton;
-        [SerializeField] private Button homeButton;
-
-        // -------------------------------------------------------------------------
-        // Placeholder colours
-        // -------------------------------------------------------------------------
-
-        private static readonly Color PanelBg     = new Color(0.08f, 0.08f, 0.12f, 0.88f);
-        private static readonly Color NavDefault   = new Color(0.18f, 0.18f, 0.26f, 1.00f);
-        private static readonly Color NavActive    = new Color(0.28f, 0.58f, 1.00f, 1.00f);
-        private static readonly Color NavSleep     = new Color(0.32f, 0.12f, 0.52f, 1.00f);
-        private static readonly Color EnergyFill   = new Color(0.20f, 0.85f, 0.30f, 1.00f);
-        private static readonly Color EnergyBg     = new Color(0.12f, 0.12f, 0.18f, 0.80f);
-        private static readonly Color HungerWarn   = new Color(1.00f, 0.38f, 0.18f, 1.00f);
-
-        // Şu anda aktif (seçili) nav düğmesi; renk geri alımı için saklanır.
-        private Button _activeNavButton;
-
-        // -------------------------------------------------------------------------
-        // Lifecycle
-        // -------------------------------------------------------------------------
+        // =========================================================================
+        // Runtime — data binding
+        // =========================================================================
 
         void Start()
         {
             var gm = GameManager.Instance;
+            if (gm == null) return;
 
-            gm.TimeManager.OnTimeAdvanced           += HandleTimeAdvanced;
-            gm.TimeManager.OnNewDayStarted          += HandleNewDayStarted;
-            gm.EnergyManager.OnEnergyChanged        += HandleEnergyChanged;
-            gm.JobManager.OnJobCompleted            += HandleJobCompleted;
-            gm.WebtoonManager.OnPassiveIncomeEarned += HandlePassiveIncome;
+            gm.TimeManager.OnHourChanged             += UpdateClock;
+            gm.EnergyManager.OnEnergyChanged         += UpdateEnergy;
+            gm.EnergyManager.OnHungerChanged         += UpdateHunger;
+            gm.SaveManager.OnCoinsChanged            += UpdateCoins;
+            gm.SaveManager.OnGemsChanged             += UpdateGems;
+            gm.WebtoonManager.OnFollowersChanged     += HandleFollowersChanged;
 
-            SetActiveNavButton(homeButton);
             RefreshAll();
+
+            if (navBtnPhone != null && phonePanel != null)
+                navBtnPhone.onClick.AddListener(phonePanel.Open);
         }
 
         void OnDestroy()
         {
-            if (GameManager.Instance == null) return;
             var gm = GameManager.Instance;
+            if (gm == null) return;
 
-            gm.TimeManager.OnTimeAdvanced           -= HandleTimeAdvanced;
-            gm.TimeManager.OnNewDayStarted          -= HandleNewDayStarted;
-            gm.EnergyManager.OnEnergyChanged        -= HandleEnergyChanged;
-            gm.JobManager.OnJobCompleted            -= HandleJobCompleted;
-            gm.WebtoonManager.OnPassiveIncomeEarned -= HandlePassiveIncome;
+            gm.TimeManager.OnHourChanged             -= UpdateClock;
+            gm.EnergyManager.OnEnergyChanged         -= UpdateEnergy;
+            gm.EnergyManager.OnHungerChanged         -= UpdateHunger;
+            gm.SaveManager.OnCoinsChanged            -= UpdateCoins;
+            gm.SaveManager.OnGemsChanged             -= UpdateGems;
+            gm.WebtoonManager.OnFollowersChanged     -= HandleFollowersChanged;
         }
 
-        // -------------------------------------------------------------------------
-        // Tam yenileme — tüm yöneticileri okur ve her elemanı senkronize eder.
-        // Başlangıçta bir kez çağrılır; sahne geçişleri veya kayıt yüklemelerinden
-        // sonra da çağrılabilir.
-        // -------------------------------------------------------------------------
-
-        /// <summary>
-        /// HUD'daki tüm elemanları yöneticilerden okunan güncel değerlerle senkronize eder.
-        /// Başlangıçta ve sahne geçişlerinden sonra çağrılır.
-        /// </summary>
+        // Tüm yöneticilerden mevcut değerleri okuyarak ilk ekran durumunu kurar.
         public void RefreshAll()
         {
             var gm = GameManager.Instance;
-            // SaveData henüz yüklenmemişse erken çık; null referans hatasını önler.
-            if (gm?.SaveManager?.CurrentData == null) return;
+            if (gm?.TimeManager == null || gm.EnergyManager == null || gm.SaveManager?.CurrentData == null)
+                return;
 
-            UpdateClock();
+            UpdateClock(gm.TimeManager.CurrentHour);
             UpdateEnergy(gm.EnergyManager.CurrentEnergy, gm.EnergyManager.MaxEnergy);
-            UpdateHunger(gm.EnergyManager.IsHungry);
-            UpdateCoins(gm.SaveManager.CurrentData.currentCoins);
+            UpdateHunger(gm.EnergyManager.HoursSinceLastFood, gm.EnergyManager.MaxHungerHours);
+            UpdateCoins(Mathf.FloorToInt(gm.SaveManager.CurrentData.currentCoins));
             UpdateGems(gm.SaveManager.CurrentData.currentGems);
+            UpdateFollowers(Mathf.RoundToInt(gm.SaveManager.CurrentData.webtoonData.followers));
         }
 
-        // -------------------------------------------------------------------------
-        // Hedefli güncelleyiciler — yalnızca ilgili elemanı yeniler.
-        // -------------------------------------------------------------------------
-
-        /// <summary>Saat metnini TimeManager'dan okuyarak günceller.</summary>
-        private void UpdateClock()
-            => clockText.text = GameManager.Instance.TimeManager.GetFormattedTime();
-
-        /// <summary>Enerji slider'ını mevcut ve maksimum değerlerle senkronize eder.</summary>
-        private void UpdateEnergy(float current, float max)
+        // Saati 0–24 aralığından 0–360° dönüşe çevirir; saat yönünün tersine döner.
+        private void UpdateClock(float hour)
         {
-            energySlider.maxValue = max;
-            energySlider.value    = current;
+            if (clockHandImg == null) return;
+            clockHandImg.rectTransform.localRotation =
+                Quaternion.Euler(0f, 0f, -hour * HoursToDegreesMultiplier);
         }
 
-        /// <summary>
-        /// Açlık durumuna göre metin ve rengi günceller.
-        /// Açken turuncu uyarı rengi gösterilir.
-        /// </summary>
-        private void UpdateHunger(bool hungry)
+        private void UpdateEnergy(float energy, float max)
         {
-            hungerText.text  = hungry ? "FOOD: HUNGRY" : "FOOD: OK";
-            hungerText.color = hungry ? HungerWarn  : Color.white;
+            if (energyBarFill == null) return;
+            var rt      = energyBarFill.rectTransform;
+            rt.anchorMax = new Vector2(Mathf.Clamp01(energy / max), 1f);
         }
 
-        /// <summary>Coin metnini tam sayıya yuvarlanmış değerle günceller.</summary>
-        private void UpdateCoins(float coins)
-            => coinText.text = $"COIN: {Mathf.FloorToInt(coins)}";
+        private void UpdateHunger(float hunger, float max)
+        {
+            if (hungerBarFill == null) return;
+            // Bar tersine çalışır: yeni yendi = dolu, aç = boş
+            hungerBarFill.rectTransform.anchorMax =
+                new Vector2(1f - Mathf.Clamp01(hunger / max), 1f);
+        }
 
-        /// <summary>Gem metnini günceller.</summary>
+        // OnFollowersChanged imzası Action<float,float> (güncel, delta) — yalnızca güncel değer kullanılır.
+        private void HandleFollowersChanged(float current, float _)
+            => UpdateFollowers(Mathf.RoundToInt(current));
+
+        private void UpdateFollowers(int count)
+        {
+            if (followerText == null) return;
+            followerText.text = count >= 1000
+                ? $"{count / 1000f:0.#}K"
+                : count.ToString();
+        }
+
+        private void UpdateCoins(int coins)
+        {
+            if (coinText != null) coinText.text = coins.ToString();
+        }
+
         private void UpdateGems(int gems)
-            => gemText.text = $"GEM: {gems}";
-
-        // -------------------------------------------------------------------------
-        // Event işleyiciler
-        // -------------------------------------------------------------------------
-
-        /// <summary>Zaman ilerlediğinde saati yeniler.</summary>
-        private void HandleTimeAdvanced(float prev, float next) => UpdateClock();
-
-        /// <summary>Yeni gün başladığında saati yeniler.</summary>
-        private void HandleNewDayStarted(int day)               => UpdateClock();
-
-        /// <summary>Enerji değiştiğinde slider'ı ve açlık göstergesini günceller.</summary>
-        private void HandleEnergyChanged(float current, float max)
         {
-            UpdateEnergy(current, max);
-            UpdateHunger(GameManager.Instance.EnergyManager.IsHungry);
-        }
-
-        /// <summary>
-        /// İş tamamlandığında coin metnini günceller.
-        /// Payout değeri event parametresinden değil, SaveData'dan okunur;
-        /// bu sayede diğer kaynaklardan gelen coin değişimleri de yansıtılır.
-        /// </summary>
-        private void HandleJobCompleted(JobData job, float payout)
-            => UpdateCoins(GameManager.Instance.SaveManager.CurrentData.currentCoins);
-
-        /// <summary>Pasif gelir kazanıldığında coin metnini günceller.</summary>
-        private void HandlePassiveIncome(float amount)
-            => UpdateCoins(GameManager.Instance.SaveManager.CurrentData.currentCoins);
-
-        // -------------------------------------------------------------------------
-        // Nav düğmesi işleyiciler
-        // -------------------------------------------------------------------------
-
-        /// <summary>Çizim menüsünü açar ve Draw düğmesini aktif olarak işaretler.</summary>
-        internal void OnDrawClicked()
-        {
-            Debug.Log("[HUD] Draw button clicked");
-            SetActiveNavButton(drawButton);
-            drawMenuPanel?.Show();
-        }
-
-        /// <summary>Webtoon stüdyosuna geçişi başlatır.</summary>
-        internal void OnWebtoonClicked()
-        {
-            SetActiveNavButton(webtoonButton);
-            Debug.Log("[HUD] Navigate to WebtoonStudio");
-        }
-
-        /// <summary>
-        /// Uyuma isteğini TimeManager'a iletir.
-        /// Uyku penceresi dışındaysa sessizce reddedilir ve log yazılır.
-        /// </summary>
-        internal void OnSleepClicked()
-        {
-            SetActiveNavButton(sleepButton);
-            bool slept = GameManager.Instance.TimeManager.TrySleep();
-            Debug.Log(slept
-                ? "[HUD] Sleep triggered — good night, Maya."
-                : "[HUD] Sleep not available yet (before 21:00).");
-        }
-
-        // Sergi günüyse bildirim popup'ını, değilse bilgi panelini gösterir
-        internal void OnExhibitionClicked()
-        {
-            SetActiveNavButton(exhibitionButton);
-            if (GameManager.Instance.ExhibitionManager.IsExhibitionDay)
-                exhibitionNotificationPanel?.Show();
-            else
-                exhibitionInfoPanel?.Show();
-        }
-
-        /// <summary>Ana daire ekranına geçişi başlatır.</summary>
-        internal void OnHomeClicked()
-        {
-            SetActiveNavButton(homeButton);
-            Debug.Log("[HUD] Navigate to Apartment");
-        }
-
-        /// <summary>
-        /// Önceki aktif düğmenin rengini varsayılana döndürür, yeni düğmeyi mavi aktif renge boyar.
-        /// Uyku düğmesi varsayılan rengi farklı olduğu için ayrı ele alınır.
-        /// </summary>
-        private void SetActiveNavButton(Button btn)
-        {
-            if (_activeNavButton != null)
-            {
-                var prevImg = _activeNavButton.GetComponent<Image>();
-                if (prevImg != null)
-                    // Uyku düğmesi diğerlerinden farklı bir varsayılan renge sahip.
-                    prevImg.color = (_activeNavButton == sleepButton) ? NavSleep : NavDefault;
-            }
-
-            _activeNavButton = btn;
-            var img = btn.GetComponent<Image>();
-            if (img != null) img.color = NavActive;
+            if (gemText != null) gemText.text = gems.ToString();
         }
 
         // =========================================================================
-        // EDITOR — Hierarchy builder
-        // Right-click this component in the Inspector → "Build HUD Hierarchy"
-        // Destroys existing children, rebuilds the full Canvas hierarchy, and
-        // populates every SerializeField reference automatically.
+        // EDITOR — hierarchy builders
         // =========================================================================
 
 #if UNITY_EDITOR
+
         [ContextMenu("Build HUD Hierarchy")]
         private void BuildHUDHierarchy()
         {
-            // Eski çocuk nesneleri temizle; temiz yeniden inşa için gerekli.
             while (transform.childCount > 0)
                 DestroyImmediate(transform.GetChild(0).gameObject);
 
-            SetupCanvas(gameObject);
+            var canvas = gameObject.GetComponent<Canvas>();
+            if (canvas == null) canvas = gameObject.AddComponent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+
+            var scaler = gameObject.GetComponent<CanvasScaler>();
+            if (scaler == null) scaler = gameObject.AddComponent<CanvasScaler>();
+            scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution = new Vector2(RefWidth, RefHeight);
+            scaler.matchWidthOrHeight  = 0.5f;
+
+            if (gameObject.GetComponent<GraphicRaycaster>() == null)
+                gameObject.AddComponent<GraphicRaycaster>();
+
+            EnsureCamera();
+
+            topPanel     = CreatePanel("TopPanel",    anchorTop: true,  height: TopPanelH);
+            bottomNavBar = CreatePanel("BottomNavBar", anchorTop: false, height: BottomNavBarH);
+
+            topPanel.GetComponent<Image>().color     = new Color(0.12f, 0.12f, 0.18f, 1f);
+            bottomNavBar.GetComponent<Image>().color = new Color(0.12f, 0.12f, 0.18f, 1f);
 
             BuildTopPanel();
             BuildBottomNavBar();
+            BuildPhonePanelObject();
 
             EditorUtility.SetDirty(gameObject);
-            Debug.Log("[HUD] Hierarchy built and SerializeField references populated.");
+            Debug.Log("[HUD] Hierarchy built.");
         }
 
-        // ---- Canvas / CanvasScaler / GraphicRaycaster ----
+        // -------------------------------------------------------------------------
 
-        /// <summary>
-        /// Canvas bileşenlerini kurar: ScreenSpaceOverlay, 1080×1920 referans çözünürlük,
-        /// sortingOrder 10 (DrawingMinigame Canvas'ının altında kalır).
-        /// </summary>
-        private static void SetupCanvas(GameObject go)
+        private void BuildPhonePanelObject()
         {
-            Canvas canvas = go.GetComponent<Canvas>();
-            if (canvas == null) canvas = go.AddComponent<Canvas>();
-            canvas.renderMode   = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder = 10;
+            var go = new GameObject("PhonePanel", typeof(RectTransform));
+            go.transform.SetParent(transform, false);
 
-            CanvasScaler scaler = go.GetComponent<CanvasScaler>();
-            if (scaler == null) scaler = go.AddComponent<CanvasScaler>();
-            scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1080f, 1920f);
-            scaler.matchWidthOrHeight  = 0.5f; // Hem genişlik hem yükseklik oranını dengeler.
+            // PhonePanel'in kendi RectTransform'u tam ekranı kaplar; PhonePanel.BuildPhoneHierarchy bunu ayarlar.
+            var rt       = go.GetComponent<RectTransform>();
+            rt.anchorMin = Vector2.zero;
+            rt.anchorMax = Vector2.one;
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
 
-            if (go.GetComponent<GraphicRaycaster>() == null)
-                go.AddComponent<GraphicRaycaster>();
+            phonePanel = go.AddComponent<PhonePanel>();
+            EditorUtility.SetDirty(go);
         }
 
-        // ---- Üst panel ----
+        // -------------------------------------------------------------------------
 
-        /// <summary>
-        /// Ekranın üstüne sabitlenen bilgi panelini oluşturur:
-        /// saat, enerji slider'ı, açlık göstergesi, coin ve gem metinleri.
-        /// </summary>
+        private static void EnsureCamera()
+        {
+            if (Camera.main != null) return;
+
+            var camGO = new GameObject("Main Camera");
+            var cam   = camGO.AddComponent<Camera>();
+            cam.clearFlags       = CameraClearFlags.SolidColor;
+            cam.backgroundColor  = new Color(0.1f, 0.1f, 0.1f);
+            camGO.tag            = "MainCamera";
+        }
+
+        [ContextMenu("Build Top Panel")]
         private void BuildTopPanel()
         {
-            // Panel arka planı — üste sabitli, tam genişlik, 200 piksel yükseklik.
-            var panel = NewUIObject("TopPanel", transform);
-            var img   = panel.AddComponent<Image>();
-            img.color = PanelBg;
-            var rt = panel.GetComponent<RectTransform>();
-            rt.anchorMin        = new Vector2(0f, 1f);
-            rt.anchorMax        = new Vector2(1f, 1f);
-            rt.offsetMin        = new Vector2(0f, -200f);
-            rt.offsetMax        = new Vector2(0f,    0f);
-
-            // Saat metni — sol %17, iç dolgu ile.
-            clockText = NewTMP("ClockText", panel.transform, "09:00", 52f, TextAlignmentOptions.Center);
-            AnchorPadded(clockText.rectTransform, 0.00f, 0f, 0.17f, 1f, 16f, 8f);
-
-            // Enerji konteyner — %17–42, slider ve etiket dikey olarak istiflenmiş.
-            var energyContainer = NewUIObject("EnergyContainer", panel.transform);
-            AnchorPadded(energyContainer.GetComponent<RectTransform>(), 0.17f, 0f, 0.42f, 1f, 8f, 8f);
-
-            energySlider = BuildEnergySlider("EnergySlider", energyContainer.transform);
-            var sliderRT = energySlider.GetComponent<RectTransform>();
-            sliderRT.anchorMin = new Vector2(0f, 0.30f);
-            sliderRT.anchorMax = new Vector2(1f, 1.00f);
-            sliderRT.offsetMin = new Vector2(4f, 4f);
-            sliderRT.offsetMax = new Vector2(-4f, -8f);
-
-            energyLabel = NewTMP("EnergyLabel", energyContainer.transform, "ENERGY", 22f, TextAlignmentOptions.Center);
-            energyLabel.color = new Color(0.7f, 0.7f, 0.7f, 1f);
-            var labelRT = energyLabel.rectTransform;
-            labelRT.anchorMin = new Vector2(0f, 0f);
-            labelRT.anchorMax = new Vector2(1f, 0.30f);
-            labelRT.offsetMin = Vector2.zero;
-            labelRT.offsetMax = Vector2.zero;
-
-            // Açlık metni — %42–62.
-            hungerText = NewTMP("HungerText", panel.transform, "FOOD: OK", 32f, TextAlignmentOptions.Center);
-            AnchorPadded(hungerText.rectTransform, 0.42f, 0f, 0.62f, 1f, 8f, 8f);
-
-            // Coin metni — %62–80.
-            coinText = NewTMP("CoinText", panel.transform, "COIN: 0", 34f, TextAlignmentOptions.Center);
-            AnchorPadded(coinText.rectTransform, 0.62f, 0f, 0.80f, 1f, 8f, 8f);
-
-            // Gem metni — %80–100.
-            gemText = NewTMP("GemText", panel.transform, "GEM: 0", 34f, TextAlignmentOptions.Center);
-            AnchorPadded(gemText.rectTransform, 0.80f, 0f, 1.00f, 1f, 8f, 8f);
-        }
-
-        /// <summary>
-        /// Etkileşimsiz enerji slider'ı oluşturur.
-        /// Slider bileşeni fillRect üzerinden fill görselini canlandırır; tutamaç kullanılmaz.
-        /// </summary>
-        private Slider BuildEnergySlider(string name, Transform parent)
-        {
-            var root   = NewUIObject(name, parent);
-            var slider = root.AddComponent<Slider>();
-            slider.interactable = false; // Oyuncu slider'ı sürükleyemez; yalnızca görsel amaçlı.
-            slider.direction    = Slider.Direction.LeftToRight;
-            slider.minValue     = 0f;
-            slider.maxValue     = 100f;
-            slider.value        = 100f;
-
-            // Koyu arka plan şeridi.
-            var bg    = NewUIObject("Background", root.transform);
-            var bgImg = bg.AddComponent<Image>();
-            bgImg.color = EnergyBg;
-            Stretch(bg.GetComponent<RectTransform>());
-
-            // Fill Area — Slider'ın animasyon için kullandığı iç bölge (inset ile).
-            var fillArea   = NewUIObject("Fill Area", root.transform);
-            var fillAreaRT = fillArea.GetComponent<RectTransform>();
-            fillAreaRT.anchorMin = new Vector2(0f, 0.15f);
-            fillAreaRT.anchorMax = new Vector2(1f, 0.85f);
-            fillAreaRT.offsetMin = new Vector2(4f, 0f);
-            fillAreaRT.offsetMax = new Vector2(-4f, 0f);
-
-            // Fill görüntüsü — Slider, fillRT.anchorMax.x değerini değiştirerek dolumu canlandırır.
-            var fill    = NewUIObject("Fill", fillArea.transform);
-            var fillImg = fill.AddComponent<Image>();
-            fillImg.color = EnergyFill;
-            var fillRT = fill.GetComponent<RectTransform>();
-            fillRT.anchorMin = new Vector2(0f, 0f);
-            fillRT.anchorMax = new Vector2(1f, 1f);
-            fillRT.offsetMin = Vector2.zero;
-            fillRT.offsetMax = Vector2.zero;
-            fillRT.pivot     = new Vector2(0f, 0.5f); // Soldan sağa dolum için pivot sol kenarda olmalı.
-
-            slider.fillRect   = fillRT;
-            slider.handleRect = null; // Tutamaç gizlenir; bu bir durum çubuğu, sürüklenebilir kontrol değil.
-
-            return slider;
-        }
-
-        // ---- Alt navigasyon çubuğu ----
-
-        /// <summary>
-        /// Ekranın altına sabitlenen 5 düğmeli navigasyon çubuğunu oluşturur
-        /// ve her düğmeye <see cref="HUDNavButton"/> bileşeni ekler.
-        /// </summary>
-        private void BuildBottomNavBar()
-        {
-            // Çubuk arka planı — alta sabitli, tam genişlik, 180 piksel yükseklik.
-            var bar   = NewUIObject("BottomNavBar", transform);
-            var img   = bar.AddComponent<Image>();
-            img.color = PanelBg;
-            var rt    = bar.GetComponent<RectTransform>();
-            rt.anchorMin = new Vector2(0f, 0f);
-            rt.anchorMax = new Vector2(1f, 0f);
-            rt.offsetMin = new Vector2(0f, 0f);
-            rt.offsetMax = new Vector2(0f, 180f);
-
-            // Beş eşit genişlikte düğme; her biri %20'lik bir dilim kaplar.
-            drawButton       = BuildNavButton("DRAW",    bar.transform, 0.00f, 0.20f, NavDefault, false);
-            webtoonButton    = BuildNavButton("WEBTOON", bar.transform, 0.20f, 0.40f, NavDefault, false);
-            sleepButton      = BuildNavButton("SLEEP",   bar.transform, 0.40f, 0.60f, NavSleep,   true);
-            exhibitionButton = BuildNavButton("SERGI",   bar.transform, 0.60f, 0.80f, NavDefault, false);
-            homeButton       = BuildNavButton("HOME",    bar.transform, 0.80f, 1.00f, NavDefault, false);
-
-            AttachNavHandler(drawButton,       HUDNavButton.NavTarget.Draw);
-            AttachNavHandler(webtoonButton,    HUDNavButton.NavTarget.Webtoon);
-            AttachNavHandler(sleepButton,      HUDNavButton.NavTarget.Sleep);
-            AttachNavHandler(exhibitionButton, HUDNavButton.NavTarget.Exhibition);
-            AttachNavHandler(homeButton,       HUDNavButton.NavTarget.Home);
-        }
-
-        // Mevcut sahneye yalnızca SERGI düğmesini ekler; başka hiçbir şeye dokunmaz.
-        // Build HUD Hierarchy çalıştırılmadan önce var olan inspector atamalarını korur.
-        [ContextMenu("Add Exhibition Nav Button")]
-        private void AddExhibitionNavButton()
-        {
-            var navBar = transform.Find("BottomNavBar");
-            if (navBar == null)
+            if (topPanel == null)
             {
-                Debug.LogError("[HUD] BottomNavBar bulunamadı. Önce Build HUD Hierarchy çalıştırın.");
+                Debug.LogError("[HUD] topPanel ref is null — run Build HUD Hierarchy first.");
                 return;
             }
 
-            if (navBar.Find("SERGIButton") != null)
-            {
-                Debug.LogWarning("[HUD] SERGIButton zaten mevcut; işlem iptal edildi.");
-                return;
-            }
+            // Temizle
+            while (topPanel.childCount > 0)
+                DestroyImmediate(topPanel.GetChild(0).gameObject);
 
-            // Mevcut 5 düğmeyi 1/6 genişliğe yeniden boyutlandır
-            const float W = 1f / 6f;
-            ResizeNavButton(navBar, "DRAWButton",    0*W, 1*W);
-            ResizeNavButton(navBar, "WEBTOONButton", 1*W, 2*W);
-            ResizeNavButton(navBar, "SLEEPButton",   2*W, 3*W);
-            ResizeNavButton(navBar, "SHOPButton",    4*W, 5*W);
-            ResizeNavButton(navBar, "HOMEButton",    5*W, 6*W);
-
-            // SERGI düğmesini oluştur; SLEEP'ten hemen sonra sibling sırasına ekle
-            exhibitionButton = BuildNavButton("SERGI", navBar, 3*W, 4*W, NavDefault, false);
-            var sleepTf = navBar.Find("SLEEPButton");
-            if (sleepTf != null)
-                exhibitionButton.transform.SetSiblingIndex(sleepTf.GetSiblingIndex() + 1);
-
-            AttachNavHandler(exhibitionButton, HUDNavButton.NavTarget.Exhibition);
+            BuildClockDial();
+            BuildStatBlock();
 
             EditorUtility.SetDirty(gameObject);
-            Debug.Log("[HUD] SERGIButton eklendi; tüm nav düğmeleri 1/6 genişliğe ayarlandı.");
+            Debug.Log("[HUD] TopPanel built.");
         }
 
-        // Hangi SerializeField slotlarının boş olduğunu loglar — hiyerarşiyi bozmaz.
-        [ContextMenu("Validate Slots")]
-        private void ValidateSlots()
+        // ---- ClockDial ----------------------------------------------------------
+
+        private void BuildClockDial()
         {
-            int empty = 0;
-            void Check(UnityEngine.Object obj, string name)
-            {
-                if (obj == null) { Debug.LogWarning($"[HUD] Slot boş: {name}"); empty++; }
-            }
+            var go = NewUIObject("ClockDial", topPanel);
+            var rt = go.GetComponent<RectTransform>();
 
-            Check(clockText,                   nameof(clockText));
-            Check(energySlider,                nameof(energySlider));
-            Check(energyLabel,                 nameof(energyLabel));
-            Check(hungerText,                  nameof(hungerText));
-            Check(coinText,                    nameof(coinText));
-            Check(gemText,                     nameof(gemText));
-            Check(jobBoardPanel,               nameof(jobBoardPanel));
-            Check(drawMenuPanel,               nameof(drawMenuPanel));
-            Check(exhibitionNotificationPanel, nameof(exhibitionNotificationPanel));
-            Check(exhibitionInfoPanel,         nameof(exhibitionInfoPanel));
-            Check(drawButton,                  nameof(drawButton));
-            Check(webtoonButton,               nameof(webtoonButton));
-            Check(sleepButton,                 nameof(sleepButton));
-            Check(exhibitionButton,            nameof(exhibitionButton));
-            Check(homeButton,                  nameof(homeButton));
+            // Kare, sol-orta hizalı
+            rt.anchorMin = new Vector2(0f, 0.5f);
+            rt.anchorMax = new Vector2(0f, 0.5f);
+            rt.pivot     = new Vector2(0f, 0.5f);
+            rt.sizeDelta = new Vector2(ClockDialSize, ClockDialSize);
+            rt.anchoredPosition = new Vector2(ClockDialOffsetX, 0f);
 
-            if (empty == 0)
-                Debug.Log("[HUD] Tüm slotlar dolu.");
-            else
-                Debug.LogWarning($"[HUD] {empty} slot boş — yukarıdaki uyarılara bakın.");
+            var bg   = go.AddComponent<Image>();
+            bg.color = new Color(0.15f, 0.20f, 0.35f, 1f);
+
+            clockDialRect = rt;
+
+            // Dönen ibre / gösterge
+            var handGO  = NewUIObject("ClockHandImg", go.transform);
+            var handRT  = handGO.GetComponent<RectTransform>();
+            handRT.anchorMin = Vector2.zero;
+            handRT.anchorMax = Vector2.one;
+            handRT.offsetMin = Vector2.zero;
+            handRT.offsetMax = Vector2.zero;
+
+            clockHandImg       = handGO.AddComponent<Image>();
+            clockHandImg.color = Color.white;
         }
 
-        // BottomNavBar içindeki bir düğmenin yatay anchor aralığını günceller.
-        // Dikey anchor ve offsetler korunur; yalnızca xMin/xMax değişir.
-        private static void ResizeNavButton(Transform navBar, string buttonName,
-            float xMin, float xMax)
+        // ---- StatBlock ----------------------------------------------------------
+
+        private void BuildStatBlock()
         {
-            var t = navBar.Find(buttonName);
-            if (t == null)
-            {
-                Debug.LogWarning($"[HUD] ResizeNavButton: '{buttonName}' bulunamadı.");
-                return;
-            }
-            var rt       = t.GetComponent<RectTransform>();
-            rt.anchorMin = new Vector2(xMin, rt.anchorMin.y);
-            rt.anchorMax = new Vector2(xMax, rt.anchorMax.y);
-            EditorUtility.SetDirty(t.gameObject);
+            var go = NewUIObject("StatBlock", topPanel);
+            var rt = go.GetComponent<RectTransform>();
+
+            // ClockDial'ın sağından itibaren tam germe
+            rt.anchorMin = new Vector2(0f, 0f);
+            rt.anchorMax = new Vector2(1f, 1f);
+            rt.offsetMin = new Vector2(StatBlockLeftEdge, 0f);
+            rt.offsetMax = new Vector2(0f, 0f);
+
+            var bg   = go.AddComponent<Image>();
+            bg.color = new Color(1f, 1f, 1f, 0f);
+
+            BuildRow1(go.transform);
+            BuildRow2(go.transform);
         }
 
-        /// <summary>
-        /// Düğmeye <see cref="HUDNavButton"/> ekler ve bu HUDManager'a bağlar.
-        /// </summary>
-        private void AttachNavHandler(Button btn, HUDNavButton.NavTarget target)
+        // ---- Row1: EnergyBar | HungerBar | FollowerBox --------------------------
+
+        private void BuildRow1(Transform statBlock)
         {
-            var handler    = btn.gameObject.AddComponent<HUDNavButton>();
-            handler.hud    = this;
-            handler.target = target;
-            EditorUtility.SetDirty(btn.gameObject);
+            var go = NewUIObject("Row1", statBlock);
+            var rt = go.GetComponent<RectTransform>();
+
+            // StatBlock'un üst kısmı
+            rt.anchorMin = new Vector2(0f, 1f);
+            rt.anchorMax = new Vector2(1f, 1f);
+            rt.pivot     = new Vector2(0.5f, 1f);
+            rt.offsetMin = new Vector2(0f, -Row1H);
+            rt.offsetMax = new Vector2(0f, 0f);
+
+            var bg   = go.AddComponent<Image>();
+            bg.color = new Color(1f, 1f, 1f, 0f);
+
+            energyBarFill = BuildStatBar("EnergyBar", go.transform, 0.00f, 0.40f,
+                new Color(0.2f,  0.2f,  0.2f,  1f),
+                new Color(1f,    0.85f, 0.2f,  1f));
+            hungerBarFill = BuildStatBar("HungerBar", go.transform, 0.40f, 0.80f,
+                new Color(0.2f,  0.2f,  0.2f,  1f),
+                new Color(1f,    0.55f, 0.2f,  1f));
+            BuildFollowerBox(go.transform, 0.80f, 1.00f);
         }
 
-        /// <summary>
-        /// Tek bir nav çubuğu düğmesi oluşturur: arka plan, Unity geçiş renkleri ve etiket metni.
-        /// </summary>
-        private static Button BuildNavButton(string label, Transform parent,
-                                             float xMin, float xMax,
-                                             Color bgColor, bool isSleep)
+        // Yatay dolum çubuğu: arka plan + iç Fill görüntüsü.
+        // Unity Slider yerine manuel yapıdır; fill.sizeDelta.x runtime'da güncellenir.
+        private Image BuildStatBar(string barName, Transform parent, float xMin, float xMax,
+                                   Color bgColor, Color fillColor)
         {
-            var go  = NewUIObject(label + "Button", parent);
-            var img = go.AddComponent<Image>();
-            img.color = bgColor;
+            // Dış konteyner
+            var outer   = NewUIObject(barName, parent);
+            var outerRT = outer.GetComponent<RectTransform>();
+            outerRT.anchorMin = new Vector2(xMin, 0.5f);
+            outerRT.anchorMax = new Vector2(xMax, 0.5f);
+            outerRT.pivot     = new Vector2(0.5f, 0.5f);
+            outerRT.sizeDelta = new Vector2(0f, StatBarH);
+            // Anchor aralığı genişliği zaten yüzde tabanlı; sadece yükseklik sabitlenir.
+            outerRT.anchorMin = new Vector2(xMin, 0f);
+            outerRT.anchorMax = new Vector2(xMax, 1f);
+            outerRT.offsetMin = new Vector2(8f,  (Row1H - StatBarH) * 0.5f);
+            outerRT.offsetMax = new Vector2(-8f, -(Row1H - StatBarH) * 0.5f);
 
-            var btn = go.AddComponent<Button>();
-            btn.targetGraphic = img;
+            var bgImg   = outer.AddComponent<Image>();
+            bgImg.color = bgColor;
 
-            // Unity'nin varsayılan renk geçiş sistemi devre dışı bırakılır;
-            // aktif düğme rengi HUDManager tarafından manuel olarak yönetilir.
-            var colors              = btn.colors;
-            colors.normalColor      = Color.white;
-            colors.highlightedColor = new Color(1f, 1f, 1f, 0.85f);
-            colors.pressedColor     = new Color(0.75f, 0.75f, 0.75f, 1f);
-            colors.fadeDuration     = 0.05f;
-            btn.colors              = colors;
+            // Fill çocuğu — sol kenara pivot'lu, runtime'da genişlik değiştirilir
+            var fill   = NewUIObject("Fill", outer.transform);
+            var fillRT = fill.GetComponent<RectTransform>();
+            fillRT.anchorMin        = new Vector2(0f, 0f);
+            fillRT.anchorMax        = new Vector2(1f, 1f);
+            fillRT.offsetMin        = Vector2.zero;
+            fillRT.offsetMax        = Vector2.zero;
+            fillRT.pivot            = new Vector2(0f, 0.5f);
 
+            var fillImg   = fill.AddComponent<Image>();
+            fillImg.color = fillColor;
+
+            return fillImg;
+        }
+
+        private void BuildFollowerBox(Transform parent, float xMin, float xMax)
+        {
+            var go = NewUIObject("FollowerBox", parent);
             var rt = go.GetComponent<RectTransform>();
             rt.anchorMin = new Vector2(xMin, 0f);
             rt.anchorMax = new Vector2(xMax, 1f);
-            rt.offsetMin = new Vector2(2f, 2f);
-            rt.offsetMax = new Vector2(-2f, isSleep ? 14f : 0f); // Uyku düğmesi çubuktan hafifçe taşar.
+            rt.offsetMin = new Vector2(4f, 4f);
+            rt.offsetMax = new Vector2(-4f, -4f);
 
-            var tmp = NewTMP("Label", go.transform, label, isSleep ? 30f : 24f, TextAlignmentOptions.Center);
-            tmp.fontStyle = isSleep ? FontStyles.Bold : FontStyles.Normal;
-            Stretch(tmp.rectTransform);
+            var img   = go.AddComponent<Image>();
+            img.color = new Color(0.25f, 0.15f, 0.35f, 1f);
+
+            // İki figür ikonu — ileride sprite atanacak yer tutucular
+            NewIconSlot("FigureIcon1", go.transform, new Vector2(0f, 0f), new Vector2(0.4f, 1f));
+            NewIconSlot("FigureIcon2", go.transform, new Vector2(0.4f, 0f), new Vector2(0.7f, 1f));
+
+            // Takipçi sayısı metni
+            var textGO = NewUIObject("FollowerText", go.transform);
+            var textRT = textGO.GetComponent<RectTransform>();
+            textRT.anchorMin = Vector2.zero;
+            textRT.anchorMax = Vector2.one;
+            textRT.offsetMin = Vector2.zero;
+            textRT.offsetMax = Vector2.zero;
+
+            followerText           = textGO.AddComponent<TMPro.TextMeshProUGUI>();
+            followerText.text      = "0";
+            followerText.fontSize  = 24f;
+            followerText.color     = Color.white;
+            followerText.alignment = TMPro.TextAlignmentOptions.Center;
+            followerText.raycastTarget = false;
+        }
+
+        // ---- Row2: CoinDisplay | CoinAddBtn | GemDisplay | GemAddBtn | BalanceBox
+
+        private void BuildRow2(Transform statBlock)
+        {
+            var go = NewUIObject("Row2", statBlock);
+            var rt = go.GetComponent<RectTransform>();
+
+            // StatBlock'un alt kısmı
+            rt.anchorMin = new Vector2(0f, 0f);
+            rt.anchorMax = new Vector2(1f, 0f);
+            rt.pivot     = new Vector2(0.5f, 0f);
+            rt.offsetMin = new Vector2(0f, 0f);
+            rt.offsetMax = new Vector2(0f, Row2H);
+
+            var bg   = go.AddComponent<Image>();
+            bg.color = new Color(1f, 1f, 1f, 0f);
+
+            // Coin
+            coinText = BuildCurrencyText("CoinDisplay", go.transform, 0.00f, 0.22f);
+            BuildAddButton("CoinAddBtn",  go.transform, 0.22f, 0.32f);
+
+            // Gem
+            gemText  = BuildCurrencyText("GemDisplay",  go.transform, 0.32f, 0.54f);
+            BuildAddButton("GemAddBtn",   go.transform, 0.54f, 0.64f);
+
+            // Kalan alan
+            var balance   = NewUIObject("BalanceBox", go.transform);
+            var balanceRT = balance.GetComponent<RectTransform>();
+            balanceRT.anchorMin = new Vector2(0.64f, 0f);
+            balanceRT.anchorMax = new Vector2(1.00f, 1f);
+            balanceRT.offsetMin = new Vector2(4f, 4f);
+            balanceRT.offsetMax = new Vector2(-4f, -4f);
+
+            var balanceImg   = balance.AddComponent<Image>();
+            balanceImg.color = new Color(0.15f, 0.15f, 0.15f, 1f);
+        }
+
+        private static TMPro.TextMeshProUGUI BuildCurrencyText(
+            string objName, Transform parent, float xMin, float xMax)
+        {
+            var go = NewUIObject(objName, parent);
+            var rt = go.GetComponent<RectTransform>();
+            rt.anchorMin = new Vector2(xMin, 0f);
+            rt.anchorMax = new Vector2(xMax, 1f);
+            rt.offsetMin = new Vector2(6f, 4f);
+            rt.offsetMax = new Vector2(-2f, -4f);
+
+            var tmp = go.AddComponent<TMPro.TextMeshProUGUI>();
+            tmp.text           = "0";
+            tmp.fontSize       = 36f;
+            tmp.color          = Color.white;
+            tmp.alignment      = TMPro.TextAlignmentOptions.MidlineLeft;
+            tmp.raycastTarget  = false;
+            return tmp;
+        }
+
+        private static void BuildAddButton(string btnName, Transform parent, float xMin, float xMax)
+        {
+            var go = NewUIObject(btnName, parent);
+            var rt = go.GetComponent<RectTransform>();
+            rt.anchorMin = new Vector2(xMin, 0.5f);
+            rt.anchorMax = new Vector2(xMax, 0.5f);
+            rt.pivot     = new Vector2(0.5f, 0.5f);
+            // En az 48×48px dokunma hedefi
+            rt.sizeDelta = new Vector2(
+                Mathf.Max(AddBtnSize, (xMax - xMin) * RefWidth),
+                AddBtnSize);
+
+            var img   = go.AddComponent<Image>();
+            img.color = new Color(1f, 1f, 1f, 0f);
+
+            go.AddComponent<Button>();
+
+            var label = NewUIObject("Label", go.transform);
+            var labelRT = label.GetComponent<RectTransform>();
+            labelRT.anchorMin = Vector2.zero;
+            labelRT.anchorMax = Vector2.one;
+            labelRT.offsetMin = Vector2.zero;
+            labelRT.offsetMax = Vector2.zero;
+
+            var tmp = label.AddComponent<TMPro.TextMeshProUGUI>();
+            tmp.text          = "+";
+            tmp.fontSize      = 30f;
+            tmp.color         = Color.white;
+            tmp.alignment     = TMPro.TextAlignmentOptions.Center;
+            tmp.raycastTarget = false;
+        }
+
+        // ---- BottomNavBar -------------------------------------------------------
+
+        [ContextMenu("Build Bottom Nav Bar")]
+        private void BuildBottomNavBar()
+        {
+            if (bottomNavBar == null)
+            {
+                Debug.LogError("[HUD] bottomNavBar ref is null — run Build HUD Hierarchy first.");
+                return;
+            }
+
+            while (bottomNavBar.childCount > 0)
+                DestroyImmediate(bottomNavBar.GetChild(0).gameObject);
+
+            // 5 eşit slot; Sleep merkez (slot 2, index 2)
+            navBtnDraw  = BuildNavBtn("NavBtn_Draw",  bottomNavBar, slotIndex: 0, label: "Draw",  isSleep: false);
+            navBtnPhone = BuildNavBtn("NavBtn_Phone", bottomNavBar, slotIndex: 1, label: "Phone", isSleep: false);
+            navBtnSleep = BuildNavBtn("NavBtn_Sleep", bottomNavBar, slotIndex: 2, label: "Sleep", isSleep: true);
+            navBtnShop  = BuildNavBtn("NavBtn_Shop",  bottomNavBar, slotIndex: 3, label: "Shop",  isSleep: false);
+            navBtnHome  = BuildNavBtn("NavBtn_Home",  bottomNavBar, slotIndex: 4, label: "Home",  isSleep: false);
+
+            EditorUtility.SetDirty(gameObject);
+            Debug.Log("[HUD] BottomNavBar built.");
+        }
+
+        // Tek bir nav düğmesi oluşturur.
+        // Standart düğmeler BottomNavBar içinde dikey olarak ortalanır (160×160px).
+        // Sleep düğmesi NavBtnSleepRise kadar yukarı taşar (200×200px).
+        private static Button BuildNavBtn(string objName, RectTransform parent,
+                                          int slotIndex, string label, bool isSleep)
+        {
+            float size     = isSleep ? NavBtnSleepSize : NavBtnStdSize;
+            float slotCentreX = (slotIndex + 0.5f) * NavSlotW; // slot ortasının x'i (piksel)
+
+            var go = NewUIObject(objName, parent);
+            var rt = go.GetComponent<RectTransform>();
+
+            // Merkez-pivot, alt-kenar hizalaması: Sleep yukarı taşar, diğerleri çubuk ortasında.
+            rt.anchorMin        = new Vector2(0f, 0.5f);
+            rt.anchorMax        = new Vector2(0f, 0.5f);
+            rt.pivot            = new Vector2(0.5f, 0.5f);
+            rt.sizeDelta        = new Vector2(size, size);
+            rt.anchoredPosition = new Vector2(
+                slotCentreX,
+                isSleep ? NavBtnSleepRise : 0f
+            );
+
+            var img   = go.AddComponent<Image>();
+            img.color = isSleep
+                ? new Color(0.25f, 0.22f, 0.35f, 1f)
+                : new Color(0.18f, 0.18f, 0.18f, 1f);
+
+            var btn = go.AddComponent<Button>();
+
+            var labelGO = NewUIObject("Label", go.transform);
+            var labelRT = labelGO.GetComponent<RectTransform>();
+            labelRT.anchorMin = Vector2.zero;
+            labelRT.anchorMax = Vector2.one;
+            labelRT.offsetMin = Vector2.zero;
+            labelRT.offsetMax = Vector2.zero;
+
+            var tmp = labelGO.AddComponent<TMPro.TextMeshProUGUI>();
+            tmp.text          = label;
+            tmp.fontSize      = NavLabelFontSize;
+            tmp.color         = Color.white;
+            tmp.alignment     = TMPro.TextAlignmentOptions.Center;
+            tmp.raycastTarget = false;
 
             return btn;
         }
 
-        // ---- UI yardımcıları (yalnızca Editor zamanı) ----
+        // ---- Yardımcılar --------------------------------------------------------
 
-        /// <summary>RectTransform bileşeni olan boş bir UI nesnesi oluşturur.</summary>
         private static GameObject NewUIObject(string name, Transform parent)
         {
             var go = new GameObject(name, typeof(RectTransform));
@@ -602,42 +593,38 @@ namespace Freeline
             return go;
         }
 
-        /// <summary>Belirtilen metin ve boyutla yapılandırılmış bir TextMeshProUGUI bileşeni oluşturur.</summary>
-        private static TextMeshProUGUI NewTMP(string name, Transform parent,
-                                              string text, float fontSize,
-                                              TextAlignmentOptions align)
+        private static void NewIconSlot(string name, Transform parent, Vector2 anchorMin, Vector2 anchorMax)
         {
-            var go  = NewUIObject(name, parent);
-            var tmp = go.AddComponent<TextMeshProUGUI>();
-            tmp.text      = text;
-            tmp.fontSize  = fontSize;
-            tmp.color     = Color.white;
-            tmp.alignment = align;
-            tmp.raycastTarget = false; // Metin elementleri tıklama olaylarını engellemez.
-            return tmp;
+            var go = NewUIObject(name, parent);
+            var rt = go.GetComponent<RectTransform>();
+            rt.anchorMin = anchorMin;
+            rt.anchorMax = anchorMax;
+            rt.offsetMin = new Vector2(4f, 4f);
+            rt.offsetMax = new Vector2(-4f, -4f);
+
+            var img   = go.AddComponent<Image>();
+            img.color = new Color(1f, 1f, 1f, 0f);
         }
 
-        /// <summary>RectTransform'u ebeveynine tam germe (stretch-stretch) olarak ayarlar.</summary>
-        private static void Stretch(RectTransform rt)
+        // -------------------------------------------------------------------------
+
+        private RectTransform CreatePanel(string panelName, bool anchorTop, float height)
         {
-            rt.anchorMin = Vector2.zero;
-            rt.anchorMax = Vector2.one;
-            rt.offsetMin = Vector2.zero;
-            rt.offsetMax = Vector2.zero;
+            var go  = new GameObject(panelName, typeof(RectTransform));
+            go.transform.SetParent(transform, false);
+
+            var img   = go.AddComponent<Image>();
+            img.color = new Color(1f, 1f, 1f, 0f);
+
+            var rt       = go.GetComponent<RectTransform>();
+            rt.anchorMin = anchorTop ? new Vector2(0f, 1f) : new Vector2(0f, 0f);
+            rt.anchorMax = anchorTop ? new Vector2(1f, 1f) : new Vector2(1f, 0f);
+            rt.offsetMin = anchorTop ? new Vector2(0f, -height) : new Vector2(0f, 0f);
+            rt.offsetMax = anchorTop ? new Vector2(0f, 0f)      : new Vector2(0f, height);
+
+            return rt;
         }
 
-        /// <summary>
-        /// RectTransform'u belirtilen anchor aralığına ve piksel dolguya göre konumlandırır.
-        /// </summary>
-        private static void AnchorPadded(RectTransform rt,
-                                         float xMin, float yMin, float xMax, float yMax,
-                                         float padH, float padV)
-        {
-            rt.anchorMin = new Vector2(xMin, yMin);
-            rt.anchorMax = new Vector2(xMax, yMax);
-            rt.offsetMin = new Vector2( padH,  padV);
-            rt.offsetMax = new Vector2(-padH, -padV);
-        }
 #endif
     }
 }

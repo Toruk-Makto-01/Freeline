@@ -32,6 +32,12 @@ namespace Freeline
         public event Action<float, float> OnTimeAdvanced;
 
         /// <summary>
+        /// CurrentHour her güncellendiğinde tetiklenir; yeni saati taşır.
+        /// HUD kadranı bu event'i dinleyerek ibreyi döndürür.
+        /// </summary>
+        public event Action<float> OnHourChanged;
+
+        /// <summary>
         /// Saat o gün ilk kez <see cref="TimeConfig.sleepWindowStart"/> değerini geçtiğinde bir kez tetiklenir.
         /// HUD'ın uyku hatırlatıcısını göstermesi için kullanılabilir.
         /// </summary>
@@ -93,12 +99,14 @@ namespace Freeline
                 CurrentHour = config.dayEndHour;
                 NotifySleepWindowIfCrossed(previous);
                 OnTimeAdvanced?.Invoke(previous, CurrentHour);
+                OnHourChanged?.Invoke(CurrentHour);
                 SleepNow();
             }
             else
             {
                 CurrentHour = next;
                 OnTimeAdvanced?.Invoke(previous, CurrentHour);
+                OnHourChanged?.Invoke(CurrentHour);
                 NotifySleepWindowIfCrossed(previous);
             }
         }
@@ -151,6 +159,7 @@ namespace Freeline
             CurrentDay++;
             CurrentHour = config.startHour;
             _sleepWindowNotified = false; // Yeni gün için uyku penceresi bildirimi sıfırlanır.
+            OnHourChanged?.Invoke(CurrentHour);
 
             OnNewDayStarted?.Invoke(CurrentDay);
         }

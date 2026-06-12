@@ -17,8 +17,14 @@ namespace Freeline
     // Attach to the "DebugTools" GameObject in the Bootstrap scene.
     public class DebugTestRunner : MonoBehaviour
     {
+        void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
         void Update()
         {
+            if (GameManager.Instance == null) return;
             var kb = Keyboard.current;
             if (kb == null) return;
 
@@ -31,9 +37,12 @@ namespace Freeline
 
         private void SimulateCompleteJob()
         {
-            var gm  = GameManager.Instance;
-            var jm  = gm.JobManager;
-            var save = gm.SaveManager.CurrentData;
+            var gm = GameManager.Instance;
+            if (gm == null) { Debug.LogWarning("[Debug] GameManager not ready"); return; }
+            var jm = gm.JobManager;
+            if (jm == null) { Debug.LogWarning("[Debug] JobManager not ready"); return; }
+            var save = gm.SaveManager?.CurrentData;
+            if (save == null) { Debug.LogWarning("[Debug] SaveManager not ready"); return; }
 
             // If a job was already started via the UI, skip straight to completion.
             if (jm.ActiveJob != null)
@@ -101,8 +110,11 @@ namespace Freeline
         private void SimulateProduceChapter()
         {
             var gm = GameManager.Instance;
+            if (gm == null) { Debug.LogWarning("[Debug] GameManager not ready"); return; }
             var wm = gm.WebtoonManager;
-            var wt = gm.SaveManager.CurrentData.webtoonData;
+            if (wm == null) { Debug.LogWarning("[Debug] WebtoonManager not ready"); return; }
+            var wt = gm.SaveManager?.CurrentData?.webtoonData;
+            if (wt == null) { Debug.LogWarning("[Debug] SaveManager not ready"); return; }
 
             float followersBefore = wt.followers;
             int   chaptersBefore  = wt.totalChaptersPublished;
@@ -135,8 +147,10 @@ namespace Freeline
 
         private void SimulateFeed()
         {
-            var gm     = GameManager.Instance;
+            var gm = GameManager.Instance;
+            if (gm == null) { Debug.LogWarning("[Debug] GameManager not ready"); return; }
             var energy = gm.EnergyManager;
+            if (energy == null) { Debug.LogWarning("[Debug] EnergyManager not ready"); return; }
             float before = energy.CurrentEnergy;
 
             Debug.Log(
@@ -159,23 +173,27 @@ namespace Freeline
 
         private void SimulateNewDay()
         {
-            var gm   = GameManager.Instance;
-            var save = gm.SaveManager.CurrentData;
+            var gm = GameManager.Instance;
+            if (gm == null) { Debug.LogWarning("[Debug] GameManager not ready"); return; }
+            var time = gm.TimeManager;
+            if (time == null) { Debug.LogWarning("[Debug] TimeManager not ready"); return; }
+            var save = gm.SaveManager?.CurrentData;
+            if (save == null) { Debug.LogWarning("[Debug] SaveManager not ready"); return; }
 
-            int   dayBefore   = gm.TimeManager.CurrentDay;
+            int   dayBefore   = time.CurrentDay;
             float coinsBefore = save.currentCoins;
 
             Debug.Log(
                 $"[DebugTest] N → Forcing new day from Day {dayBefore} | " +
-                $"Current hour: {gm.TimeManager.GetFormattedTime()}"
+                $"Current hour: {time.GetFormattedTime()}"
             );
 
             // Advance past midnight regardless of current hour.
-            gm.TimeManager.AdvanceTime(24f);
+            time.AdvanceTime(24f);
 
             float incomeEarned = save.currentCoins - coinsBefore;
             Debug.Log(
-                $"[DebugTest] N → Now Day {gm.TimeManager.CurrentDay} | " +
+                $"[DebugTest] N → Now Day {time.CurrentDay} | " +
                 $"Passive income earned: +{incomeEarned:F2} coins | " +
                 $"Followers: {save.webtoonData.followers:F0} | " +
                 $"Energy: {gm.EnergyManager.CurrentEnergy:F0}/{gm.EnergyManager.MaxEnergy:F0}"
@@ -184,8 +202,12 @@ namespace Freeline
 
         private void SimulateReset()
         {
+            var gm = GameManager.Instance;
+            if (gm == null) { Debug.LogWarning("[Debug] GameManager not ready"); return; }
+            var save = gm.SaveManager;
+            if (save == null) { Debug.LogWarning("[Debug] SaveManager not ready"); return; }
             Debug.Log("[DebugTest] R → Deleting save and reloading scene...");
-            GameManager.Instance.SaveManager.DeleteSave();
+            save.DeleteSave();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

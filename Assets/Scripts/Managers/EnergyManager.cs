@@ -47,6 +47,9 @@ namespace Freeline
         /// <summary>Son yemekten bu yana geçen oyun içi saat miktarı.</summary>
         public float HoursSinceLastFood => _hoursSinceLastFood;
 
+        /// <summary>Açlık eşiği (saat cinsinden); HUD çubuğunun tam dolum noktası.</summary>
+        public float MaxHungerHours => config.hungerThresholdHours;
+
         /// <summary>
         /// Enerji değeri her değiştiğinde tetiklenir.
         /// Parametreler: (mevcut enerji, maksimum enerji).
@@ -65,6 +68,13 @@ namespace Freeline
         /// JobManager bu event'i dinleyerek iş başlatmayı engeller.
         /// </summary>
         public event Action OnEnergyDepleted;
+
+        /// <summary>
+        /// Açlık durumu değiştiğinde tetiklenir.
+        /// Parametreler: (son yemekten bu yana geçen saat, açlık eşiği saati).
+        /// HUD açlık çubuğu bu event'i dinler.
+        /// </summary>
+        public event Action<float, float> OnHungerChanged;
 
         private readonly List<ActiveBuff> _activeBuffs = new();
         private float _hoursSinceLastFood;
@@ -155,6 +165,7 @@ namespace Freeline
             _hoursSinceLastFood = 0f;
             if (buff.speedMultiplier > 0f && buff.durationHours > 0f)
                 _activeBuffs.Add(new ActiveBuff(buff));
+            OnHungerChanged?.Invoke(_hoursSinceLastFood, config.hungerThresholdHours);
         }
 
         /// <summary>
@@ -224,6 +235,7 @@ namespace Freeline
         {
             float delta = newHour - previousHour;
             _hoursSinceLastFood += delta;
+            OnHungerChanged?.Invoke(_hoursSinceLastFood, config.hungerThresholdHours);
 
             // Süresi dolan buff'ları kaldırırken indeksi bozmamak için sondan başa iterasyon yapılır.
             for (int i = _activeBuffs.Count - 1; i >= 0; i--)
