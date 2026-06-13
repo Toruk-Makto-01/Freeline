@@ -38,6 +38,7 @@ namespace Freeline
 
         [Header("Panels")]
         [SerializeField] private ZenitoonPanel zenitoonPanel;
+        [SerializeField] private MarketPanel   marketPanel;
 
         [Header("Buttons")]
         [SerializeField] private Button exitBtn;
@@ -50,6 +51,8 @@ namespace Freeline
         {
             if (appBtnZenitoon != null && zenitoonPanel != null)
                 appBtnZenitoon.onClick.AddListener(zenitoonPanel.Open);
+            if (appBtnMarket   != null && marketPanel   != null)
+                appBtnMarket.onClick.AddListener(marketPanel.Open);
             if (exitBtn != null)
                 exitBtn.onClick.AddListener(Close);
         }
@@ -147,6 +150,17 @@ namespace Freeline
             zenitoonPanel  = zpGO.AddComponent<ZenitoonPanel>();
             zpGO.SetActive(false);
             Debug.Log("[Phone] ZenitoonPanel created: " + (zenitoonPanel != null ? "OK" : "NULL"));
+
+            // MarketPanel overlay — kendi ContextMenu'suyla içi doldurulur
+            var mpGO = NewUIObject("MarketPanel", go.transform);
+            var mpRT = mpGO.GetComponent<RectTransform>();
+            mpRT.anchorMin = Vector2.zero;
+            mpRT.anchorMax = Vector2.one;
+            mpRT.offsetMin = Vector2.zero;
+            mpRT.offsetMax = Vector2.zero;
+            marketPanel    = mpGO.AddComponent<MarketPanel>();
+            mpGO.SetActive(false);
+            Debug.Log("[Phone] MarketPanel created: " + (marketPanel != null ? "OK" : "NULL"));
         }
 
         // ---- PhoneStatusBar — üstte sabit 60px yükseklik ----------------------------
