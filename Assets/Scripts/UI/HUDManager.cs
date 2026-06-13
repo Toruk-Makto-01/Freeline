@@ -73,7 +73,8 @@ namespace Freeline
         [SerializeField] private Button navBtnHome;
 
         [Header("Panels")]
-        [SerializeField] private PhonePanel phonePanel;
+        [SerializeField] private PhonePanel       phonePanel;
+        [SerializeField] private DrawingDeskPanel drawingDeskPanel;
 
         // -------------------------------------------------------------------------
         // Singleton
@@ -108,6 +109,7 @@ namespace Freeline
             gm.SaveManager.OnCoinsChanged            += UpdateCoins;
             gm.SaveManager.OnGemsChanged             += UpdateGems;
             gm.WebtoonManager.OnFollowersChanged     += HandleFollowersChanged;
+            gm.OnStateChanged                        += HandleStateChanged;
 
             RefreshAll();
 
@@ -126,6 +128,7 @@ namespace Freeline
             gm.SaveManager.OnCoinsChanged            -= UpdateCoins;
             gm.SaveManager.OnGemsChanged             -= UpdateGems;
             gm.WebtoonManager.OnFollowersChanged     -= HandleFollowersChanged;
+            gm.OnStateChanged                        -= HandleStateChanged;
         }
 
         // Tüm yöneticilerden mevcut değerleri okuyarak ilk ekran durumunu kurar.
@@ -188,6 +191,12 @@ namespace Freeline
             if (gemText != null) gemText.text = gems.ToString();
         }
 
+        private void HandleStateChanged(GameState prev, GameState next)
+        {
+            if (next == GameState.DrawingDesk && drawingDeskPanel != null)
+                drawingDeskPanel.Open(GameManager.Instance.JobManager.ActiveJob);
+        }
+
         // =========================================================================
         // EDITOR — hierarchy builders
         // =========================================================================
@@ -224,6 +233,7 @@ namespace Freeline
             BuildTopPanel();
             BuildBottomNavBar();
             BuildPhonePanelObject();
+            BuildDrawingDeskPanelObject();
 
             EditorUtility.SetDirty(gameObject);
             Debug.Log("[HUD] Hierarchy built.");
@@ -244,6 +254,22 @@ namespace Freeline
             rt.offsetMax = Vector2.zero;
 
             phonePanel = go.AddComponent<PhonePanel>();
+            EditorUtility.SetDirty(go);
+        }
+
+        private void BuildDrawingDeskPanelObject()
+        {
+            var go = new GameObject("DrawingDeskPanel", typeof(RectTransform));
+            go.transform.SetParent(transform, false);
+
+            var rt       = go.GetComponent<RectTransform>();
+            rt.anchorMin = Vector2.zero;
+            rt.anchorMax = Vector2.one;
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
+
+            drawingDeskPanel = go.AddComponent<DrawingDeskPanel>();
+            go.SetActive(false);
             EditorUtility.SetDirty(go);
         }
 

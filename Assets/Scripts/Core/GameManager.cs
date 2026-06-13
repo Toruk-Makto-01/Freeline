@@ -95,6 +95,9 @@ namespace Freeline
                 exhibitionManager = GetComponent<ExhibitionManager>();
         }
 
+        /// <summary>Çizim masası ekranına geçiş yapar.</summary>
+        public void OpenDrawingDesk() => SetState(GameState.DrawingDesk);
+
         /// <summary>
         /// Oyunun durumunu değiştirir ve dinleyicileri bilgilendirir.
         /// Aynı duruma geçiş isteği sessizce görmezden gelinir.

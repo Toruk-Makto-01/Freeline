@@ -132,6 +132,7 @@ namespace Freeline
         {
             GameManager.Instance.JobManager.SelectJob(index);
             Close();
+            GameManager.Instance.OpenDrawingDesk();
         }
 
         private void HandleBoardRefreshed(IReadOnlyList<JobData> _)
