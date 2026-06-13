@@ -39,6 +39,7 @@ namespace Freeline
         [Header("Panels")]
         [SerializeField] private ZenitoonPanel zenitoonPanel;
         [SerializeField] private MarketPanel   marketPanel;
+        [SerializeField] private WebtoonPanel  webtoonPanel;
 
         [Header("Buttons")]
         [SerializeField] private Button exitBtn;
@@ -53,6 +54,8 @@ namespace Freeline
                 appBtnZenitoon.onClick.AddListener(zenitoonPanel.Open);
             if (appBtnMarket   != null && marketPanel   != null)
                 appBtnMarket.onClick.AddListener(marketPanel.Open);
+            if (appBtnWebtoon  != null && webtoonPanel  != null)
+                appBtnWebtoon.onClick.AddListener(webtoonPanel.Open);
             if (exitBtn != null)
                 exitBtn.onClick.AddListener(Close);
         }
@@ -161,6 +164,17 @@ namespace Freeline
             marketPanel    = mpGO.AddComponent<MarketPanel>();
             mpGO.SetActive(false);
             Debug.Log("[Phone] MarketPanel created: " + (marketPanel != null ? "OK" : "NULL"));
+
+            // WebtoonPanel overlay — kendi ContextMenu'suyla içi doldurulur
+            var wpGO = NewUIObject("WebtoonPanel", go.transform);
+            var wpRT = wpGO.GetComponent<RectTransform>();
+            wpRT.anchorMin = Vector2.zero;
+            wpRT.anchorMax = Vector2.one;
+            wpRT.offsetMin = Vector2.zero;
+            wpRT.offsetMax = Vector2.zero;
+            webtoonPanel   = wpGO.AddComponent<WebtoonPanel>();
+            wpGO.SetActive(false);
+            Debug.Log("[Phone] WebtoonPanel created: " + (webtoonPanel != null ? "OK" : "NULL"));
         }
 
         // ---- PhoneStatusBar — üstte sabit 60px yükseklik ----------------------------

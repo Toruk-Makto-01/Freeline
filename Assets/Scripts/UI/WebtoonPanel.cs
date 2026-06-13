@@ -2,388 +2,429 @@
 using UnityEditor;
 #endif
 
-using TMPro;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Freeline
 {
-    // Webtoon durumunu gösteren ve bölüm üretimini başlatan panel.
+    // Telefon içi webtoon yönetim ekranı — ZenitoonPanel / MarketPanel ile aynı overlay deseni.
     public class WebtoonPanel : MonoBehaviour
     {
-        // -------------------------------------------------------------------------
-        // Inspector references — populated by [Build Webtoon Panel Hierarchy] or manually
-        // -------------------------------------------------------------------------
+        // ---- Sabitler -------------------------------------------------------
+        private const float HeaderH         = 80f;
+        private const float StatsBlockH     = 200f;
+        private const float BottomBarH      = 80f;
+        private const float ProduceBtnH     = 140f;
+        private const float FeedbackH       = 60f;
+        private const float StatRowH        = 40f;
+        private const float TitleFontSize   = 36f;
+        private const float StatFontSize    = 26f;
+        private const float ProduceFontSize = 32f;
+        private const float CostFontSize    = 22f;
+        private const float FeedbackFontSize = 26f;
+        private const float BackFontSize    = 28f;
 
-        [Header("Close")]
-        [SerializeField] private Button closeButton;
+        // ProduceBtn pivot'u ActionBlock dikey merkezinin bu kadar üstünde
+        private const float ProduceBtnOffsetY = 40f;
 
-        [Header("Stats")]
+        // ---- SerializeField refs --------------------------------------------
         [SerializeField] private TextMeshProUGUI followerText;
+        [SerializeField] private TextMeshProUGUI chapterText;
         [SerializeField] private TextMeshProUGUI dailyIncomeText;
-        [SerializeField] private TextMeshProUGUI chaptersText;
-        [SerializeField] private TextMeshProUGUI daysSinceText;
-
-        [Header("Actions")]
-        [SerializeField] private Button produceButton;
-        [SerializeField] private Button backButton;
-
-        [Header("Navigation")]
-        [SerializeField] private DrawMenuPanel  drawMenuPanel;
-        [SerializeField] private DrawingMinigame drawingMinigame;
-
-        [Header("Status")]
+        [SerializeField] private TextMeshProUGUI lastChapterText;
+        [SerializeField] private Button          produceBtn;
+        [SerializeField] private TextMeshProUGUI produceCostText;
         [SerializeField] private TextMeshProUGUI statusText;
+        [SerializeField] private TextMeshProUGUI cooldownText;
+        [SerializeField] private Button          backBtn;
 
-        // -------------------------------------------------------------------------
-        // Colors
-        // -------------------------------------------------------------------------
+        private Coroutine _statusCoroutine;
 
-        private static readonly Color PanelBg   = new Color(0.08f, 0.08f, 0.12f, 0.96f);
-        private static readonly Color CloseBtn   = new Color(0.45f, 0.12f, 0.12f, 1.00f);
-        private static readonly Color ProduceOn  = new Color(0.15f, 0.55f, 0.25f, 1.00f);
-        private static readonly Color ProduceOff = new Color(0.22f, 0.22f, 0.28f, 1.00f);
-        private static readonly Color BackBtn    = new Color(0.18f, 0.18f, 0.30f, 1.00f);
-        private static readonly Color StatColor  = new Color(0.85f, 0.85f, 0.95f, 1.00f);
-        private static readonly Color ViralColor = new Color(1.00f, 0.85f, 0.10f, 1.00f);
-        private static readonly Color GainColor  = new Color(0.20f, 0.85f, 0.30f, 1.00f);
-        private static readonly Color LossColor  = new Color(0.95f, 0.25f, 0.20f, 1.00f);
-
-        // -------------------------------------------------------------------------
-        // Lifecycle
-        // -------------------------------------------------------------------------
+        // =========================================================================
+        // Runtime
+        // =========================================================================
 
         void Awake()
         {
-            closeButton.onClick.AddListener(Hide);
-            produceButton.onClick.AddListener(OnProduceClicked);
-            backButton.onClick.AddListener(OnBackClicked);
+            if (backBtn    != null) backBtn.onClick.AddListener(Close);
+            if (produceBtn != null) produceBtn.onClick.AddListener(OnProduceClicked);
         }
 
-        void Start()
+        void OnEnable()
         {
-            var gm = GameManager.Instance;
-            gm.WebtoonManager.OnChapterPublished    += HandleChapterPublished;
-            gm.WebtoonManager.OnFollowersChanged    += HandleFollowersChanged;
-            gm.WebtoonManager.OnPassiveIncomeEarned += HandlePassiveIncome;
-            gm.EnergyManager.OnEnergyChanged        += HandleEnergyChanged;
-            Hide();
+            var wm = GameManager.Instance?.WebtoonManager;
+            if (wm != null) wm.OnChapterPublished += HandleChapterPublished;
         }
 
-        void OnDestroy()
+        void OnDisable()
         {
-            if (GameManager.Instance == null) return;
-            var gm = GameManager.Instance;
-            gm.WebtoonManager.OnChapterPublished    -= HandleChapterPublished;
-            gm.WebtoonManager.OnFollowersChanged    -= HandleFollowersChanged;
-            gm.WebtoonManager.OnPassiveIncomeEarned -= HandlePassiveIncome;
-            gm.EnergyManager.OnEnergyChanged        -= HandleEnergyChanged;
+            var wm = GameManager.Instance?.WebtoonManager;
+            if (wm != null) wm.OnChapterPublished -= HandleChapterPublished;
         }
 
-        // -------------------------------------------------------------------------
-        // Public API
-        // -------------------------------------------------------------------------
-
-        // DrawMenuPanel.OnWebtoonClicked tarafından çağrılır.
-        public void Show()
+        public void Open()
         {
             gameObject.SetActive(true);
-            statusText.text = string.Empty;
             RefreshStats();
         }
 
-        public void Hide() => gameObject.SetActive(false);
+        // Eski çağrı noktalarıyla (DrawMenuPanel, DrawingMinigame) uyumluluk için
+        public void Show() => Open();
 
-        // -------------------------------------------------------------------------
-        // Veri güncelleme
-        // -------------------------------------------------------------------------
+        public void Close() => gameObject.SetActive(false);
 
-        // Tüm istatistik satırlarını ve buton durumunu yöneticilerden okuyarak senkronize eder.
-        private void RefreshStats()
+        public void RefreshStats()
         {
-            var wm = GameManager.Instance.WebtoonManager;
-            var wt = GameManager.Instance.SaveManager.CurrentData.webtoonData;
+            var gm = GameManager.Instance;
+            if (gm?.SaveManager?.CurrentData == null) return;
 
-            followerText.text    = $"Takipçi: {Mathf.FloorToInt(wt.followers)}";
-            dailyIncomeText.text = $"Günlük Gelir: {Mathf.FloorToInt(wm.GetDailyPassiveIncome())} coin";
-            chaptersText.text    = $"Yayınlanan Bölüm: {wt.totalChaptersPublished}";
-            daysSinceText.text   = $"Son Bölümden Bu Yana: {Mathf.FloorToInt(wt.daysSinceLastChapter)} gün";
+            var wt = gm.SaveManager.CurrentData.webtoonData;
+            var wm = gm.WebtoonManager;
 
-            RefreshProduceButton();
-        }
-
-        // Mevcut enerji ile bölüm maliyeti karşılaştırılarak buton etkinleştirilir ya da devre dışı bırakılır.
-        private void RefreshProduceButton()
-        {
-            bool can = GameManager.Instance.EnergyManager.CurrentEnergy
-                       >= GameManager.Instance.WebtoonManager.ChapterEnergyCost;
-            produceButton.interactable                    = can;
-            produceButton.GetComponent<Image>().color     = can ? ProduceOn : ProduceOff;
-        }
-
-        // -------------------------------------------------------------------------
-        // Düğme işleyiciler
-        // -------------------------------------------------------------------------
-
-        private void OnProduceClicked()
-        {
-            // Doğrudan ProduceChapter() çağrılmaz; mini-oyun tamamlandığında çağrılır.
-            Hide();
-            drawingMinigame?.ShowForWebtoon();
-        }
-
-        private void OnBackClicked()
-        {
-            Hide();
-            drawMenuPanel?.Show();
-        }
-
-        // -------------------------------------------------------------------------
-        // Event işleyiciler
-        // -------------------------------------------------------------------------
-
-        private void HandleChapterPublished(int chapter, float gain, bool viral)
-        {
-            RefreshStats();
-            statusText.color = viral ? ViralColor : GainColor;
-            statusText.text  = viral
-                ? $"Viral oldu! +{Mathf.FloorToInt(gain)} takipçi kazandın!"
-                : $"Bölüm {chapter} yayınlandı. +{Mathf.FloorToInt(gain)} takipçi.";
-        }
-
-        // Çürüme de bu event'i tetikler; her iki durum için takipçi satırı güncellenir.
-        private void HandleFollowersChanged(float followers, float delta)
-        {
-            if (!gameObject.activeSelf) return;
-            followerText.text = $"Takipçi: {Mathf.FloorToInt(followers)}";
-            if (delta < 0f)
+            if (followerText    != null)
+                followerText.text    = $"Takipci: {Mathf.RoundToInt(wt.followers)}";
+            if (chapterText     != null)
+                chapterText.text     = $"Bolum: {wt.totalChaptersPublished}";
+            if (dailyIncomeText != null)
+                dailyIncomeText.text = $"Gunluk Gelir: {Mathf.RoundToInt(wm.GetDailyPassiveIncome())} coin";
+            if (lastChapterText != null)
             {
-                statusText.text  = $"Takipçi kaybı: {Mathf.FloorToInt(delta)} (yeni bölüm yayınla!)";
-                statusText.color = LossColor;
+                int days = Mathf.FloorToInt(wt.daysSinceLastChapter);
+                lastChapterText.text = days == 0
+                    ? "Son Bolum: bugun"
+                    : $"Son Bolum: {days} gun once";
+            }
+
+            bool canAfford = gm.EnergyManager.CurrentEnergy >= wm.ChapterEnergyCost;
+
+            if (produceBtn != null)
+                produceBtn.interactable = canAfford;
+            if (produceCostText != null)
+                produceCostText.text =
+                    $"Sure: {wm.ChapterProductionHours:0.#} saat  |  Enerji: {Mathf.RoundToInt(wm.ChapterEnergyCost)}";
+            if (cooldownText != null)
+            {
+                cooldownText.gameObject.SetActive(!canAfford);
+                if (!canAfford)
+                    cooldownText.text = "Enerji yetersiz. Dinlen veya yemek ye.";
             }
         }
 
-        private void HandlePassiveIncome(float amount)
+        private void OnProduceClicked()
         {
-            if (!gameObject.activeSelf) return;
-            // Günlük gelir takipçi sayısından türetilir; saklanan amount değil hesaplanan oran kullanılır.
-            dailyIncomeText.text = $"Günlük Gelir: {Mathf.FloorToInt(GameManager.Instance.WebtoonManager.GetDailyPassiveIncome())} coin";
+            var wm = GameManager.Instance?.WebtoonManager;
+            if (wm == null) return;
+
+            bool success = wm.ProduceChapter();
+            if (!success)
+                ShowStatus("Enerji yetersiz!", new Color(1f, 0.4f, 0.4f, 1f), 2f);
+            // Başarılıysa HandleChapterPublished event aracılığıyla gelir
         }
 
-        private void HandleEnergyChanged(float current, float max)
+        private void HandleChapterPublished(int chapterNum, float followerGain, bool wasViral)
         {
-            if (!gameObject.activeSelf) return;
-            RefreshProduceButton();
+            string msg = wasViral
+                ? $"Viral oldu! +{Mathf.RoundToInt(followerGain)} takipci!"
+                : $"Bolum yayinlandi! +{Mathf.RoundToInt(followerGain)} takipci";
+            Color col = wasViral
+                ? new Color(1f, 0.85f, 0.2f, 1f)
+                : new Color(0.4f, 1f, 0.5f, 1f);
+            ShowStatus(msg, col, 2f);
+            RefreshStats();
+        }
+
+        private void ShowStatus(string message, Color color, float duration)
+        {
+            if (statusText == null) return;
+            if (_statusCoroutine != null) StopCoroutine(_statusCoroutine);
+            _statusCoroutine = StartCoroutine(StatusFade(message, color, duration));
+        }
+
+        private IEnumerator StatusFade(string message, Color color, float duration)
+        {
+            statusText.text  = message;
+            statusText.color = color;
+            statusText.gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(duration);
+
+            if (statusText != null)
+                statusText.gameObject.SetActive(false);
+            _statusCoroutine = null;
         }
 
         // =========================================================================
-        // EDITOR — Hierarchy builder
-        // Right-click this component in the Inspector → "Build Webtoon Panel Hierarchy"
-        // Destroys existing children, rebuilds the full hierarchy, and populates
-        // every SerializeField reference automatically.
-        //
-        // Layout (reference resolution 1080 × 1920):
-        //   WebtoonPanel (full-screen RectTransform)
-        //     Blocker       — full-screen dark overlay
-        //     Panel         — 900 × 1050, centered
-        //       CloseButton   — 90 × 90, top-right
-        //       HeaderText    — full width, 100 px, 24 px from top
-        //       Divider       — 2 px at 134 px from top
-        //       FollowerText  — stat row, 154 px from top
-        //       DailyIncome   — stat row, 230 px from top
-        //       ChaptersText  — stat row, 306 px from top
-        //       DaysSinceText — stat row, 382 px from top
-        //       Divider2      — 2 px at 458 px from top
-        //       ProduceButton — 700 × 110, 478 px from top
-        //       BackButton    — 700 × 80,  608 px from top
-        //       StatusText    — full width, 120 px, 708 px from top
+        // EDITOR — hiyerarşi kurucusu
         // =========================================================================
 
 #if UNITY_EDITOR
-        [ContextMenu("Build Webtoon Panel Hierarchy")]
-        private void BuildWebtoonPanelHierarchy()
+
+        [ContextMenu("Build Webtoon Hierarchy")]
+        private void BuildWebtoonHierarchy()
         {
-            // Eski çocuk nesneleri temizle; temiz yeniden inşa için gerekli.
             while (transform.childCount > 0)
                 DestroyImmediate(transform.GetChild(0).gameObject);
 
-            Stretch(GetComponent<RectTransform>());
+            var selfRT       = GetComponent<RectTransform>();
+            selfRT.anchorMin = Vector2.zero;
+            selfRT.anchorMax = Vector2.one;
+            selfRT.offsetMin = Vector2.zero;
+            selfRT.offsetMax = Vector2.zero;
 
-            // Tam ekran karartma — panel arkasındaki dokunuşları yakalar.
-            var blocker = NewUIObject("Blocker", transform);
-            blocker.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.55f);
-            Stretch(blocker.GetComponent<RectTransform>());
+            var selfImg   = GetComponent<Image>() ?? gameObject.AddComponent<Image>();
+            selfImg.color = new Color(0.10f, 0.10f, 0.14f, 1f);
 
-            // Ortalanmış panel — 900 × 1050.
-            var panel = NewUIObject("Panel", transform);
-            panel.AddComponent<Image>().color = PanelBg;
-            var panelRT = panel.GetComponent<RectTransform>();
-            panelRT.anchorMin        = new Vector2(0.5f, 0.5f);
-            panelRT.anchorMax        = new Vector2(0.5f, 0.5f);
-            panelRT.pivot            = new Vector2(0.5f, 0.5f);
-            panelRT.sizeDelta        = new Vector2(900f, 1050f);
-            panelRT.anchoredPosition = Vector2.zero;
+            BuildHeader();
+            BuildStatsBlock();
+            BuildActionBlock();
+            BuildBottomBar();
 
-            // Kapat düğmesi (X) — sağ üst köşe, 90 × 90.
-            closeButton = BuildIconButton("CloseButton", panel.transform, "X", CloseBtn);
-            var closeRT = closeButton.GetComponent<RectTransform>();
-            closeRT.anchorMin        = new Vector2(1f, 1f);
-            closeRT.anchorMax        = new Vector2(1f, 1f);
-            closeRT.pivot            = new Vector2(1f, 1f);
-            closeRT.sizeDelta        = new Vector2(90f, 90f);
-            closeRT.anchoredPosition = new Vector2(-16f, -16f);
-
-            // Başlık — "WEBTOON", kalın, panelin üstünden 24 px.
-            var header = NewTMP("HeaderText", panel.transform, "WEBTOON", 60f, TextAlignmentOptions.Center);
-            header.fontStyle = FontStyles.Bold;
-            PositionFromTop(header.rectTransform, 0f, 1f, 24f, 100f, 0f);
-
-            // Ayırıcı çizgi 1.
-            BuildDivider("Divider", panel.transform, 134f);
-
-            // İstatistik satırları — 56 px yükseklik, 20 px boşlukla.
-            const float StatH = 56f;
-            const float StatGap = 20f;
-            float statY = 154f;
-
-            followerText    = BuildStatRow("FollowerText",    panel.transform, "Takipçi: 0",                statY); statY += StatH + StatGap;
-            dailyIncomeText = BuildStatRow("DailyIncomeText", panel.transform, "Günlük Gelir: 0 coin",      statY); statY += StatH + StatGap;
-            chaptersText    = BuildStatRow("ChaptersText",    panel.transform, "Yayınlanan Bölüm: 0",       statY); statY += StatH + StatGap;
-            daysSinceText   = BuildStatRow("DaysSinceText",   panel.transform, "Son Bölümden Bu Yana: 0 gün", statY);
-
-            // Ayırıcı çizgi 2.
-            BuildDivider("Divider2", panel.transform, 458f);
-
-            // BÖLÜM ÇİZ düğmesi — 700 × 110, panelin üstünden 478 px.
-            produceButton = BuildActionButton("ProduceButton", panel.transform,
-                                              "BÖLÜM ÇİZ", ProduceOn, 700f, 110f, 478f, 50f);
-
-            // GERİ düğmesi — 700 × 80, panelin üstünden 608 px.
-            backButton = BuildActionButton("BackButton", panel.transform,
-                                           "GERİ", BackBtn, 700f, 80f, 608f, 36f);
-
-            // Durum mesajı — tam genişlik, 120 px, panelin üstünden 708 px.
-            statusText = NewTMP("StatusText", panel.transform, string.Empty, 32f, TextAlignmentOptions.Center);
-            statusText.color = GainColor;
-            PositionFromTop(statusText.rectTransform, 0f, 1f, 708f, 120f, 20f);
+            gameObject.SetActive(false);
 
             EditorUtility.SetDirty(gameObject);
-            Debug.Log("[WebtoonPanel] Hierarchy built and SerializeField references populated.");
+            Debug.Log("[WebtoonPanel] Hierarchy built.");
         }
 
-        // İstatistik satırı — sola hizalı, 40 px yatay dolgu.
-        private TextMeshProUGUI BuildStatRow(string name, Transform parent,
-                                             string placeholder, float topOffset)
+        // ---- Header -----------------------------------------------------------
+
+        private void BuildHeader()
         {
-            var tmp = NewTMP(name, parent, placeholder, 36f, TextAlignmentOptions.Left);
-            tmp.color = StatColor;
-            PositionFromTop(tmp.rectTransform, 0f, 1f, topOffset, 56f, 40f);
+            var go = NewUIObj("Header", transform);
+            var rt = go.GetComponent<RectTransform>();
+            rt.anchorMin = new Vector2(0f, 1f);
+            rt.anchorMax = new Vector2(1f, 1f);
+            rt.pivot     = new Vector2(0.5f, 1f);
+            rt.offsetMin = new Vector2(0f, -HeaderH);
+            rt.offsetMax = Vector2.zero;
+
+            var img   = go.AddComponent<Image>();
+            img.color = new Color(0.98f, 0.72f, 0.35f, 1f);
+
+            var titleGO = NewUIObj("TitleText", go.transform);
+            var titleRT = titleGO.GetComponent<RectTransform>();
+            titleRT.anchorMin = Vector2.zero;
+            titleRT.anchorMax = Vector2.one;
+            titleRT.offsetMin = new Vector2(20f, 0f);
+            titleRT.offsetMax = Vector2.zero;
+
+            var tmp = titleGO.AddComponent<TextMeshProUGUI>();
+            tmp.text          = "Webtoon Studyo";
+            tmp.fontSize      = TitleFontSize;
+            tmp.fontStyle     = FontStyles.Bold;
+            tmp.color         = new Color(0.20f, 0.10f, 0.02f, 1f);
+            tmp.alignment     = TextAlignmentOptions.MidlineLeft;
+            tmp.raycastTarget = false;
+        }
+
+        // ---- StatsBlock -------------------------------------------------------
+
+        private void BuildStatsBlock()
+        {
+            var go = NewUIObj("StatsBlock", transform);
+            var rt = go.GetComponent<RectTransform>();
+            rt.anchorMin = new Vector2(0f, 1f);
+            rt.anchorMax = new Vector2(1f, 1f);
+            rt.pivot     = new Vector2(0.5f, 1f);
+            rt.offsetMin = new Vector2(0f, -(HeaderH + StatsBlockH));
+            rt.offsetMax = new Vector2(0f, -HeaderH);
+
+            var img   = go.AddComponent<Image>();
+            img.color = new Color(0.12f, 0.12f, 0.16f, 1f);
+
+            var vlg                    = go.AddComponent<VerticalLayoutGroup>();
+            vlg.childControlWidth      = true;
+            vlg.childControlHeight     = false;
+            vlg.childForceExpandWidth  = true;
+            vlg.childForceExpandHeight = false;
+            vlg.spacing                = 0f;
+            vlg.padding                = new RectOffset(20, 20, 16, 16);
+            vlg.childAlignment         = TextAnchor.UpperLeft;
+
+            followerText    = BuildStatRow("FollowerRow",    go.transform, "Takipci: 0");
+            chapterText     = BuildStatRow("ChapterRow",     go.transform, "Bolum: 0");
+            dailyIncomeText = BuildStatRow("DailyIncomeRow", go.transform, "Gunluk Gelir: 0 coin");
+            lastChapterText = BuildStatRow("LastChapterRow", go.transform, "Son Bolum: hic yayinlanmadi");
+        }
+
+        private TextMeshProUGUI BuildStatRow(string name, Transform parent, string text)
+        {
+            var go = NewUIObj(name, parent);
+            var rt = go.GetComponent<RectTransform>();
+            rt.sizeDelta = new Vector2(0f, StatRowH);
+
+            var tmp = go.AddComponent<TextMeshProUGUI>();
+            tmp.text          = text;
+            tmp.fontSize      = StatFontSize;
+            tmp.color         = Color.white;
+            tmp.alignment     = TextAlignmentOptions.MidlineLeft;
+            tmp.raycastTarget = false;
             return tmp;
         }
 
-        // Eylem düğmesi — ortalanmış, sabit genişlik/yükseklik, panelin üstünden konumlandırılmış.
-        private static Button BuildActionButton(string name, Transform parent,
-                                                string label, Color bg,
-                                                float width, float height,
-                                                float topOffset, float fontSize)
+        // ---- ActionBlock ------------------------------------------------------
+
+        private void BuildActionBlock()
         {
-            var go  = NewUIObject(name, parent);
-            var img = go.AddComponent<Image>();
-            img.color = bg;
-            var btn = go.AddComponent<Button>();
-            btn.targetGraphic = img;
-
-            var colors              = btn.colors;
-            colors.normalColor      = Color.white;
-            colors.highlightedColor = new Color(1f, 1f, 1f, 0.85f);
-            colors.pressedColor     = new Color(0.75f, 0.75f, 0.75f, 1f);
-            colors.fadeDuration     = 0.05f;
-            btn.colors              = colors;
-
+            var go = NewUIObj("ActionBlock", transform);
             var rt = go.GetComponent<RectTransform>();
-            rt.anchorMin        = new Vector2(0.5f, 1f);
-            rt.anchorMax        = new Vector2(0.5f, 1f);
-            rt.pivot            = new Vector2(0.5f, 1f);
-            rt.sizeDelta        = new Vector2(width, height);
-            rt.anchoredPosition = new Vector2(0f, -topOffset);
+            rt.anchorMin = new Vector2(0f, 0f);
+            rt.anchorMax = new Vector2(1f, 1f);
+            rt.offsetMin = new Vector2(0f,  BottomBarH);
+            rt.offsetMax = new Vector2(0f, -(HeaderH + StatsBlockH));
 
-            var tmp = NewTMP("Label", go.transform, label, fontSize, TextAlignmentOptions.Center);
-            tmp.fontStyle = FontStyles.Bold;
-            Stretch(tmp.rectTransform);
+            var img   = go.AddComponent<Image>();
+            img.color = new Color(1f, 1f, 1f, 0f);
 
-            return btn;
+            BuildProduceBtn(go.transform);
+            BuildStatusText(go.transform);
+            BuildCooldownText(go.transform);
         }
 
-        // İnce yatay ayırıcı — panelin üst kenarından topOffset px aşağıda.
-        private static void BuildDivider(string name, Transform parent, float topOffset)
+        private void BuildProduceBtn(Transform parent)
         {
-            var go = NewUIObject(name, parent);
-            go.AddComponent<Image>().color = new Color(1f, 1f, 1f, 0.12f);
+            var go = NewUIObj("ProduceBtn", parent);
             var rt = go.GetComponent<RectTransform>();
-            rt.anchorMin = new Vector2(0.04f, 1f);
-            rt.anchorMax = new Vector2(0.96f, 1f);
-            rt.pivot     = new Vector2(0.5f,  1f);
-            rt.offsetMin = new Vector2(0f, -(topOffset + 2f));
-            rt.offsetMax = new Vector2(0f, -topOffset);
+            rt.anchorMin        = new Vector2(0.1f, 0.5f);
+            rt.anchorMax        = new Vector2(0.9f, 0.5f);
+            rt.pivot            = new Vector2(0.5f, 0.5f);
+            rt.sizeDelta        = new Vector2(0f, ProduceBtnH);
+            rt.anchoredPosition = new Vector2(0f, ProduceBtnOffsetY);
+
+            var img   = go.AddComponent<Image>();
+            img.color = new Color(0.20f, 0.55f, 0.85f, 1f);
+
+            produceBtn = go.AddComponent<Button>();
+
+            // Ana etiket — üst %55
+            var labelGO = NewUIObj("Label", go.transform);
+            var labelRT = labelGO.GetComponent<RectTransform>();
+            labelRT.anchorMin = new Vector2(0f, 0.45f);
+            labelRT.anchorMax = new Vector2(1f, 1f);
+            labelRT.offsetMin = Vector2.zero;
+            labelRT.offsetMax = Vector2.zero;
+
+            var labelTMP = labelGO.AddComponent<TextMeshProUGUI>();
+            labelTMP.text          = "Yeni Bolum Uret";
+            labelTMP.fontSize      = ProduceFontSize;
+            labelTMP.fontStyle     = FontStyles.Bold;
+            labelTMP.color         = Color.white;
+            labelTMP.alignment     = TextAlignmentOptions.Bottom;
+            labelTMP.raycastTarget = false;
+
+            // Maliyet alt etiketi — alt %45
+            var costGO = NewUIObj("CostText", go.transform);
+            var costRT = costGO.GetComponent<RectTransform>();
+            costRT.anchorMin = new Vector2(0f, 0f);
+            costRT.anchorMax = new Vector2(1f, 0.45f);
+            costRT.offsetMin = Vector2.zero;
+            costRT.offsetMax = Vector2.zero;
+
+            produceCostText           = costGO.AddComponent<TextMeshProUGUI>();
+            produceCostText.text      = "Sure: 4 saat  |  Enerji: 30";
+            produceCostText.fontSize  = CostFontSize;
+            produceCostText.color     = new Color(0.85f, 0.92f, 1f, 1f);
+            produceCostText.alignment = TextAlignmentOptions.Top;
+            produceCostText.raycastTarget = false;
         }
 
-        // Metin etiketli simge düğmesi (kapat düğmesi için).
-        private static Button BuildIconButton(string name, Transform parent,
-                                              string label, Color bg)
+        private void BuildStatusText(Transform parent)
         {
-            var go  = NewUIObject(name, parent);
-            var img = go.AddComponent<Image>();
-            img.color = bg;
-            var btn = go.AddComponent<Button>();
-            btn.targetGraphic = img;
-            var tmp = NewTMP("Label", go.transform, label, 36f, TextAlignmentOptions.Center);
-            tmp.fontStyle = FontStyles.Bold;
-            Stretch(tmp.rectTransform);
-            return btn;
+            float centerY = ProduceBtnOffsetY - ProduceBtnH * 0.5f - 12f - FeedbackH * 0.5f;
+
+            var go = NewUIObj("StatusText", parent);
+            var rt = go.GetComponent<RectTransform>();
+            rt.anchorMin        = new Vector2(0.05f, 0.5f);
+            rt.anchorMax        = new Vector2(0.95f, 0.5f);
+            rt.pivot            = new Vector2(0.5f, 0.5f);
+            rt.sizeDelta        = new Vector2(0f, FeedbackH);
+            rt.anchoredPosition = new Vector2(0f, centerY);
+
+            statusText           = go.AddComponent<TextMeshProUGUI>();
+            statusText.text      = "";
+            statusText.fontSize  = FeedbackFontSize;
+            statusText.color     = new Color(0.4f, 1f, 0.5f, 1f);
+            statusText.alignment = TextAlignmentOptions.Center;
+            statusText.raycastTarget = false;
+
+            go.SetActive(false);
         }
 
-        // ---- UI yardımcıları (yalnızca Editor zamanı) ----
+        private void BuildCooldownText(Transform parent)
+        {
+            float statusCenterY  = ProduceBtnOffsetY - ProduceBtnH * 0.5f - 12f - FeedbackH * 0.5f;
+            float cooldownCenterY = statusCenterY - FeedbackH - 8f;
 
-        private static GameObject NewUIObject(string name, Transform parent)
+            var go = NewUIObj("CooldownText", parent);
+            var rt = go.GetComponent<RectTransform>();
+            rt.anchorMin        = new Vector2(0.05f, 0.5f);
+            rt.anchorMax        = new Vector2(0.95f, 0.5f);
+            rt.pivot            = new Vector2(0.5f, 0.5f);
+            rt.sizeDelta        = new Vector2(0f, FeedbackH);
+            rt.anchoredPosition = new Vector2(0f, cooldownCenterY);
+
+            cooldownText           = go.AddComponent<TextMeshProUGUI>();
+            cooldownText.text      = "Enerji yetersiz. Dinlen veya yemek ye.";
+            cooldownText.fontSize  = FeedbackFontSize - 2f;
+            cooldownText.color     = new Color(1f, 0.5f, 0.4f, 1f);
+            cooldownText.alignment = TextAlignmentOptions.Center;
+            cooldownText.raycastTarget = false;
+
+            go.SetActive(false);
+        }
+
+        // ---- BottomBar --------------------------------------------------------
+
+        private void BuildBottomBar()
+        {
+            var go = NewUIObj("BottomBar", transform);
+            var rt = go.GetComponent<RectTransform>();
+            rt.anchorMin = new Vector2(0f, 0f);
+            rt.anchorMax = new Vector2(1f, 0f);
+            rt.pivot     = new Vector2(0.5f, 0f);
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = new Vector2(0f, BottomBarH);
+
+            var img   = go.AddComponent<Image>();
+            img.color = new Color(0.12f, 0.12f, 0.16f, 1f);
+
+            var btnGO = NewUIObj("BackBtn", go.transform);
+            var btnRT = btnGO.GetComponent<RectTransform>();
+            btnRT.anchorMin        = new Vector2(0.5f, 0.5f);
+            btnRT.anchorMax        = new Vector2(0.5f, 0.5f);
+            btnRT.pivot            = new Vector2(0.5f, 0.5f);
+            btnRT.sizeDelta        = new Vector2(240f, BottomBarH - 20f);
+            btnRT.anchoredPosition = Vector2.zero;
+
+            var btnImg   = btnGO.AddComponent<Image>();
+            btnImg.color = new Color(0.35f, 0.20f, 0.20f, 1f);
+
+            backBtn = btnGO.AddComponent<Button>();
+
+            var labelGO = NewUIObj("Label", btnGO.transform);
+            var labelRT = labelGO.GetComponent<RectTransform>();
+            labelRT.anchorMin = Vector2.zero;
+            labelRT.anchorMax = Vector2.one;
+            labelRT.offsetMin = Vector2.zero;
+            labelRT.offsetMax = Vector2.zero;
+
+            var tmp = labelGO.AddComponent<TextMeshProUGUI>();
+            tmp.text          = "<- Geri";
+            tmp.fontSize      = BackFontSize;
+            tmp.fontStyle     = FontStyles.Bold;
+            tmp.color         = Color.white;
+            tmp.alignment     = TextAlignmentOptions.Center;
+            tmp.raycastTarget = false;
+        }
+
+        private static GameObject NewUIObj(string name, Transform parent)
         {
             var go = new GameObject(name, typeof(RectTransform));
-            go.transform.SetParent(parent, false);
+            if (parent != null) go.transform.SetParent(parent, false);
             return go;
         }
 
-        private static TextMeshProUGUI NewTMP(string name, Transform parent,
-                                              string text, float fontSize,
-                                              TextAlignmentOptions align)
-        {
-            var go  = NewUIObject(name, parent);
-            var tmp = go.AddComponent<TextMeshProUGUI>();
-            tmp.text          = text;
-            tmp.fontSize      = fontSize;
-            tmp.color         = Color.white;
-            tmp.alignment     = align;
-            tmp.raycastTarget = false; // Metin elementleri tıklama olaylarını engellemez.
-            return tmp;
-        }
-
-        private static void Stretch(RectTransform rt)
-        {
-            rt.anchorMin = Vector2.zero;
-            rt.anchorMax = Vector2.one;
-            rt.offsetMin = Vector2.zero;
-            rt.offsetMax = Vector2.zero;
-        }
-
-        // Üst kenara sabitlenmiş eleman konumlandırma; padH = yatay iç dolgu.
-        private static void PositionFromTop(RectTransform rt,
-                                            float xMin, float xMax,
-                                            float topOffset, float height, float padH)
-        {
-            rt.anchorMin = new Vector2(xMin, 1f);
-            rt.anchorMax = new Vector2(xMax, 1f);
-            rt.pivot     = new Vector2(0.5f,  1f);
-            rt.offsetMin = new Vector2( padH, -topOffset - height);
-            rt.offsetMax = new Vector2(-padH, -topOffset);
-        }
 #endif
     }
 }

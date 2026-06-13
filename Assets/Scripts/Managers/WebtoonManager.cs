@@ -113,8 +113,9 @@ namespace Freeline
         /// </summary>
         public float GetDailyPassiveIncome() => Webtoon.followers * config.dailyIncomePerFollower;
 
-        // WebtoonPanel'in BÖLÜM ÇİZ düğmesini enerji kontrolüne göre etkinleştirmesi için gerekli.
-        public float ChapterEnergyCost => config.chapterEnergyCost;
+        // WebtoonPanel düğmelerinin maliyet göstergesi ve enerji kontrolü için gerekli.
+        public float ChapterEnergyCost      => config.chapterEnergyCost;
+        public float ChapterProductionHours => config.chapterProductionHours;
 
         /// <summary>
         /// Her yeni gün başında çürümeyi uygular ve pasif geliri hesaplayarak SaveData'ya yazar.
