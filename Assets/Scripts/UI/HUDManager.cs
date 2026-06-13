@@ -206,9 +206,6 @@ namespace Freeline
         [ContextMenu("Build HUD Hierarchy")]
         private void BuildHUDHierarchy()
         {
-            while (transform.childCount > 0)
-                DestroyImmediate(transform.GetChild(0).gameObject);
-
             var canvas = gameObject.GetComponent<Canvas>();
             if (canvas == null) canvas = gameObject.AddComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
@@ -224,11 +221,11 @@ namespace Freeline
 
             EnsureCamera();
 
-            topPanel     = CreatePanel("TopPanel",    anchorTop: true,  height: TopPanelH);
-            bottomNavBar = CreatePanel("BottomNavBar", anchorTop: false, height: BottomNavBarH);
-
-            topPanel.GetComponent<Image>().color     = new Color(0.12f, 0.12f, 0.18f, 1f);
-            bottomNavBar.GetComponent<Image>().color = new Color(0.12f, 0.12f, 0.18f, 1f);
+            // Yoksa oluştur, varsa mevcut GO'yu bul — PhonePanel / DrawingDeskPanel silinmez
+            topPanel     = EnsurePanel("TopPanel",    anchorTop: true,  height: TopPanelH,
+                                       new Color(0.12f, 0.12f, 0.18f, 1f));
+            bottomNavBar = EnsurePanel("BottomNavBar", anchorTop: false, height: BottomNavBarH,
+                                       new Color(0.12f, 0.12f, 0.18f, 1f));
 
             BuildTopPanel();
             BuildBottomNavBar();
@@ -243,10 +240,17 @@ namespace Freeline
 
         private void BuildPhonePanelObject()
         {
+            // Zaten varsa sadece ref'i geri al; içeriğini yok etme
+            var existingT = transform.Find("PhonePanel");
+            if (existingT != null)
+            {
+                phonePanel = existingT.GetComponent<PhonePanel>();
+                return;
+            }
+
             var go = new GameObject("PhonePanel", typeof(RectTransform));
             go.transform.SetParent(transform, false);
 
-            // PhonePanel'in kendi RectTransform'u tam ekranı kaplar; PhonePanel.BuildPhoneHierarchy bunu ayarlar.
             var rt       = go.GetComponent<RectTransform>();
             rt.anchorMin = Vector2.zero;
             rt.anchorMax = Vector2.one;
@@ -259,6 +263,14 @@ namespace Freeline
 
         private void BuildDrawingDeskPanelObject()
         {
+            // Zaten varsa sadece ref'i geri al; içeriğini yok etme
+            var existingT = transform.Find("DrawingDeskPanel");
+            if (existingT != null)
+            {
+                drawingDeskPanel = existingT.GetComponent<DrawingDeskPanel>();
+                return;
+            }
+
             var go = new GameObject("DrawingDeskPanel", typeof(RectTransform));
             go.transform.SetParent(transform, false);
 
@@ -633,6 +645,32 @@ namespace Freeline
         }
 
         // -------------------------------------------------------------------------
+
+        // Varsa mevcut GO'yu döner, yoksa CreatePanel ile oluşturur; rengi her iki durumda da uygular.
+        private RectTransform EnsurePanel(string panelName, bool anchorTop, float height, Color color)
+        {
+            var existingT = transform.Find(panelName);
+            if (existingT != null)
+            {
+                var existImg = existingT.GetComponent<Image>();
+                if (existImg != null) existImg.color = color;
+                return existingT.GetComponent<RectTransform>();
+            }
+
+            var rt  = CreatePanel(panelName, anchorTop, height);
+            rt.GetComponent<Image>().color = color;
+            return rt;
+        }
+
+        // Parent altında name'li child'ı bulur; yoksa RectTransform'lu yeni GO oluşturur.
+        private static RectTransform FindOrCreate(Transform parent, string name)
+        {
+            var existingT = parent.Find(name);
+            if (existingT != null) return existingT.GetComponent<RectTransform>();
+            var go = new GameObject(name, typeof(RectTransform));
+            go.transform.SetParent(parent, false);
+            return go.GetComponent<RectTransform>();
+        }
 
         private RectTransform CreatePanel(string panelName, bool anchorTop, float height)
         {

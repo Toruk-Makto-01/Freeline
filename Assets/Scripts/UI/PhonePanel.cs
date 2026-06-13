@@ -39,6 +39,9 @@ namespace Freeline
         [Header("Panels")]
         [SerializeField] private ZenitoonPanel zenitoonPanel;
 
+        [Header("Buttons")]
+        [SerializeField] private Button exitBtn;
+
         // =========================================================================
         // Runtime
         // =========================================================================
@@ -47,6 +50,8 @@ namespace Freeline
         {
             if (appBtnZenitoon != null && zenitoonPanel != null)
                 appBtnZenitoon.onClick.AddListener(zenitoonPanel.Open);
+            if (exitBtn != null)
+                exitBtn.onClick.AddListener(Close);
         }
 
         public void Open()
@@ -323,8 +328,7 @@ namespace Freeline
             var btnImg   = btnGO.AddComponent<Image>();
             btnImg.color = new Color(0.35f, 0.35f, 0.40f, 1f);
 
-            var closeBtn = btnGO.AddComponent<Button>();
-            closeBtn.onClick.AddListener(Close);
+            exitBtn = btnGO.AddComponent<Button>();
 
             var dotGO = NewUIObject("Label", btnGO.transform);
             var dotRT = dotGO.GetComponent<RectTransform>();

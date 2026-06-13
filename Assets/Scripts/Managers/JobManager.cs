@@ -249,10 +249,9 @@ namespace Freeline
             gm.TimeManager.AdvanceTime(completedJob.durationHours);
             gm.EnergyManager.ConsumeEnergy(completedJob.energyCost);
 
-            float    payout = CalculatePayout(completedJob);
-            SaveData save   = gm.SaveManager.CurrentData;
-            save.currentCoins       += payout;
-            save.totalJobsCompleted += 1;
+            float payout = CalculatePayout(completedJob);
+            gm.SaveManager.AddCoins(payout);
+            gm.SaveManager.CurrentData.totalJobsCompleted += 1;
 
             OnJobCompleted?.Invoke(completedJob, payout);
 
