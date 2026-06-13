@@ -35,6 +35,9 @@ namespace Freeline
         /// <summary>Panoda görünen mevcut iş listesine salt-okunur erişim.</summary>
         public IReadOnlyList<JobData> CurrentBoardJobs => _currentBoardJobs;
 
+        /// <summary>UI bileşenlerinin düzenleyebileceği bir kopya döner.</summary>
+        public List<JobData> GetBoardJobs() => new List<JobData>(_currentBoardJobs);
+
         /// <summary>Bugün kalan yenileme hakkı sayısı.</summary>
         public int                  RefreshesRemaining => config.maxDailyRefreshes - _refreshesUsedToday;
 

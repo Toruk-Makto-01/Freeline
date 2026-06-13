@@ -36,9 +36,18 @@ namespace Freeline
         [SerializeField] private Button appBtnPoster;
         [SerializeField] private Button appBtnMarket;
 
+        [Header("Panels")]
+        [SerializeField] private ZenitoonPanel zenitoonPanel;
+
         // =========================================================================
         // Runtime
         // =========================================================================
+
+        void Awake()
+        {
+            if (appBtnZenitoon != null && zenitoonPanel != null)
+                appBtnZenitoon.onClick.AddListener(zenitoonPanel.Open);
+        }
 
         public void Open()
         {
@@ -96,6 +105,7 @@ namespace Freeline
 
             var img   = go.AddComponent<Image>();
             img.color = new Color(0.15f, 0.15f, 0.20f, 1f);
+            Debug.Log("[Phone] PhoneDevice created");
 
             BuildScreen(go.transform);
         }
@@ -104,6 +114,8 @@ namespace Freeline
 
         private void BuildScreen(Transform device)
         {
+            Debug.Log("[Phone] BuildScreen started");
+
             var go = NewUIObject("PhoneScreen", device);
             var rt = go.GetComponent<RectTransform>();
             rt.anchorMin = Vector2.zero;
@@ -113,11 +125,23 @@ namespace Freeline
 
             var img   = go.AddComponent<Image>();
             img.color = new Color(0.10f, 0.10f, 0.14f, 1f);
+            Debug.Log("[Phone] PhoneScreen created");
 
             BuildStatusBar(go.transform);
             BuildInfoBar(go.transform);
             BuildAppGrid(go.transform);
             BuildExitBar(go.transform);
+
+            // ZenitoonPanel overlay — kendi ContextMenu'suyla içi doldurulur
+            var zpGO = NewUIObject("ZenitoonPanel", go.transform);
+            var zpRT = zpGO.GetComponent<RectTransform>();
+            zpRT.anchorMin = Vector2.zero;
+            zpRT.anchorMax = Vector2.one;
+            zpRT.offsetMin = Vector2.zero;
+            zpRT.offsetMax = Vector2.zero;
+            zenitoonPanel  = zpGO.AddComponent<ZenitoonPanel>();
+            zpGO.SetActive(false);
+            Debug.Log("[Phone] ZenitoonPanel created: " + (zenitoonPanel != null ? "OK" : "NULL"));
         }
 
         // ---- PhoneStatusBar — üstte sabit 60px yükseklik ----------------------------
