@@ -233,6 +233,34 @@ namespace Freeline
         }
 
         /// <summary>
+        /// DrawingDesk SlideBar mini-oyunu tarafından çağrılır.
+        /// JobSelected veya JobActive durumundan tamamlama yapar; enerji tüketir, ödeme verir.
+        /// </summary>
+        public void CompleteActiveJob()
+        {
+            if (ActiveJob == null) return;
+            if (CurrentJobState != JobState.JobSelected && CurrentJobState != JobState.JobActive) return;
+
+            JobData completedJob = ActiveJob;
+            ActiveJob       = null;
+            CurrentJobState = JobState.Idle;
+
+            var gm = GameManager.Instance;
+            gm.TimeManager.AdvanceTime(completedJob.durationHours);
+            gm.EnergyManager.ConsumeEnergy(completedJob.energyCost);
+
+            float    payout = CalculatePayout(completedJob);
+            SaveData save   = gm.SaveManager.CurrentData;
+            save.currentCoins       += payout;
+            save.totalJobsCompleted += 1;
+
+            OnJobCompleted?.Invoke(completedJob, payout);
+
+            if (CurrentJobState == JobState.Idle)
+                GenerateJobBoard();
+        }
+
+        /// <summary>
         /// Oyuncu iş ortasında vazgeçtiğinde çağrılır.
         /// Ödeme yapılmaz, zaman ilerlemez; enerji maliyetinin %50'si iade edilir.
         /// İade açlık cezasını atlatmak için <see cref="EnergyManager.RestoreEnergyDirect"/> kullanır.

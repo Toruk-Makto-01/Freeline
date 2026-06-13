@@ -3,6 +3,7 @@ using UnityEditor;
 #endif
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
@@ -20,10 +21,20 @@ namespace Freeline
         private const float LabelFontSize  = 28f;
         private const float ActionFontSize = 36f;
 
+        private const float FillSpeed  = 0.15f;
+        private const float DrainSpeed = 0.05f;
+
         // ---- Refs -----------------------------------------------------------
         [SerializeField] private TextMeshProUGUI jobTitleText;
         [SerializeField] private Image           progressBar;
         [SerializeField] private Button          actionBtn;
+        [SerializeField] private Button          backBtn;
+
+        // ---- Minigame state -------------------------------------------------
+        private float   _progress;
+        private bool    _isHolding;
+        private JobData _activeJob;
+        private bool    _jobActive;
 
         // =========================================================================
         // Runtime
@@ -31,13 +42,46 @@ namespace Freeline
 
         void Awake()
         {
-            // BackBtn onClick — Awake'de bağlanamaz (builder GO'yu geç atar);
-            // ContextMenu builder persistent listener kurar ya da Start'ta bulunur.
+            if (backBtn != null)
+                backBtn.onClick.AddListener(Close);
+
+            if (actionBtn != null)
+            {
+                var trigger = actionBtn.gameObject.GetComponent<EventTrigger>()
+                              ?? actionBtn.gameObject.AddComponent<EventTrigger>();
+
+                var down = new EventTrigger.Entry { eventID = EventTriggerType.PointerDown };
+                down.callback.AddListener(_ => _isHolding = true);
+                trigger.triggers.Add(down);
+
+                var up = new EventTrigger.Entry { eventID = EventTriggerType.PointerUp };
+                up.callback.AddListener(_ => _isHolding = false);
+                trigger.triggers.Add(up);
+            }
+        }
+
+        void Update()
+        {
+            if (!_jobActive) return;
+
+            _progress += (_isHolding ? FillSpeed : -DrainSpeed) * Time.deltaTime;
+            _progress  = Mathf.Clamp01(_progress);
+
+            progressBar.rectTransform.anchorMax = new Vector2(_progress, 1f);
+
+            if (_progress >= 1f)
+                CompleteJob();
         }
 
         public void Open(JobData job)
         {
+            _activeJob = job;
+            _progress  = 0f;
+            _isHolding = false;
+            _jobActive = true;
+
             gameObject.SetActive(true);
+
             if (jobTitleText != null && job != null)
                 jobTitleText.text = job.jobTitle;
             if (progressBar != null)
@@ -46,8 +90,18 @@ namespace Freeline
 
         public void Close()
         {
+            _jobActive = false;
+            _isHolding = false;
             gameObject.SetActive(false);
             GameManager.Instance.SetState(GameState.Apartment);
+        }
+
+        private void CompleteJob()
+        {
+            _jobActive = false;
+            _isHolding = false;
+            GameManager.Instance.JobManager.CompleteActiveJob();
+            Close();
         }
 
         // =========================================================================
@@ -124,8 +178,7 @@ namespace Freeline
             var backImg   = backGO.AddComponent<Image>();
             backImg.color = new Color(0.35f, 0.20f, 0.20f, 1f);
 
-            var backBtn = backGO.AddComponent<Button>();
-            backBtn.onClick.AddListener(Close);
+            backBtn = backGO.AddComponent<Button>();
 
             var backLabelGO = NewUIObj("Label", backGO.transform);
             var backLabelRT = backLabelGO.GetComponent<RectTransform>();
@@ -193,14 +246,13 @@ namespace Freeline
 
         private void BuildProgressBar(Transform parent)
         {
-            // Dış kapsayıcı
+            // BottomBar'ın üst %20'sini kaplar
             var containerGO = NewUIObj("ProgressBarContainer", parent);
             var containerRT = containerGO.GetComponent<RectTransform>();
-            containerRT.anchorMin = new Vector2(0f, 1f);
+            containerRT.anchorMin = new Vector2(0f, 0.8f);
             containerRT.anchorMax = new Vector2(1f, 1f);
-            containerRT.pivot     = new Vector2(0.5f, 1f);
-            containerRT.offsetMin = new Vector2(16f, -(ProgressBarH + 12f));
-            containerRT.offsetMax = new Vector2(-16f, -12f);
+            containerRT.offsetMin = new Vector2(12f,  4f);
+            containerRT.offsetMax = new Vector2(-12f, -4f);
 
             var containerImg   = containerGO.AddComponent<Image>();
             containerImg.color = new Color(0.20f, 0.20f, 0.20f, 1f);
@@ -208,7 +260,7 @@ namespace Freeline
             // Dolgu — runtime'da anchorMax.x = ilerleme değeri ile güncellenir
             var fillGO = NewUIObj("Fill", containerGO.transform);
             var fillRT = fillGO.GetComponent<RectTransform>();
-            fillRT.anchorMin = new Vector2(0f, 0f);
+            fillRT.anchorMin = Vector2.zero;
             fillRT.anchorMax = new Vector2(0f, 1f);
             fillRT.offsetMin = Vector2.zero;
             fillRT.offsetMax = Vector2.zero;
@@ -221,16 +273,17 @@ namespace Freeline
         {
             var go = NewUIObj("ActionBtn", parent);
             var rt = go.GetComponent<RectTransform>();
-            rt.anchorMin = new Vector2(0.1f, 0f);
-            rt.anchorMax = new Vector2(0.9f, 0f);
-            rt.pivot     = new Vector2(0.5f, 0f);
-            rt.offsetMin = new Vector2(0f, ProgressBarH + 20f);
-            rt.offsetMax = new Vector2(0f, ProgressBarH + 20f + ActionBtnH);
+            // BottomBar'ın alt %75'ini kaplar; ProgressBar üstte %20 aldıktan sonra aralarında boşluk kalır
+            rt.anchorMin = new Vector2(0f, 0f);
+            rt.anchorMax = new Vector2(1f, 0.75f);
+            rt.offsetMin = new Vector2(12f,  4f);
+            rt.offsetMax = new Vector2(-12f, -4f);
 
             var btnImg   = go.AddComponent<Image>();
             btnImg.color = new Color(0.20f, 0.55f, 0.85f, 1f);
 
             actionBtn = go.AddComponent<Button>();
+            go.AddComponent<EventTrigger>();
 
             var labelGO = NewUIObj("Label", go.transform);
             var labelRT = labelGO.GetComponent<RectTransform>();
