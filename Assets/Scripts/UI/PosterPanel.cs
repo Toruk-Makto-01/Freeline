@@ -102,7 +102,18 @@ namespace Freeline
         private void UpdateStockText()
         {
             if (stockText != null)
-                stockText.text = $"Stok: {_posterStock}";
+            {
+                // Sadece uydurma bir sayacı değil, ana depodaki GERÇEK poster sayısını hesaplayıp yazdırıyoruz.
+                int totalPosters = 0;
+                var stock = GameManager.Instance.SaveManager.CurrentData.exhibitionStock;
+                foreach (var item in stock)
+                {
+                    if (item.productType == ProductType.Poster)
+                        totalPosters += item.quantity;
+                }
+                
+                stockText.text = $"Stok: {totalPosters}";
+            }
         }
 
         // ---- Slot oluşturma (runtime) ----------------------------------------
@@ -176,9 +187,32 @@ namespace Freeline
                 return;
             }
 
+            // Enerji ve zamanı harca
             gm.EnergyManager.ConsumeEnergy(template.drawingCost);
             gm.TimeManager.AdvanceTime(template.drawingHours);
-            _posterStock++;
+            
+            // --- ANA STOĞA (SaveData) EKLEME İŞLEMİ ---
+            var stock = gm.SaveManager.CurrentData.exhibitionStock;
+            var existing = stock.Find(s => s.productName == template.posterName && s.productType == ProductType.Poster);
+
+            if (existing != null)
+            {
+                // Zaten varsa miktarını artır
+                existing.quantity++;
+            }
+            else
+            {
+                // Yoksa yeni bir ürün olarak stoğa ekle
+                stock.Add(new ExhibitionStock
+                {
+                    productType = ProductType.Poster,
+                    productName = template.posterName,
+                    basePrice   = template.sellPrice,
+                    quantity    = 1
+                });
+            }
+            // ------------------------------------------
+
             UpdateStockText();
             ShowFeedback("Poster tamamlandi! Dukkana gonderildi.", new Color(0.4f, 1f, 0.5f, 1f), 2f);
         }

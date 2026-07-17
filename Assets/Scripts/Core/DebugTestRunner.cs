@@ -17,9 +17,21 @@ namespace Freeline
     // Attach to the "DebugTools" GameObject in the Bootstrap scene.
     public class DebugTestRunner : MonoBehaviour
     {
+// Debug scriptinin sahnedeki tek kopyasını tutar
+        public static DebugTestRunner Instance;
+
         void Awake()
         {
-            DontDestroyOnLoad(gameObject);
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                // Eğer zaten bir tane varsa, bu yeni geleni sil!
+                Destroy(gameObject);
+            }
         }
 
         void Update()

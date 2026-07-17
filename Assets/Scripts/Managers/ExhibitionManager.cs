@@ -9,9 +9,9 @@ namespace Freeline
     public class ExhibitionStock
     {
         public ProductType productType;
-        public string      productName;
-        public int         basePrice;
-        public int         quantity;
+        public string productName;
+        public int basePrice;
+        public int quantity;
     }
 
     public enum NpcPersonality { Generous, Bargainer, Indecisive }
@@ -20,9 +20,9 @@ namespace Freeline
     public class ExhibitionNpc
     {
         public NpcPersonality personality;
-        public float          offerMultiplier; // Generous: 1.1–1.3, Bargainer: 0.6–0.8, Indecisive: 0.9–1.0
-        public bool           hasPurchased;
-        public string         greetingLine;
+        public float offerMultiplier; // Generous: 1.1–1.3, Bargainer: 0.6–0.8, Indecisive: 0.9–1.0
+        public bool hasPurchased;
+        public string greetingLine;
 
     }
 
@@ -30,9 +30,11 @@ namespace Freeline
     // Stok, NPC üretimi, satış ve sergi günü tespitini yönetir
     public class ExhibitionManager : MonoBehaviour
     {
+        [Header("Panels")]
+        [SerializeField] private ExhibitionSalesPanel exhibitionSalesPanel;
         // 7'nin katı günlerde (7, 14, 21...) sergi hazır olduğunda tetiklenir
-        public event Action          OnExhibitionDayReady;
-        public event Action          OnExhibitionStarted;
+        public event Action OnExhibitionDayReady;
+        public event Action OnExhibitionStarted;
 
         // itemsSold, totalEarned
         public event Action<int, int> OnExhibitionEnded;
@@ -83,7 +85,7 @@ namespace Freeline
         // Üretilen ürünü stoğa ekler; aynı ürün zaten varsa miktarı artırır
         public void AddToStock(ExhibitionProductData product)
         {
-            var stock    = GameManager.Instance.SaveManager.CurrentData.exhibitionStock;
+            var stock = GameManager.Instance.SaveManager.CurrentData.exhibitionStock;
             var existing = stock.Find(s =>
                 s.productName == product.productName &&
                 s.productType == product.productType);
@@ -98,8 +100,8 @@ namespace Freeline
                 {
                     productType = product.productType,
                     productName = product.productName,
-                    basePrice   = product.basePrice,
-                    quantity    = 1
+                    basePrice = product.basePrice,
+                    quantity = 1
                 });
             }
         }
@@ -112,10 +114,22 @@ namespace Freeline
         // Oyuncu sergiyi onayladığında çağrılır; satış sayaçlarını sıfırlar
         public void StartExhibition()
         {
-            IsExhibitionDay = false;
-            _itemsSold      = 0;
-            _totalEarned    = 0;
+            // 1. Durumu güncelle
+            IsExhibitionDay = false; // Artık sergi "başladı", yani "hazır" değil
+            _itemsSold = 0;
+            _totalEarned = 0;
+
+            // 2. Sergi satış panelini aktif et (veya uygun panelin hangisiyse)
+            // Eğer Manager içinde SalesPanel referansın varsa onu Show yap:
+            if (exhibitionSalesPanel != null)
+            {
+                exhibitionSalesPanel.Show();
+            }
+
+            // 3. Oyun içi eventleri tetikle
             OnExhibitionStarted?.Invoke();
+
+            Debug.Log("[ExhibitionManager] Sergi başarıyla başlatıldı!");
         }
 
         // Oyuncu sergiyi atlarsa bayrak sıfırlanır, sergi işlenmez
@@ -134,9 +148,9 @@ namespace Freeline
         public List<ExhibitionNpc> GenerateVisitors()
         {
             int followers = (int)GameManager.Instance.SaveManager.CurrentData.webtoonData.followers;
-            int rawCount  = Mathf.RoundToInt(
+            int rawCount = Mathf.RoundToInt(
                 3f + Mathf.Log10(followers + 1) + UnityEngine.Random.Range(0, 3));
-            int count     = Mathf.Clamp(rawCount, 3, 12);
+            int count = Mathf.Clamp(rawCount, 3, 12);
 
             var visitors = new List<ExhibitionNpc>(count);
             for (int i = 0; i < count; i++)
@@ -147,8 +161,7 @@ namespace Freeline
         // Satışı işler: pazarlık kabulü, stok güncelleme, kazanç yazma
         // playerBargained → NPC kişiliğine göre kabul şansı; reddedilirse satış iptal
         // playerAccepted  → NPC teklifini olduğu gibi kabul
-        public void ProcessSale(ExhibitionStock item, ExhibitionNpc npc,
-            bool playerAccepted, bool playerBargained)
+        public void ProcessSale(ExhibitionStock item, ExhibitionNpc npc, bool playerAccepted, bool playerBargained)
         {
             if (npc.hasPurchased) return;
 
@@ -157,10 +170,10 @@ namespace Freeline
             {
                 float acceptChance = npc.personality switch
                 {
-                    NpcPersonality.Generous   => 0.8f,
+                    NpcPersonality.Generous => 0.8f,
                     NpcPersonality.Indecisive => 0.5f,
-                    NpcPersonality.Bargainer  => 0.2f,
-                    _                         => 0.5f
+                    NpcPersonality.Bargainer => 0.2f,
+                    _ => 0.5f //
                 };
                 saleHappens = UnityEngine.Random.value <= acceptChance;
             }
@@ -172,6 +185,12 @@ namespace Freeline
             if (!saleHappens) return;
 
             int finalPrice = Mathf.RoundToInt(item.basePrice * npc.offerMultiplier);
+
+            // PAZARLIK BAŞARILIYSA %25 BONUS EKLE
+            if (playerBargained)
+            {
+                finalPrice = Mathf.RoundToInt(finalPrice * 1.25f);
+            }
 
             item.quantity--;
             if (item.quantity <= 0)
@@ -190,25 +209,25 @@ namespace Freeline
 
             float multiplier = personality switch
             {
-                NpcPersonality.Generous   => UnityEngine.Random.Range(1.1f, 1.3f),
-                NpcPersonality.Bargainer  => UnityEngine.Random.Range(0.6f, 0.8f),
+                NpcPersonality.Generous => UnityEngine.Random.Range(1.1f, 1.3f),
+                NpcPersonality.Bargainer => UnityEngine.Random.Range(0.6f, 0.8f),
                 NpcPersonality.Indecisive => UnityEngine.Random.Range(0.9f, 1.0f),
-                _                         => 1f
+                _ => 1f
             };
 
             string[] pool = personality switch
             {
-                NpcPersonality.Generous  => GreetingsGenerous,
+                NpcPersonality.Generous => GreetingsGenerous,
                 NpcPersonality.Bargainer => GreetingsBargainer,
-                _                        => GreetingsIndecisive
+                _ => GreetingsIndecisive
             };
 
             return new ExhibitionNpc
             {
-                personality     = personality,
+                personality = personality,
                 offerMultiplier = multiplier,
-                hasPurchased    = false,
-                greetingLine    = pool[UnityEngine.Random.Range(0, pool.Length)]
+                hasPurchased = false,
+                greetingLine = pool[UnityEngine.Random.Range(0, pool.Length)]
             };
         }
     }

@@ -33,7 +33,7 @@ namespace Freeline
         {
             openButton.onClick.AddListener(OnOpenClicked);
             skipButton.onClick.AddListener(OnSkipClicked);
-            if (panel != null) panel.SetActive(false);
+            Hide(); // Artık hem paneli hem blocker'ı gizleyecek
         }
 
         void Start()
@@ -56,14 +56,24 @@ namespace Freeline
         {
             int total = CountTotalStock();
             subtitleText.text = $"Stokta {total} ürün var. Sergiyi açmak ister misin?";
+    
             panel.SetActive(true);
+            Transform blocker = transform.Find("Blocker");
+            if (blocker != null) blocker.gameObject.SetActive(true);
         }
 
-        public void Hide() => panel.SetActive(false);
+        public void Hide()
+        {
+            if (panel != null) panel.SetActive(false);
+            Transform blocker = transform.Find("Blocker");
+            if (blocker != null) blocker.gameObject.SetActive(false);
+        }
 
         private void OnOpenClicked()
         {
-            exhibitionManager.StartExhibition();
+            Debug.Log("Sergi Başlatılıyor...");
+            if (exhibitionManager == null)
+                exhibitionManager.StartExhibition(); // Sergi başlatma işlemi ExhibitionManager üzerinden yapılır
             Hide();
         }
 

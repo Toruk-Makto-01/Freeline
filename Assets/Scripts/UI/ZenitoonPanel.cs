@@ -13,39 +13,43 @@ namespace Freeline
     public class ZenitoonPanel : MonoBehaviour
     {
         // ---- Sabitler -------------------------------------------------------
-        private const float HeaderH       = 80f;
-        private const float BottomBarH    = 80f;
-        private const float CardH         = 200f;
-        private const float CardGap       = 16f;
-        private const float CardPadV      = 8f;
-        private const float CardPadH      = 12f;
-        private const float BtnH          = 48f;
+        private const float HeaderH = 80f;
+        private const float BottomBarH = 80f;
+        private const float CardH = 200f;
+        private const float CardGap = 16f;
+        private const float CardPadV = 8f;
+        private const float CardPadH = 12f;
+        private const float BtnH = 48f;
         private const float TitleFontSize = 36f;
-        private const float TitlePadLeft  = 20f;
-        private const float CardTitleFS   = 28f;
-        private const float CardInfoFS    = 22f;
+        private const float TitlePadLeft = 20f;
+        private const float CardTitleFS = 28f;
+        private const float CardInfoFS = 22f;
 
-        private static readonly Color ColBeginner     = new Color(0.60f, 0.85f, 0.60f);
+        private static readonly Color ColBeginner = new Color(0.60f, 0.85f, 0.60f);
         private static readonly Color ColIntermediate = new Color(0.95f, 0.85f, 0.40f);
-        private static readonly Color ColAdvanced     = new Color(0.95f, 0.65f, 0.30f);
+        private static readonly Color ColAdvanced = new Color(0.95f, 0.65f, 0.30f);
 
         // ---- Kart referansları (editor'da doldurulur) -----------------------
         [Serializable]
         private struct JobCardRefs
         {
-            public Image           bgImage;
+            public Image bgImage;
             public TextMeshProUGUI titleText;
             public TextMeshProUGUI durationText;
             public TextMeshProUGUI payoutText;
             public TextMeshProUGUI difficultyText;
-            public Button          selectBtn;
-            public GameObject      lockOverlay;
+            public Button selectBtn;
+            public GameObject lockOverlay;
         }
+        [Header("Panel Geçişleri (Transitions)")]
+        [SerializeField] private GameObject tabletPanel; // Kapatılacak ana tablet
+        [SerializeField] private DrawingDeskPanel drawingDeskPanel; // Açılacak çizim masası
 
-        [SerializeField] private Button          _refreshBtn;
+
+        [SerializeField] private Button _refreshBtn;
         [SerializeField] private TextMeshProUGUI _refreshBtnLabel;
-        [SerializeField] private Button          _backBtn;
-        [SerializeField] private JobCardRefs[]   _cards = new JobCardRefs[3];
+        [SerializeField] private Button _backBtn;
+        [SerializeField] private JobCardRefs[] _cards = new JobCardRefs[3];
 
         // =========================================================================
         // Runtime
@@ -86,10 +90,44 @@ namespace Freeline
             gameObject.SetActive(false);
         }
 
+        public void OnJobAccepted(JobData selectedJob)
+        {
+            Debug.Log($"[Zenitoon] Is kabul edildi: {selectedJob.jobTitle}");
+
+            // 1. Oyunun genelinde bu işi aktif olarak kaydet (İleride GameManager'da kullanmak için)
+            // GameManager.Instance.SetActiveJob(selectedJob);
+
+            HUDManager.Instance.TransitFromTabletToDrawingDesk(selectedJob); //
+
+            // 2. Çizim masası panelini aç ve seçilen işi masaya gönder!
+            if (drawingDeskPanel != null)
+            {
+                drawingDeskPanel.gameObject.SetActive(true);
+                drawingDeskPanel.StartJob(selectedJob); // Masayı bu iş ile başlatıyoruz
+                Debug.Log("[Zenitoon] Cizim masası paneli aktif edildi ve is yuklendi.");
+            }
+            else
+            {
+                Debug.LogError("[Zenitoon] HATA: DrawingDeskPanel referansı Inspector'da boş!");
+            }
+
+            // 3. Eski mantığı tamamen ezmek için: Zenitoon uygulamasını kapat
+            gameObject.SetActive(false);
+
+            // 4. Ana tableti/telefonu tamamen kapat ki ekranda geri açılmasın, oyuncu masayı görsün
+            if (tabletPanel != null)
+            {
+                tabletPanel.SetActive(false);
+                Debug.Log("[Zenitoon] Ana tablet ekranı tamamen kapatıldı.");
+            }
+            // Eğer tableti kapatmak için PhonePanel'in kendi Close() fonksiyonu varsa onu da çağırabilirsin:
+            // FindObjectOfType<PhonePanel>()?.gameObject.SetActive(false);
+        }
+
         private void RefreshCards()
         {
-            List<JobData> jobs          = GameManager.Instance.JobManager.GetBoardJobs();
-            float         currentEnergy = GameManager.Instance.EnergyManager.CurrentEnergy;
+            List<JobData> jobs = GameManager.Instance.JobManager.GetBoardJobs();
+            float currentEnergy = GameManager.Instance.EnergyManager.CurrentEnergy;
 
             for (int i = 0; i < _cards.Length; i++)
             {
@@ -101,17 +139,25 @@ namespace Freeline
                     continue;
                 }
 
-                JobData job       = jobs[i];
-                bool    canAfford = currentEnergy >= job.energyCost;
+                JobData job = jobs[i];
+                // C#'ta döngü içindeki değişkeni butona bağlarken "kopyasını" almak gerekir (Closure sorunu yaşamamak için)
+                JobData capturedJob = job;
+
+                bool canAfford = currentEnergy >= job.energyCost;
 
                 Color baseColor = DifficultyColor(job.difficulty);
-                card.bgImage.color         = canAfford ? baseColor : baseColor * 0.6f;
-                card.titleText.text        = job.jobTitle;
-                card.durationText.text     = $"Sure: {job.durationHours:0.#} saat";
-                card.payoutText.text       = $"Odeme: {job.basePayout:0} coin";
-                card.difficultyText.text   = DifficultyStars(job.difficulty);
+                card.bgImage.color = canAfford ? baseColor : baseColor * 0.6f;
+                card.titleText.text = job.jobTitle;
+                card.durationText.text = $"Sure: {job.durationHours:0.#} saat";
+                card.payoutText.text = $"Odeme: {job.basePayout:0} coin";
+                card.difficultyText.text = DifficultyStars(job.difficulty);
                 card.selectBtn.interactable = canAfford;
                 card.lockOverlay.SetActive(!canAfford);
+
+                // --- İŞTE YENİ EKLENEN GEÇİŞ SİHRİ ---
+                card.selectBtn.onClick.RemoveAllListeners(); // Önce eski tıklama görevlerini temizle
+                card.selectBtn.onClick.AddListener(() => OnJobAccepted(capturedJob)); // Yeni işi butona bağla
+                // -------------------------------------
             }
 
             UpdateRefreshLabel();
@@ -142,16 +188,16 @@ namespace Freeline
 
         private static Color DifficultyColor(JobDifficulty d) => d switch
         {
-            JobDifficulty.Beginner     => ColBeginner,
+            JobDifficulty.Beginner => ColBeginner,
             JobDifficulty.Intermediate => ColIntermediate,
-            _                          => ColAdvanced,
+            _ => ColAdvanced,
         };
 
         private static string DifficultyStars(JobDifficulty d) => d switch
         {
-            JobDifficulty.Beginner     => "* - -",
+            JobDifficulty.Beginner => "* - -",
             JobDifficulty.Intermediate => "* * -",
-            _                          => "* * *",
+            _ => "* * *",
         };
 
         // =========================================================================
@@ -167,13 +213,13 @@ namespace Freeline
                 DestroyImmediate(transform.GetChild(0).gameObject);
 
             // ZenitoonPanel ekranı tamamen kaplar
-            var selfRT       = GetComponent<RectTransform>();
+            var selfRT = GetComponent<RectTransform>();
             selfRT.anchorMin = Vector2.zero;
             selfRT.anchorMax = Vector2.one;
             selfRT.offsetMin = Vector2.zero;
             selfRT.offsetMax = Vector2.zero;
 
-            var selfImg   = GetComponent<Image>() ?? gameObject.AddComponent<Image>();
+            var selfImg = GetComponent<Image>() ?? gameObject.AddComponent<Image>();
             selfImg.color = new Color(0.10f, 0.10f, 0.14f, 1f);
 
             BuildHeader();
@@ -192,11 +238,11 @@ namespace Freeline
             var rt = go.GetComponent<RectTransform>();
             rt.anchorMin = new Vector2(0f, 1f);
             rt.anchorMax = new Vector2(1f, 1f);
-            rt.pivot     = new Vector2(0.5f, 1f);
+            rt.pivot = new Vector2(0.5f, 1f);
             rt.offsetMin = new Vector2(0f, -HeaderH);
             rt.offsetMax = Vector2.zero;
 
-            var img   = go.AddComponent<Image>();
+            var img = go.AddComponent<Image>();
             img.color = new Color(0.96f, 0.76f, 0.80f, 1f);
 
             var titleGO = NewUIObj("TitleText", go.transform);
@@ -207,11 +253,11 @@ namespace Freeline
             titleRT.offsetMax = Vector2.zero;
 
             var tmp = titleGO.AddComponent<TextMeshProUGUI>();
-            tmp.text          = "Zenitoon";
-            tmp.fontSize      = TitleFontSize;
-            tmp.fontStyle     = FontStyles.Bold;
-            tmp.color         = new Color(0.20f, 0.05f, 0.10f, 1f);
-            tmp.alignment     = TextAlignmentOptions.MidlineLeft;
+            tmp.text = "Zenitoon";
+            tmp.fontSize = TitleFontSize;
+            tmp.fontStyle = FontStyles.Bold;
+            tmp.color = new Color(0.20f, 0.05f, 0.10f, 1f);
+            tmp.alignment = TextAlignmentOptions.MidlineLeft;
             tmp.raycastTarget = false;
         }
 
@@ -223,17 +269,17 @@ namespace Freeline
             var rt = go.GetComponent<RectTransform>();
             rt.anchorMin = new Vector2(0f, 0f);
             rt.anchorMax = new Vector2(1f, 1f);
-            rt.offsetMin = new Vector2(0f,  BottomBarH);
+            rt.offsetMin = new Vector2(0f, BottomBarH);
             rt.offsetMax = new Vector2(0f, -HeaderH);
 
-            var vlg                    = go.AddComponent<VerticalLayoutGroup>();
-            vlg.spacing                = CardGap;
-            vlg.padding                = new RectOffset((int)CardPadH, (int)CardPadH,
-                                                        (int)CardPadV,  (int)CardPadV);
-            vlg.childAlignment         = TextAnchor.UpperCenter;
-            vlg.childControlWidth      = true;
-            vlg.childControlHeight     = false;
-            vlg.childForceExpandWidth  = true;
+            var vlg = go.AddComponent<VerticalLayoutGroup>();
+            vlg.spacing = CardGap;
+            vlg.padding = new RectOffset((int)CardPadH, (int)CardPadH,
+                                                        (int)CardPadV, (int)CardPadV);
+            vlg.childAlignment = TextAnchor.UpperCenter;
+            vlg.childControlWidth = true;
+            vlg.childControlHeight = false;
+            vlg.childForceExpandWidth = true;
             vlg.childForceExpandHeight = false;
 
             for (int i = 0; i < 3; i++)
@@ -250,8 +296,8 @@ namespace Freeline
             cardRT.sizeDelta = new Vector2(0f, CardH);
 
             // Arka plan (zorluk rengi runtime'da güncellenir)
-            var bgGO  = NewUIObj("BgImage", cardGO.transform);
-            var bgRT  = bgGO.GetComponent<RectTransform>();
+            var bgGO = NewUIObj("BgImage", cardGO.transform);
+            var bgRT = bgGO.GetComponent<RectTransform>();
             bgRT.anchorMin = Vector2.zero;
             bgRT.anchorMax = Vector2.one;
             bgRT.offsetMin = Vector2.zero;
@@ -260,24 +306,24 @@ namespace Freeline
             bgImg.color = ColBeginner;
 
             // İş başlığı
-            var titleTMP = MakeText("JobTitle",      cardGO.transform,
+            var titleTMP = MakeText("JobTitle", cardGO.transform,
                                     CardTitleFS, FontStyles.Bold,
                                     new Vector2(12f, -44f), new Vector2(-12f, -10f));
 
             // Süre
-            var durTMP   = MakeText("DurationText",  cardGO.transform,
+            var durTMP = MakeText("DurationText", cardGO.transform,
                                     CardInfoFS, FontStyles.Normal,
                                     new Vector2(12f, -76f), new Vector2(-12f, -46f));
             durTMP.text = "Sure: 2 saat";
 
             // Ödeme
-            var payTMP   = MakeText("PayoutText",    cardGO.transform,
+            var payTMP = MakeText("PayoutText", cardGO.transform,
                                     CardInfoFS, FontStyles.Normal,
                                     new Vector2(12f, -108f), new Vector2(-12f, -78f));
             payTMP.text = "Odeme: 150 coin";
 
             // Zorluk yıldızları
-            var diffTMP  = MakeText("DifficultyText", cardGO.transform,
+            var diffTMP = MakeText("DifficultyText", cardGO.transform,
                                     CardInfoFS, FontStyles.Normal,
                                     new Vector2(12f, -140f), new Vector2(-12f, -110f));
             diffTMP.text = "* - -";
@@ -287,13 +333,13 @@ namespace Freeline
             var lockRT = lockGO.GetComponent<RectTransform>();
             lockRT.anchorMin = new Vector2(0f, 0f);
             lockRT.anchorMax = new Vector2(1f, 1f);
-            lockRT.offsetMin = new Vector2(0f,  BtnH);
+            lockRT.offsetMin = new Vector2(0f, BtnH);
             lockRT.offsetMax = Vector2.zero;
             var lockTMP = lockGO.AddComponent<TextMeshProUGUI>();
-            lockTMP.text          = "Enerji Yetersiz";
-            lockTMP.fontSize      = CardInfoFS;
-            lockTMP.color         = new Color(0.80f, 0.20f, 0.20f, 1f);
-            lockTMP.alignment     = TextAlignmentOptions.Center;
+            lockTMP.text = "Enerji Yetersiz";
+            lockTMP.fontSize = CardInfoFS;
+            lockTMP.color = new Color(0.80f, 0.20f, 0.20f, 1f);
+            lockTMP.alignment = TextAlignmentOptions.Center;
             lockTMP.raycastTarget = false;
             lockGO.SetActive(false);
 
@@ -302,7 +348,7 @@ namespace Freeline
             var btnRT = btnGO.GetComponent<RectTransform>();
             btnRT.anchorMin = new Vector2(0f, 0f);
             btnRT.anchorMax = new Vector2(1f, 0f);
-            btnRT.pivot     = new Vector2(0.5f, 0f);
+            btnRT.pivot = new Vector2(0.5f, 0f);
             btnRT.offsetMin = new Vector2(0f, 0f);
             btnRT.offsetMax = new Vector2(0f, BtnH);
             var btnImg = btnGO.AddComponent<Image>();
@@ -316,22 +362,22 @@ namespace Freeline
             btnLabelRT.offsetMin = Vector2.zero;
             btnLabelRT.offsetMax = Vector2.zero;
             var btnTMP = btnLabelGO.AddComponent<TextMeshProUGUI>();
-            btnTMP.text          = "Seç";
-            btnTMP.fontSize      = CardInfoFS;
-            btnTMP.fontStyle     = FontStyles.Bold;
-            btnTMP.color         = Color.white;
-            btnTMP.alignment     = TextAlignmentOptions.Center;
+            btnTMP.text = "Seç";
+            btnTMP.fontSize = CardInfoFS;
+            btnTMP.fontStyle = FontStyles.Bold;
+            btnTMP.color = Color.white;
+            btnTMP.alignment = TextAlignmentOptions.Center;
             btnTMP.raycastTarget = false;
 
             return new JobCardRefs
             {
-                bgImage       = bgImg,
-                titleText     = titleTMP,
-                durationText  = durTMP,
-                payoutText    = payTMP,
+                bgImage = bgImg,
+                titleText = titleTMP,
+                durationText = durTMP,
+                payoutText = payTMP,
                 difficultyText = diffTMP,
-                selectBtn     = btn,
-                lockOverlay   = lockGO,
+                selectBtn = btn,
+                lockOverlay = lockGO,
             };
         }
 
@@ -344,15 +390,15 @@ namespace Freeline
             var rt = go.GetComponent<RectTransform>();
             rt.anchorMin = new Vector2(0f, 1f);
             rt.anchorMax = new Vector2(1f, 1f);
-            rt.pivot     = new Vector2(0.5f, 1f);
+            rt.pivot = new Vector2(0.5f, 1f);
             rt.offsetMin = offsetMin;
             rt.offsetMax = offsetMax;
 
             var tmp = go.AddComponent<TextMeshProUGUI>();
-            tmp.fontSize      = fontSize;
-            tmp.fontStyle     = style;
-            tmp.color         = Color.black;
-            tmp.alignment     = TextAlignmentOptions.MidlineLeft;
+            tmp.fontSize = fontSize;
+            tmp.fontStyle = style;
+            tmp.color = Color.black;
+            tmp.alignment = TextAlignmentOptions.MidlineLeft;
             tmp.raycastTarget = false;
             return tmp;
         }
@@ -365,24 +411,24 @@ namespace Freeline
             var rt = go.GetComponent<RectTransform>();
             rt.anchorMin = new Vector2(0f, 0f);
             rt.anchorMax = new Vector2(1f, 0f);
-            rt.pivot     = new Vector2(0.5f, 0f);
+            rt.pivot = new Vector2(0.5f, 0f);
             rt.offsetMin = Vector2.zero;
             rt.offsetMax = new Vector2(0f, BottomBarH);
 
-            var img   = go.AddComponent<Image>();
+            var img = go.AddComponent<Image>();
             img.color = new Color(0.12f, 0.12f, 0.16f, 1f);
 
             // Yenile — sol yarı
             var refGO = NewUIObj("RefreshBtn", go.transform);
             var refRT = refGO.GetComponent<RectTransform>();
-            refRT.anchorMin = new Vector2(0f,   0.5f);
+            refRT.anchorMin = new Vector2(0f, 0.5f);
             refRT.anchorMax = new Vector2(0.5f, 0.5f);
-            refRT.pivot     = new Vector2(0f, 0.5f);
+            refRT.pivot = new Vector2(0f, 0.5f);
             refRT.offsetMin = new Vector2(12f, -BtnH * 0.5f);
-            refRT.offsetMax = new Vector2(-6f,  BtnH * 0.5f);
-            var refImg   = refGO.AddComponent<Image>();
+            refRT.offsetMax = new Vector2(-6f, BtnH * 0.5f);
+            var refImg = refGO.AddComponent<Image>();
             refImg.color = new Color(0.30f, 0.30f, 0.40f, 1f);
-            _refreshBtn  = refGO.AddComponent<Button>();
+            _refreshBtn = refGO.AddComponent<Button>();
 
             var refLabelGO = NewUIObj("Label", refGO.transform);
             var refLabelRT = refLabelGO.GetComponent<RectTransform>();
@@ -390,11 +436,11 @@ namespace Freeline
             refLabelRT.anchorMax = Vector2.one;
             refLabelRT.offsetMin = Vector2.zero;
             refLabelRT.offsetMax = Vector2.zero;
-            _refreshBtnLabel           = refLabelGO.AddComponent<TextMeshProUGUI>();
-            _refreshBtnLabel.text      = "Yenile x3";
-            _refreshBtnLabel.fontSize  = CardInfoFS;
+            _refreshBtnLabel = refLabelGO.AddComponent<TextMeshProUGUI>();
+            _refreshBtnLabel.text = "Yenile x3";
+            _refreshBtnLabel.fontSize = CardInfoFS;
             _refreshBtnLabel.fontStyle = FontStyles.Bold;
-            _refreshBtnLabel.color     = Color.white;
+            _refreshBtnLabel.color = Color.white;
             _refreshBtnLabel.alignment = TextAlignmentOptions.Center;
             _refreshBtnLabel.raycastTarget = false;
 
@@ -402,13 +448,13 @@ namespace Freeline
             var backGO = NewUIObj("BackBtn", go.transform);
             var backRT = backGO.GetComponent<RectTransform>();
             backRT.anchorMin = new Vector2(0.5f, 0.5f);
-            backRT.anchorMax = new Vector2(1f,   0.5f);
-            backRT.pivot     = new Vector2(0f, 0.5f);
-            backRT.offsetMin = new Vector2(6f,   -BtnH * 0.5f);
-            backRT.offsetMax = new Vector2(-12f,  BtnH * 0.5f);
-            var backImg   = backGO.AddComponent<Image>();
+            backRT.anchorMax = new Vector2(1f, 0.5f);
+            backRT.pivot = new Vector2(0f, 0.5f);
+            backRT.offsetMin = new Vector2(6f, -BtnH * 0.5f);
+            backRT.offsetMax = new Vector2(-12f, BtnH * 0.5f);
+            var backImg = backGO.AddComponent<Image>();
             backImg.color = new Color(0.35f, 0.20f, 0.20f, 1f);
-            _backBtn      = backGO.AddComponent<Button>();
+            _backBtn = backGO.AddComponent<Button>();
 
             var backLabelGO = NewUIObj("Label", backGO.transform);
             var backLabelRT = backLabelGO.GetComponent<RectTransform>();
@@ -417,11 +463,11 @@ namespace Freeline
             backLabelRT.offsetMin = Vector2.zero;
             backLabelRT.offsetMax = Vector2.zero;
             var backTMP = backLabelGO.AddComponent<TextMeshProUGUI>();
-            backTMP.text          = "← Geri";
-            backTMP.fontSize      = CardInfoFS;
-            backTMP.fontStyle     = FontStyles.Bold;
-            backTMP.color         = Color.white;
-            backTMP.alignment     = TextAlignmentOptions.Center;
+            backTMP.text = "← Geri";
+            backTMP.fontSize = CardInfoFS;
+            backTMP.fontStyle = FontStyles.Bold;
+            backTMP.color = Color.white;
+            backTMP.alignment = TextAlignmentOptions.Center;
             backTMP.raycastTarget = false;
         }
 

@@ -27,16 +27,22 @@ namespace Freeline
         [Header("Wiring")]
         [SerializeField] private ExhibitionManager exhibitionManager;
 
-        private static readonly Color PanelBg   = new Color(0.08f, 0.08f, 0.12f, 0.96f);
-        private static readonly Color BackBtn    = new Color(0.18f, 0.18f, 0.30f, 1.00f);
-        private static readonly Color RowEven    = new Color(0.14f, 0.14f, 0.20f, 1.00f);
-        private static readonly Color RowOdd     = new Color(0.10f, 0.10f, 0.16f, 1.00f);
-        private static readonly Color StatColor  = new Color(0.85f, 0.85f, 0.95f, 1.00f);
+        private static readonly Color PanelBg = new Color(0.08f, 0.08f, 0.12f, 0.96f);
+        private static readonly Color BackBtn = new Color(0.18f, 0.18f, 0.30f, 1.00f);
+        private static readonly Color RowEven = new Color(0.14f, 0.14f, 0.20f, 1.00f);
+        private static readonly Color RowOdd = new Color(0.10f, 0.10f, 0.16f, 1.00f);
+        private static readonly Color StatColor = new Color(0.85f, 0.85f, 0.95f, 1.00f);
 
         void Awake()
         {
             backButton.onClick.AddListener(Hide);
+
+            // Paneli gizle
             if (panel != null) panel.SetActive(false);
+
+            // Blocker'ı da ayrı bir obje ise onu da gizle
+            Transform blocker = transform.Find("Blocker");
+            if (blocker != null) blocker.gameObject.SetActive(false);
         }
 
         void Start()
@@ -58,14 +64,23 @@ namespace Freeline
         private void RefreshInfo()
         {
             int currentDay = GameManager.Instance.TimeManager.CurrentDay;
-            // Bir sonraki 7'nin katına kalan gün; bu panel sergi günü dışında gösterilir
             int daysUntilNext = 7 - (currentDay % 7);
+
+            // Eğer bugün 7. günse ve sergi açılmadıysa 0 gün yazsın
+            if (daysUntilNext == 7) daysUntilNext = 0;
+
             nextExhibitionText.text = $"Sonraki Sergiye: {daysUntilNext} gün";
 
-            var stock      = exhibitionManager.GetStock();
+            var stock = exhibitionManager.GetStock();
             int totalItems = 0;
             foreach (var item in stock) totalItems += item.quantity;
-            stockCountText.text = $"Stok: {totalItems} ürün";
+
+            // İleride yetenek ağacından çekeceğimiz statlar için hazırlık
+            int popBonus = 0; // Serginin popülerlik (müşteri çekme) bonusu
+            int bargainBonus = 0; // Pazarlık şansı bonusu
+
+            stockCountText.text = $"Stok: {totalItems} ürün\n" +
+                                  $"<size=70%><color=#A0A0A0>Popülerlik: +%{popBonus} | Pazarlık Gücü: +%{bargainBonus}</color></size>";
 
             RebuildStockList(stock);
         }
@@ -79,37 +94,43 @@ namespace Freeline
             for (int i = 0; i < stock.Count; i++)
             {
                 var item = stock[i];
-                var row  = new GameObject($"Row_{i}", typeof(RectTransform));
-                row.transform.SetParent(stockListContent, false);
 
+                // 1. Satırın kendisini oluştur (Sadece Arka Plan)
+                var row = new GameObject($"Row_{i}", typeof(RectTransform));
+                row.transform.SetParent(stockListContent, false);
                 var rowImg = row.AddComponent<Image>();
                 rowImg.color = (i % 2 == 0) ? RowEven : RowOdd;
+                row.GetComponent<RectTransform>().sizeDelta = new Vector2(0f, 70f);
 
-                var rowRT = row.GetComponent<RectTransform>();
-                rowRT.sizeDelta = new Vector2(0f, 70f); // yükseklik LayoutGroup tarafından kullanılır
+                // 2. Metni barındıracak ayrı bir çocuk obje oluştur
+                var textObj = new GameObject("Text", typeof(RectTransform));
+                textObj.transform.SetParent(row.transform, false);
 
-                var tmp = row.AddComponent<TextMeshProUGUI>();
-                tmp.text          = $"{item.productName}  x{item.quantity}  —  {item.basePrice} coin";
-                tmp.fontSize      = 30f;
-                tmp.color         = StatColor;
-                tmp.alignment     = TextAlignmentOptions.MidlineLeft;
-                tmp.raycastTarget = false;
-                tmp.margin        = new Vector4(20f, 0f, 20f, 0f);
+                // Metin objesini satırı kaplayacak şekilde ayarla
+                var textRT = textObj.GetComponent<RectTransform>();
+                textRT.anchorMin = Vector2.zero;
+                textRT.anchorMax = Vector2.one;
+                textRT.offsetMin = new Vector2(20f, 0f);
+                textRT.offsetMax = new Vector2(-20f, 0f);
+
+                var tmp = textObj.AddComponent<TextMeshProUGUI>(); // Burası artık hata vermeyecek
+                tmp.text = $"{item.productName}  x{item.quantity}  —  {item.basePrice} coin";
+                tmp.fontSize = 30f;
+                tmp.color = StatColor;
+                tmp.alignment = TextAlignmentOptions.MidlineLeft;
             }
 
-            // Stok boşsa bilgi satırı göster
+            // Stok boşsa bilgi satırı (Burada da aynı hatayı almamak için aynı yöntemi kullan)
             if (stock.Count == 0)
             {
-                var empty = new GameObject("EmptyRow", typeof(RectTransform));
-                empty.transform.SetParent(stockListContent, false);
-                var tmp = empty.AddComponent<TextMeshProUGUI>();
-                tmp.text          = "Henüz stok yok.";
-                tmp.fontSize      = 30f;
-                tmp.color         = new Color(0.5f, 0.5f, 0.6f, 1f);
-                tmp.alignment     = TextAlignmentOptions.Center;
-                tmp.raycastTarget = false;
-                var rt = empty.GetComponent<RectTransform>();
-                rt.sizeDelta = new Vector2(0f, 70f);
+                var emptyRow = new GameObject("EmptyRow", typeof(RectTransform));
+                emptyRow.transform.SetParent(stockListContent, false);
+
+                var tmp = emptyRow.AddComponent<TextMeshProUGUI>(); // Buraya Image eklemedik, o yüzden Image hatası vermez
+                tmp.text = "Henüz stok yok.";
+                tmp.fontSize = 30f;
+                tmp.color = new Color(0.5f, 0.5f, 0.6f, 1f);
+                tmp.alignment = TextAlignmentOptions.Center;
             }
         }
 
@@ -150,20 +171,20 @@ namespace Freeline
             var panelGO = NewUIObject("Panel", transform);
             panelGO.AddComponent<Image>().color = PanelBg;
             var panelRT = panelGO.GetComponent<RectTransform>();
-            panelRT.anchorMin        = new Vector2(0.5f, 0.5f);
-            panelRT.anchorMax        = new Vector2(0.5f, 0.5f);
-            panelRT.pivot            = new Vector2(0.5f, 0.5f);
-            panelRT.sizeDelta        = new Vector2(900f, 1000f);
+            panelRT.anchorMin = new Vector2(0.5f, 0.5f);
+            panelRT.anchorMax = new Vector2(0.5f, 0.5f);
+            panelRT.pivot = new Vector2(0.5f, 0.5f);
+            panelRT.sizeDelta = new Vector2(900f, 1000f);
             panelRT.anchoredPosition = Vector2.zero;
 
             // Kapat düğmesi — sağ üst köşe
             var closeBtn = BuildIconButton("CloseButton", panelGO.transform, "X",
                 new Color(0.45f, 0.12f, 0.12f, 1f));
             var closeBtnRT = closeBtn.GetComponent<RectTransform>();
-            closeBtnRT.anchorMin        = new Vector2(1f, 1f);
-            closeBtnRT.anchorMax        = new Vector2(1f, 1f);
-            closeBtnRT.pivot            = new Vector2(1f, 1f);
-            closeBtnRT.sizeDelta        = new Vector2(90f, 90f);
+            closeBtnRT.anchorMin = new Vector2(1f, 1f);
+            closeBtnRT.anchorMax = new Vector2(1f, 1f);
+            closeBtnRT.pivot = new Vector2(1f, 1f);
+            closeBtnRT.sizeDelta = new Vector2(90f, 90f);
             closeBtnRT.anchoredPosition = new Vector2(-16f, -16f);
             // Kapat = geri; ayrı bir alan saklanmıyor
             closeBtn.onClick.AddListener(Hide);
@@ -196,14 +217,14 @@ namespace Freeline
             var scrollRT = scrollGO.GetComponent<RectTransform>();
             scrollRT.anchorMin = new Vector2(0f, 1f);
             scrollRT.anchorMax = new Vector2(1f, 1f);
-            scrollRT.pivot     = new Vector2(0.5f, 1f);
-            scrollRT.offsetMin = new Vector2(10f,  -860f);
+            scrollRT.pivot = new Vector2(0.5f, 1f);
+            scrollRT.offsetMin = new Vector2(10f, -860f);
             scrollRT.offsetMax = new Vector2(-10f, -300f);
 
             var scroll = scrollGO.AddComponent<ScrollRect>();
-            scroll.horizontal         = false;
-            scroll.vertical           = true;
-            scroll.scrollSensitivity  = 30f;
+            scroll.horizontal = false;
+            scroll.vertical = true;
+            scroll.scrollSensitivity = 30f;
 
             // Viewport
             var viewportGO = NewUIObject("Viewport", scrollGO.transform);
@@ -217,20 +238,20 @@ namespace Freeline
             var contentRT = contentGO.GetComponent<RectTransform>();
             contentRT.anchorMin = new Vector2(0f, 1f);
             contentRT.anchorMax = new Vector2(1f, 1f);
-            contentRT.pivot     = new Vector2(0.5f, 1f);
+            contentRT.pivot = new Vector2(0.5f, 1f);
             contentRT.offsetMin = Vector2.zero;
             contentRT.offsetMax = Vector2.zero;
             contentRT.sizeDelta = new Vector2(0f, 0f);
 
             var vlg = contentGO.AddComponent<VerticalLayoutGroup>();
-            vlg.spacing                = 4f;
-            vlg.childForceExpandWidth  = true;
+            vlg.spacing = 4f;
+            vlg.childForceExpandWidth = true;
             vlg.childForceExpandHeight = false;
-            vlg.childControlWidth      = true;
-            vlg.childControlHeight     = false;
+            vlg.childControlWidth = true;
+            vlg.childControlHeight = false;
 
             var csf = contentGO.AddComponent<ContentSizeFitter>();
-            csf.verticalFit   = ContentSizeFitter.FitMode.PreferredSize;
+            csf.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
             csf.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
 
             scroll.content = contentRT;
@@ -240,11 +261,11 @@ namespace Freeline
                 "GERİ", BackBtn, 700f, 80f, 880f, 36f);
 
             // SerializeField referansları
-            panel              = panelGO;
+            panel = panelGO;
             nextExhibitionText = nextTMP;
-            stockCountText     = stockTMP;
-            stockListContent   = contentRT;
-            backButton         = backBtn;
+            stockCountText = stockTMP;
+            stockListContent = contentRT;
+            backButton = backBtn;
 
             panelGO.SetActive(false);
 
@@ -256,24 +277,24 @@ namespace Freeline
             string label, Color bg, float width, float height,
             float topOffset, float fontSize)
         {
-            var go  = NewUIObject(name, parent);
+            var go = NewUIObject(name, parent);
             var img = go.AddComponent<Image>();
             img.color = bg;
             var btn = go.AddComponent<Button>();
             btn.targetGraphic = img;
 
-            var colors              = btn.colors;
-            colors.normalColor      = Color.white;
+            var colors = btn.colors;
+            colors.normalColor = Color.white;
             colors.highlightedColor = new Color(1f, 1f, 1f, 0.85f);
-            colors.pressedColor     = new Color(0.75f, 0.75f, 0.75f, 1f);
-            colors.fadeDuration     = 0.05f;
-            btn.colors              = colors;
+            colors.pressedColor = new Color(0.75f, 0.75f, 0.75f, 1f);
+            colors.fadeDuration = 0.05f;
+            btn.colors = colors;
 
             var rt = go.GetComponent<RectTransform>();
-            rt.anchorMin        = new Vector2(0.5f, 1f);
-            rt.anchorMax        = new Vector2(0.5f, 1f);
-            rt.pivot            = new Vector2(0.5f, 1f);
-            rt.sizeDelta        = new Vector2(width, height);
+            rt.anchorMin = new Vector2(0.5f, 1f);
+            rt.anchorMax = new Vector2(0.5f, 1f);
+            rt.pivot = new Vector2(0.5f, 1f);
+            rt.sizeDelta = new Vector2(width, height);
             rt.anchoredPosition = new Vector2(0f, -topOffset);
 
             var tmp = NewTMP("Label", go.transform, label, fontSize, TextAlignmentOptions.Center);
@@ -285,7 +306,7 @@ namespace Freeline
         private static Button BuildIconButton(string name, Transform parent,
             string label, Color bg)
         {
-            var go  = NewUIObject(name, parent);
+            var go = NewUIObject(name, parent);
             var img = go.AddComponent<Image>();
             img.color = bg;
             var btn = go.AddComponent<Button>();
@@ -303,7 +324,7 @@ namespace Freeline
             var rt = go.GetComponent<RectTransform>();
             rt.anchorMin = new Vector2(0.04f, 1f);
             rt.anchorMax = new Vector2(0.96f, 1f);
-            rt.pivot     = new Vector2(0.5f,  1f);
+            rt.pivot = new Vector2(0.5f, 1f);
             rt.offsetMin = new Vector2(0f, -(topOffset + 2f));
             rt.offsetMax = new Vector2(0f, -topOffset);
         }
@@ -318,12 +339,12 @@ namespace Freeline
         private static TextMeshProUGUI NewTMP(string name, Transform parent,
             string text, float fontSize, TextAlignmentOptions align)
         {
-            var go  = NewUIObject(name, parent);
+            var go = NewUIObject(name, parent);
             var tmp = go.AddComponent<TextMeshProUGUI>();
-            tmp.text          = text;
-            tmp.fontSize      = fontSize;
-            tmp.color         = Color.white;
-            tmp.alignment     = align;
+            tmp.text = text;
+            tmp.fontSize = fontSize;
+            tmp.color = Color.white;
+            tmp.alignment = align;
             tmp.raycastTarget = false;
             return tmp;
         }
@@ -341,8 +362,8 @@ namespace Freeline
         {
             rt.anchorMin = new Vector2(xMin, 1f);
             rt.anchorMax = new Vector2(xMax, 1f);
-            rt.pivot     = new Vector2(0.5f, 1f);
-            rt.offsetMin = new Vector2( padH, -topOffset - height);
+            rt.pivot = new Vector2(0.5f, 1f);
+            rt.offsetMin = new Vector2(padH, -topOffset - height);
             rt.offsetMax = new Vector2(-padH, -topOffset);
         }
 #endif

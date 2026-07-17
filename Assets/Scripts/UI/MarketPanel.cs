@@ -40,21 +40,19 @@ namespace Freeline
         private const float BuyFontSize   = 22f;
         private const float BackFontSize  = 28f;
 
-        // ---- Hazır ürün listesi ---------------------------------------------
+        // ---- Hazır ürün listesi (Dekorasyonlar çıkarıldı) -------------------
         private static readonly MarketItem[] AllItems =
         {
-            new MarketItem { itemName="Kahve",              description="Hız buff + enerji",   price=30,  category=MarketCategory.Yemek,      iconColor=new Color(0.6f,0.4f,0.2f) },
-            new MarketItem { itemName="Hamburger",          description="Yüksek enerji",       price=50,  category=MarketCategory.Yemek,      iconColor=new Color(0.8f,0.5f,0.2f) },
+            new MarketItem { itemName="Kahve",              description="Hız buff + enerji",    price=30,  category=MarketCategory.Yemek,      iconColor=new Color(0.6f,0.4f,0.2f) },
+            new MarketItem { itemName="Hamburger",          description="Yüksek enerji",        price=50,  category=MarketCategory.Yemek,      iconColor=new Color(0.8f,0.5f,0.2f) },
             new MarketItem { itemName="Tatli",              description="Enerji + viral sans",  price=40,  category=MarketCategory.Yemek,      iconColor=new Color(0.9f,0.6f,0.7f) },
             new MarketItem { itemName="Enerji Icecegi",     description="Güçlü buff",           price=60,  category=MarketCategory.Yemek,      iconColor=new Color(0.3f,0.7f,0.9f) },
-            new MarketItem { itemName="Sari Lamba",         description="Görev buff",           price=200, category=MarketCategory.Dekorasyon, iconColor=new Color(1f,0.9f,0.3f)   },
-            new MarketItem { itemName="Saksi",              description="Moral +",              price=150, category=MarketCategory.Dekorasyon, iconColor=new Color(0.4f,0.7f,0.3f) },
-            new MarketItem { itemName="Hali",               description="Dekoratif",            price=100, category=MarketCategory.Dekorasyon, iconColor=new Color(0.7f,0.5f,0.8f) },
             new MarketItem { itemName="Tablet Upgrade",     description="Görev ücreti +",       price=500, category=MarketCategory.Upgrade,    iconColor=new Color(0.4f,0.6f,0.9f) },
             new MarketItem { itemName="Ergonomik Sandalye", description="Enerji tüketimi -",    price=350, category=MarketCategory.Upgrade,    iconColor=new Color(0.5f,0.5f,0.6f) },
         };
 
         // ---- SerializeField refs --------------------------------------------
+        [Header("UI Elements")]
         [SerializeField] private TextMeshProUGUI coinDisplayText;
         [SerializeField] private Transform       contentRoot;
         [SerializeField] private Button          tabYemek;
@@ -62,9 +60,13 @@ namespace Freeline
         [SerializeField] private Button          tabUpgrade;
         [SerializeField] private Button          backBtn;
 
+        [Header("Databases & Managers")]
+        [SerializeField] private DecorationCatalog decorationCatalog;
+        [SerializeField] private RoomDecorationManager roomDecorationManager;
+
         // ---- Runtime state --------------------------------------------------
         private MarketCategory _activeCategory = MarketCategory.Yemek;
-        private readonly List<(Button btn, MarketItem item)> _cardButtons = new();
+        private readonly List<(Button btn, int price)> _cardButtons = new();
 
         // =========================================================================
         // Runtime
@@ -104,7 +106,6 @@ namespace Freeline
             _activeCategory = cat;
             if (contentRoot == null) return;
 
-            // Mevcut kartları devre dışı bırak ve yok et
             for (int i = contentRoot.childCount - 1; i >= 0; i--)
             {
                 var child = contentRoot.GetChild(i).gameObject;
@@ -114,10 +115,28 @@ namespace Freeline
             _cardButtons.Clear();
 
             int coins = CurrentCoins();
-            foreach (var item in AllItems)
+
+            if (cat == MarketCategory.Dekorasyon)
             {
-                if (item.category == cat)
-                    BuildItemCard(item, coins);
+                if (decorationCatalog != null && decorationCatalog.allItems != null)
+                {
+                    foreach (var decItem in decorationCatalog.allItems)
+                    {
+                        BuildDecorationCard(decItem, coins);
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Decoration Catalog atanmamış veya boş!");
+                }
+            }
+            else 
+            {
+                foreach (var item in AllItems)
+                {
+                    if (item.category == cat)
+                        BuildItemCard(item, coins);
+                }
             }
         }
 
@@ -138,80 +157,99 @@ namespace Freeline
 
         private void RefreshBuyButtons(int coins)
         {
-            foreach (var (btn, item) in _cardButtons)
+            foreach (var (btn, price) in _cardButtons)
             {
                 if (btn != null)
-                    btn.interactable = coins >= item.price;
+                    btn.interactable = coins >= price;
             }
         }
 
         private int CurrentCoins() =>
             Mathf.FloorToInt(GameManager.Instance?.SaveManager?.CurrentData?.currentCoins ?? 0f);
 
-        // ---- Kart oluşturma (runtime) ----------------------------------------
+        // ---- Kart oluşturma (STANDART EŞYALAR) --------------------------------
 
         private void BuildItemCard(MarketItem item, int currentCoins)
         {
-            bool canAfford = currentCoins >= item.price;
+            var (buyBtn, buyTMP, buyImg) = CreateCardBase(item.itemName, item.description, item.price, currentCoins, item.iconColor, null);
+            
+            var capturedItem = item;
+            buyBtn.onClick.AddListener(() => OnBuyClicked(capturedItem.price, buyBtn, buyTMP, buyImg, () => {
+                Debug.Log($"{capturedItem.itemName} kullanıldı!");
+            }));
 
-            // Kart kapsayıcısı
-            var cardGO = NewUIObj("ItemCard_" + item.itemName, contentRoot);
+            _cardButtons.Add((buyBtn, item.price));
+        }
+
+        // ---- Kart oluşturma (DEKORASYON EŞYALARI) -----------------------------
+
+        private void BuildDecorationCard(DecorationItemData decItem, int currentCoins)
+        {
+            // ScriptableObject içerisinde description olmadığı için otomatik bir metin üretiyoruz
+            string customDescription = "";
+            if (decItem.bonusType != PassiveBonusType.None)
+                customDescription += $"Etki: {decItem.bonusType}\n";
+            customDescription += $"Kargo: {decItem.deliveryDays} Gün";
+
+            var (buyBtn, buyTMP, buyImg) = CreateCardBase(decItem.displayName, customDescription, decItem.price, currentCoins, Color.white, decItem.shopIcon);
+            
+            var capturedItem = decItem;
+            buyBtn.onClick.AddListener(() => OnBuyClicked(capturedItem.price, buyBtn, buyTMP, buyImg, () => {
+                if (roomDecorationManager != null)
+                {
+                    roomDecorationManager.EquipItem(capturedItem);
+                    Debug.Log($"{capturedItem.displayName} odaya yerleştirildi!");
+                }
+            }));
+
+            _cardButtons.Add((buyBtn, decItem.price));
+        }
+
+        // ---- Ortak Kart Tasarım Metodu ---------------------------------------
+
+        private (Button, TextMeshProUGUI, Image) CreateCardBase(string name, string desc, int price, int currentCoins, Color color, Sprite sprite)
+        {
+            bool canAfford = currentCoins >= price;
+
+            var cardGO = NewUIObj("ItemCard_" + name, contentRoot);
             var cardRT = cardGO.GetComponent<RectTransform>();
             cardRT.sizeDelta = new Vector2(0f, CardH);
+            cardGO.AddComponent<Image>().color = new Color(0.14f, 0.14f, 0.18f, 1f);
 
-            var cardImg   = cardGO.AddComponent<Image>();
-            cardImg.color = new Color(0.14f, 0.14f, 0.18f, 1f);
-
-            // IconBox — sol
             var iconGO = NewUIObj("IconBox", cardGO.transform);
             var iconRT = iconGO.GetComponent<RectTransform>();
             iconRT.anchorMin = new Vector2(0f, 0f);
             iconRT.anchorMax = new Vector2(0f, 1f);
-            iconRT.offsetMin = new Vector2(8f,         8f);
+            iconRT.offsetMin = new Vector2(8f, 8f);
             iconRT.offsetMax = new Vector2(IconBoxW + 8f, -8f);
-            iconGO.AddComponent<Image>().color = item.iconColor;
+            var img = iconGO.AddComponent<Image>();
+            
+            if (sprite != null) img.sprite = sprite;
+            else img.color = color;
 
-            // InfoBlock — ikon ile BuyBtn arasını doldurur
             var infoGO = NewUIObj("InfoBlock", cardGO.transform);
             var infoRT = infoGO.GetComponent<RectTransform>();
             infoRT.anchorMin = new Vector2(0f, 0f);
             infoRT.anchorMax = new Vector2(1f, 1f);
-            infoRT.offsetMin = new Vector2(IconBoxW + 16f,    4f);
+            infoRT.offsetMin = new Vector2(IconBoxW + 16f, 4f);
             infoRT.offsetMax = new Vector2(-(BuyBtnW + 16f), -4f);
             infoGO.AddComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
 
-            // ItemNameText
-            var nameTMP = MakeInfoText("ItemNameText", infoGO.transform,
-                new Vector2(0f, 0.55f), new Vector2(1f, 1f),
-                item.itemName, NameFontSize, FontStyles.Bold, Color.white,
-                TextAlignmentOptions.MidlineLeft);
+            MakeInfoText("ItemNameText", infoGO.transform, new Vector2(0f, 0.55f), new Vector2(1f, 1f), name, NameFontSize, FontStyles.Bold, Color.white, TextAlignmentOptions.MidlineLeft);
+            MakeInfoText("DescText", infoGO.transform, new Vector2(0f, 0.22f), new Vector2(1f, 0.55f), desc, DescFontSize, FontStyles.Normal, new Color(0.68f, 0.68f, 0.68f, 1f), TextAlignmentOptions.MidlineLeft);
+            MakeInfoText("PriceText", infoGO.transform, new Vector2(0f, 0f), new Vector2(1f, 0.22f), $"{price} coin", PriceFontSize, FontStyles.Normal, new Color(1f, 0.85f, 0.2f, 1f), TextAlignmentOptions.MidlineLeft);
 
-            // DescText
-            MakeInfoText("DescText", infoGO.transform,
-                new Vector2(0f, 0.22f), new Vector2(1f, 0.55f),
-                item.description, DescFontSize, FontStyles.Normal,
-                new Color(0.68f, 0.68f, 0.68f, 1f), TextAlignmentOptions.MidlineLeft);
-
-            // PriceText
-            MakeInfoText("PriceText", infoGO.transform,
-                new Vector2(0f, 0f), new Vector2(1f, 0.22f),
-                $"{item.price} coin", PriceFontSize, FontStyles.Normal,
-                new Color(1f, 0.85f, 0.2f, 1f), TextAlignmentOptions.MidlineLeft);
-
-            // BuyBtn — sağa yapışık
             var buyGO = NewUIObj("BuyBtn", cardGO.transform);
             var buyRT = buyGO.GetComponent<RectTransform>();
             buyRT.anchorMin = new Vector2(1f, 0f);
             buyRT.anchorMax = new Vector2(1f, 1f);
-            buyRT.offsetMin = new Vector2(-(BuyBtnW + 8f),  8f);
-            buyRT.offsetMax = new Vector2(-8f,             -8f);
+            buyRT.offsetMin = new Vector2(-(BuyBtnW + 8f), 8f);
+            buyRT.offsetMax = new Vector2(-8f, -8f);
 
-            var buyImg   = buyGO.AddComponent<Image>();
-            buyImg.color = canAfford
-                ? new Color(0.25f, 0.65f, 0.30f, 1f)
-                : new Color(0.30f, 0.30f, 0.30f, 1f);
+            var buyImg = buyGO.AddComponent<Image>();
+            buyImg.color = canAfford ? new Color(0.25f, 0.65f, 0.30f, 1f) : new Color(0.30f, 0.30f, 0.30f, 1f);
 
-            var buyBtn       = buyGO.AddComponent<Button>();
+            var buyBtn = buyGO.AddComponent<Button>();
             buyBtn.interactable = canAfford;
 
             var buyLabelGO = NewUIObj("Label", buyGO.transform);
@@ -222,26 +260,17 @@ namespace Freeline
             buyLabelRT.offsetMax = Vector2.zero;
 
             var buyTMP = buyLabelGO.AddComponent<TextMeshProUGUI>();
-            buyTMP.text          = "Satin Al";
-            buyTMP.fontSize      = BuyFontSize;
-            buyTMP.fontStyle     = FontStyles.Bold;
-            buyTMP.color         = Color.white;
-            buyTMP.alignment     = TextAlignmentOptions.Center;
+            buyTMP.text = "Satin Al";
+            buyTMP.fontSize = BuyFontSize;
+            buyTMP.fontStyle = FontStyles.Bold;
+            buyTMP.color = Color.white;
+            buyTMP.alignment = TextAlignmentOptions.Center;
             buyTMP.raycastTarget = false;
 
-            var capturedItem   = item;
-            var capturedTMP    = buyTMP;
-            var capturedImg    = buyImg;
-            buyBtn.onClick.AddListener(() => OnBuyClicked(capturedItem, buyBtn, capturedTMP, capturedImg));
-
-            _cardButtons.Add((buyBtn, item));
+            return (buyBtn, buyTMP, buyImg);
         }
 
-        // TMP düğümü kısayolu: infoBlock içindeki satırlar için
-        private static TextMeshProUGUI MakeInfoText(string name, Transform parent,
-            Vector2 anchorMin, Vector2 anchorMax,
-            string text, float fontSize, FontStyles style, Color color,
-            TextAlignmentOptions align)
+        private static TextMeshProUGUI MakeInfoText(string name, Transform parent, Vector2 anchorMin, Vector2 anchorMax, string text, float fontSize, FontStyles style, Color color, TextAlignmentOptions align)
         {
             var go = NewUIObj(name, parent);
             var rt = go.GetComponent<RectTransform>();
@@ -251,23 +280,26 @@ namespace Freeline
             rt.offsetMax = Vector2.zero;
 
             var tmp = go.AddComponent<TextMeshProUGUI>();
-            tmp.text          = text;
-            tmp.fontSize      = fontSize;
-            tmp.fontStyle     = style;
-            tmp.color         = color;
-            tmp.alignment     = align;
+            tmp.text = text;
+            tmp.fontSize = fontSize;
+            tmp.fontStyle = style;
+            tmp.color = color;
+            tmp.alignment = align;
             tmp.raycastTarget = false;
             return tmp;
         }
 
-        private void OnBuyClicked(MarketItem item, Button btn, TextMeshProUGUI label, Image btnImg)
+        private void OnBuyClicked(int price, Button btn, TextMeshProUGUI label, Image btnImg, System.Action onSuccessAction)
         {
             var sm = GameManager.Instance?.SaveManager;
             if (sm == null) return;
-            if (Mathf.FloorToInt(sm.CurrentData.currentCoins) < item.price) return;
+            if (Mathf.FloorToInt(sm.CurrentData.currentCoins) < price) return;
 
-            sm.AddCoins(-item.price);
-            StartCoroutine(PurchaseFeedback(btn, label, btnImg, item.price));
+            sm.AddCoins(-price);
+            
+            onSuccessAction?.Invoke();
+
+            StartCoroutine(PurchaseFeedback(btn, label, btnImg, price));
         }
 
         private IEnumerator PurchaseFeedback(Button btn, TextMeshProUGUI label, Image btnImg, int itemPrice)
@@ -281,7 +313,6 @@ namespace Freeline
 
             yield return new WaitForSeconds(1.2f);
 
-            // Hâlâ sahne aktifse devam et
             if (btn == null) yield break;
 
             label.text   = origText;
@@ -289,17 +320,12 @@ namespace Freeline
             btn.interactable = CurrentCoins() >= itemPrice;
         }
 
-        // NewUIObj runtime'da da kullanıldığı için #if dışında
         private static GameObject NewUIObj(string name, Transform parent)
         {
             var go = new GameObject(name, typeof(RectTransform));
             if (parent != null) go.transform.SetParent(parent, false);
             return go;
         }
-
-        // =========================================================================
-        // EDITOR — hiyerarşi kurucusu
-        // =========================================================================
 
 #if UNITY_EDITOR
 
@@ -329,8 +355,6 @@ namespace Freeline
             Debug.Log("[MarketPanel] Hierarchy built.");
         }
 
-        // ---- Header -------------------------------------------------------
-
         private void BuildHeader()
         {
             var go = NewUIObj("Header", transform);
@@ -344,7 +368,6 @@ namespace Freeline
             var img   = go.AddComponent<Image>();
             img.color = new Color(0.96f, 0.76f, 0.80f, 1f);
 
-            // Başlık — sol
             var titleGO = NewUIObj("TitleText", go.transform);
             var titleRT = titleGO.GetComponent<RectTransform>();
             titleRT.anchorMin = new Vector2(0f,   0f);
@@ -360,7 +383,6 @@ namespace Freeline
             titleTMP.alignment     = TextAlignmentOptions.MidlineLeft;
             titleTMP.raycastTarget = false;
 
-            // Coin göstergesi — sağ
             var coinGO = NewUIObj("CoinDisplay", go.transform);
             var coinRT = coinGO.GetComponent<RectTransform>();
             coinRT.anchorMin = new Vector2(0.55f, 0f);
@@ -375,8 +397,6 @@ namespace Freeline
             coinDisplayText.alignment = TextAlignmentOptions.MidlineRight;
             coinDisplayText.raycastTarget = false;
         }
-
-        // ---- CategoryBar --------------------------------------------------
 
         private void BuildCategoryBar()
         {
@@ -396,8 +416,7 @@ namespace Freeline
             tabUpgrade    = BuildTabBtn("TabBtn_Upgrade",    go.transform, 2f/3f,   1f,    "Upgrade");
         }
 
-        private static Button BuildTabBtn(string objName, Transform parent,
-                                          float xMin, float xMax, string label)
+        private static Button BuildTabBtn(string objName, Transform parent, float xMin, float xMax, string label)
         {
             var go = NewUIObj(objName, parent);
             var rt = go.GetComponent<RectTransform>();
@@ -428,8 +447,6 @@ namespace Freeline
             return btn;
         }
 
-        // ---- ScrollView ---------------------------------------------------
-
         private void BuildScrollView()
         {
             var go = NewUIObj("ScrollView", transform);
@@ -439,7 +456,6 @@ namespace Freeline
             rt.offsetMin = new Vector2(0f,  BottomBarH);
             rt.offsetMax = new Vector2(0f, -(HeaderH + CategoryBarH));
 
-            // Mask için minimal opaklık > 0
             var maskImg   = go.AddComponent<Image>();
             maskImg.color = new Color(1f, 1f, 1f, 0.01f);
             go.AddComponent<Mask>().showMaskGraphic = false;
@@ -449,7 +465,6 @@ namespace Freeline
             scrollRect.vertical       = true;
             scrollRect.scrollSensitivity = 30f;
 
-            // Content
             var contentGO = NewUIObj("Content", go.transform);
             var contentRT = contentGO.GetComponent<RectTransform>();
             contentRT.anchorMin = new Vector2(0f, 1f);
@@ -472,8 +487,6 @@ namespace Freeline
             scrollRect.content = contentRT;
             contentRoot        = contentGO.transform;
         }
-
-        // ---- BottomBar ----------------------------------------------------
 
         private void BuildBottomBar()
         {
@@ -516,7 +529,6 @@ namespace Freeline
             tmp.alignment     = TextAlignmentOptions.Center;
             tmp.raycastTarget = false;
         }
-
 #endif
     }
 }

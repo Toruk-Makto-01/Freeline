@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98397dee47afcd04b94d472b824c9024, type: 3}
+  m_Name: Zemin 4
+  m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
+  itemId: zemin_4
+  displayName: Zemin 4
+  category: 0
+  roomSprite: {fileID: 6859960484194546850, guid: 1372fc6dd8343ec41a3b306287d21801, type: 3}
+  shopIcon: {fileID: 6859960484194546850, guid: 1372fc6dd8343ec41a3b306287d21801, type: 3}
+  price: 0
+  deliveryDays: 1
+  bonusType: 0
+  bonusValue: 0

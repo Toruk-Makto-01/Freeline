@@ -5,9 +5,10 @@ namespace Freeline
     [Serializable]
     public class WebtoonData
     {
-        public float followers              = 0f;
-        public int   totalChaptersPublished = 0;
-        public float daysSinceLastChapter   = 0f;
-        public float lifetimeEarnings       = 0f;
+        public float followers = 0f;
+        public int totalFollowers = 0;
+        public int totalChaptersPublished = 0;
+        public float daysSinceLastChapter = 0f;
+        public float lifetimeEarnings = 0f;
     }
 }

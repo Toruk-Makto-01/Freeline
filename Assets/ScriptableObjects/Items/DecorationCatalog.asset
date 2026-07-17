@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af766cb274ba8df45bb2d06b4d05852e, type: 3}
+  m_Name: DecorationCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationCatalog
+  allItems:
+  - {fileID: 11400000, guid: 8729ef45985611840bd3ad37ea77f388, type: 2}
+  - {fileID: 11400000, guid: e42027a359d5b3148949c4e73fa426b7, type: 2}
+  - {fileID: 11400000, guid: 476b0a386aeec994eb989407d2dfd2a2, type: 2}
+  - {fileID: 11400000, guid: 32ad3ec4f24d37f43a231d0b52b4c56c, type: 2}
+  - {fileID: 11400000, guid: 35a2058fb9b8c0e4793517ff6eaaa6c9, type: 2}
+  - {fileID: 11400000, guid: 2a7760a2c5b3b9e4da3eb1d2501f97e3, type: 2}
+  - {fileID: 11400000, guid: 75c6abd20829d1c4b9268b25caa3de32, type: 2}

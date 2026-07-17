@@ -40,52 +40,72 @@ namespace Freeline
         // Runtime
         // =========================================================================
 
-        void Awake()
+        void Start()
         {
             if (backBtn != null)
-                backBtn.onClick.AddListener(Close);
+                backBtn.onClick.AddListener(() => gameObject.SetActive(false));
 
+            // "Çiz" butonuna basılı tutma (PointerDown) ve bırakma (PointerUp) olaylarını bağlıyoruz
             if (actionBtn != null)
             {
-                var trigger = actionBtn.gameObject.GetComponent<EventTrigger>()
-                              ?? actionBtn.gameObject.AddComponent<EventTrigger>();
+                EventTrigger trigger = actionBtn.gameObject.GetComponent<EventTrigger>() ?? actionBtn.gameObject.AddComponent<EventTrigger>();
 
-                var down = new EventTrigger.Entry { eventID = EventTriggerType.PointerDown };
-                down.callback.AddListener(_ => _isHolding = true);
-                trigger.triggers.Add(down);
+                // Basılı tutmaya başlama
+                EventTrigger.Entry pointerDown = new EventTrigger.Entry { eventID = EventTriggerType.PointerDown };
+                pointerDown.callback.AddListener((data) => { _isHolding = true; });
+                trigger.triggers.Add(pointerDown);
 
-                var up = new EventTrigger.Entry { eventID = EventTriggerType.PointerUp };
-                up.callback.AddListener(_ => _isHolding = false);
-                trigger.triggers.Add(up);
+                // Basmayı bırakma
+                EventTrigger.Entry pointerUp = new EventTrigger.Entry { eventID = EventTriggerType.PointerUp };
+                pointerUp.callback.AddListener((data) => { _isHolding = false; });
+                trigger.triggers.Add(pointerUp);
             }
         }
 
         void Update()
         {
-            if (!_jobActive) return;
+            // Eğer aktif bir iş yoksa hiçbir şey yapma
+            if (!_jobActive || _activeJob == null) return;
 
-            _progress += (_isHolding ? FillSpeed : -DrainSpeed) * Time.deltaTime;
-            _progress  = Mathf.Clamp01(_progress);
+            // Butona basılı tutuluyorsa barı doldur
+            if (_isHolding)
+            {
+                _progress += FillSpeed * Time.deltaTime;
 
-            progressBar.rectTransform.anchorMax = new Vector2(_progress, 1f);
+                // İlerleme %100'e (1.0) ulaştı mı?
+                if (_progress >= 1f)
+                {
+                    CompleteJob();
+                }
+            }
+            else
+            {
+                // Buton bırakıldığında bar yavaşça geri düşsün (İsteğe bağlı minigame zorluğu)
+                if (_progress > 0f)
+                {
+                    _progress -= DrainSpeed * Time.deltaTime;
+                    _progress = Mathf.Max(0f, _progress);
+                }
+            }
 
-            if (_progress >= 1f)
-                CompleteJob();
+            // Arayüzdeki doluluk oranını güncelle
+            if (progressBar != null)
+            {
+                progressBar.fillAmount = _progress;
+            }
         }
 
-        public void Open(JobData job)
+        // Dışarıdan Zenitoon panelinin çağırdığı mevcut StartJob metodun burada kalmalı!
+        public void StartJob(JobData job)
         {
+            if (job == null) return;
             _activeJob = job;
-            _progress  = 0f;
-            _isHolding = false;
             _jobActive = true;
+            _progress = 0f;
+            if (jobTitleText != null) jobTitleText.text = job.jobTitle;
+            if (progressBar != null) progressBar.fillAmount = 0f;
 
-            gameObject.SetActive(true);
-
-            if (jobTitleText != null && job != null)
-                jobTitleText.text = job.jobTitle;
-            if (progressBar != null)
-                progressBar.rectTransform.anchorMax = new Vector2(0f, 1f);
+            Debug.Log($"[DrawingDesk] {job.jobTitle} çizim masasına yüklendi!");
         }
 
         public void Close()
@@ -100,8 +120,46 @@ namespace Freeline
         {
             _jobActive = false;
             _isHolding = false;
-            GameManager.Instance.JobManager.CompleteActiveJob();
-            Close();
+            _progress = 1f;
+            if (progressBar != null) progressBar.fillAmount = 1f;
+
+            if (GameManager.Instance != null)
+            {
+                // 1. Ekranı titretme veya başarılı sesi çalma efekti buraya gelebilir
+
+                // 2. COIN KAZANMA (SaveManager veya EconomyManager üzerinden)
+                if (GameManager.Instance.SaveManager != null)
+                {
+                    GameManager.Instance.SaveManager.CurrentData.currentCoins += _activeJob.basePayout;
+                }
+
+                // 3. ENERJİ AZALTMA (EnergyManager varsa onun üzerinden, yoksa direkt veriden)
+                // Projende EnergyManager kullandığını varsayarak:
+                if (GameManager.Instance.EnergyManager != null)
+                {
+                    GameManager.Instance.EnergyManager.ConsumeEnergy(_activeJob.energyCost);
+                }
+                else if (GameManager.Instance.SaveManager != null)
+                {
+                    GameManager.Instance.SaveManager.CurrentData.currentEnergy -= _activeJob.energyCost;
+                }
+
+                // 4. ZAMANI İLERLETME (TimeManager üzerinden)
+                if (GameManager.Instance.TimeManager != null)
+                {
+                    GameManager.Instance.TimeManager.AdvanceTime(_activeJob.durationHours);
+                }
+            }
+
+            Debug.Log($"<color=green>[DrawingDesk] İŞ BİTTİ! {_activeJob.basePayout} Coin Kazanıldı.</color>");
+
+            // Paneli Kapat ve HUD'u yenile
+            gameObject.SetActive(false);
+
+            if (HUDManager.Instance != null)
+            {
+                HUDManager.Instance.RefreshAllUI(); // Barları, saatleri ve parayı ekranda hemen güncelle!
+            }
         }
 
         // =========================================================================
