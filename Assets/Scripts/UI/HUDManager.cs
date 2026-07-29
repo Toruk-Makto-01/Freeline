@@ -20,7 +20,6 @@ namespace Freeline
         [Header("Alt Bar Butonları (Bottom NavBar)")]
         [SerializeField] private Button sleepButton;
         [SerializeField] private Button tabletButton;
-        [SerializeField] private Button exhibitionButton;
         [SerializeField] private Button homeButton;
 
         [Header("Üst Bar Elementleri (Top Panel)")]
@@ -40,8 +39,6 @@ namespace Freeline
         [SerializeField] private MarketPanel marketPanel;
         [SerializeField] private GameObject tabletPanel; // Senin tasarımdaki ana tablet/telefon (PhonePanel'in root GO'su olabilir)
         [SerializeField] private DrawingDeskPanel drawingDeskPanel; // Yeni eklediğimiz çizim masası arayüzü
-        [SerializeField] private ExhibitionNotificationPanel exhibitionNotificationPanel;
-        [SerializeField] private ExhibitionInfoPanel exhibitionInfoPanel;
 
         [Header("Dinamik Renk Ayarları (Grisel Görsel İçin)")]
         [SerializeField] private Color normalEnergyColor = new Color(0f, 0.8f, 0.4f, 1f); // Yeşil / Mavi buff rengi
@@ -61,7 +58,6 @@ namespace Freeline
             // Alt Bar Buton Olayları
             if (sleepButton != null) sleepButton.onClick.AddListener(OnSleepClicked);
             if (tabletButton != null) tabletButton.onClick.AddListener(OnTabletClicked);
-            if (exhibitionButton != null) exhibitionButton.onClick.AddListener(OnExhibitionClicked);
             if (homeButton != null) homeButton.onClick.AddListener(OnHomeClicked);
 
             // Üst Bar Buton Olayları
@@ -188,22 +184,6 @@ namespace Freeline
         {
             Debug.Log($"<color=yellow>[HUD] Tablet Butonuna Basildi! Panel Var Mi: {tabletPanel != null}</color>");
             if (tabletPanel != null) tabletPanel.SetActive(!tabletPanel.activeSelf);
-        }
-
-        private void OnExhibitionClicked()
-        {
-            Debug.Log("<color=magenta>[HUD] Sergi Butonuna Basildi!</color>");
-            var em = GameManager.Instance?.ExhibitionManager;
-            if (em == null) return;
-
-            if (em.IsExhibitionDay)
-            {
-                if (exhibitionNotificationPanel != null) exhibitionNotificationPanel.Show();
-            }
-            else
-            {
-                if (exhibitionInfoPanel != null) exhibitionInfoPanel.Show();
-            }
         }
 
         private void OnHomeClicked()

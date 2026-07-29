@@ -12,7 +12,6 @@
 //       - SaveManager       → no SO needed
 //       - JobManager        → assign JobConfig SO, populate All Jobs list with JobData assets
 //       - WebtoonManager    → assign WebtoonConfig SO
-//       - ExhibitionManager → assign ExhibitionConfig SO (if applicable)
 //       - BootstrapManager  → no references needed (uses GameManager.Instance)
 //     Note: DontDestroyOnLoad is set on this GameObject via GameManager.Awake —
 //           all components survive the transition to Apartment scene automatically.

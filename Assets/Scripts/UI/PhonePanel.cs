@@ -10,19 +10,19 @@ namespace Freeline
     public class PhonePanel : MonoBehaviour
     {
         // PhoneDevice
-        private const float DeviceW         = 600f;
-        private const float DeviceH         = 900f;
-        private const float DevicePadding   = 40f;
+        private const float DeviceW = 600f;
+        private const float DeviceH = 900f;
+        private const float DevicePadding = 40f;
 
         // PhoneStatusBar / PhoneInfoBar / PhoneExitBar
-        private const float StatusBarH      = 60f;
-        private const float InfoBarH        = 80f;
-        private const float ExitBarH        = 80f;
+        private const float StatusBarH = 60f;
+        private const float InfoBarH = 80f;
+        private const float ExitBarH = 80f;
 
         // AppGrid
-        private const float AppBtnSize      = 220f;
-        private const float AppBtnGap       = 20f;
-        private const float AppLabelSize    = 28f;
+        private const float AppBtnSize = 220f;
+        private const float AppBtnGap = 20f;
+        private const float AppLabelSize = 28f;
 
         // -------------------------------------------------------------------------
         // SerializeField refs
@@ -33,14 +33,14 @@ namespace Freeline
         [Header("App Buttons")]
         [SerializeField] private Button appBtnZenitoon;
         [SerializeField] private Button appBtnWebtoon;
-        [SerializeField] private Button appBtnPoster;
         [SerializeField] private Button appBtnMarket;
+        [SerializeField] private Button appBtnProduction;
 
         [Header("Panels")]
         [SerializeField] private ZenitoonPanel zenitoonPanel;
-        [SerializeField] private MarketPanel   marketPanel;
-        [SerializeField] private WebtoonPanel  webtoonPanel;
-        [SerializeField] private PosterPanel   posterPanel;
+        [SerializeField] private MarketPanel marketPanel;
+        [SerializeField] private WebtoonPanel webtoonPanel;
+        [SerializeField] private ProductionPanel productionPanel;
 
         [Header("Buttons")]
         [SerializeField] private Button exitBtn;
@@ -53,12 +53,12 @@ namespace Freeline
         {
             if (appBtnZenitoon != null && zenitoonPanel != null)
                 appBtnZenitoon.onClick.AddListener(zenitoonPanel.Open);
-            if (appBtnMarket   != null && marketPanel   != null)
+            if (appBtnMarket != null && marketPanel != null)
                 appBtnMarket.onClick.AddListener(marketPanel.Open);
-            if (appBtnWebtoon  != null && webtoonPanel  != null)
+            if (appBtnWebtoon != null && webtoonPanel != null)
                 appBtnWebtoon.onClick.AddListener(webtoonPanel.Open);
-            if (appBtnPoster   != null && posterPanel   != null)
-                appBtnPoster.onClick.AddListener(posterPanel.Open);
+            if (appBtnProduction != null && productionPanel != null)
+                appBtnProduction.onClick.AddListener(productionPanel.Open);
             if (exitBtn != null)
                 exitBtn.onClick.AddListener(Close);
         }
@@ -88,13 +88,13 @@ namespace Freeline
                 DestroyImmediate(transform.GetChild(0).gameObject);
 
             // Tam ekran yarı-saydam arka plan
-            var selfRT       = GetComponent<RectTransform>();
+            var selfRT = GetComponent<RectTransform>();
             selfRT.anchorMin = Vector2.zero;
             selfRT.anchorMax = Vector2.one;
             selfRT.offsetMin = Vector2.zero;
             selfRT.offsetMax = Vector2.zero;
 
-            var selfImg   = GetComponent<Image>() ?? gameObject.AddComponent<Image>();
+            var selfImg = GetComponent<Image>() ?? gameObject.AddComponent<Image>();
             selfImg.color = new Color(0f, 0f, 0f, 0.72f);
 
             BuildDevice();
@@ -111,13 +111,13 @@ namespace Freeline
         {
             var go = NewUIObject("PhoneDevice", transform);
             var rt = go.GetComponent<RectTransform>();
-            rt.anchorMin        = new Vector2(0.5f, 0.5f);
-            rt.anchorMax        = new Vector2(0.5f, 0.5f);
-            rt.pivot            = new Vector2(0.5f, 0.5f);
-            rt.sizeDelta        = new Vector2(DeviceW, DeviceH);
+            rt.anchorMin = new Vector2(0.5f, 0.5f);
+            rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.sizeDelta = new Vector2(DeviceW, DeviceH);
             rt.anchoredPosition = Vector2.zero;
 
-            var img   = go.AddComponent<Image>();
+            var img = go.AddComponent<Image>();
             img.color = new Color(0.15f, 0.15f, 0.20f, 1f);
             Debug.Log("[Phone] PhoneDevice created");
 
@@ -134,10 +134,10 @@ namespace Freeline
             var rt = go.GetComponent<RectTransform>();
             rt.anchorMin = Vector2.zero;
             rt.anchorMax = Vector2.one;
-            rt.offsetMin = new Vector2( DevicePadding,  DevicePadding);
+            rt.offsetMin = new Vector2(DevicePadding, DevicePadding);
             rt.offsetMax = new Vector2(-DevicePadding, -DevicePadding);
 
-            var img   = go.AddComponent<Image>();
+            var img = go.AddComponent<Image>();
             img.color = new Color(0.10f, 0.10f, 0.14f, 1f);
             Debug.Log("[Phone] PhoneScreen created");
 
@@ -153,7 +153,7 @@ namespace Freeline
             zpRT.anchorMax = Vector2.one;
             zpRT.offsetMin = Vector2.zero;
             zpRT.offsetMax = Vector2.zero;
-            zenitoonPanel  = zpGO.AddComponent<ZenitoonPanel>();
+            zenitoonPanel = zpGO.AddComponent<ZenitoonPanel>();
             zpGO.SetActive(false);
             Debug.Log("[Phone] ZenitoonPanel created: " + (zenitoonPanel != null ? "OK" : "NULL"));
 
@@ -164,7 +164,7 @@ namespace Freeline
             mpRT.anchorMax = Vector2.one;
             mpRT.offsetMin = Vector2.zero;
             mpRT.offsetMax = Vector2.zero;
-            marketPanel    = mpGO.AddComponent<MarketPanel>();
+            marketPanel = mpGO.AddComponent<MarketPanel>();
             mpGO.SetActive(false);
             Debug.Log("[Phone] MarketPanel created: " + (marketPanel != null ? "OK" : "NULL"));
 
@@ -175,20 +175,10 @@ namespace Freeline
             wpRT.anchorMax = Vector2.one;
             wpRT.offsetMin = Vector2.zero;
             wpRT.offsetMax = Vector2.zero;
-            webtoonPanel   = wpGO.AddComponent<WebtoonPanel>();
+            webtoonPanel = wpGO.AddComponent<WebtoonPanel>();
             wpGO.SetActive(false);
             Debug.Log("[Phone] WebtoonPanel created: " + (webtoonPanel != null ? "OK" : "NULL"));
 
-            // PosterPanel overlay — kendi ContextMenu'suyla içi doldurulur
-            var ppGO = NewUIObject("PosterPanel", go.transform);
-            var ppRT = ppGO.GetComponent<RectTransform>();
-            ppRT.anchorMin = Vector2.zero;
-            ppRT.anchorMax = Vector2.one;
-            ppRT.offsetMin = Vector2.zero;
-            ppRT.offsetMax = Vector2.zero;
-            posterPanel    = ppGO.AddComponent<PosterPanel>();
-            ppGO.SetActive(false);
-            Debug.Log("[Phone] PosterPanel created: " + (posterPanel != null ? "OK" : "NULL"));
         }
 
         // ---- PhoneStatusBar — üstte sabit 60px yükseklik ----------------------------
@@ -199,11 +189,11 @@ namespace Freeline
             var rt = go.GetComponent<RectTransform>();
             rt.anchorMin = new Vector2(0f, 1f);
             rt.anchorMax = new Vector2(1f, 1f);
-            rt.pivot     = new Vector2(0.5f, 1f);
-            rt.offsetMin = new Vector2(0f,   -StatusBarH);
-            rt.offsetMax = new Vector2(0f,    0f);
+            rt.pivot = new Vector2(0.5f, 1f);
+            rt.offsetMin = new Vector2(0f, -StatusBarH);
+            rt.offsetMax = new Vector2(0f, 0f);
 
-            var img   = go.AddComponent<Image>();
+            var img = go.AddComponent<Image>();
             img.color = new Color(1f, 1f, 1f, 0f);
 
             // Sol metin: şarj
@@ -215,25 +205,25 @@ namespace Freeline
             chargeRT.offsetMax = Vector2.zero;
 
             var chargeTMP = chargeGO.AddComponent<TMPro.TextMeshProUGUI>();
-            chargeTMP.text          = "Şarj %100";
-            chargeTMP.fontSize      = 22f;
-            chargeTMP.color         = Color.white;
-            chargeTMP.alignment     = TMPro.TextAlignmentOptions.MidlineLeft;
+            chargeTMP.text = "Şarj %100";
+            chargeTMP.fontSize = 22f;
+            chargeTMP.color = Color.white;
+            chargeTMP.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
             chargeTMP.raycastTarget = false;
 
             // Sağ metin: wifi
             var wifiGO = NewUIObject("WifiText", go.transform);
             var wifiRT = wifiGO.GetComponent<RectTransform>();
             wifiRT.anchorMin = new Vector2(0.5f, 0f);
-            wifiRT.anchorMax = new Vector2(1f,   1f);
+            wifiRT.anchorMax = new Vector2(1f, 1f);
             wifiRT.offsetMin = Vector2.zero;
             wifiRT.offsetMax = new Vector2(-12f, 0f);
 
             var wifiTMP = wifiGO.AddComponent<TMPro.TextMeshProUGUI>();
-            wifiTMP.text          = "Wifi";
-            wifiTMP.fontSize      = 22f;
-            wifiTMP.color         = Color.white;
-            wifiTMP.alignment     = TMPro.TextAlignmentOptions.MidlineRight;
+            wifiTMP.text = "Wifi";
+            wifiTMP.fontSize = 22f;
+            wifiTMP.color = Color.white;
+            wifiTMP.alignment = TMPro.TextAlignmentOptions.MidlineRight;
             wifiTMP.raycastTarget = false;
         }
 
@@ -245,11 +235,11 @@ namespace Freeline
             var rt = go.GetComponent<RectTransform>();
             rt.anchorMin = new Vector2(0f, 1f);
             rt.anchorMax = new Vector2(1f, 1f);
-            rt.pivot     = new Vector2(0.5f, 1f);
-            rt.offsetMin = new Vector2(0f,   -(StatusBarH + InfoBarH));
-            rt.offsetMax = new Vector2(0f,    -StatusBarH);
+            rt.pivot = new Vector2(0.5f, 1f);
+            rt.offsetMin = new Vector2(0f, -(StatusBarH + InfoBarH));
+            rt.offsetMax = new Vector2(0f, -StatusBarH);
 
-            var img   = go.AddComponent<Image>();
+            var img = go.AddComponent<Image>();
             img.color = new Color(1f, 1f, 1f, 0f);
 
             var infoGO = NewUIObject("InfoText", go.transform);
@@ -259,10 +249,10 @@ namespace Freeline
             infoRT.offsetMin = new Vector2(8f, 0f);
             infoRT.offsetMax = new Vector2(-8f, 0f);
 
-            phoneInfoText           = infoGO.AddComponent<TMPro.TextMeshProUGUI>();
-            phoneInfoText.text      = "Saat / Enerji / Coin / Takipçi";
-            phoneInfoText.fontSize  = 26f;
-            phoneInfoText.color     = Color.white;
+            phoneInfoText = infoGO.AddComponent<TMPro.TextMeshProUGUI>();
+            phoneInfoText.text = "Saat / Enerji / Coin / Takipçi";
+            phoneInfoText.fontSize = 26f;
+            phoneInfoText.color = Color.white;
             phoneInfoText.alignment = TMPro.TextAlignmentOptions.Center;
             phoneInfoText.raycastTarget = false;
         }
@@ -278,28 +268,24 @@ namespace Freeline
             float gridW = AppBtnSize * 2 + AppBtnGap;
             float gridH = AppBtnSize * 2 + AppBtnGap;
 
-            rt.anchorMin        = new Vector2(0.5f, 0.5f);
-            rt.anchorMax        = new Vector2(0.5f, 0.5f);
-            rt.pivot            = new Vector2(0.5f, 0.5f);
-            rt.sizeDelta        = new Vector2(gridW, gridH);
+            rt.anchorMin = new Vector2(0.5f, 0.5f);
+            rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.sizeDelta = new Vector2(gridW, gridH);
             rt.anchoredPosition = Vector2.zero;
 
-            var img   = go.AddComponent<Image>();
+            var img = go.AddComponent<Image>();
             img.color = new Color(1f, 1f, 1f, 0f);
 
             appBtnZenitoon = BuildAppBtn("AppBtn_Zenitoon", go.transform, col: 0, row: 1,
                 new Color(0.96f, 0.76f, 0.80f, 1f), "Zenitoon",
                 new Color(0.30f, 0.10f, 0.15f, 1f));
 
-            appBtnWebtoon  = BuildAppBtn("AppBtn_Webtoon",  go.transform, col: 1, row: 1,
+            appBtnWebtoon = BuildAppBtn("AppBtn_Webtoon", go.transform, col: 1, row: 1,
                 new Color(0.98f, 0.72f, 0.35f, 1f), "Webtoon",
                 new Color(0.30f, 0.18f, 0.05f, 1f));
 
-            appBtnPoster   = BuildAppBtn("AppBtn_Poster",   go.transform, col: 0, row: 0,
-                new Color(0.35f, 0.65f, 0.35f, 1f), "Poster",
-                new Color(0.08f, 0.20f, 0.08f, 1f));
-
-            appBtnMarket   = BuildAppBtn("AppBtn_Market",   go.transform, col: 1, row: 0,
+            appBtnMarket = BuildAppBtn("AppBtn_Market", go.transform, col: 1, row: 0,
                 new Color(0.40f, 0.55f, 0.65f, 1f), "Market",
                 new Color(0.08f, 0.14f, 0.20f, 1f));
         }
@@ -311,16 +297,16 @@ namespace Freeline
         {
             var go = NewUIObject(objName, grid);
             var rt = go.GetComponent<RectTransform>();
-            rt.anchorMin        = new Vector2(0f, 0f);
-            rt.anchorMax        = new Vector2(0f, 0f);
-            rt.pivot            = new Vector2(0f, 0f);
-            rt.sizeDelta        = new Vector2(AppBtnSize, AppBtnSize);
+            rt.anchorMin = new Vector2(0f, 0f);
+            rt.anchorMax = new Vector2(0f, 0f);
+            rt.pivot = new Vector2(0f, 0f);
+            rt.sizeDelta = new Vector2(AppBtnSize, AppBtnSize);
             rt.anchoredPosition = new Vector2(
                 col * (AppBtnSize + AppBtnGap),
                 row * (AppBtnSize + AppBtnGap)
             );
 
-            var img   = go.AddComponent<Image>();
+            var img = go.AddComponent<Image>();
             img.color = bgColor;
 
             var btn = go.AddComponent<Button>();
@@ -333,11 +319,11 @@ namespace Freeline
             labelRT.offsetMax = Vector2.zero;
 
             var tmp = labelGO.AddComponent<TMPro.TextMeshProUGUI>();
-            tmp.text          = label;
-            tmp.fontSize      = AppLabelSize;
-            tmp.fontStyle     = TMPro.FontStyles.Bold;
-            tmp.color         = labelColor;
-            tmp.alignment     = TMPro.TextAlignmentOptions.Center;
+            tmp.text = label;
+            tmp.fontSize = AppLabelSize;
+            tmp.fontStyle = TMPro.FontStyles.Bold;
+            tmp.color = labelColor;
+            tmp.alignment = TMPro.TextAlignmentOptions.Center;
             tmp.raycastTarget = false;
 
             return btn;
@@ -351,23 +337,23 @@ namespace Freeline
             var rt = go.GetComponent<RectTransform>();
             rt.anchorMin = new Vector2(0f, 0f);
             rt.anchorMax = new Vector2(1f, 0f);
-            rt.pivot     = new Vector2(0.5f, 0f);
+            rt.pivot = new Vector2(0.5f, 0f);
             rt.offsetMin = new Vector2(0f, 0f);
             rt.offsetMax = new Vector2(0f, ExitBarH);
 
-            var img   = go.AddComponent<Image>();
+            var img = go.AddComponent<Image>();
             img.color = new Color(1f, 1f, 1f, 0f);
 
             // Kapatma düğmesi — merkezi, yuvarlak görünüm için kare
             var btnGO = NewUIObject("CloseButton", go.transform);
             var btnRT = btnGO.GetComponent<RectTransform>();
-            btnRT.anchorMin        = new Vector2(0.5f, 0.5f);
-            btnRT.anchorMax        = new Vector2(0.5f, 0.5f);
-            btnRT.pivot            = new Vector2(0.5f, 0.5f);
-            btnRT.sizeDelta        = new Vector2(ExitBarH - 16f, ExitBarH - 16f);
+            btnRT.anchorMin = new Vector2(0.5f, 0.5f);
+            btnRT.anchorMax = new Vector2(0.5f, 0.5f);
+            btnRT.pivot = new Vector2(0.5f, 0.5f);
+            btnRT.sizeDelta = new Vector2(ExitBarH - 16f, ExitBarH - 16f);
             btnRT.anchoredPosition = Vector2.zero;
 
-            var btnImg   = btnGO.AddComponent<Image>();
+            var btnImg = btnGO.AddComponent<Image>();
             btnImg.color = new Color(0.35f, 0.35f, 0.40f, 1f);
 
             exitBtn = btnGO.AddComponent<Button>();
@@ -380,10 +366,10 @@ namespace Freeline
             dotRT.offsetMax = Vector2.zero;
 
             var dotTMP = dotGO.AddComponent<TMPro.TextMeshProUGUI>();
-            dotTMP.text          = "●";
-            dotTMP.fontSize      = 32f;
-            dotTMP.color         = Color.white;
-            dotTMP.alignment     = TMPro.TextAlignmentOptions.Center;
+            dotTMP.text = "●";
+            dotTMP.fontSize = 32f;
+            dotTMP.color = Color.white;
+            dotTMP.alignment = TMPro.TextAlignmentOptions.Center;
             dotTMP.raycastTarget = false;
         }
 

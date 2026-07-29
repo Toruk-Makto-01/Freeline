@@ -113,7 +113,6 @@ Data/          ← JSON configs, save templates
 - Draw menu redesign: tablet icon opens 3-button menu (Freelance, Webtoon, Sergi Ürünü)
 - Line Trace minigame (Level 2)
 - Webtoon detail panel
-- Exhibition product production panel
 
 ## Code Documentation Standards
 - Use plain `//` comments, not `/// <summary>` XML style

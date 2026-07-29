@@ -20,12 +20,10 @@ namespace Freeline
         [SerializeField] private Button closeButton;
         [SerializeField] private Button freelanceButton;
         [SerializeField] private Button webtoonButton;
-        [SerializeField] private Button exhibitionButton;
 
         [Header("Panels")]
         [SerializeField] private JobBoardPanel  jobBoardPanel;
         [SerializeField] private WebtoonPanel   webtoonPanel;
-        [SerializeField] private ExhibitionPanel exhibitionPanel;
 
         // Blocker ve Panel doğrudan çocukları; builder yeniden çalıştırılmasa da
         // isimle bulunur. Root GO asla SetActive(false) yapılmaz; böylece bu nesnenin
@@ -55,7 +53,6 @@ namespace Freeline
             closeButton.onClick.AddListener(Hide);
             freelanceButton.onClick.AddListener(OnFreelanceClicked);
             webtoonButton.onClick.AddListener(OnWebtoonClicked);
-            exhibitionButton.onClick.AddListener(OnExhibitionClicked);
         }
 
         void Start()
@@ -102,11 +99,6 @@ namespace Freeline
             Hide();
         }
 
-        private void OnExhibitionClicked()
-        {
-            exhibitionPanel?.Show();
-            Hide();
-        }
 
         // =========================================================================
         // EDITOR — Hierarchy builder
@@ -123,7 +115,6 @@ namespace Freeline
         //       Divider      — 2 px separator at 130 px from top
         //       FreelanceButton  — 600 × 140, starts at 160 px from top
         //       WebtoonButton    — 600 × 140, 20 px below Freelance
-        //       ExhibitionButton — 600 × 140, 20 px below Webtoon
         // =========================================================================
 
 #if UNITY_EDITOR
@@ -182,7 +173,6 @@ namespace Freeline
 
             freelanceButton  = BuildMenuButton("FreelanceButton",  panel.transform, "FREELANCE",   StartY);
             webtoonButton    = BuildMenuButton("WebtoonButton",    panel.transform, "WEBTOON",     StartY - (BtnH + GapV));
-            exhibitionButton = BuildMenuButton("ExhibitionButton", panel.transform, "SERGİ ÜRÜNÜ", StartY - 2 * (BtnH + GapV));
 
             EditorUtility.SetDirty(gameObject);
             Debug.Log("[DrawMenu] Hierarchy built and SerializeField references populated.");

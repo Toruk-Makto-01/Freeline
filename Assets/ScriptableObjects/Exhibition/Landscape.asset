@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfc9e3da9c67f3d489f2441b85443ec0, type: 3}
-  m_Name: Poster
+  m_Name: Landscape
   m_EditorClassIdentifier: Assembly-CSharp::Freeline.ExhibitionProductData
-  productName: Poster
+  productName: Manzara
   productType: 0
   icon: {fileID: 0}
-  energyCost: 15
-  productionHours: 2
-  basePrice: 200
-  unlockDay: 10
+  energyCost: 20
+  productionHours: 3
+  basePrice: 300
+  unlockDay: 8

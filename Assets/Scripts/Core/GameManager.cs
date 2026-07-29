@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Freeline
@@ -52,8 +54,9 @@ namespace Freeline
         /// <summary>Webtoon üretim ve yayın yöneticisine salt-okunur erişim.</summary>
         public WebtoonManager    WebtoonManager    => webtoonManager;
 
-        /// <summary>Haftalık sergi yöneticisine salt-okunur erişim.</summary>
         public ExhibitionManager ExhibitionManager => exhibitionManager;
+
+        /// <summary>Haftalık sergi yöneticisine salt-okunur erişim.</summary>
 
         /// <summary>
         /// Oyunun şu anki durumu. Başlangıç değeri <see cref="GameState.Initializing"/>'dir;
@@ -91,7 +94,7 @@ namespace Freeline
                 jobManager = GetComponent<JobManager>();
             if (webtoonManager == null)
                 webtoonManager = GetComponent<WebtoonManager>();
-            if (exhibitionManager == null)
+            if(exhibitionManager == null)
                 exhibitionManager = GetComponent<ExhibitionManager>();
         }
 

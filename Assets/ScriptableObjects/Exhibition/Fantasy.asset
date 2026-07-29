@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbd3673c6c52b9849ad000d0d0914d00, type: 3}
-  m_Name: Tablo
+  m_Script: {fileID: 11500000, guid: bfc9e3da9c67f3d489f2441b85443ec0, type: 3}
+  m_Name: Fantasy
   m_EditorClassIdentifier: Assembly-CSharp::Freeline.ExhibitionProductData
-  productName: Tablo
-  productType: 1
-  productionHours: 3
-  energyCost: 30
+  productName: Fantezi
+  productType: 0
+  icon: {fileID: 0}
+  energyCost: 15
+  productionHours: 2
   basePrice: 250
+  unlockDay: 0
