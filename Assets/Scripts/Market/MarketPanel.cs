@@ -40,6 +40,19 @@ namespace Freeline
         [SerializeField] private Button tabUpgrade;
         [SerializeField] private Button backBtn;
 
+        [Header("Decoration Sub-Menu (Yatay Kaydirma)")]
+        [SerializeField] private GameObject decorationSubCategoryBar; // Oluşturduğumuz ScrollView Kapsayıcısı
+        [SerializeField] private Button btnFloor;
+        [SerializeField] private Button btnWall;
+        [SerializeField] private Button btnWindowCushion;
+        [SerializeField] private Button btnCurtain;
+        [SerializeField] private Button btnRug;
+        [SerializeField] private Button btnDesk;
+        [SerializeField] private Button btnBookshelf;
+        [SerializeField] private Button btnSofa;
+        [SerializeField] private Button btnBed;
+        [SerializeField] private Button btnAccessory;
+
         [Header("Databases & Managers")]
         [SerializeField] private DecorationCatalog decorationCatalog;
         [SerializeField] private RoomDecorationManager roomDecorationManager;
@@ -59,6 +72,18 @@ namespace Freeline
             if (tabYemek != null) tabYemek.onClick.AddListener(() => ShowCategory(MarketCategory.Yemek));
             if (tabDekorasyon != null) tabDekorasyon.onClick.AddListener(() => ShowCategory(MarketCategory.Dekorasyon));
             if (tabUpgrade != null) tabUpgrade.onClick.AddListener(() => ShowCategory(MarketCategory.Upgrade));
+
+            // Alt kategori butonlarının tıklama olaylarını bağlıyoruz
+            if (btnFloor != null) btnFloor.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Floor));
+            if (btnWall != null) btnWall.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Wall));
+            if (btnWindowCushion != null) btnWindowCushion.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.WindowCushion));
+            if (btnCurtain != null) btnCurtain.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Curtain));
+            if (btnRug != null) btnRug.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Rug));
+            if (btnDesk != null) btnDesk.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Desk));
+            if (btnBookshelf != null) btnBookshelf.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Bookshelf));
+            if (btnSofa != null) btnSofa.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Sofa));
+            if (btnBed != null) btnBed.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Bed));
+            if (btnAccessory != null) btnAccessory.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Accessory));
         }
 
         void OnEnable()
@@ -77,7 +102,7 @@ namespace Freeline
         {
             gameObject.SetActive(true);
             RefreshCoinDisplay();
-            ShowCategory(MarketCategory.Yemek);
+            ShowCategory(MarketCategory.Yemek); // Panel açılınca varsayılan olarak Yemek sekmesi gelsin
         }
 
         public void Close()
@@ -89,8 +114,13 @@ namespace Freeline
         {
             _activeCategory = cat;
 
-            if (contentRoot == null)
-                return;
+            // Eğer seçilen kategori Dekorasyon ise yatay menüyü aktif et, değilse gizle
+            if (decorationSubCategoryBar != null)
+            {
+                decorationSubCategoryBar.SetActive(cat == MarketCategory.Dekorasyon);
+            }
+
+            if (contentRoot == null) return;
 
             ClearContent();
 
@@ -98,17 +128,8 @@ namespace Freeline
 
             if (cat == MarketCategory.Dekorasyon)
             {
-                if (decorationCatalog == null) return;
-
-                // Alt kategoriler (Zemin, Duvar vs.) yeniden yapılana kadar, 
-                // mevcut tüm dekorasyon kategorilerini dönüp her şeyi tek listede gösteriyoruz.
-                foreach (DecorationCategory decCat in System.Enum.GetValues(typeof(DecorationCategory)))
-                {
-                    foreach (var item in decorationCatalog.GetByCategory(decCat))
-                    {
-                        BuildDecorationCard(item, coins);
-                    }
-                }
+                // Dekorasyon sekmesi ilk açıldığında varsayılan olarak 'Zemin' (Floor) kategorisini yükle
+                ShowDecorationCategory(DecorationCategory.Floor);
             }
             else
             {
@@ -119,6 +140,18 @@ namespace Freeline
                         BuildItemCard(item, coins);
                     }
                 }
+            }
+        }
+
+        private void ShowDecorationCategory(DecorationCategory category)
+        {
+            ClearContent();
+
+            if (decorationCatalog == null) return;
+
+            foreach (var item in decorationCatalog.GetByCategory(category))
+            {
+                BuildDecorationCard(item, CurrentCoins());
             }
         }
 
