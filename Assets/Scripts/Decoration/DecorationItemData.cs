@@ -11,7 +11,7 @@ namespace Freeline
         public Sprite roomSprite;      // sahnede görünecek katman
         public Sprite shopIcon;        // mağaza listesinde görünecek ikon
         public int price;
-        public int deliveryDays = 1;   // GDD: min 1 gün kargo
+        public int deliveryDays = 1;   
         public PassiveBonusType bonusType;
         public float bonusValue;
     }
@@ -19,10 +19,10 @@ namespace Freeline
     public enum PassiveBonusType
     {
         None,
-        SleepEnergyBonus,      // kaliteli yatak
-        WebtoonQualityBonus,   // kitaplık
-        EnergyDrainReduction,  // ergonomik sandalye
-        JobBuff,               // sarı lamba
-        MoraleBonus             // saksı/halı
+        SleepEnergyBonus,      
+        WebtoonQualityBonus,   
+        EnergyDrainReduction,  
+        JobBuff,               
+        MoraleBonus             
     }
 }

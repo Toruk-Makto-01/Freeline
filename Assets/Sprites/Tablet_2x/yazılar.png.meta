@@ -1,0 +1,1417 @@
+fileFormatVersion: 2
+guid: 25d9fec9b4f92e24fa5c8435498078d3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 649613200917490187
+    second: "yaz\u0131lar_0"
+  - first:
+      213: -5786720658524753933
+    second: "yaz\u0131lar_1"
+  - first:
+      213: -1122909315599420561
+    second: "yaz\u0131lar_2"
+  - first:
+      213: 9060383859219552022
+    second: "yaz\u0131lar_3"
+  - first:
+      213: 3230149844453072129
+    second: "yaz\u0131lar_4"
+  - first:
+      213: -5078513596091715406
+    second: "yaz\u0131lar_5"
+  - first:
+      213: -7006516345115433949
+    second: "yaz\u0131lar_6"
+  - first:
+      213: -2032964119006675880
+    second: "yaz\u0131lar_7"
+  - first:
+      213: -498102339332384682
+    second: "yaz\u0131lar_8"
+  - first:
+      213: 8299368802995457021
+    second: "yaz\u0131lar_9"
+  - first:
+      213: -577664012476848546
+    second: "yaz\u0131lar_10"
+  - first:
+      213: 7557160147228911122
+    second: "yaz\u0131lar_11"
+  - first:
+      213: -8709356305917065399
+    second: "yaz\u0131lar_12"
+  - first:
+      213: -6247274035929626639
+    second: "yaz\u0131lar_13"
+  - first:
+      213: -1294658404563349107
+    second: "yaz\u0131lar_14"
+  - first:
+      213: -6215731495147961198
+    second: "yaz\u0131lar_15"
+  - first:
+      213: -8332567846617280234
+    second: "yaz\u0131lar_16"
+  - first:
+      213: 6108554206835431683
+    second: "yaz\u0131lar_17"
+  - first:
+      213: -8976303430123499385
+    second: "yaz\u0131lar_18"
+  - first:
+      213: -6921357901290287577
+    second: "yaz\u0131lar_19"
+  - first:
+      213: -8169493107664579850
+    second: "yaz\u0131lar_20"
+  - first:
+      213: -1528140660616231994
+    second: "yaz\u0131lar_21"
+  - first:
+      213: -293720737228765900
+    second: "yaz\u0131lar_22"
+  - first:
+      213: 3312911492987701416
+    second: "yaz\u0131lar_23"
+  - first:
+      213: -4730841676842474704
+    second: "yaz\u0131lar_24"
+  - first:
+      213: 1600194530853622433
+    second: "yaz\u0131lar_25"
+  - first:
+      213: 969429253072229621
+    second: "yaz\u0131lar_26"
+  - first:
+      213: -6557272185306835097
+    second: "yaz\u0131lar_27"
+  - first:
+      213: 8090291480451840086
+    second: "yaz\u0131lar_28"
+  - first:
+      213: -1269925017003514139
+    second: "yaz\u0131lar_29"
+  - first:
+      213: 1407509851251914318
+    second: "yaz\u0131lar_30"
+  - first:
+      213: -3639061026161035112
+    second: "yaz\u0131lar_31"
+  - first:
+      213: -2966546671182202636
+    second: "yaz\u0131lar_32"
+  - first:
+      213: -8216929312427949129
+    second: "yaz\u0131lar_33"
+  - first:
+      213: -2139239383092193516
+    second: "yaz\u0131lar_34"
+  - first:
+      213: 7888139765320418147
+    second: "yaz\u0131lar_35"
+  - first:
+      213: 6440806201079974620
+    second: "yaz\u0131lar_36"
+  - first:
+      213: -3227339634662017091
+    second: "yaz\u0131lar_37"
+  - first:
+      213: 6760353948913356282
+    second: "yaz\u0131lar_38"
+  - first:
+      213: 1277448732621387043
+    second: "yaz\u0131lar_39"
+  - first:
+      213: 4036409236639704021
+    second: "yaz\u0131lar_40"
+  - first:
+      213: 663206180987122483
+    second: "yaz\u0131lar_41"
+  - first:
+      213: 950669853930660803
+    second: "yaz\u0131lar_42"
+  - first:
+      213: -1726594517774813486
+    second: "yaz\u0131lar_43"
+  - first:
+      213: 8460272392656863788
+    second: "yaz\u0131lar_44"
+  - first:
+      213: -4409817536700776744
+    second: "yaz\u0131lar_45"
+  - first:
+      213: 2238334602803463477
+    second: "yaz\u0131lar_46"
+  - first:
+      213: 1235527552012072008
+    second: "yaz\u0131lar_47"
+  - first:
+      213: -2060407032645067125
+    second: "yaz\u0131lar_48"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "yaz\u0131lar_0"
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 2704
+        width: 89
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0a6712b3c3e30900800000000000000
+      internalID: 649613200917490187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_1"
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 2704
+        width: 106
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ffa73e683071bfa0800000000000000
+      internalID: -5786720658524753933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_2"
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 2704
+        width: 91
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6338b84def9a60f0800000000000000
+      internalID: -1122909315599420561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_3"
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 2704
+        width: 91
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 617d671bd13fcbd70800000000000000
+      internalID: 9060383859219552022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_4"
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 2704
+        width: 94
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10d98e16b2cc3dc20800000000000000
+      internalID: 3230149844453072129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_5"
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 2704
+        width: 120
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b036fd9ace7589b0800000000000000
+      internalID: -5078513596091715406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_6"
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 2704
+        width: 109
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3242d68918ad3ce90800000000000000
+      internalID: -7006516345115433949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_7"
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 2702
+        width: 105
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85cfd75a7e579c3e0800000000000000
+      internalID: -2032964119006675880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_8"
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 2704
+        width: 91
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6585d4abf826619f0800000000000000
+      internalID: -498102339332384682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_9"
+      rect:
+        serializedVersion: 2
+        x: 1645
+        y: 2704
+        width: 98
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfbc08254f74d2370800000000000000
+      internalID: 8299368802995457021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_10"
+      rect:
+        serializedVersion: 2
+        x: 1765
+        y: 2704
+        width: 91
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e566ac824a9bbf7f0800000000000000
+      internalID: -577664012476848546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_11"
+      rect:
+        serializedVersion: 2
+        x: 1878
+        y: 2704
+        width: 109
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21661564d1d60e860800000000000000
+      internalID: 7557160147228911122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_12"
+      rect:
+        serializedVersion: 2
+        x: 2012
+        y: 2704
+        width: 43
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 947418b7596222780800000000000000
+      internalID: -8709356305917065399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_13"
+      rect:
+        serializedVersion: 2
+        x: 2076
+        y: 2704
+        width: 109
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f7c4e12d593d49a0800000000000000
+      internalID: -6247274035929626639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_14"
+      rect:
+        serializedVersion: 2
+        x: 2189
+        y: 2702
+        width: 131
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d81178a5a03780ee0800000000000000
+      internalID: -1294658404563349107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_15"
+      rect:
+        serializedVersion: 2
+        x: 2329
+        y: 2702
+        width: 131
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2948f7433294db9a0800000000000000
+      internalID: -6215731495147961198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_16"
+      rect:
+        serializedVersion: 2
+        x: 2475
+        y: 2704
+        width: 109
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 611198bf0b5cc5c80800000000000000
+      internalID: -8332567846617280234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_17"
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 943
+        width: 105
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 309d4a5cfa1f5c450800000000000000
+      internalID: 6108554206835431683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_18"
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 941
+        width: 131
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7805e5bb693cd6380800000000000000
+      internalID: -8976303430123499385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_19"
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 941
+        width: 98
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72ecf32e8a562ff90800000000000000
+      internalID: -6921357901290287577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_20"
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 943
+        width: 109
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f296aa6d4120ae80800000000000000
+      internalID: -8169493107664579850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_21"
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 943
+        width: 91
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c383256a24facae0800000000000000
+      internalID: -1528140660616231994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_22"
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 943
+        width: 106
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4354052bb8e7cebf0800000000000000
+      internalID: -293720737228765900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_23"
+      rect:
+        serializedVersion: 2
+        x: 1745
+        y: 943
+        width: 135
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a847d74373d9fd20800000000000000
+      internalID: 3312911492987701416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_24"
+      rect:
+        serializedVersion: 2
+        x: 1894
+        y: 943
+        width: 120
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 033e03b5f8ca85eb0800000000000000
+      internalID: -4730841676842474704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_25"
+      rect:
+        serializedVersion: 2
+        x: 2027
+        y: 943
+        width: 106
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a29d079278053610800000000000000
+      internalID: 1600194530853622433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_26"
+      rect:
+        serializedVersion: 2
+        x: 2149
+        y: 943
+        width: 110
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f41e38f4ca147d00800000000000000
+      internalID: 969429253072229621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_27"
+      rect:
+        serializedVersion: 2
+        x: 2274
+        y: 943
+        width: 91
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7679c3b70b3eff4a0800000000000000
+      internalID: -6557272185306835097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_28"
+      rect:
+        serializedVersion: 2
+        x: 2381
+        y: 943
+        width: 109
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65873bdbc3d764070800000000000000
+      internalID: 8090291480451840086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_29"
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 85
+        width: 161
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e6af16ece1506ee0800000000000000
+      internalID: -1269925017003514139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_30"
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 85
+        width: 129
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e46bbbd90ca788310800000000000000
+      internalID: 1407509851251914318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_31"
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 85
+        width: 141
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 898f3bbf6457f7dc0800000000000000
+      internalID: -3639061026161035112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_32"
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 85
+        width: 52
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f8319e1585b4d6d0800000000000000
+      internalID: -2966546671182202636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_33"
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 82
+        width: 151
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b3cc34535a97fd80800000000000000
+      internalID: -8216929312427949129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_34"
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 225
+        width: 108
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41793418d15ef42e0800000000000000
+      internalID: -2139239383092193516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_35"
+      rect:
+        serializedVersion: 2
+        x: 1975
+        y: 235
+        width: 52
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3638e8ac25d487d60800000000000000
+      internalID: 7888139765320418147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_36"
+      rect:
+        serializedVersion: 2
+        x: 2189
+        y: 82
+        width: 114
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cda41827d17526950800000000000000
+      internalID: 6440806201079974620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_37"
+      rect:
+        serializedVersion: 2
+        x: 2335
+        y: 235
+        width: 52
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db77e6293bf2633d0800000000000000
+      internalID: -3227339634662017091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_38"
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 85
+        width: 106
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afdc3e0491a91dd50800000000000000
+      internalID: 6760353948913356282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_39"
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 82
+        width: 126
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 325bba6aad86ab110800000000000000
+      internalID: 1277448732621387043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_40"
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 82
+        width: 126
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d3e30e90d4340830800000000000000
+      internalID: 4036409236639704021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_41"
+      rect:
+        serializedVersion: 2
+        x: 1183
+        y: 85
+        width: 128
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 333b49ef18e243900800000000000000
+      internalID: 663206180987122483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_42"
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 85
+        width: 52
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c3a53ef135713d00800000000000000
+      internalID: 950669853930660803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_43"
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 82
+        width: 131
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d635e81f67e908e0800000000000000
+      internalID: -1726594517774813486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_44"
+      rect:
+        serializedVersion: 2
+        x: 1809
+        y: 28
+        width: 133
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c224b5baaece86570800000000000000
+      internalID: 8460272392656863788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_45"
+      rect:
+        serializedVersion: 2
+        x: 1975
+        y: 85
+        width: 52
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8de79a8805e2dc2c0800000000000000
+      internalID: -4409817536700776744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_46"
+      rect:
+        serializedVersion: 2
+        x: 2056
+        y: 30
+        width: 114
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 535c0984679201f10800000000000000
+      internalID: 2238334602803463477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_47"
+      rect:
+        serializedVersion: 2
+        x: 2335
+        y: 85
+        width: 52
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84433ef23c9752110800000000000000
+      internalID: 1235527552012072008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "yaz\u0131lar_48"
+      rect:
+        serializedVersion: 2
+        x: 2420
+        y: 85
+        width: 106
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8e597668b6f763e0800000000000000
+      internalID: -2060407032645067125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "yaz\u0131lar_0": 649613200917490187
+      "yaz\u0131lar_1": -5786720658524753933
+      "yaz\u0131lar_10": -577664012476848546
+      "yaz\u0131lar_11": 7557160147228911122
+      "yaz\u0131lar_12": -8709356305917065399
+      "yaz\u0131lar_13": -6247274035929626639
+      "yaz\u0131lar_14": -1294658404563349107
+      "yaz\u0131lar_15": -6215731495147961198
+      "yaz\u0131lar_16": -8332567846617280234
+      "yaz\u0131lar_17": 6108554206835431683
+      "yaz\u0131lar_18": -8976303430123499385
+      "yaz\u0131lar_19": -6921357901290287577
+      "yaz\u0131lar_2": -1122909315599420561
+      "yaz\u0131lar_20": -8169493107664579850
+      "yaz\u0131lar_21": -1528140660616231994
+      "yaz\u0131lar_22": -293720737228765900
+      "yaz\u0131lar_23": 3312911492987701416
+      "yaz\u0131lar_24": -4730841676842474704
+      "yaz\u0131lar_25": 1600194530853622433
+      "yaz\u0131lar_26": 969429253072229621
+      "yaz\u0131lar_27": -6557272185306835097
+      "yaz\u0131lar_28": 8090291480451840086
+      "yaz\u0131lar_29": -1269925017003514139
+      "yaz\u0131lar_3": 9060383859219552022
+      "yaz\u0131lar_30": 1407509851251914318
+      "yaz\u0131lar_31": -3639061026161035112
+      "yaz\u0131lar_32": -2966546671182202636
+      "yaz\u0131lar_33": -8216929312427949129
+      "yaz\u0131lar_34": -2139239383092193516
+      "yaz\u0131lar_35": 7888139765320418147
+      "yaz\u0131lar_36": 6440806201079974620
+      "yaz\u0131lar_37": -3227339634662017091
+      "yaz\u0131lar_38": 6760353948913356282
+      "yaz\u0131lar_39": 1277448732621387043
+      "yaz\u0131lar_4": 3230149844453072129
+      "yaz\u0131lar_40": 4036409236639704021
+      "yaz\u0131lar_41": 663206180987122483
+      "yaz\u0131lar_42": 950669853930660803
+      "yaz\u0131lar_43": -1726594517774813486
+      "yaz\u0131lar_44": 8460272392656863788
+      "yaz\u0131lar_45": -4409817536700776744
+      "yaz\u0131lar_46": 2238334602803463477
+      "yaz\u0131lar_47": 1235527552012072008
+      "yaz\u0131lar_48": -2060407032645067125
+      "yaz\u0131lar_5": -5078513596091715406
+      "yaz\u0131lar_6": -7006516345115433949
+      "yaz\u0131lar_7": -2032964119006675880
+      "yaz\u0131lar_8": -498102339332384682
+      "yaz\u0131lar_9": 8299368802995457021
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -38,5 +38,8 @@ namespace Freeline
         // Decoration
         public List<string> ownedDecorations = new();
         public List<EquippedDecoration> equippedDecorations = new();
+
+        // --- Phone Settings ---
+        public int selectedPhoneBgIndex = 0; // Seçilen arkaplanın sırası
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq; // List işlemleri için eklendi
 
 namespace Freeline
 {
@@ -20,7 +21,7 @@ namespace Freeline
 
     public class MarketPanel : MonoBehaviour
     {
-        // ---- Hazır ürün listesi -------------------
+        // ---- Hazır ürün listesi (Yemek/Upgrade) -------------------
         private static readonly MarketItem[] AllItems =
         {
             new MarketItem { itemName="Kahve",              description="Hız buff + enerji",    price=30,  category=MarketCategory.Yemek,      iconColor=new Color(0.6f,0.4f,0.2f) },
@@ -31,7 +32,6 @@ namespace Freeline
             new MarketItem { itemName="Ergonomik Sandalye", description="Enerji tüketimi -",    price=350, category=MarketCategory.Upgrade,    iconColor=new Color(0.5f,0.5f,0.6f) },
         };
 
-        // ---- SerializeField refs --------------------------------------------
         [Header("UI Elements")]
         [SerializeField] private TextMeshProUGUI coinDisplayText;
         [SerializeField] private Transform contentRoot;
@@ -41,10 +41,9 @@ namespace Freeline
         [SerializeField] private Button backBtn;
 
         [Header("Decoration Sub-Menu (Yatay Kaydirma)")]
-        [SerializeField] private GameObject decorationSubCategoryBar; // Oluşturduğumuz ScrollView Kapsayıcısı
+        [SerializeField] private GameObject decorationSubCategoryBar;
         [SerializeField] private Button btnFloor;
         [SerializeField] private Button btnWall;
-        [SerializeField] private Button btnWindowCushion;
         [SerializeField] private Button btnCurtain;
         [SerializeField] private Button btnRug;
         [SerializeField] private Button btnDesk;
@@ -58,25 +57,34 @@ namespace Freeline
         [SerializeField] private RoomDecorationManager roomDecorationManager;
         [SerializeField] private MarketCardUI marketCardPrefab;
 
-        // ---- Runtime state --------------------------------------------------
         private MarketCategory _activeCategory = MarketCategory.Yemek;
-        private readonly List<(Button btn, int price)> _cardButtons = new();
+        private DecorationCategory _activeSubCategory = DecorationCategory.Floor;
 
-        // =========================================================================
-        // Runtime
-        // =========================================================================
+        // Butonların durumunu güncelleyecek aksiyonları tuttuğumuz liste
+        private readonly List<System.Action<int>> _coinRefreshActions = new();
 
         void Awake()
         {
+            // 1. Püf Noktası: MarketPanel uyanır uyanmaz yöneticiyi sahnede kendi bulsun!
+            if (roomDecorationManager == null)
+            {
+                // DEĞİŞEN KISIM: Kapalı/Gizli objeleri de bulması için parametre ekledik.
+                roomDecorationManager = UnityEngine.Object.FindAnyObjectByType<RoomDecorationManager>(FindObjectsInactive.Include);
+                
+                if (roomDecorationManager == null)
+                {
+                    Debug.LogWarning("MarketPanel: Sahnede RoomDecorationManager hiçbir şekilde bulunamadı! Sahneye (Hierarchy) eklendiğinden emin ol.");
+                }
+            }
+
+            // 2. Mevcut buton dinleyicileri (Zaten olan kısımlar)
             if (backBtn != null) backBtn.onClick.AddListener(Close);
             if (tabYemek != null) tabYemek.onClick.AddListener(() => ShowCategory(MarketCategory.Yemek));
             if (tabDekorasyon != null) tabDekorasyon.onClick.AddListener(() => ShowCategory(MarketCategory.Dekorasyon));
             if (tabUpgrade != null) tabUpgrade.onClick.AddListener(() => ShowCategory(MarketCategory.Upgrade));
 
-            // Alt kategori butonlarının tıklama olaylarını bağlıyoruz
             if (btnFloor != null) btnFloor.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Floor));
             if (btnWall != null) btnWall.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Wall));
-            if (btnWindowCushion != null) btnWindowCushion.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.WindowCushion));
             if (btnCurtain != null) btnCurtain.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Curtain));
             if (btnRug != null) btnRug.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Rug));
             if (btnDesk != null) btnDesk.onClick.AddListener(() => ShowDecorationCategory(DecorationCategory.Desk));
@@ -102,70 +110,53 @@ namespace Freeline
         {
             gameObject.SetActive(true);
             RefreshCoinDisplay();
-            ShowCategory(MarketCategory.Yemek); // Panel açılınca varsayılan olarak Yemek sekmesi gelsin
+            ShowCategory(MarketCategory.Yemek);
         }
 
-        public void Close()
-        {
-            gameObject.SetActive(false);
-        }
+        public void Close() => gameObject.SetActive(false);
 
         public void ShowCategory(MarketCategory cat)
         {
             _activeCategory = cat;
-
-            // Eğer seçilen kategori Dekorasyon ise yatay menüyü aktif et, değilse gizle
             if (decorationSubCategoryBar != null)
-            {
                 decorationSubCategoryBar.SetActive(cat == MarketCategory.Dekorasyon);
-            }
-
-            if (contentRoot == null) return;
-
-            ClearContent();
-
-            int coins = CurrentCoins();
 
             if (cat == MarketCategory.Dekorasyon)
             {
-                // Dekorasyon sekmesi ilk açıldığında varsayılan olarak 'Zemin' (Floor) kategorisini yükle
-                ShowDecorationCategory(DecorationCategory.Floor);
+                ShowDecorationCategory(_activeSubCategory);
             }
             else
             {
-                foreach (var item in AllItems)
+                ClearContent();
+                int coins = CurrentCoins();
+                foreach (var item in AllItems.Where(i => i.category == cat))
                 {
-                    if (item.category == cat)
-                    {
-                        BuildItemCard(item, coins);
-                    }
+                    BuildItemCard(item, coins);
                 }
             }
         }
 
         private void ShowDecorationCategory(DecorationCategory category)
         {
+            _activeSubCategory = category;
             ClearContent();
 
             if (decorationCatalog == null) return;
 
+            int coins = CurrentCoins();
             foreach (var item in decorationCatalog.GetByCategory(category))
             {
-                BuildDecorationCard(item, CurrentCoins());
+                BuildDecorationCard(item, coins);
             }
         }
 
         private void ClearContent()
         {
             for (int i = contentRoot.childCount - 1; i >= 0; i--)
-            {
                 Destroy(contentRoot.GetChild(i).gameObject);
-            }
 
-            _cardButtons.Clear();
+            _coinRefreshActions.Clear();
         }
-
-        // ---- Coin refresh ---------------------------------------------------
 
         private void HandleCoinsChanged(int coins)
         {
@@ -182,110 +173,110 @@ namespace Freeline
 
         private void RefreshBuyButtons(int coins)
         {
-            foreach (var (btn, price) in _cardButtons)
+            foreach (var action in _coinRefreshActions)
             {
-                if (btn != null)
-                    btn.interactable = coins >= price;
+                action?.Invoke(coins);
             }
         }
 
         private int CurrentCoins() =>
             Mathf.FloorToInt(GameManager.Instance?.SaveManager?.CurrentData?.currentCoins ?? 0f);
 
-        // ---- Kart oluşturma (STANDART EŞYALAR) --------------------------------
-
+        // ---- YEMEK & UPGRADE KARTLARI (Tüketilebilir) ----
         private void BuildItemCard(MarketItem item, int currentCoins)
         {
-            MarketCardUI card = CreateCard(
-                item.itemName,
-                item.description,
-                item.price,
-                null,
-                item.iconColor);
+            MarketCardUI card = Instantiate(marketCardPrefab, contentRoot);
+            card.Setup(null, item.iconColor, item.itemName, item.description, item.price);
+
+            // Tüketilebilir eşyalar için buton durumu sadece paraya bağlıdır
+            _coinRefreshActions.Add((coins) =>
+            {
+                card.BuyButton.interactable = coins >= item.price;
+                card.BuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Satin Al";
+            });
+
+            // İlk durumu ayarla
+            card.BuyButton.interactable = currentCoins >= item.price;
 
             card.BuyButton.onClick.AddListener(() =>
             {
-                Debug.Log(item.itemName);
+                if (CurrentCoins() >= item.price)
+                {
+                    GameManager.Instance.SaveManager.AddCoins(-item.price);
+                    Debug.Log($"{item.itemName} Satin Alindi!");
+                    StartCoroutine(PurchaseFeedback(card.BuyButton, card.BuyButton.GetComponentInChildren<TextMeshProUGUI>(), card.BuyButton.GetComponent<Image>(), item.price));
+                }
             });
-
-            _cardButtons.Add((card.BuyButton, item.price));
         }
 
-        // ---- Kart oluşturma (DEKORASYON EŞYALARI) -----------------------------
-
+        // ---- DEKORASYON KARTLARI (Kalıcı Envanter) ----
         private void BuildDecorationCard(DecorationItemData decItem, int currentCoins)
         {
             string customDescription = "";
-
             if (decItem.bonusType != PassiveBonusType.None)
                 customDescription += $"Etki: {decItem.bonusType}\n";
-
             customDescription += $"Kargo: {decItem.deliveryDays} Gün";
 
-            MarketCardUI card = CreateCard(
-                decItem.displayName,
-                customDescription,
-                decItem.price,
-                decItem.shopIcon,
-                Color.white);
+            MarketCardUI card = Instantiate(marketCardPrefab, contentRoot);
+            card.Setup(decItem.shopIcon, Color.white, decItem.displayName, customDescription, decItem.price);
 
-            var capturedItem = decItem;
+            // Kartın görsel durumunu güncelleyen bir Action ekliyoruz
+            System.Action<int> updateCardVisuals = (coins) =>
+            {
+                var data = GameManager.Instance.SaveManager.CurrentData;
+                bool isOwned = data.ownedDecorations.Contains(decItem.itemId);
+                bool isEquipped = data.equippedDecorations.Any(eq => eq.itemId == decItem.itemId);
+
+                card.SetButtonState(isOwned, isEquipped, coins, decItem.price);
+            };
+
+            // Listeye ekle ve hemen ilk durumu çalıştır
+            _coinRefreshActions.Add(updateCardVisuals);
+            updateCardVisuals(currentCoins);
 
             card.BuyButton.onClick.AddListener(() =>
             {
-                OnBuyClicked(
-                    capturedItem.price,
-                    card.BuyButton,
-                    card.BuyButton.GetComponentInChildren<TextMeshProUGUI>(),
-                    card.BuyButton.GetComponent<Image>(),
-                    () =>
+                var data = GameManager.Instance.SaveManager.CurrentData;
+                bool isOwned = data.ownedDecorations.Contains(decItem.itemId);
+
+                if (!isOwned)
+                {
+                    // 1. SATIN ALMA İŞLEMİ
+                    if (CurrentCoins() >= decItem.price)
                     {
-                        if (roomDecorationManager != null)
-                        {
-                            roomDecorationManager.EquipItem(capturedItem);
-                            Debug.Log($"{capturedItem.displayName} odaya yerleştirildi!");
-                        }
-                    });
+                        GameManager.Instance.SaveManager.AddCoins(-decItem.price);
+                        data.ownedDecorations.Add(decItem.itemId);
+
+                        // Ekranı tazele ki buton "Kullan"a dönüşsün
+                        RefreshBuyButtons(CurrentCoins());
+                    }
+                }
+                else
+                {
+                    // 2. KULLANMA / ODAYA YERLEŞTİRME İŞLEMİ
+                    Debug.Log($"---> [{decItem.displayName}] icin Kullan butonuna tiklandi!");
+
+                    if (roomDecorationManager != null)
+                    {
+                        Debug.Log("---> RoomDecorationManager bulundu, esya odaya gonderiliyor...");
+                        roomDecorationManager.EquipItem(decItem);
+
+                        Debug.Log("---> Esya SaveData listesine ekleniyor...");
+                        data.equippedDecorations.RemoveAll(x => x.category == decItem.category);
+                        data.equippedDecorations.Add(new EquippedDecoration { category = decItem.category, itemId = decItem.itemId });
+
+                        Debug.Log("---> UI listesi yenileniyor...");
+                        ShowDecorationCategory(_activeSubCategory);
+                    }
+                    else
+                    {
+                        Debug.LogError("---> HATA: roomDecorationManager referansi NULL! (Inspector'da bos kalmis veya silinmis)");
+                    }
+                }
             });
-
-            _cardButtons.Add((card.BuyButton, capturedItem.price));
         }
 
-        // ---- Ortak Kart Tasarım Metodu ---------------------------------------
-
-        private MarketCardUI CreateCard(
-            string name,
-            string desc,
-            int price,
-            Sprite icon,
-            Color fallbackColor)
-        {
-            MarketCardUI card = Instantiate(marketCardPrefab, contentRoot);
-
-            card.Setup(
-                icon,
-                fallbackColor,
-                name,
-                desc,
-                price,
-                CurrentCoins() >= price);
-
-            return card;
-        }
-
-        private void OnBuyClicked(int price, Button btn, TextMeshProUGUI label, Image btnImg, System.Action onSuccessAction)
-        {
-            var sm = GameManager.Instance?.SaveManager;
-            if (sm == null) return;
-            if (Mathf.FloorToInt(sm.CurrentData.currentCoins) < price) return;
-
-            sm.AddCoins(-price);
-
-            onSuccessAction?.Invoke();
-
-            StartCoroutine(PurchaseFeedback(btn, label, btnImg, price));
-        }
-
+        // Tüketilebilir eşyalar (Yemek vs.) için 1 saniyelik görsel feedback coroutine'i
         private IEnumerator PurchaseFeedback(Button btn, TextMeshProUGUI label, Image btnImg, int itemPrice)
         {
             string origText = label.text;
@@ -298,7 +289,6 @@ namespace Freeline
             yield return new WaitForSeconds(1.2f);
 
             if (btn == null) yield break;
-
             label.text = origText;
             btnImg.color = origColor;
             btn.interactable = CurrentCoins() >= itemPrice;

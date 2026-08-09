@@ -5,23 +5,25 @@ namespace Freeline
 {
     public class RoomDecorationManager : MonoBehaviour
     {
-        [SerializeField] private List<RoomDecorationSlot> slots;
-        private Dictionary<DecorationCategory, RoomDecorationSlot> _slotLookup;
-
+        // Artik Inspector'da liste atamana gerek yok, her sey otomatik!
+        private Dictionary<DecorationCategory, RoomDecorationSlot> _slotLookup = new();
         private Dictionary<DecorationCategory, string> _equipped = new();
 
-        private void Awake()
+        // Slotlarin kendini kaydetmesi icin yeni metod
+        public void RegisterSlot(RoomDecorationSlot slot)
         {
-            _slotLookup = new Dictionary<DecorationCategory, RoomDecorationSlot>();
-            foreach (var slot in slots)
+            if (!_slotLookup.ContainsKey(slot.Category))
+            {
                 _slotLookup[slot.Category] = slot;
+                // Debug.Log($"{slot.Category} slotu basariyla sisteme kaydedildi.");
+            }
         }
 
         public void EquipItem(DecorationItemData item)
         {
             if (!_slotLookup.TryGetValue(item.category, out var slot))
             {
-                Debug.LogWarning($"No slot found for category {item.category}");
+                Debug.LogWarning($"Hata: {item.category} kategorisi icin sahnede bir Slot bulunamadi! (Slot objesinin aktif oldugundan emin ol)");
                 return;
             }
 

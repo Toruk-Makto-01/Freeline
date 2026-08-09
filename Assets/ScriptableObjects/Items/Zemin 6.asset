@@ -18,6 +18,6 @@ MonoBehaviour:
   roomSprite: {fileID: 1065958317844721244, guid: cc5bc24d5c22101458887998c524a003, type: 3}
   shopIcon: {fileID: 1065958317844721244, guid: cc5bc24d5c22101458887998c524a003, type: 3}
   price: 0
-  deliveryDays: 1
+  deliveryDays: 0
   bonusType: 0
   bonusValue: 0

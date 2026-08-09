@@ -16,13 +16,25 @@ namespace Freeline
             _image = GetComponent<Image>();
         }
 
+        private void Start()
+        {
+            // Unity'nin önerdiği en güncel ve en hızlı tarama komutu: FindAnyObjectByType
+            var manager = Object.FindAnyObjectByType<RoomDecorationManager>();
+            
+            if (manager != null)
+            {
+                manager.RegisterSlot(this);
+            }
+            else
+            {
+                Debug.LogWarning($"{category} slotu kaydedilemedi! RoomDecorationManager bulunamadi.");
+            }
+        }
+
         public void ApplySprite(Sprite sprite)
         {
             _image.sprite = sprite;
             _image.enabled = sprite != null;
-
-            // if (sprite != null)
-            //     _image.SetNativeSize(); // sprite'ın orijinal piksel boyutunu korur
         }
     }
 }
