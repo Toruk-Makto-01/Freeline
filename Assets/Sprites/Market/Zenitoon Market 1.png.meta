@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c064d7e4ccd0dcd438912f04f43f307c
+guid: b8c0b64a0e77c58419be04ab79e50171
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6292423197556904689
-    second: "Telefon_d\u0131\u015F\u0131_0"
+      213: 4377028196613807010
+    second: Zenitoon Market 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Telefon_d\u0131\u015F\u0131_0"
+      name: Zenitoon Market 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 3892
-        height: 7531
+        x: 502
+        y: 200
+        width: 8099
+        height: 15598
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f0d6135c072dca8a0800000000000000
-      internalID: -6292423197556904689
+      spriteID: 2abd80f44f35ebc30800000000000000
+      internalID: 4377028196613807010
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 00d67e405231d6445b57c103aa216a21
+    spriteID: dd17b05371ae38e41823ec0b046fc8d1
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "Telefon_d\u0131\u015F\u0131_0": -6292423197556904689
+      Zenitoon Market 1_0: 4377028196613807010
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

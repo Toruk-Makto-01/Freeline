@@ -9,6 +9,12 @@ namespace Freeline
         public DecorationCategory category;
         public string itemId;
     }
+    [System.Serializable]
+    public class DailyPurchaseRecord
+    {
+        public string itemId;
+        public int boughtCount;
+    }
     [Serializable]
     public class SaveData
     {
@@ -39,7 +45,12 @@ namespace Freeline
         public List<string> ownedDecorations = new();
         public List<EquippedDecoration> equippedDecorations = new();
 
+        // --- Market Günlük Limit Sistemi ---
+        public string lastRealTimeDate = ""; // Örn: "25-10-2023" (Oyuna en son girilen gerçek tarih)
+        public List<DailyPurchaseRecord> dailyPurchases = new(); // O gün alınan ürünlerin listesi
+
         // --- Phone Settings ---
         public int selectedPhoneBgIndex = 0; // Seçilen arkaplanın sırası
     }
+    
 }

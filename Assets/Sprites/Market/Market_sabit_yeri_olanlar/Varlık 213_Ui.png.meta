@@ -132,12 +132,12 @@ TextureImporter:
       name: "Varl\u0131k 213_Ui_0"
       rect:
         serializedVersion: 2
-        x: 124
-        y: 5489
-        width: 3501
-        height: 1779
+        x: 0
+        y: 0
+        width: 3758
+        height: 7268
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -157,9 +157,9 @@ TextureImporter:
         x: 0
         y: 0
         width: 3758
-        height: 1897
+        height: 7268
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -176,7 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c5ceda300a7e15841b597db367d395e9
     internalID: 0
     vertices: []
     indices: 

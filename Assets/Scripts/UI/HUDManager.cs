@@ -62,7 +62,7 @@ namespace Freeline
 
             // Üst Bar Buton Olayları
             if (settingsButton != null) settingsButton.onClick.AddListener(OnSettingsClicked);
-            if (addCoinButton != null) addCoinButton.onClick.AddListener(() => OpenMarketTab(MarketCategory.Yemek));
+            if (addCoinButton != null) addCoinButton.onClick.AddListener(() => OpenMarketTab(MarketCategory.Food));
             if (addGemButton != null) addGemButton.onClick.AddListener(() => OpenMarketTab(MarketCategory.Upgrade));
 
             // İlk verileri ekrana yükle

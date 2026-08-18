@@ -6,60 +6,76 @@ namespace Freeline
 {
     public class MarketCardUI : MonoBehaviour
     {
-        [Header("UI")]
+        [Header("UI Elemanları")]
         [SerializeField] private Image icon;
         [SerializeField] private TextMeshProUGUI itemName;
         [SerializeField] private TextMeshProUGUI description;
         [SerializeField] private TextMeshProUGUI priceText;
         [SerializeField] private Button buyButton;
-        [SerializeField] private TextMeshProUGUI buyButtonText;
+        [SerializeField] private Image buyButtonImage;
+
+        [Header("Seçim Çerçevesi (Yeşil Outline)")]
+        [SerializeField] private GameObject selectionOutline; // Kartın kendi içindeki yeşil çerçeve objesi
+
+        [Header("Buton Görselleri")]
+        [SerializeField] private Sprite defaultButtonSprite; // Satın alınmamış (Fiyatlı) buton görseli
+        [SerializeField] private Sprite boughtButtonSprite;  // Satın alındı (tik/check) görseli
 
         public Button BuyButton => buyButton;
 
-        public void Setup(
-            Sprite sprite,
-            Color fallbackColor,
-            string name,
-            string desc,
-            int price)
+        public void Setup(Sprite sprite, Color fallbackColor, string name, string desc)
         {
-            itemName.text = name;
-            description.text = desc;
-            priceText.text = $"{price} Coin";
+            if (itemName != null) itemName.text = name;
+            if (description != null) description.text = desc;
 
             if (sprite != null)
             {
-                icon.sprite = sprite;
-                icon.color = Color.white;
+                if (icon != null)
+                {
+                    icon.sprite = sprite;
+                    icon.color = Color.white;
+                }
             }
             else
             {
-                icon.color = fallbackColor;
+                if (icon != null) icon.color = fallbackColor;
             }
         }
 
-        // Butonun görünümünü duruma göre güncelleyen metot
-        public void SetButtonState(bool isOwned, bool isEquipped, int currentCoins, int price)
+        // Kartın görünümünü ve durumunu ayarlayan ana metodumuz
+        public void SetCardState(bool isOwned, bool isEquipped, int price, bool canAfford, Sprite customBoughtSprite = null)
         {
-            Image btnImg = buyButton.GetComponent<Image>();
-
-            if (isEquipped)
+            // 1. Yeşil Çerçeve (Outline) Yönetimi
+            if (selectionOutline != null)
             {
-                buyButtonText.text = "Kullaniliyor";
-                btnImg.color = new Color(0.2f, 0.6f, 0.2f, 1f); // Yeşil tonu
-                buyButton.interactable = false; // Zaten kullanılıyorsa tıklanamaz
+                selectionOutline.SetActive(isEquipped); // Sadece odada takılı olan eşyada yeşil çerçeve yanar!
             }
-            else if (isOwned)
+
+            // 2. Buton Görseli ve Fiyat Yazısı Yönetimi
+            if (isOwned)
             {
-                buyButtonText.text = "Kullan";
-                btnImg.color = new Color(0.2f, 0.4f, 0.8f, 1f); // Mavi tonu
-                buyButton.interactable = true; // Her zaman tıklanabilir
+                // Satın alınmış ürün: Fiyat yazısını gizle, tik/satın alındı görselini koy
+                if (priceText != null) priceText.text = "";
+
+                Sprite iconToUse = customBoughtSprite != null ? customBoughtSprite : boughtButtonSprite;
+                if (buyButtonImage != null && iconToUse != null)
+                {
+                    buyButtonImage.sprite = iconToUse;
+                }
+
+                if (buyButton != null) buyButton.interactable = true;
             }
             else
             {
-                buyButtonText.text = "Satin Al";
-                btnImg.color = new Color(0.8f, 0.3f, 0.3f, 1f); // Kırmızımsı standart buton
-                buyButton.interactable = currentCoins >= price;
+                // Satın alınmamış ürün: Fiyatı yaz, varsayılan buton görselini koy
+                if (priceText != null) priceText.text = $"{price}";
+
+                if (buyButtonImage != null && defaultButtonSprite != null)
+                {
+                    buyButtonImage.sprite = defaultButtonSprite;
+                }
+
+                if (buyButton != null) buyButton.interactable = canAfford;
             }
         }
     }
