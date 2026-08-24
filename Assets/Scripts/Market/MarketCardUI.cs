@@ -13,6 +13,7 @@ namespace Freeline
         [SerializeField] private TextMeshProUGUI priceText;
         [SerializeField] private Button buyButton;
         [SerializeField] private Image buyButtonImage;
+        [SerializeField] private TextMeshProUGUI limitText; // Günlük limit (Örn: 3/5) yazısı
 
         [Header("Seçim Çerçevesi (Yeşil Outline)")]
         [SerializeField] private GameObject selectionOutline; // Kartın kendi içindeki yeşil çerçeve objesi
@@ -23,10 +24,18 @@ namespace Freeline
 
         public Button BuyButton => buyButton;
 
-        public void Setup(Sprite sprite, Color fallbackColor, string name, string desc)
+        // Eski Setup metodunu bununla değiştir:
+        public void Setup(Sprite sprite, Color fallbackColor, string name, string desc, string limitString = "")
         {
             if (itemName != null) itemName.text = name;
             if (description != null) description.text = desc;
+
+            // Eğer limit yazısı gönderilmişse ve Text objemiz varsa onu yazdır
+            if (limitText != null)
+            {
+                limitText.text = limitString;
+                limitText.gameObject.SetActive(!string.IsNullOrEmpty(limitString));
+            }
 
             if (sprite != null)
             {

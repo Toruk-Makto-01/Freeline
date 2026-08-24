@@ -1,49 +1,76 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Freeline
 {
+    // Hangi kategorinin hangi UI Slot'una (Image) denk geldiğini eşleştiren sınıf
+    [System.Serializable]
+    public class DecorationSlot
+    {
+        public DecorationCategory category;
+        public Image slotImage; // ss1.png'deki Slot_Zemin, Slot_Duvar vb. objelerin Image bileşeni
+    }
+
     public class RoomDecorationManager : MonoBehaviour
     {
-        // Artik Inspector'da liste atamana gerek yok, her sey otomatik!
-        private Dictionary<DecorationCategory, RoomDecorationSlot> _slotLookup = new();
-        private Dictionary<DecorationCategory, string> _equipped = new();
+        [Header("Oda Katmanları (Slotlar)")]
+        [Tooltip("ss1.png'deki Slot objelerini buraya tanımlayın")]
+        [SerializeField] private List<DecorationSlot> roomSlots = new();
 
-        // Slotlarin kendini kaydetmesi icin yeni metod
-        public void RegisterSlot(RoomDecorationSlot slot)
+        [Header("Katalog")]
+        [SerializeField] private DecorationCatalog catalog;
+
+        private void Start()
         {
-            if (!_slotLookup.ContainsKey(slot.Category))
+            // Oyun başladığında odayı kayıt dosyasına göre inşa et!
+            InitializeRoomFromSave();
+        }
+
+        public void InitializeRoomFromSave()
+        {
+            var equippedItems = GameManager.Instance.SaveManager.CurrentData.equippedDecorations;
+
+            // Önce tüm slotları temizle (Gizle)
+            foreach (var slot in roomSlots)
             {
-                _slotLookup[slot.Category] = slot;
-                // Debug.Log($"{slot.Category} slotu basariyla sisteme kaydedildi.");
+                if (slot.slotImage != null)
+                {
+                    slot.slotImage.sprite = null;
+                    slot.slotImage.enabled = false; // Beyaz ekranı önler!
+                }
+            }
+
+            // Kayıt dosyasındaki takılı eşyaları bul ve ilgili slotta göster
+            foreach (var equipped in equippedItems)
+            {
+                var itemData = catalog.GetItemById(equipped.itemId);
+                if (itemData != null)
+                {
+                    EquipItemVisual(itemData);
+                }
             }
         }
 
-        public void EquipItem(DecorationItemData item)
+        // Sadece görseli güncelleyen metod (Kayıt işlemi MarketPanel'de yapılıyor)
+        public void EquipItemVisual(DecorationItemData item)
         {
-            if (!_slotLookup.TryGetValue(item.category, out var slot))
+            var slot = roomSlots.Find(s => s.category == item.category);
+            if (slot != null && slot.slotImage != null)
             {
-                Debug.LogWarning($"Hata: {item.category} kategorisi icin sahnede bir Slot bulunamadi! (Slot objesinin aktif oldugundan emin ol)");
-                return;
+                slot.slotImage.sprite = item.roomSprite; // Tam ekran olan oda görseli
+                slot.slotImage.enabled = true; // Görsel atandı, görünür yap
             }
-
-            slot.ApplySprite(item.roomSprite);
-            _equipped[item.category] = item.itemId;
         }
 
-        public void OnCargoArrived(DecorationItemData item)
+        // Görseli odadan kaldıran metod
+        public void UnequipItemVisual(DecorationItemData item)
         {
-            EquipItem(item);
-        }
-
-        public Dictionary<DecorationCategory, string> GetEquippedState() => _equipped;
-
-        public void ApplyFromSave(Dictionary<DecorationCategory, string> savedState, DecorationCatalog catalog)
-        {
-            foreach (var kvp in savedState)
+            var slot = roomSlots.Find(s => s.category == item.category);
+            if (slot != null && slot.slotImage != null)
             {
-                var item = catalog.GetById(kvp.Value);
-                if (item != null) EquipItem(item);
+                slot.slotImage.sprite = null;
+                slot.slotImage.enabled = false; // Eşya çıktı, Image'i kapat (Beyaz ekranı engelle)
             }
         }
     }

@@ -15,6 +15,16 @@ namespace Freeline
         public string itemId;
         public int boughtCount;
     }
+
+    [System.Serializable]
+    public class ActiveBuffSaveData
+    {
+        public ConsumableEffectType effectType;
+        public float effectValue;
+        public string endTimeString; // DateTime'ı string olarak kaydedeceğiz (JSON serileştirmesi için)
+    }
+
+
     [Serializable]
     public class SaveData
     {
@@ -28,6 +38,7 @@ namespace Freeline
         // --- Energy / Hunger ---
         public float currentEnergy = 100f;
         public float hoursSinceLastFood = 0f;
+        public List<ActiveBuffSaveData> activeRealTimeBuffs = new();
 
         // --- Economy ---
         public float currentCoins = 0f;
@@ -48,9 +59,11 @@ namespace Freeline
         // --- Market Günlük Limit Sistemi ---
         public string lastRealTimeDate = ""; // Örn: "25-10-2023" (Oyuna en son girilen gerçek tarih)
         public List<DailyPurchaseRecord> dailyPurchases = new(); // O gün alınan ürünlerin listesi
+        // Marketin en son sıfırlandığı oyun içi gün (Bunu yeni ekliyoruz)
+        public int lastMarketResetDay = 0;
 
         // --- Phone Settings ---
         public int selectedPhoneBgIndex = 0; // Seçilen arkaplanın sırası
     }
-    
+
 }

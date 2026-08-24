@@ -172,7 +172,7 @@ namespace Freeline
             );
 
             // Reset hunger clock (no buff), then restore energy at full rate.
-            energy.EatFood(new EnergyBuff { speedMultiplier = 0f, durationHours = 0f });
+            //energy.EatFood(new EnergyBuff { speedMultiplier = 0f, durationHours = 0f });
             energy.RestoreEnergy(30f);
 
             Debug.Log(
