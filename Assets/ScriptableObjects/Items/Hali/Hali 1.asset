@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98397dee47afcd04b94d472b824c9024, type: 3}
+  m_Name: Hali 1
+  m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
+  itemId: h1
+  displayName: "Hal\u0131 1"
+  category: 4
+  roomSprite: {fileID: 6553928239293227338, guid: c80b5c9e02bef8b44997b7bb70e4a064, type: 3}
+  shopIcon: {fileID: 345760778726837134, guid: 61302edf86b605b45877f15dcd7d805b, type: 3}
+  price: 500
+  deliveryDays: 0
+  bonusType: 0
+  bonusValue: 0

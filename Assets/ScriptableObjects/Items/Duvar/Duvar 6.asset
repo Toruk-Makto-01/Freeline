@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98397dee47afcd04b94d472b824c9024, type: 3}
-  m_Name: Zemin 5
+  m_Name: Duvar 6
   m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
-  itemId: zemin_5
-  displayName: Zemin 5
-  category: 0
-  roomSprite: {fileID: -418669698537800439, guid: 1db6c18c8d86b15478fd8bb8be4d69ec, type: 3}
-  shopIcon: {fileID: -418669698537800439, guid: 1db6c18c8d86b15478fd8bb8be4d69ec, type: 3}
-  price: 0
+  itemId: d6
+  displayName: Duvar 6
+  category: 1
+  roomSprite: {fileID: -8579132669825285083, guid: 57e108ef08e70d4449ff321f38695246, type: 3}
+  shopIcon: {fileID: 4639197464295054815, guid: e0d299c5427d1844d8ab457fddbc11c9, type: 3}
+  price: 500
   deliveryDays: 0
   bonusType: 0
   bonusValue: 0

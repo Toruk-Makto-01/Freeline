@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98397dee47afcd04b94d472b824c9024, type: 3}
+  m_Name: Perde 1
+  m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
+  itemId: p1
+  displayName: Perde 1
+  category: 3
+  roomSprite: {fileID: -8289365016884726316, guid: b646ab7b62304e14c8bcb90557092d0a, type: 3}
+  shopIcon: {fileID: 5332968601158531742, guid: abf03e0837f2d4d4ebbf1b0dde0aec15, type: 3}
+  price: 300
+  deliveryDays: 0
+  bonusType: 0
+  bonusValue: 0

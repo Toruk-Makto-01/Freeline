@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98397dee47afcd04b94d472b824c9024, type: 3}
+  m_Name: Yatak 3
+  m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
+  itemId: y3
+  displayName: Yatak 3
+  category: 8
+  roomSprite: {fileID: -2443742028966550028, guid: b1a65eed0cb735541ad1961b64416e67, type: 3}
+  shopIcon: {fileID: -8359972479450432388, guid: 675b80f53e0b6b14baddfc98d45b9e8d, type: 3}
+  price: 3000
+  deliveryDays: 0
+  bonusType: 0
+  bonusValue: 0

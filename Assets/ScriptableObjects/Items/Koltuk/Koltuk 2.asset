@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98397dee47afcd04b94d472b824c9024, type: 3}
+  m_Name: Koltuk 2
+  m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
+  itemId: ko2
+  displayName: Koltuk 2
+  category: 7
+  roomSprite: {fileID: -6846575901643540028, guid: cd73585c8777c0142bafe087409f09f0, type: 3}
+  shopIcon: {fileID: 7798713442834434988, guid: 449ddbc5b5adc7247a3a4bd973a7f827, type: 3}
+  price: 900
+  deliveryDays: 0
+  bonusType: 0
+  bonusValue: 0

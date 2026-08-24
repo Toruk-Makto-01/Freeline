@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98397dee47afcd04b94d472b824c9024, type: 3}
-  m_Name: Zemin 2
+  m_Name: Kitaplik 1
   m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
-  itemId: zemin_2
-  displayName: Zemin 2
-  category: 0
-  roomSprite: {fileID: -874271512490488211, guid: ce3260745ccd9d749951eea19b81147a, type: 3}
-  shopIcon: {fileID: -874271512490488211, guid: ce3260745ccd9d749951eea19b81147a, type: 3}
-  price: 0
+  itemId: k1
+  displayName: "Kitapl\u0131k 1"
+  category: 6
+  roomSprite: {fileID: -94046098654957294, guid: 6acdabda123d5034dad430b0c633b932, type: 3}
+  shopIcon: {fileID: 1842082812997182090, guid: 20acf85f30452234b9f1e75411845a9c, type: 3}
+  price: 750
   deliveryDays: 0
   bonusType: 0
   bonusValue: 0

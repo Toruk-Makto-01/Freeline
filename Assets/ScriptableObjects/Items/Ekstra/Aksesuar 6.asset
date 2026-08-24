@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98397dee47afcd04b94d472b824c9024, type: 3}
-  m_Name: Duvar 1
+  m_Name: Aksesuar 6
   m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
-  itemId: duvar_1
-  displayName: Duvar 1
-  category: 1
-  roomSprite: {fileID: -5803476849027860595, guid: 6bcf99940e0c16946b23105701615b1e, type: 3}
-  shopIcon: {fileID: -5803476849027860595, guid: 6bcf99940e0c16946b23105701615b1e, type: 3}
-  price: 0
+  itemId: a6
+  displayName: Aksesuar 6
+  category: 9
+  roomSprite: {fileID: -3431596436519108866, guid: 0b0d80f6dd4a0ae4b98531f07d844303, type: 3}
+  shopIcon: {fileID: -4083127520816121727, guid: e8ec536f4bc798b4398af72452c8f9c8, type: 3}
+  price: 200
   deliveryDays: 0
   bonusType: 0
   bonusValue: 0

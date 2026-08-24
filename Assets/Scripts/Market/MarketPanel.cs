@@ -8,6 +8,14 @@ namespace Freeline
 {
     public enum MarketCategory { Decoration, Food, Energy, CoinGem, Upgrade }
 
+    // Inspector'dan Kategori ile UI Content'ini eşleştirmek için yardımcı sınıf
+    [System.Serializable]
+    public class DecorationPageBinding
+    {
+        public DecorationCategory category; // Örn: Carpet (Halı)
+        public Transform contentTransform;   // HalıList > Viewport > Content
+    }
+
     public class MarketPanel : MonoBehaviour
     {
         [Header("Üst Bilgi Çubuğu (Top Bar)")]
@@ -32,13 +40,10 @@ namespace Freeline
         [Header("Dekorasyon Ayarları")]
         [SerializeField] private DecorationCatalog decorationCatalog;
         [SerializeField] private MarketCardUI cardPrefab;
-        [SerializeField] private Sprite boughtButtonSprite; // İsteğe bağlı panelden atanacak Satın Alındı görseli
+        [SerializeField] private Sprite boughtButtonSprite;
 
-        [Header("Dekorasyon Content Alanları (Izgaralar)")]
-        [SerializeField] private Transform floorContent;
-        [SerializeField] private Transform wallContent;
-        [SerializeField] private Transform curtainContent;
-        [SerializeField] private Transform bedContent;
+        [Header("Dekorasyon Sayfaları Listesi (Esnek Yapı)")]
+        [SerializeField] private List<DecorationPageBinding> decorationPages = new();
 
         private RoomDecorationManager _roomDecoManager;
         private List<MarketCardUI> _spawnedCards = new();
@@ -117,6 +122,7 @@ namespace Freeline
 
         private void LoadDecorations()
         {
+            // Eski kartları temizle
             foreach (var card in _spawnedCards)
             {
                 if (card != null) Destroy(card.gameObject);
@@ -125,10 +131,14 @@ namespace Freeline
 
             if (decorationCatalog == null) return;
 
-            LoadCategoryToContent(DecorationCategory.Floor, floorContent);
-            LoadCategoryToContent(DecorationCategory.Wall, wallContent);
-            LoadCategoryToContent(DecorationCategory.Curtain, curtainContent);
-            LoadCategoryToContent(DecorationCategory.Bed, bedContent);
+            // Bütün tanımlı sayfaları dinamik olarak döngüyle yükle!
+            foreach (var pageBinding in decorationPages)
+            {
+                if (pageBinding.contentTransform != null)
+                {
+                    LoadCategoryToContent(pageBinding.category, pageBinding.contentTransform);
+                }
+            }
         }
 
         private void LoadCategoryToContent(DecorationCategory category, Transform targetContent)
@@ -151,22 +161,32 @@ namespace Freeline
             bool isEquipped = saveData.equippedDecorations.Exists(e => e.itemId == decItem.itemId);
             int currentCoins = Mathf.FloorToInt(saveData.currentCoins);
 
-            // Temel bilgi ataması
             card.Setup(decItem.shopIcon, Color.white, decItem.displayName, "");
-            
-            // Kart durumunu güncelle (Outline, Buton Görseli ve Fiyat)
             card.SetCardState(isOwned, isEquipped, decItem.price, currentCoins >= decItem.price, boughtButtonSprite);
 
             card.BuyButton.onClick.RemoveAllListeners();
 
-            if (isOwned)
+            if (isEquipped)
             {
-                // Ürün zaten alınmışsa tıklayınca odada tak (Equip)
+                // NOT: Enum adın "Accessory" veya "Aksesuar" ise burayı ona göre değiştir!
+                if (decItem.category == DecorationCategory.Accessory)
+                {
+                    // Takılı bir aksesuar ise tıklayıp çıkarabilmeli
+                    card.BuyButton.interactable = true;
+                    card.BuyButton.onClick.AddListener(() => UnequipDecoration(decItem));
+                }
+                else
+                {
+                    // Diğer kategorilerde takılıysa buton pasif kalsın
+                    card.BuyButton.interactable = false;
+                }
+            }
+            else if (isOwned)
+            {
                 card.BuyButton.onClick.AddListener(() => EquipDecoration(decItem));
             }
             else
             {
-                // Henüz alınmamışsa tıklayınca Satın Al (Buy)
                 card.BuyButton.onClick.AddListener(() => BuyDecoration(decItem));
             }
         }
@@ -178,8 +198,6 @@ namespace Freeline
             {
                 sm.AddCoins(-item.price);
                 sm.CurrentData.ownedDecorations.Add(item.itemId);
-                
-                // Satın alınınca otomatik olarak odada takalım
                 EquipDecoration(item);
             }
         }
@@ -188,18 +206,40 @@ namespace Freeline
         {
             if (_roomDecoManager != null)
             {
-                _roomDecoManager.EquipItem(item);
-
                 var sm = GameManager.Instance.SaveManager;
                 var equippedList = sm.CurrentData.equippedDecorations;
 
-                // O kategoride takılı olan eski eşyayı çıkar, yenisini ekle
-                equippedList.RemoveAll(e => e.category == item.category);
+                // EĞER AKSESUAR DEĞİLSE eski eşyayı listeden sil (Aksesuar ise karışma!)
+                if (item.category != DecorationCategory.Accessory)
+                {
+                    equippedList.RemoveAll(e => e.category == item.category);
+                }
+
+                // Yeni eşyayı listeye ekle
                 equippedList.Add(new EquippedDecoration { category = item.category, itemId = item.itemId });
                 sm.SaveGame();
 
+                _roomDecoManager.EquipItem(item); // Sahneyi güncelle
                 UpdateTopBar();
-                LoadDecorations(); // Listeleri yenile ki her kategorideki yeşil çerçeve doğru eşyada yansın!
+                LoadDecorations();
+            }
+        }
+
+        private void UnequipDecoration(DecorationItemData item)
+        {
+            if (_roomDecoManager != null)
+            {
+                var sm = GameManager.Instance.SaveManager;
+                var equippedList = sm.CurrentData.equippedDecorations;
+
+                // Seçilen aksesuarı takılılar listesinden sil
+                equippedList.RemoveAll(e => e.itemId == item.itemId);
+                sm.SaveGame();
+
+                // İLERİDE EKLENECEK: Sahnede görseli gizleme komutu
+                // _roomDecoManager.UnequipItem(item); 
+
+                LoadDecorations(); // Arayüzü yenile (Yeşil çerçeve kalksın)
             }
         }
     }

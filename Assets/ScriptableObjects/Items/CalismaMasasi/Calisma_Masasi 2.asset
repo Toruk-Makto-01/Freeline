@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98397dee47afcd04b94d472b824c9024, type: 3}
+  m_Name: Calisma_Masasi 2
+  m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
+  itemId: c2
+  displayName: "\xC7al\u0131\u015Fma Masas\u0131 2"
+  category: 5
+  roomSprite: {fileID: 2413393160590777297, guid: 77df94c768f68524d88deb8967d8c2f4, type: 3}
+  shopIcon: {fileID: 3308538726857781690, guid: 5f64c991e7babd64d9f864c65a56e5db, type: 3}
+  price: 3000
+  deliveryDays: 0
+  bonusType: 0
+  bonusValue: 0

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98397dee47afcd04b94d472b824c9024, type: 3}
-  m_Name: Zemin 1
+  m_Name: Perde 3
   m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
-  itemId: zemin_1
-  displayName: Zemin 1
-  category: 0
-  roomSprite: {fileID: -1764455531988132567, guid: 85b2e31f7467ccb4fb736238ff4d3b7e, type: 3}
-  shopIcon: {fileID: -1764455531988132567, guid: 85b2e31f7467ccb4fb736238ff4d3b7e, type: 3}
-  price: 0
+  itemId: p3
+  displayName: Perde 3
+  category: 3
+  roomSprite: {fileID: 438109689667653255, guid: 70212beaae6dce648bffa75c4b3df994, type: 3}
+  shopIcon: {fileID: 982442607717177062, guid: abf03e0837f2d4d4ebbf1b0dde0aec15, type: 3}
+  price: 700
   deliveryDays: 0
   bonusType: 0
   bonusValue: 0

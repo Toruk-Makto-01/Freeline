@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98397dee47afcd04b94d472b824c9024, type: 3}
+  m_Name: Kitaplik 3
+  m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
+  itemId: k3
+  displayName: "Kitapl\u0131k 3"
+  category: 6
+  roomSprite: {fileID: 3735164883086937696, guid: 82af76b79cce69e4da8a78afa0c98aa5, type: 3}
+  shopIcon: {fileID: 4175750823868830257, guid: 20acf85f30452234b9f1e75411845a9c, type: 3}
+  price: 1500
+  deliveryDays: 0
+  bonusType: 0
+  bonusValue: 0

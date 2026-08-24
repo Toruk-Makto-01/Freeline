@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98397dee47afcd04b94d472b824c9024, type: 3}
+  m_Name: Duvar 4
+  m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
+  itemId: d4
+  displayName: Duvar 4
+  category: 1
+  roomSprite: {fileID: -3744271641044358045, guid: 9b7b22bded2a870408f51b1888b9a9f8, type: 3}
+  shopIcon: {fileID: 629713042849546295, guid: e0d299c5427d1844d8ab457fddbc11c9, type: 3}
+  price: 350
+  deliveryDays: 0
+  bonusType: 0
+  bonusValue: 0

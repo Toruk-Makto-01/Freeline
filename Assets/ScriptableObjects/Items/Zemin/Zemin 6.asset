@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98397dee47afcd04b94d472b824c9024, type: 3}
   m_Name: Zemin 6
   m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
-  itemId: zemin_6
+  itemId: z6
   displayName: Zemin 6
   category: 0
   roomSprite: {fileID: 1065958317844721244, guid: cc5bc24d5c22101458887998c524a003, type: 3}
-  shopIcon: {fileID: 1065958317844721244, guid: cc5bc24d5c22101458887998c524a003, type: 3}
-  price: 0
+  shopIcon: {fileID: 4621734395400367673, guid: a7666782ac5409444aa7d344bea1b8ce, type: 3}
+  price: 500
   deliveryDays: 0
   bonusType: 0
   bonusValue: 0
