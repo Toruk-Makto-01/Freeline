@@ -20,6 +20,7 @@ namespace Freeline
     {
         [Header("Üst Bilgi Çubuğu")]
         [SerializeField] private TextMeshProUGUI energyText;
+        [SerializeField] private TextMeshProUGUI hungerText;
         [SerializeField] private TextMeshProUGUI coinText;
         [SerializeField] private TextMeshProUGUI gemText;
 
@@ -120,9 +121,21 @@ namespace Freeline
         private void UpdateTopBar()
         {
             var data = GameManager.Instance.SaveManager.CurrentData;
-            if (energyText != null) energyText.text = Mathf.FloorToInt(data.currentEnergy).ToString();
+            var energyManager = GameManager.Instance.EnergyManager;
+
+            if (energyText != null) energyText.text = Mathf.FloorToInt(energyManager.CurrentEnergy).ToString();
             if (coinText != null) coinText.text = Mathf.FloorToInt(data.currentCoins).ToString();
             if (gemText != null) gemText.text = data.currentGems.ToString();
+
+            // --- YÜZDELİK AÇLIK SİSTEMİ ---
+            if (hungerText != null)
+            {
+                // Artık matematiği biz yapmıyoruz, merkezden (EnergyManager) hazır alıyoruz!
+                int hungerPercent = energyManager.GetHungerPercentage();
+
+                string colorHex = hungerPercent <= 25 ? "red" : "white";
+                hungerText.text = $"<color={colorHex}>%{hungerPercent}</color>";
+            }
         }
 
         // ==================================================

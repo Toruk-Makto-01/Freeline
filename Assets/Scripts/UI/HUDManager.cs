@@ -20,7 +20,8 @@ namespace Freeline
         [Header("Alt Bar Butonları (Bottom NavBar)")]
         [SerializeField] private Button sleepButton;
         [SerializeField] private Button tabletButton;
-        [SerializeField] private Button homeButton;
+        [SerializeField] private Button exhibitionButton;
+         [SerializeField] private Button detailsButton; // Home butonu 4. buton
 
         [Header("Üst Bar Elementleri (Top Panel)")]
         [SerializeField] private Button settingsButton;
@@ -33,6 +34,16 @@ namespace Freeline
         [SerializeField] private Button addCoinButton;
         [SerializeField] private Button addGemButton;
         [SerializeField] private TextMeshProUGUI followersText; // Takipçi sayısı metni
+
+        [Header("Aktif Buff İkonları")]
+        [SerializeField] private Transform buffIconsContainer;
+        [SerializeField] private GameObject buffIconPrefab;
+        [SerializeField] private Sprite energyCostSprite;  // Enerji tasarrufu ikonu (Örn: Yıldırım)
+        [SerializeField] private Sprite energyRegenSprite; // Enerji yenileme ikonu (Örn: Artı işareti)
+
+        [Header("Detaylar Paneli")]
+       
+        [SerializeField] private DetailsPanel detailsPanel; // Az önce yazdığımız panelin kodu
 
         [Header("Açılacak Paneller / Sistem Referansları")]
         [SerializeField] private GameObject settingsPanel;
@@ -58,7 +69,8 @@ namespace Freeline
             // Alt Bar Buton Olayları
             if (sleepButton != null) sleepButton.onClick.AddListener(OnSleepClicked);
             if (tabletButton != null) tabletButton.onClick.AddListener(OnTabletClicked);
-            if (homeButton != null) homeButton.onClick.AddListener(OnHomeClicked);
+            if (exhibitionButton != null) exhibitionButton.onClick.AddListener(OnExhibitionClicked);
+            if (detailsButton != null) detailsButton.onClick.AddListener(OnDetailsClicked);
 
             // Üst Bar Buton Olayları
             if (settingsButton != null) settingsButton.onClick.AddListener(OnSettingsClicked);
@@ -80,6 +92,13 @@ namespace Freeline
             {
                 GameManager.Instance.SaveManager.OnCoinsChanged += HandleCoinsChanged;
             }
+
+            // --- YENİ EKLENEN KISIM: AÇLIK VE ENERJİ TAKİBİ ---
+            if (GameManager.Instance?.EnergyManager != null)
+            {
+                GameManager.Instance.EnergyManager.OnHungerChanged += HandleHungerOrEnergyChanged;
+                GameManager.Instance.EnergyManager.OnEnergyChanged += HandleHungerOrEnergyChanged;
+            }
         }
 
         void OnDisable()
@@ -93,6 +112,13 @@ namespace Freeline
             {
                 GameManager.Instance.SaveManager.OnCoinsChanged -= HandleCoinsChanged;
             }
+
+            // --- YENİ EKLENEN KISIM: AÇLIK VE ENERJİ TAKİBİ ---
+            if (GameManager.Instance?.EnergyManager != null)
+            {
+                GameManager.Instance.EnergyManager.OnHungerChanged -= HandleHungerOrEnergyChanged;
+                GameManager.Instance.EnergyManager.OnEnergyChanged -= HandleHungerOrEnergyChanged;
+            }
         }
 
         // =========================================================================
@@ -102,6 +128,9 @@ namespace Freeline
         private void HandleTimeAdvanced(float previousHour, float newHour) => RefreshAllUI();
         private void HandleNewDay(int currentDay) => RefreshAllUI();
         private void HandleCoinsChanged(int currentCoins) => RefreshAllUI();
+        
+        // Bu yeni satır, enerji veya açlık değiştiğinde UI'ı anında yenileyecek!
+        private void HandleHungerOrEnergyChanged(float current, float max) => RefreshAllUI();
 
         public void RefreshAllUI()
         {
@@ -109,28 +138,33 @@ namespace Freeline
 
             var data = GameManager.Instance.SaveManager.CurrentData;
             var timeManager = GameManager.Instance.TimeManager;
+            var energyManager = GameManager.Instance.EnergyManager; // Enerji yöneticimizi buraya ekledik
 
             // 1. Ekonomi Verileri (Kutuların içindeki yazılar)
             if (coinText != null) coinText.text = Mathf.FloorToInt(data.currentCoins).ToString();
             if (gemText != null) gemText.text = data.currentGems.ToString();
 
-            // 2. Açlık Durumu (hoursSinceLastFood değişkeninden yüzde üretiyoruz)
+            // 2. Açlık Durumu (Artık matematiği EnergyManager'dan çekiyoruz!)
             if (hungerText != null)
             {
-                int hungerPercent = Mathf.Clamp(100 - Mathf.RoundToInt(data.hoursSinceLastFood * 5f), 0, 100);
-                hungerText.text = $"Açlık: %{hungerPercent}";
+                int hungerPercent = energyManager.GetHungerPercentage();
+
+                // Market panelindeki gibi %25 altına düşünce kırmızı yapma mantığını buraya da ekleyelim
+                string colorHex = hungerPercent <= 25 ? "red" : "white";
+                hungerText.text = $"<color={colorHex}>Açlık: %{hungerPercent}</color>";
             }
 
-            // 3. Webtoon Takipçi Sayısı (SaveData -> webtoonData)
+            // 3. Webtoon Takipçi Sayısı
             if (followersText != null && data.webtoonData != null)
             {
                 followersText.text = $"{data.webtoonData.totalFollowers} Takipçi";
             }
 
-            // 4. Enerji Barı Doluluğu ve Renk Ayarı (Filled Image)
+            // 4. Enerji Barı Doluluğu ve Renk Ayarı (Artık anlık canlı veriyi okuyor!)
             if (energyBarFill != null)
             {
-                float energyRatio = data.currentEnergy / 100f; // Maks enerji 100 varsayıldı
+                // Sabit 100 yerine, mevcut enerjiyi maksimum enerjiye bölüyoruz
+                float energyRatio = energyManager.CurrentEnergy / energyManager.MaxEnergy;
                 energyBarFill.fillAmount = energyRatio;
                 energyBarFill.color = (energyRatio <= 0.25f) ? lowEnergyColor : normalEnergyColor;
             }
@@ -143,11 +177,12 @@ namespace Freeline
 
                 if (clockHandImg != null)
                 {
-                    // Her saat 15 derece dönmeli (360 derece / 24 saat = 15 derece)
                     float targetRotation = -timeManager.CurrentHour * 15f;
                     clockHandImg.localRotation = Quaternion.Euler(0f, 0f, targetRotation);
                 }
             }
+
+            UpdateBuffIcons();
         }
 
         // =========================================================================
@@ -186,13 +221,27 @@ namespace Freeline
             if (tabletPanel != null) tabletPanel.SetActive(!tabletPanel.activeSelf);
         }
 
-        private void OnHomeClicked()
+        private void OnExhibitionClicked()
         {
             Debug.Log("<color=green>[HUD] Home (Ev) Butonuna Basildi! Tüm paneller kapaniyor.</color>");
             if (tabletPanel != null) tabletPanel.SetActive(false);
             if (settingsPanel != null) settingsPanel.SetActive(false);
             if (drawingDeskPanel != null) drawingDeskPanel.gameObject.SetActive(false);
             if (marketPanel != null) marketPanel.Close();
+        }
+
+        private void OnDetailsClicked()
+        {
+            Debug.Log("<color=magenta>[HUD] Detaylar Butonuna Basıldı!</color>");
+            
+            // Diğer açık panelleri kapatıp ortalığı temizleyelim
+            if (tabletPanel != null) tabletPanel.SetActive(false);
+            if (settingsPanel != null) settingsPanel.SetActive(false);
+            if (drawingDeskPanel != null) drawingDeskPanel.gameObject.SetActive(false);
+            if (marketPanel != null) marketPanel.Close();
+
+            // Kendi panelimizi açalım
+            if (detailsPanel != null) detailsPanel.OpenPanel();
         }
 
         private void OnSettingsClicked()
@@ -206,6 +255,35 @@ namespace Freeline
             {
                 marketPanel.Open();
                 marketPanel.ShowCategory(category);
+            }
+        }
+
+        private void UpdateBuffIcons()
+        {
+            if (buffIconsContainer == null || buffIconPrefab == null) return;
+
+            // Önce eski ikonları temizle
+            foreach (Transform child in buffIconsContainer)
+            {
+                Destroy(child.gameObject);
+            }
+
+            var activeBuffs = GameManager.Instance.EnergyManager.GetActiveBuffs();
+            
+            // Aktif buff sayısınca ikon üret
+            foreach (var buff in activeBuffs)
+            {
+                GameObject iconObj = Instantiate(buffIconPrefab, buffIconsContainer);
+                Image img = iconObj.GetComponent<Image>();
+                
+                if (img != null)
+                {
+                    // Efekt tipine göre doğru resmi (Sprite) ata
+                    if (buff.effectType == ConsumableEffectType.EnergyCostReduction)
+                        img.sprite = energyCostSprite;
+                    else if (buff.effectType == ConsumableEffectType.EnergyRegenOverTime)
+                        img.sprite = energyRegenSprite;
+                }
             }
         }
     }

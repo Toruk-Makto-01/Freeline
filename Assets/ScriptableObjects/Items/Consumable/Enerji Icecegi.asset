@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Freeline.ConsumableItemData
   itemId: e0
   displayName: "Enerji \u0130\xE7ece\u011Fi"
-  description: 1 saat boyunca dakikada 5 enerji kazan.
+  description: "An\u0131nda 50 Enerji kazan!"
   shopIcon: {fileID: -1988556332238713541, guid: 9385ec7875e8d114690b6aa5f306a579, type: 3}
   currencyType: 0
   price: 200
   dailyLimit: 3
-  effectType: 3
-  effectValue: 0
-  durationInMinutes: 5
+  effectType: 0
+  effectValue: 50
+  durationInMinutes: 0

@@ -1,0 +1,147 @@
+using System;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEditor.Animations;
+
+namespace Freeline
+{
+    public class DetailsPanel : MonoBehaviour
+    {
+        [Header("UI Referansleri")]
+        [SerializeField] private Transform activeBuffsContainer;
+        [SerializeField] private Transform permanentStatsContainer;
+        [SerializeField] private GameObject statTextPrefab;
+        [SerializeField] private Button closeButton;
+
+        [Header("Veri Referanslari")]
+        [Tooltip("Dekorasyon isimlerini ve ozelliklerini bulmak icin katalog referansi")]
+        [SerializeField] private DecorationCatalog decorationCatalog;
+
+        private void Awake()
+        {
+            if (closeButton != null)
+            {
+                closeButton.onClick.AddListener(ClosePanel);
+            }
+        }
+
+        // Panel her acildiginda verileri tazelemek icin cagiracagiz
+        public void OpenPanel()
+        {
+            gameObject.SetActive(true);
+            RefreshData();
+        }
+
+        public void ClosePanel()
+        {
+            gameObject.SetActive(false);
+        }
+
+        private void RefreshData()
+        {
+            ClearContainer(activeBuffsContainer);
+            ClearContainer(permanentStatsContainer);
+
+            PopulateActiveBuffs();
+            PopulatePermanentStats();
+        }
+
+        // Mevcut yazıları temizler (üst üste binmemesi için)
+        private void ClearContainer(Transform container)
+        {
+            foreach (Transform child in container)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        // 1. KISIM: SÜRELİ GÜÇLENDŞİRMELER (Aktif Buflar)
+        private void PopulateActiveBuffs()
+        {
+            var activeBuffs = GameManager.Instance.EnergyManager.GetActiveBuffs();
+
+            if (activeBuffs == null || activeBuffs.Count == 0)
+            {
+                CreateTextItem(activeBuffsContainer, "<i>Şu an aktif bir etkiniz bulunmuyor.<i>");
+                return;
+            }
+
+            foreach (var buff in activeBuffs)
+            {
+                // Bitiş süresini hesapla
+                if(DateTime.TryParse(buff.endTimeString, out DateTime endTime))
+                {
+                    TimeSpan timeLeft = endTime - DateTime.Now;
+                    string timeString = $"{timeLeft.Minutes}dk {timeLeft.Seconds}sn";
+
+                    // Buff tipine göre metin oluştur
+                    string buffText = "";
+                    if (buff.effectType == ConsumableEffectType.EnergyCostReduction)
+                    {
+                        buffText = $"Kahve Etkisi : <color=#00FF00>Enerji Tasarrufu</color> ({timeString})";
+                    }
+                    else if (buff.effectType == ConsumableEffectType.EnergyRegenOverTime)
+                    {
+                        buffText = $"Dinçlik : <color=#00FF00>Enerji Yenileme</color> ({timeString})";
+                    }
+                    else
+                    {
+                        buffText = $"{buff.effectType} : Etki Değeri {buff.effectValue} ({timeString})";
+                    }
+
+                    CreateTextItem(activeBuffsContainer, buffText);
+                }
+            }
+        }
+
+        // 2. KISIM: KALICI ÖZELLİKLER (Dekorasyon)
+        private void PopulatePermanentStats()
+        {
+            var equippedItem = GameManager.Instance.SaveManager.CurrentData.equippedDecorations;
+
+            if (equippedItem == null || equippedItem.Count == 0)
+            {
+                CreateTextItem(permanentStatsContainer, "<i>Henüz bir eşya yerleştirmediniz.</i>");
+                return;
+            }
+
+            bool hasAnyStat = false;
+
+            foreach (var equipped in equippedItem)
+            {
+                // Kataloga gidip eşyanın detaylarını buluyoruz
+                var itemData = decorationCatalog.GetItemById(equipped.itemId);
+
+                if (itemData != null)
+                {
+                    // NOT: Eğer DecorationItemData içine henüz "StstDescription" (Örn: "Uyku Verimi +%10")
+                    // diye vir string değişken eklemediysek, ileride ekleyebiliriz.
+                    // Şimdilik test için statik bir yazı basıyoruz.
+
+                    // string statYazisi = string.IsNullOrEmpty(itemData.statDescription) ? "Sadece Dekoratif" : itemData.statDecoration;
+                    string statYazisi = "<color=#00FF00>Ö<ellik Testi +%10</color>"; // Geçici test yazisi
+
+                    CreateTextItem(permanentStatsContainer, $"{itemData.displayName} : {statYazisi}");
+                    hasAnyStat = true;
+                }
+            }
+
+            if (!hasAnyStat)
+            {
+                CreateTextItem(permanentStatsContainer, "<i>Eşyalarınızın ek bir özelliği yok.</i>");
+            }
+        }
+
+        // Konteyner içine Prefab kullanarak yeni bir yazo (text) objesi oluşturur
+        private void CreateTextItem(Transform parent, string content)
+        {
+            GameObject newObj = Instantiate(statTextPrefab, parent);
+            TextMeshProUGUI textComp = newObj.GetComponent<TextMeshProUGUI>();
+            if (textComp != null)
+            {
+                textComp.text = content;
+            }
+        }
+    }
+}

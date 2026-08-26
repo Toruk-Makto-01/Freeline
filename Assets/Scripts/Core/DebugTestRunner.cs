@@ -17,7 +17,7 @@ namespace Freeline
     // Attach to the "DebugTools" GameObject in the Bootstrap scene.
     public class DebugTestRunner : MonoBehaviour
     {
-// Debug scriptinin sahnedeki tek kopyasını tutar
+        // Debug scriptinin sahnedeki tek kopyasını tutar
         public static DebugTestRunner Instance;
 
         void Awake()
@@ -59,8 +59,8 @@ namespace Freeline
             // If a job was already started via the UI, skip straight to completion.
             if (jm.ActiveJob != null)
             {
-                string activeTitle  = jm.ActiveJob.jobTitle;
-                float  coinsBefore  = save.currentCoins;
+                string activeTitle = jm.ActiveJob.jobTitle;
+                float coinsBefore = save.currentCoins;
                 jm.CompleteJob();
                 Debug.Log(
                     $"[DebugTest] J → Completed active job: '{activeTitle}' | " +
@@ -77,8 +77,8 @@ namespace Freeline
                 return;
             }
 
-            JobData job         = jm.CurrentBoardJobs[0];
-            float coinsBefore2  = save.currentCoins;
+            JobData job = jm.CurrentBoardJobs[0];
+            float coinsBefore2 = save.currentCoins;
 
             Debug.Log(
                 $"[DebugTest] J → Starting job: '{job.jobTitle}' | " +
@@ -129,7 +129,7 @@ namespace Freeline
             if (wt == null) { Debug.LogWarning("[Debug] SaveManager not ready"); return; }
 
             float followersBefore = wt.followers;
-            int   chaptersBefore  = wt.totalChaptersPublished;
+            int chaptersBefore = wt.totalChaptersPublished;
 
             Debug.Log(
                 $"[DebugTest] W → Producing chapter | " +
@@ -163,63 +163,39 @@ namespace Freeline
             if (gm == null) { Debug.LogWarning("[Debug] GameManager not ready"); return; }
             var energy = gm.EnergyManager;
             if (energy == null) { Debug.LogWarning("[Debug] EnergyManager not ready"); return; }
-            float before = energy.CurrentEnergy;
 
-            Debug.Log(
-                $"[DebugTest] F → Eating food | " +
-                $"Hungry: {energy.IsHungry} | " +
-                $"Energy before: {before:F0}"
-            );
+            float beforeE = energy.CurrentEnergy;
+            float beforeH = energy.CurrentHunger;
 
-            // Reset hunger clock (no buff), then restore energy at full rate.
-            //energy.EatFood(new EnergyBuff { speedMultiplier = 0f, durationHours = 0f });
-            energy.RestoreEnergy(30f);
+            Debug.Log($"[DebugTest] F → Eating food | Hungry: {energy.IsHungry} | Energy before: {beforeE:F0}");
 
-            Debug.Log(
-                $"[DebugTest] F → Fed | " +
-                $"Energy after: {energy.CurrentEnergy:F0} " +
-                $"(+{energy.CurrentEnergy - before:F0}) | " +
-                $"Hungry: {energy.IsHungry}"
-            );
+            // Yeni Sistem Testi: Açlığı %100'e fulle ve enerjiyi direkt 30 ver!
+            energy.RestoreHunger(100f);
+            energy.RestoreEnergyDirect(30f);
+
+            Debug.Log($"[DebugTest] F → Fed! | Hunger: %{beforeH:F0} -> %{energy.CurrentHunger:F0} | Energy: {beforeE:F0} -> {energy.CurrentEnergy:F0}");
         }
 
         private void SimulateNewDay()
         {
             var gm = GameManager.Instance;
-            if (gm == null) { Debug.LogWarning("[Debug] GameManager not ready"); return; }
+            if (gm == null) return;
             var time = gm.TimeManager;
-            if (time == null) { Debug.LogWarning("[Debug] TimeManager not ready"); return; }
             var save = gm.SaveManager?.CurrentData;
-            if (save == null) { Debug.LogWarning("[Debug] SaveManager not ready"); return; }
 
-            int   dayBefore   = time.CurrentDay;
+            int dayBefore = time.CurrentDay;
             float coinsBefore = save.currentCoins;
 
-            Debug.Log(
-                $"[DebugTest] N → Forcing new day from Day {dayBefore} | " +
-                $"Current hour: {time.GetFormattedTime()}"
-            );
-
-            // Advance past midnight regardless of current hour.
             time.AdvanceTime(24f);
 
-            float incomeEarned = save.currentCoins - coinsBefore;
-            Debug.Log(
-                $"[DebugTest] N → Now Day {time.CurrentDay} | " +
-                $"Passive income earned: +{incomeEarned:F2} coins | " +
-                $"Followers: {save.webtoonData.followers:F0} | " +
-                $"Energy: {gm.EnergyManager.CurrentEnergy:F0}/{gm.EnergyManager.MaxEnergy:F0}"
-            );
+            Debug.Log($"[DebugTest] N → Now Day {time.CurrentDay} | Income: +{save.currentCoins - coinsBefore:F2} | Hunger: %{gm.EnergyManager.CurrentHunger:F0}");
         }
 
         private void SimulateReset()
         {
-            var gm = GameManager.Instance;
-            if (gm == null) { Debug.LogWarning("[Debug] GameManager not ready"); return; }
-            var save = gm.SaveManager;
-            if (save == null) { Debug.LogWarning("[Debug] SaveManager not ready"); return; }
+            var save = GameManager.Instance?.SaveManager;
             Debug.Log("[DebugTest] R → Deleting save and reloading scene...");
-            save.DeleteSave();
+            save?.DeleteSave();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

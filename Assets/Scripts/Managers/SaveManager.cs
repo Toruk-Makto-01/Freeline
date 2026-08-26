@@ -88,11 +88,10 @@ namespace Freeline
                 CurrentData.currentHour
             );
 
-            // GÜNCELLEME: Artık aktif buff'ları da EnergyManager'a yüklüyoruz
             GameManager.Instance.EnergyManager.LoadState(
                 CurrentData.currentEnergy,
-                CurrentData.hoursSinceLastFood,
-                CurrentData.activeRealTimeBuffs 
+                CurrentData.currentHunger, // Eski hoursSince... silindi
+                CurrentData.activeRealTimeBuffs
             );
         }
 
@@ -106,8 +105,8 @@ namespace Freeline
 
             EnergyManager energy = GameManager.Instance.EnergyManager;
             CurrentData.currentEnergy = energy.CurrentEnergy;
-            CurrentData.hoursSinceLastFood = energy.HoursSinceLastFood;
-            
+            CurrentData.currentHunger = energy.CurrentHunger; // Eski hoursSince... silindi
+
             // GÜNCELLEME: Aktif buff'ları EnergyManager'dan alıp kaydediyoruz
             CurrentData.activeRealTimeBuffs = new System.Collections.Generic.List<ActiveBuffSaveData>(energy.GetActiveBuffs());
         }

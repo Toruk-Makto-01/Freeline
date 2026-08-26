@@ -37,7 +37,8 @@ namespace Freeline
 
         // --- Energy / Hunger ---
         public float currentEnergy = 100f;
-        public float hoursSinceLastFood = 0f;
+        // Artık saat tutmuyoruz, %0-%100 arası açlık puanı tutuyoruz. (Oyuna başlarken tok başlasın diye 100 verdik)
+        public float currentHunger = 100f;
         public List<ActiveBuffSaveData> activeRealTimeBuffs = new();
 
         // --- Economy ---

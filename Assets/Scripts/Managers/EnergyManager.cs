@@ -11,27 +11,21 @@ namespace Freeline
 
         public float CurrentEnergy { get; private set; }
         public float MaxEnergy => config.maxEnergy;
-
-        public bool IsHungry => _hoursSinceLastFood >= config.hungerThresholdHours;
-        public float HoursSinceLastFood => _hoursSinceLastFood;
-        public float MaxHungerHours => config.hungerThresholdHours;
+        
+        // --- YENİ %100 AÇLIK SİSTEMİ ---
+        public float CurrentHunger { get; private set; } // 0 (Çok Aç) ile 100 (Tam Tok) arası
+        public bool IsHungry => CurrentHunger <= 0f; // Açlık 0 ise debuff (ceza) uygulanır
 
         public event Action<float, float> OnEnergyChanged;
         public event Action OnLowEnergy;
         public event Action OnEnergyDepleted;
-        public event Action<float, float> OnHungerChanged;
+        public event Action<float, float> OnHungerChanged; // Market ve HUD bu event ile güncellenebilir (isteğe bağlı)
 
-        private float _hoursSinceLastFood;
         private bool _lowEnergyFired;
         private bool _depletedFired;
-
-        // Gerçek zamanlı aktif güçlendirmelerimiz
         private readonly List<ActiveBuffSaveData> _activeBuffs = new();
 
-        void Awake()
-        {
-            CurrentEnergy = config.maxEnergy;
-        }
+        void Awake() => CurrentEnergy = config.maxEnergy;
 
         void Start()
         {
@@ -48,30 +42,30 @@ namespace Freeline
             time.OnNewDayStarted -= HandleNewDay;
         }
 
-        void Update()
-        {
-            // Her saniye gerçek zamanlı buff'ların süresinin bitip bitmediğini kontrol et
-            CheckBuffExpirations();
-        }
+        void Update() => CheckBuffExpirations();
 
-        public void LoadState(float energy, float hoursSinceLastFood, List<ActiveBuffSaveData> savedBuffs)
+        public void LoadState(float energy, float hunger, List<ActiveBuffSaveData> savedBuffs)
         {
-            _hoursSinceLastFood = Mathf.Max(0f, hoursSinceLastFood);
             CurrentEnergy = Mathf.Clamp(energy, 0f, config.maxEnergy);
-
+            CurrentHunger = Mathf.Clamp(hunger, 0f, 100f);
+            
             _lowEnergyFired = CurrentEnergy <= config.energyDepletionWarningThreshold;
             _depletedFired = CurrentEnergy <= 0f;
-
+            
             _activeBuffs.Clear();
-            if (savedBuffs != null)
-            {
-                _activeBuffs.AddRange(savedBuffs);
-            }
+            if (savedBuffs != null) _activeBuffs.AddRange(savedBuffs);
 
             OnEnergyChanged?.Invoke(CurrentEnergy, config.maxEnergy);
         }
 
-        // --- YENİ SİSTEM: MARKET EŞYALARINI (CONSUMABLE) UYGULAMA ---
+        public int GetHungerPercentage() => Mathf.FloorToInt(CurrentHunger);
+
+        public void RestoreHunger(float amount)
+        {
+            CurrentHunger = Mathf.Clamp(CurrentHunger + amount, 0f, 100f);
+            OnHungerChanged?.Invoke(CurrentHunger, 100f);
+        }
+
         public void ApplyConsumable(ConsumableItemData item)
         {
             switch (item.effectType)
@@ -79,21 +73,18 @@ namespace Freeline
                 case ConsumableEffectType.InstantEnergy:
                     RestoreEnergyDirect(item.effectValue);
                     break;
-
                 case ConsumableEffectType.HungerRelief:
-                    _hoursSinceLastFood = 0f;
-                    OnHungerChanged?.Invoke(_hoursSinceLastFood, config.hungerThresholdHours);
+                    // effectValue = 50 ise, doğrudan %50 tok tutar! Mantıklı ve kusursuz.
+                    RestoreHunger(item.effectValue);
                     break;
-
                 case ConsumableEffectType.EnergyCostReduction:
                 case ConsumableEffectType.EnergyRegenOverTime:
-                    // Süreli bir özellikse gerçek zamanlı olarak listeye ekle
                     DateTime endTime = DateTime.Now.AddMinutes(item.durationInMinutes);
-                    _activeBuffs.Add(new ActiveBuffSaveData
+                    _activeBuffs.Add(new ActiveBuffSaveData 
                     {
                         effectType = item.effectType,
                         effectValue = item.effectValue,
-                        endTimeString = endTime.ToString("O") // Tam tarih formatı
+                        endTimeString = endTime.ToString("O")
                     });
                     break;
             }
@@ -102,40 +93,29 @@ namespace Freeline
         private void CheckBuffExpirations()
         {
             if (_activeBuffs.Count == 0) return;
-
             bool buffRemoved = false;
             for (int i = _activeBuffs.Count - 1; i >= 0; i--)
             {
-                if (DateTime.TryParse(_activeBuffs[i].endTimeString, out DateTime endTime))
+                if (DateTime.TryParse(_activeBuffs[i].endTimeString, out DateTime endTime) && DateTime.Now >= endTime)
                 {
-                    if (DateTime.Now >= endTime)
-                    {
-                        _activeBuffs.RemoveAt(i);
-                        buffRemoved = true;
-                    }
+                    _activeBuffs.RemoveAt(i);
+                    buffRemoved = true;
                 }
             }
-
-            if (buffRemoved)
-            {
-                GameManager.Instance.SaveManager.SaveGame(); // Buff bittiyse kaydet
-            }
+            if (buffRemoved) GameManager.Instance.SaveManager.SaveGame(); 
         }
 
-        // JobManager iş yaparken enerji harcayacağında bu fonksiyonu çağırır. 
-        // Aktif bir EnergyCostReduction buff'ı varsa maliyeti DÜŞÜRÜR!
         public float CalculateEnergyCost(float baseCost)
         {
             float finalCost = baseCost;
             foreach (var buff in _activeBuffs)
             {
-                if (buff.effectType == ConsumableEffectType.EnergyCostReduction)
-                {
-                    finalCost -= buff.effectValue; // Örn: 25 - 2 = 23 enerji
-                }
+                if (buff.effectType == ConsumableEffectType.EnergyCostReduction) finalCost -= buff.effectValue; 
             }
-            return Mathf.Max(1f, finalCost); // İşler en az 1 enerji harcasın
+            return Mathf.Max(1f, finalCost); 
         }
+
+        public float GetCurrentSpeedMultiplier() => 1f;
 
         public void ConsumeEnergy(float amount)
         {
@@ -162,7 +142,6 @@ namespace Freeline
             CurrentEnergy = Mathf.Clamp(value, 0f, config.maxEnergy);
 
             if (Mathf.Approximately(previous, CurrentEnergy)) return;
-
             OnEnergyChanged?.Invoke(CurrentEnergy, config.maxEnergy);
 
             if (CurrentEnergy > config.energyDepletionWarningThreshold) _lowEnergyFired = false;
@@ -173,7 +152,6 @@ namespace Freeline
                 _lowEnergyFired = true;
                 OnLowEnergy?.Invoke();
             }
-
             if (!_depletedFired && CurrentEnergy <= 0f)
             {
                 _depletedFired = true;
@@ -192,18 +170,14 @@ namespace Freeline
         private void HandleTimeAdvanced(float previousHour, float newHour)
         {
             float delta = newHour - previousHour;
-            _hoursSinceLastFood += delta;
-            OnHungerChanged?.Invoke(_hoursSinceLastFood, config.hungerThresholdHours);
+            // config.hungerThresholdHours'ı (örn: 24) kullanarak saatlik düşüşü hesaplıyoruz.
+            // 24 saatte 100'den 0'a düşmesi için saatte ~4.16 düşer.
+            float decayRate = 100f / config.hungerThresholdHours; 
+            
+            CurrentHunger = Mathf.Clamp(CurrentHunger - (delta * decayRate), 0f, 100f);
+            OnHungerChanged?.Invoke(CurrentHunger, 100f);
         }
-        
-        // Eski mini oyunların hata vermemesi için eklendi. 
-        // İleride markete "1 Saat Boyunca İşleri %50 Hızlı Yap" gibi bir eşya eklersek
-        // o mantığı buraya yazacağız. Şimdilik normal hız (1) dönüyoruz.
-        public float GetCurrentSpeedMultiplier()
-        {
-            return 1f;
-        }
-        // SaveManager kullanacak
+
         public List<ActiveBuffSaveData> GetActiveBuffs() => _activeBuffs;
     }
 }
