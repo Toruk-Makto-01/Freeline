@@ -21,7 +21,7 @@ namespace Freeline
         [SerializeField] private Button sleepButton;
         [SerializeField] private Button tabletButton;
         [SerializeField] private Button exhibitionButton;
-         [SerializeField] private Button detailsButton; // Home butonu 4. buton
+        [SerializeField] private Button detailsButton; // Home butonu 4. buton
 
         [Header("Üst Bar Elementleri (Top Panel)")]
         [SerializeField] private Button settingsButton;
@@ -42,7 +42,7 @@ namespace Freeline
         [SerializeField] private Sprite energyRegenSprite; // Enerji yenileme ikonu (Örn: Artı işareti)
 
         [Header("Detaylar Paneli")]
-       
+
         [SerializeField] private DetailsPanel detailsPanel; // Az önce yazdığımız panelin kodu
 
         [Header("Açılacak Paneller / Sistem Referansları")]
@@ -50,6 +50,8 @@ namespace Freeline
         [SerializeField] private MarketPanel marketPanel;
         [SerializeField] private GameObject tabletPanel; // Senin tasarımdaki ana tablet/telefon (PhonePanel'in root GO'su olabilir)
         [SerializeField] private DrawingDeskPanel drawingDeskPanel; // Yeni eklediğimiz çizim masası arayüzü
+        [Header("Gün Sonu Paneli")]
+        [SerializeField] private DailyReportPanel dailyReportPanel;
 
         [Header("Dinamik Renk Ayarları (Grisel Görsel İçin)")]
         [SerializeField] private Color normalEnergyColor = new Color(0f, 0.8f, 0.4f, 1f); // Yeşil / Mavi buff rengi
@@ -67,7 +69,11 @@ namespace Freeline
         void Start()
         {
             // Alt Bar Buton Olayları
-            if (sleepButton != null) sleepButton.onClick.AddListener(OnSleepClicked);
+            if (sleepButton != null)
+            {
+                sleepButton.onClick.RemoveAllListeners();
+                sleepButton.onClick.AddListener(OnSleepButtonClicked);
+            }
             if (tabletButton != null) tabletButton.onClick.AddListener(OnTabletClicked);
             if (exhibitionButton != null) exhibitionButton.onClick.AddListener(OnExhibitionClicked);
             if (detailsButton != null) detailsButton.onClick.AddListener(OnDetailsClicked);
@@ -128,7 +134,7 @@ namespace Freeline
         private void HandleTimeAdvanced(float previousHour, float newHour) => RefreshAllUI();
         private void HandleNewDay(int currentDay) => RefreshAllUI();
         private void HandleCoinsChanged(int currentCoins) => RefreshAllUI();
-        
+
         // Bu yeni satır, enerji veya açlık değiştiğinde UI'ı anında yenileyecek!
         private void HandleHungerOrEnergyChanged(float current, float max) => RefreshAllUI();
 
@@ -233,7 +239,7 @@ namespace Freeline
         private void OnDetailsClicked()
         {
             Debug.Log("<color=magenta>[HUD] Detaylar Butonuna Basıldı!</color>");
-            
+
             // Diğer açık panelleri kapatıp ortalığı temizleyelim
             if (tabletPanel != null) tabletPanel.SetActive(false);
             if (settingsPanel != null) settingsPanel.SetActive(false);
@@ -269,13 +275,13 @@ namespace Freeline
             }
 
             var activeBuffs = GameManager.Instance.EnergyManager.GetActiveBuffs();
-            
+
             // Aktif buff sayısınca ikon üret
             foreach (var buff in activeBuffs)
             {
                 GameObject iconObj = Instantiate(buffIconPrefab, buffIconsContainer);
                 Image img = iconObj.GetComponent<Image>();
-                
+
                 if (img != null)
                 {
                     // Efekt tipine göre doğru resmi (Sprite) ata
@@ -284,6 +290,22 @@ namespace Freeline
                     else if (buff.effectType == ConsumableEffectType.EnergyRegenOverTime)
                         img.sprite = energyRegenSprite;
                 }
+            }
+        }
+
+        private void OnSleepButtonClicked()
+        {
+            Debug.Log("[HUD] Uyu butonuna basıldı, Gün Sonu Raporu açılıyor...");
+            
+            // Açık olan diğer panelleri (Tablet, Market vb.) kapat
+            if (tabletPanel != null) tabletPanel.SetActive(false);
+            if (settingsPanel != null) settingsPanel.SetActive(false);
+            if (marketPanel != null) marketPanel.Close();
+            
+            // Gün sonu panelini aç
+            if (dailyReportPanel != null)
+            {
+                dailyReportPanel.OpenPanel();
             }
         }
     }

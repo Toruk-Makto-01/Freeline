@@ -5,9 +5,7 @@ namespace Freeline
 {
     /// <summary>
     /// Oyun içi saati ve gün döngüsünü yönetir.
-    /// Zaman ayrık adımlarla ilerler (gerçek zamanlı değil); her iş veya eylem
-    /// tamamlandığında <see cref="AdvanceTime"/> çağrılarak saat ileri alınır.
-    /// Gün sonu <see cref="TimeConfig.dayEndHour"/>'a ulaşıldığında otomatik tetiklenir.
+    /// Zaman 24 saatlik dilimde akar ve karakter uyuduğunda (veya iş yaptığında) ilerler.
     /// </summary>
     public class TimeManager : MonoBehaviour
     {
@@ -17,110 +15,118 @@ namespace Freeline
         public float CurrentHour { get; private set; }
 
         /// <summary>Oyun başlangıcından itibaren kaçıncı günde olduğumuz (1'den başlar).</summary>
-        public int   CurrentDay  { get; private set; }
+        public int CurrentDay { get; private set; }
 
-        /// <summary>
-        /// Saat, uyku penceresinin başlangıcına ulaştıysa <c>true</c> döner.
-        /// UI'ın "Uyu" düğmesini etkinleştirmesi için kullanılabilir.
-        /// </summary>
-        public bool IsInSleepWindow => CurrentHour >= config.sleepWindowStart;
-
-        /// <summary>
-        /// Her saat ilerlemesinde tetiklenir.
-        /// Parametreler: (önceki saat, yeni saat).
-        /// </summary>
+        /// <summary>Saat her ilerlediğinde tetiklenir (Önceki Saat, Yeni Saat).</summary>
         public event Action<float, float> OnTimeAdvanced;
 
-        /// <summary>
-        /// CurrentHour her güncellendiğinde tetiklenir; yeni saati taşır.
-        /// HUD kadranı bu event'i dinleyerek ibreyi döndürür.
-        /// </summary>
+        /// <summary>Saat değiştiğinde HUD kadranını döndürmek için tetiklenir.</summary>
         public event Action<float> OnHourChanged;
 
-        /// <summary>
-        /// Saat o gün ilk kez <see cref="TimeConfig.sleepWindowStart"/> değerini geçtiğinde bir kez tetiklenir.
-        /// HUD'ın uyku hatırlatıcısını göstermesi için kullanılabilir.
-        /// </summary>
-        public event Action OnSleepWindowOpened;
-
-        /// <summary>
-        /// Gün bitmeden hemen önce tetiklenir; parametre olarak biten günün numarasını taşır.
-        /// SaveManager bu event'i dinleyerek otomatik kayıt yapar.
-        /// </summary>
+        /// <summary>Gün bittiğinde (Gece 00:00 olduğunda) kayıt almak için tetiklenir.</summary>
         public event Action<int> OnDayEnded;
 
-        /// <summary>
-        /// Saat sıfırlanıp yeni gün başladıktan sonra tetiklenir; yeni günün numarasını taşır.
-        /// JobManager bu event'i dinleyerek iş panosunu yeniler.
-        /// </summary>
+        /// <summary>Yeni güne geçildiğinde (00:00'dan sonra) iş panosunu yenilemek için tetiklenir.</summary>
         public event Action<int> OnNewDayStarted;
-
-        // O gün için uyku penceresi bildiriminin yapılıp yapılmadığını takip eder.
-        // Aynı gün içinde OnSleepWindowOpened'ın birden fazla kez tetiklenmesini önler.
-        private bool _sleepWindowNotified;
 
         void Awake()
         {
-            CurrentDay  = 1;
+            CurrentDay = 1;
             CurrentHour = config.startHour;
-            _sleepWindowNotified = false;
         }
 
         /// <summary>
         /// Kayıt dosyasından yüklenen gün ve saat bilgisini uygular.
-        /// SaveManager, oyun yüklendikten sonra bu metodu çağırır.
         /// </summary>
-        /// <param name="day">Kaydedilen gün numarası.</param>
-        /// <param name="hour">Kaydedilen saat (0 – dayEndHour aralığında sıkıştırılır).</param>
         public void LoadState(int day, float hour)
         {
-            CurrentDay  = day;
-            CurrentHour = Mathf.Clamp(hour, 0f, config.dayEndHour);
-            // Geç saatte yükleme yapıldığında uyku penceresi bildirimi yeniden tetiklenmemeli.
-            _sleepWindowNotified = CurrentHour >= config.sleepWindowStart;
+            CurrentDay = day;
+            CurrentHour = Mathf.Clamp(hour, 0f, 24f); // Artık 24 saatlik döngüdeyiz
         }
 
         /// <summary>
         /// Saati belirtilen miktar kadar ilerletir.
-        /// Eğer yeni saat <see cref="TimeConfig.dayEndHour"/>'ı aşarsa gün otomatik sona erer.
-        /// JobManager, bir iş tamamlandığında bu metodu çağırır.
+        /// Eğer saat 24.00'ı geçerse otomatik olarak yeni güne atlar.
         /// </summary>
-        /// <param name="hours">İlerletilecek saat miktarı.</param>
-        public void AdvanceTime(float hours)
+        public void AdvanceTime(float hoursToAdvance)
         {
-            if (hours <= 0f) return;
+            float previousHour = CurrentHour;
+            CurrentHour += hoursToAdvance;
 
-            float previous = CurrentHour;
-            float next     = CurrentHour + hours;
+            // Uyanık kalınan süreyi artır
+            if (GameManager.Instance?.SaveManager?.CurrentData != null)
+            {
+                GameManager.Instance.SaveManager.CurrentData.hoursAwake += hoursToAdvance;
+            }
 
-            if (next >= config.dayEndHour)
+            // Gece 12'yi (24:00) geçme kontrolü
+            while (CurrentHour >= 24f)
             {
-                // Gün sonu sınırını aşıyorsa saati tam sınıra sabitle, ardından günü kapat.
-                CurrentHour = config.dayEndHour;
-                NotifySleepWindowIfCrossed(previous);
-                OnTimeAdvanced?.Invoke(previous, CurrentHour);
-                OnHourChanged?.Invoke(CurrentHour);
-                SleepNow();
+                CurrentHour -= 24f; // Saati sıfırla (Örn: 25.00 ise 01.00 olur)
+                AdvanceDay();       // Yeni güne geç
             }
-            else
-            {
-                CurrentHour = next;
-                OnTimeAdvanced?.Invoke(previous, CurrentHour);
-                OnHourChanged?.Invoke(CurrentHour);
-                NotifySleepWindowIfCrossed(previous);
-            }
+
+            OnTimeAdvanced?.Invoke(previousHour, CurrentHour);
+            OnHourChanged?.Invoke(CurrentHour);
         }
 
         /// <summary>
-        /// Oyuncunun manuel uyuma isteğini işler.
-        /// Uyku penceresi dışındaysa isteği reddeder.
+        /// Gece yarısı olduğunda gün atlatma ve kira sayacı mantığını işletir.
         /// </summary>
-        /// <returns>Uyku kabul edildiyse <c>true</c>, pencere dışındaysa <c>false</c>.</returns>
-        public bool TrySleep()
+        private void AdvanceDay()
         {
-            if (!IsInSleepWindow) return false;
-            SleepNow();
-            return true;
+            OnDayEnded?.Invoke(CurrentDay); // Gün bitiyor haberini ver (Örn: Save almak için)
+
+            CurrentDay++;
+
+            if (GameManager.Instance?.SaveManager?.CurrentData != null)
+            {
+                var data = GameManager.Instance.SaveManager.CurrentData;
+
+                // Kira döngüsünü ayarla
+                if (!data.isGracePeriodActive)
+                {
+                    data.currentRentDay++;
+                }
+                else
+                {
+                    data.rentGraceDaysLeft--;
+                }
+            }
+
+            OnNewDayStarted?.Invoke(CurrentDay); // Yeni gün başladı haberini ver
+        }
+
+        /// <summary>
+        /// Oyuncunun "Uyu" butonuna basmasıyla tetiklenir.
+        /// Saati 8 saat ileri atar, yorgunluğu sıfırlar ve enerjiyi doldurur.
+        /// </summary>
+        public void Sleep(float sleepHours = 8f)
+        {
+            // 1. Saati direkt 8 saat ileri at (Eğer gece 12'yi geçerse AdvanceTime içindeki sistem günü otomatik atlatır)
+            AdvanceTime(sleepHours);
+
+            if (GameManager.Instance?.SaveManager?.CurrentData != null && GameManager.Instance?.EnergyManager != null)
+            {
+                // 2. Uykusuzluk sayacını sıfırla
+                GameManager.Instance.SaveManager.CurrentData.hoursAwake = 0f;
+
+                // 3. Enerjiyi fulle, açlığı %40 düşür
+                var energyManager = GameManager.Instance.EnergyManager;
+                energyManager.RestoreEnergyDirect(energyManager.MaxEnergy);
+                energyManager.RestoreHunger(-40f);
+
+                // 4. Oyunu kaydet
+                GameManager.Instance.SaveManager.SaveGame();
+            }
+
+            // Yeni güne başlarken dünün adisyonunu temizle
+            var data = GameManager.Instance.SaveManager.CurrentData;
+            data.dailyIncome = 0f;
+            data.dailyExpense = 0f;
+            data.dailyTransactions.Clear();
+
+            Debug.Log($"[TimeManager] Uyku tamamlandı! {sleepHours} saat geçildi. Uykusuzluk sıfırlandı.");
         }
 
         /// <summary>
@@ -132,36 +138,6 @@ namespace Freeline
             int h = Mathf.FloorToInt(CurrentHour);
             int m = Mathf.RoundToInt((CurrentHour - h) * 60f);
             return $"{h:D2}:{m:D2}";
-        }
-
-        /// <summary>
-        /// Saat bu adımda uyku penceresi eşiğini ilk kez geçtiyse <see cref="OnSleepWindowOpened"/>
-        /// event'ini tetikler. Her gün yalnızca bir kez çalışır.
-        /// </summary>
-        private void NotifySleepWindowIfCrossed(float previousHour)
-        {
-            if (_sleepWindowNotified) return;
-            if (CurrentHour >= config.sleepWindowStart && previousHour < config.sleepWindowStart)
-            {
-                _sleepWindowNotified = true;
-                OnSleepWindowOpened?.Invoke();
-            }
-        }
-
-        /// <summary>
-        /// Günü kapatır: <see cref="OnDayEnded"/> tetiklenir, gün sayacı artar,
-        /// saat <see cref="TimeConfig.startHour"/>'a sıfırlanır ve <see cref="OnNewDayStarted"/> tetiklenir.
-        /// </summary>
-        private void SleepNow()
-        {
-            OnDayEnded?.Invoke(CurrentDay);
-
-            CurrentDay++;
-            CurrentHour = config.startHour;
-            _sleepWindowNotified = false; // Yeni gün için uyku penceresi bildirimi sıfırlanır.
-            OnHourChanged?.Invoke(CurrentHour);
-
-            OnNewDayStarted?.Invoke(CurrentDay);
         }
     }
 }

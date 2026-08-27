@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -23,6 +24,54 @@ namespace Freeline
         {
             if (GameManager.Instance == null) return;
             GameManager.Instance.TimeManager.OnNewDayStarted -= HandleNewDayStarted;
+        }
+
+        /// <summary>
+        /// Günlük harcamaları veya gelirleri "x3" mantığıyla gruplayarak kaydeder.
+        /// </summary>
+        public void LogDailyTransaction(string itemName, float price, bool isIncome)
+        {
+            var data = CurrentData; // SaveManager'ın içindeysek direkt CurrentData'ya erişebiliriz
+
+            if (data.dailyTransactions == null)
+                data.dailyTransactions = new List<DailyTransaction>();
+
+            // Listede bu işlem daha önce var mı diye bakıyoruz
+            var existingTransaction = data.dailyTransactions.Find(t => t.itemName == itemName && t.isIncome == isIncome);
+
+            if (existingTransaction != null)
+            {
+                // Varsa miktarını ve toplam fiyatını artır (Gruplama)
+                existingTransaction.amount++;
+                existingTransaction.totalPrice += price;
+            }
+            else
+            {
+                // Yoksa listeye yepyeni bir satır olarak ekle
+                data.dailyTransactions.Add(new DailyTransaction
+                {
+                    itemName = itemName,
+                    amount = 1,
+                    totalPrice = price,
+                    isIncome = isIncome
+                });
+            }
+
+            // Günlük toplamları da güncelle
+            if (isIncome)
+                data.dailyIncome += price;
+            else
+                data.dailyExpense += price;
+
+            // --- TEST İÇİN KONSOLA YAZDIRMA (Sonradan silebiliriz) ---
+            Debug.Log($"<color=cyan>--- GÜNCEL ADİSYON ---</color>");
+            foreach (var transaction in data.dailyTransactions)
+            {
+                string type = transaction.isIncome ? "<color=green>GELİR</color>" : "<color=red>GİDER</color>";
+                Debug.Log($"{type} | {transaction.itemName} x{transaction.amount} = {transaction.totalPrice}");
+            }
+            Debug.Log($"<color=yellow>Toplam Kazanç: {data.dailyIncome} | Toplam Harcama: {data.dailyExpense}</color>");
+            // ---------------------------------------------------------
         }
 
         public SaveData LoadGame()

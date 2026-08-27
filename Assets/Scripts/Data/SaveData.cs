@@ -24,6 +24,15 @@ namespace Freeline
         public string endTimeString; // DateTime'ı string olarak kaydedeceğiz (JSON serileştirmesi için)
     }
 
+    [System.Serializable]
+    public class DailyTransaction
+    {
+        public string itemName;      // Eşyanın veya işin adı (Örn: "Hamburger")
+        public int amount;           // Kaç adet olduğu (Örn: 3)
+        public float totalPrice;     // Toplam tutar
+        public bool isIncome;        // Gelir mi, gider mi? (True = Gelir, False = Gider)
+    }
+
 
     [Serializable]
     public class SaveData
@@ -41,9 +50,20 @@ namespace Freeline
         public float currentHunger = 100f;
         public List<ActiveBuffSaveData> activeRealTimeBuffs = new();
 
+        // --- YENİ ZAMAN VE KİRA SİSTEMİ ---
+        public float hoursAwake = 0f; // Karakterin kaç saattir uyanık olduğu
+        public int currentRentDay = 1; // 1'den 30'a kadar sayacak (Kira döngüsü)
+        public bool isGracePeriodActive = false; // 10 günlük ek süre (iflas öncesi) devrede mi?
+        public int rentGraceDaysLeft = 10; // Kalan ek süre gün sayısı
+
         // --- Economy ---
         public float currentCoins = 0f;
         public int currentGems = 0;
+
+        // --- GÜNLÜK EKONOMİ TAKİBİ ---
+        public float dailyIncome = 0f;
+        public float dailyExpense = 0f;
+        public List<DailyTransaction> dailyTransactions = new List<DailyTransaction>();
 
         // --- Career ---
         public WebtoonData webtoonData = new WebtoonData();

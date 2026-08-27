@@ -223,6 +223,9 @@ namespace Freeline
             {
                 sm.AddCoins(-item.price);
                 sm.CurrentData.ownedDecorations.Add(item.itemId);
+
+                sm.LogDailyTransaction(item.displayName, item.price, false);
+
                 Debug.Log($"{item.displayName} başarıyla satın alındı! Şimdi takılıyor...");
                 EquipDecoration(item);
             }
@@ -331,6 +334,8 @@ namespace Freeline
 
             if (item.currencyType == CurrencyType.Coin) sm.AddCoins(-item.price);
             else if (item.currencyType == CurrencyType.Gem) sm.CurrentData.currentGems -= item.price;
+
+            sm.LogDailyTransaction(item.displayName, item.price, false);
 
             var record = sm.CurrentData.dailyPurchases.FirstOrDefault(p => p.itemId == item.itemId);
             if (record == null)
