@@ -1,0 +1,2067 @@
+fileFormatVersion: 2
+guid: 8506b2175bf7b454c9d3c251383474f3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1584337714318594599
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_0"
+  - first:
+      213: -3040642136037569612
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_1"
+  - first:
+      213: 4305078121840920998
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_2"
+  - first:
+      213: 262214814601254132
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_3"
+  - first:
+      213: -2039979790676619986
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_4"
+  - first:
+      213: -1283497380586255065
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_5"
+  - first:
+      213: -2869606750094228599
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_6"
+  - first:
+      213: 1043554617176854524
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_7"
+  - first:
+      213: 3966445485563686291
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_8"
+  - first:
+      213: -3698889045652504186
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_9"
+  - first:
+      213: -5773659460477163291
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_10"
+  - first:
+      213: 7563798754244268820
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_11"
+  - first:
+      213: 6093641931057820622
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_12"
+  - first:
+      213: -901248426495353634
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_13"
+  - first:
+      213: -509049902882448768
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_14"
+  - first:
+      213: 8336475796200493710
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_15"
+  - first:
+      213: 1897499978052137391
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_16"
+  - first:
+      213: -2182379462036109342
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_17"
+  - first:
+      213: -1097041769927579864
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_18"
+  - first:
+      213: -6023292456957539768
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_19"
+  - first:
+      213: 6792247804179282427
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_20"
+  - first:
+      213: -5633035906244229840
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_21"
+  - first:
+      213: -6510972939242805273
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_22"
+  - first:
+      213: 1514510924598771882
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_23"
+  - first:
+      213: -3953742386876675131
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_24"
+  - first:
+      213: -1686009844004609079
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_25"
+  - first:
+      213: -3428798201671073724
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_26"
+  - first:
+      213: 7658722824294967899
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_27"
+  - first:
+      213: -5091181857501045404
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_28"
+  - first:
+      213: 4391826239992040227
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_29"
+  - first:
+      213: -8747833100667088010
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_30"
+  - first:
+      213: -7125505311252362540
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_31"
+  - first:
+      213: -6737223897553721091
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_32"
+  - first:
+      213: -5801470477250241809
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_33"
+  - first:
+      213: 5357203608131742666
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_34"
+  - first:
+      213: 4350777298306592139
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_35"
+  - first:
+      213: -7032514906649866319
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_36"
+  - first:
+      213: -5149435683641854994
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_37"
+  - first:
+      213: 5258291350204857873
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_38"
+  - first:
+      213: 4080269042748523627
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_39"
+  - first:
+      213: 7082882204456911495
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_40"
+  - first:
+      213: 8374468607355812153
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_41"
+  - first:
+      213: 3193576746427690028
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_42"
+  - first:
+      213: -7208478553930779068
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_43"
+  - first:
+      213: 3156800442682191056
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_44"
+  - first:
+      213: -157523483279878207
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_45"
+  - first:
+      213: 7858310415673152865
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_46"
+  - first:
+      213: 241756128746063604
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_47"
+  - first:
+      213: -9134141603453054958
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_48"
+  - first:
+      213: 1036143447050666411
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_49"
+  - first:
+      213: 86677545541269718
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_50"
+  - first:
+      213: -2407948167392932820
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_51"
+  - first:
+      213: 3632427960424172644
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_52"
+  - first:
+      213: 5841867577393114669
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_53"
+  - first:
+      213: 3199841444067051744
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_54"
+  - first:
+      213: 4284942248891669532
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_55"
+  - first:
+      213: 6489991923086876812
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_56"
+  - first:
+      213: -8897900607793694514
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_57"
+  - first:
+      213: -795685104075341964
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_58"
+  - first:
+      213: 4827233069290645912
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_59"
+  - first:
+      213: -8736057005936198885
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_60"
+  - first:
+      213: 6011785997925737134
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_61"
+  - first:
+      213: -7128445688589188451
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_62"
+  - first:
+      213: 2094950085564523016
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_63"
+  - first:
+      213: -2900379873548009964
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_64"
+  - first:
+      213: -9182646357131150924
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_65"
+  - first:
+      213: -5919207238499328059
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_66"
+  - first:
+      213: 8362239418579646780
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_67"
+  - first:
+      213: 7171604009184707698
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_68"
+  - first:
+      213: -2174773697725127558
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_69"
+  - first:
+      213: -4811745904312162671
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_70"
+  - first:
+      213: -8187413466070699741
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_71"
+  - first:
+      213: 5838610362300714103
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_72"
+  - first:
+      213: 7205175132058850177
+    second: "kelebek_ba\u015Flang\u0131\xE7_Ui_73"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_0"
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 2851
+        width: 86
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dd29c53e3d430ae0800000000000000
+      internalID: -1584337714318594599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_1"
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 2957
+        width: 149
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bb456856187dc5d0800000000000000
+      internalID: -3040642136037569612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_2"
+      rect:
+        serializedVersion: 2
+        x: 2018
+        y: 2957
+        width: 148
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a942a61eb5bebb30800000000000000
+      internalID: 4305078121840920998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_3"
+      rect:
+        serializedVersion: 2
+        x: 2229
+        y: 2851
+        width: 87
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f4172f0cf293a300800000000000000
+      internalID: 262214814601254132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_4"
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 2477
+        width: 317
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2d8ebb403980b3e0800000000000000
+      internalID: -2039979790676619986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_5"
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 2631
+        width: 160
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72d0300cee9103ee0800000000000000
+      internalID: -1283497380586255065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_6"
+      rect:
+        serializedVersion: 2
+        x: 1473
+        y: 2643
+        width: 166
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98302975ddb1d28d0800000000000000
+      internalID: -2869606750094228599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_7"
+      rect:
+        serializedVersion: 2
+        x: 1724
+        y: 2644
+        width: 166
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cff8b8435637b7e00800000000000000
+      internalID: 1043554617176854524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_8"
+      rect:
+        serializedVersion: 2
+        x: 1902
+        y: 2631
+        width: 158
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39da9fb6725ab0730800000000000000
+      internalID: 3966445485563686291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_9"
+      rect:
+        serializedVersion: 2
+        x: 1955
+        y: 2477
+        width: 317
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6818c42b208eaacc0800000000000000
+      internalID: -3698889045652504186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_10"
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 2233
+        width: 61
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e86f249f47dfdfa0800000000000000
+      internalID: -5773659460477163291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_11"
+      rect:
+        serializedVersion: 2
+        x: 1441
+        y: 2272
+        width: 137
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 413954b64e208f860800000000000000
+      internalID: 7563798754244268820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_12"
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 2272
+        width: 137
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec370210d07f09450800000000000000
+      internalID: 6093641931057820622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_13"
+      rect:
+        serializedVersion: 2
+        x: 2092
+        y: 2235
+        width: 61
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edc5d54c45f1e73f0800000000000000
+      internalID: -901248426495353634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_14"
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 2117
+        width: 175
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08a9eb57fcd7fe8f0800000000000000
+      internalID: -509049902882448768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_15"
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 2116
+        width: 176
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e821c2f619c11b370800000000000000
+      internalID: 8336475796200493710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_16"
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 1947
+        width: 127
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa1fb193d26455a10800000000000000
+      internalID: 1897499978052137391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_17"
+      rect:
+        serializedVersion: 2
+        x: 1455
+        y: 2008
+        width: 453
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e7ca382171a6b1e0800000000000000
+      internalID: -2182379462036109342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_18"
+      rect:
+        serializedVersion: 2
+        x: 2029
+        y: 1975
+        width: 106
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82763b7925686c0f0800000000000000
+      internalID: -1097041769927579864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_19"
+      rect:
+        serializedVersion: 2
+        x: 2206
+        y: 2061
+        width: 168
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84a81c45c67f86ca0800000000000000
+      internalID: -6023292456957539768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_20"
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 2131
+        width: 174
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf9788a1469e24e50800000000000000
+      internalID: 6792247804179282427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_21"
+      rect:
+        serializedVersion: 2
+        x: 2723
+        y: 2118
+        width: 172
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 035ca4930bf63d1b0800000000000000
+      internalID: -5633035906244229840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_22"
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 2014
+        width: 159
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e7604ebb9064a5a0800000000000000
+      internalID: -6510972939242805273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_23"
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 2038
+        width: 167
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa0882569af940510800000000000000
+      internalID: 1514510924598771882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_24"
+      rect:
+        serializedVersion: 2
+        x: 2977
+        y: 2006
+        width: 156
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cb8fc83f3c7129c0800000000000000
+      internalID: -3953742386876675131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_25"
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 1816
+        width: 118
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c32b40daf61a98e0800000000000000
+      internalID: -1686009844004609079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_26"
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 1808
+        width: 151
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 440c5eeb3367a60d0800000000000000
+      internalID: -3428798201671073724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_27"
+      rect:
+        serializedVersion: 2
+        x: 1597
+        y: 1784
+        width: 171
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5a274fb4df394a60800000000000000
+      internalID: 7658722824294967899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_28"
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 1815
+        width: 150
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46d9cb8231d7859b0800000000000000
+      internalID: -5091181857501045404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_29"
+      rect:
+        serializedVersion: 2
+        x: 3185
+        y: 1804
+        width: 115
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32b07f542b6e2fc30800000000000000
+      internalID: 4391826239992040227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_30"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1562
+        width: 63
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67395589424799680800000000000000
+      internalID: -8747833100667088010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_31"
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 1551
+        width: 78
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dac4a50cae1d1d90800000000000000
+      internalID: -7125505311252362540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_32"
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 1561
+        width: 82
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df8a90e7f829082a0800000000000000
+      internalID: -6737223897553721091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_33"
+      rect:
+        serializedVersion: 2
+        x: 3303
+        y: 1551
+        width: 61
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fea5594a6590d7fa0800000000000000
+      internalID: -5801470477250241809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_34"
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 1304
+        width: 88
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acb22244c4c985a40800000000000000
+      internalID: 5357203608131742666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_35"
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 1262
+        width: 122
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8de562c6e0116c30800000000000000
+      internalID: 4350777298306592139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_36"
+      rect:
+        serializedVersion: 2
+        x: 2046
+        y: 1262
+        width: 107
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bfce77c3fc776e90800000000000000
+      internalID: -7032514906649866319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_37"
+      rect:
+        serializedVersion: 2
+        x: 3263
+        y: 1296
+        width: 90
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee37ec257878988b0800000000000000
+      internalID: -5149435683641854994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_38"
+      rect:
+        serializedVersion: 2
+        x: 1465
+        y: 1245
+        width: 188
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11e38769f1439f840800000000000000
+      internalID: 5258291350204857873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_39"
+      rect:
+        serializedVersion: 2
+        x: 1755
+        y: 1245
+        width: 189
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b648c01831700a830800000000000000
+      internalID: 4080269042748523627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_40"
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 1101
+        width: 138
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 782079696d37b4260800000000000000
+      internalID: 7082882204456911495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_41"
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 1023
+        width: 56
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9397a1c14d6183470800000000000000
+      internalID: 8374468607355812153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_42"
+      rect:
+        serializedVersion: 2
+        x: 2125
+        y: 1035
+        width: 57
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2c25cd612dd15c20800000000000000
+      internalID: 3193576746427690028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_43"
+      rect:
+        serializedVersion: 2
+        x: 3093
+        y: 1097
+        width: 139
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4463fe582f656fb90800000000000000
+      internalID: -7208478553930779068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_44"
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 977
+        width: 165
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dc2ed4f6453fcb20800000000000000
+      internalID: 3156800442682191056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_45"
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 835
+        width: 175
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c7125ff93d50ddf0800000000000000
+      internalID: -157523483279878207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_46"
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 938
+        width: 180
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16553fc10b35e0d60800000000000000
+      internalID: 7858310415673152865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_47"
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 967
+        width: 107
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f6ce201be3ea5300800000000000000
+      internalID: 241756128746063604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_48"
+      rect:
+        serializedVersion: 2
+        x: 2143
+        y: 967
+        width: 107
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 210501e3b920d3180800000000000000
+      internalID: -9134141603453054958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_49"
+      rect:
+        serializedVersion: 2
+        x: 2338
+        y: 938
+        width: 182
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba1cdc1b9fe116e00800000000000000
+      internalID: 1036143447050666411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_50"
+      rect:
+        serializedVersion: 2
+        x: 2601
+        y: 836
+        width: 175
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d87df7b4c0f33100800000000000000
+      internalID: 86677545541269718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_51"
+      rect:
+        serializedVersion: 2
+        x: 2861
+        y: 975
+        width: 164
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2ccdfc46ef359ed0800000000000000
+      internalID: -2407948167392932820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_52"
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 623
+        width: 109
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46c874d0cf9f86230800000000000000
+      internalID: 3632427960424172644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_53"
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 755
+        width: 116
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2e636f2c9b721150800000000000000
+      internalID: 5841867577393114669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_54"
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 739
+        width: 156
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e8803307de186c20800000000000000
+      internalID: 3199841444067051744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_55"
+      rect:
+        serializedVersion: 2
+        x: 1613
+        y: 735
+        width: 156
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1c5044d54c277b30800000000000000
+      internalID: 4284942248891669532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_56"
+      rect:
+        serializedVersion: 2
+        x: 1839
+        y: 739
+        width: 156
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c806fb2c445111a50800000000000000
+      internalID: 6489991923086876812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_57"
+      rect:
+        serializedVersion: 2
+        x: 2064
+        y: 758
+        width: 121
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec879b15a8e448480800000000000000
+      internalID: -8897900607793694514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_58"
+      rect:
+        serializedVersion: 2
+        x: 2819
+        y: 623
+        width: 109
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47ff4821d9825f4f0800000000000000
+      internalID: -795685104075341964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_59"
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 358
+        width: 66
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 899661796e6cdf240800000000000000
+      internalID: 4827233069290645912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_60"
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 501
+        width: 95
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1b3c9f407a43c680800000000000000
+      internalID: -8736057005936198885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_61"
+      rect:
+        serializedVersion: 2
+        x: 2053
+        y: 512
+        width: 95
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea2e70863872e6350800000000000000
+      internalID: 6011785997925737134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_62"
+      rect:
+        serializedVersion: 2
+        x: 2886
+        y: 358
+        width: 65
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d920af21a6ca21d90800000000000000
+      internalID: -7128445688589188451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_63"
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 307
+        width: 155
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8026f38d002c21d10800000000000000
+      internalID: 2094950085564523016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_64"
+      rect:
+        serializedVersion: 2
+        x: 1609
+        y: 264
+        width: 176
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41e7a733fd7cfb7d0800000000000000
+      internalID: -2900379873548009964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_65"
+      rect:
+        serializedVersion: 2
+        x: 1865
+        y: 307
+        width: 148
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b9b9293acfa09080800000000000000
+      internalID: -9182646357131150924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_66"
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 136
+        width: 132
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cf935db060cadda0800000000000000
+      internalID: -5919207238499328059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_67"
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 98
+        width: 139
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3975373274ac0470800000000000000
+      internalID: 8362239418579646780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_68"
+      rect:
+        serializedVersion: 2
+        x: 2021
+        y: 98
+        width: 139
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 274c83d79d7a68360800000000000000
+      internalID: 7171604009184707698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_69"
+      rect:
+        serializedVersion: 2
+        x: 2737
+        y: 136
+        width: 132
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a742b3828d6a1d1e0800000000000000
+      internalID: -2174773697725127558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_70"
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 11
+        width: 169
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1966800089e393db0800000000000000
+      internalID: -4811745904312162671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_71"
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 1
+        width: 174
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3213b95d4d6706e80800000000000000
+      internalID: -8187413466070699741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_72"
+      rect:
+        serializedVersion: 2
+        x: 2235
+        y: 0
+        width: 174
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77c49d2b039e60150800000000000000
+      internalID: 5838610362300714103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kelebek_ba\u015Flang\u0131\xE7_Ui_73"
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 11
+        width: 169
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18398d2ab9cedf360800000000000000
+      internalID: 7205175132058850177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_0": -1584337714318594599
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_1": -3040642136037569612
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_10": -5773659460477163291
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_11": 7563798754244268820
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_12": 6093641931057820622
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_13": -901248426495353634
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_14": -509049902882448768
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_15": 8336475796200493710
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_16": 1897499978052137391
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_17": -2182379462036109342
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_18": -1097041769927579864
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_19": -6023292456957539768
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_2": 4305078121840920998
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_20": 6792247804179282427
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_21": -5633035906244229840
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_22": -6510972939242805273
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_23": 1514510924598771882
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_24": -3953742386876675131
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_25": -1686009844004609079
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_26": -3428798201671073724
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_27": 7658722824294967899
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_28": -5091181857501045404
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_29": 4391826239992040227
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_3": 262214814601254132
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_30": -8747833100667088010
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_31": -7125505311252362540
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_32": -6737223897553721091
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_33": -5801470477250241809
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_34": 5357203608131742666
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_35": 4350777298306592139
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_36": -7032514906649866319
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_37": -5149435683641854994
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_38": 5258291350204857873
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_39": 4080269042748523627
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_4": -2039979790676619986
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_40": 7082882204456911495
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_41": 8374468607355812153
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_42": 3193576746427690028
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_43": -7208478553930779068
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_44": 3156800442682191056
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_45": -157523483279878207
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_46": 7858310415673152865
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_47": 241756128746063604
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_48": -9134141603453054958
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_49": 1036143447050666411
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_5": -1283497380586255065
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_50": 86677545541269718
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_51": -2407948167392932820
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_52": 3632427960424172644
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_53": 5841867577393114669
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_54": 3199841444067051744
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_55": 4284942248891669532
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_56": 6489991923086876812
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_57": -8897900607793694514
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_58": -795685104075341964
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_59": 4827233069290645912
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_6": -2869606750094228599
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_60": -8736057005936198885
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_61": 6011785997925737134
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_62": -7128445688589188451
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_63": 2094950085564523016
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_64": -2900379873548009964
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_65": -9182646357131150924
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_66": -5919207238499328059
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_67": 8362239418579646780
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_68": 7171604009184707698
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_69": -2174773697725127558
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_7": 1043554617176854524
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_70": -4811745904312162671
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_71": -8187413466070699741
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_72": 5838610362300714103
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_73": 7205175132058850177
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_8": 3966445485563686291
+      "kelebek_ba\u015Flang\u0131\xE7_Ui_9": -3698889045652504186
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

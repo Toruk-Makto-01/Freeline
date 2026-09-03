@@ -1,0 +1,1989 @@
+fileFormatVersion: 2
+guid: 8a21174ad74427644b5e8f2b618da771
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7726485872466989108
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_0"
+  - first:
+      213: 7538824182447216945
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_1"
+  - first:
+      213: -1298405266847292023
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_2"
+  - first:
+      213: -2921089935129853308
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_3"
+  - first:
+      213: -2770619387195910762
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_4"
+  - first:
+      213: -2449477776770231750
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_5"
+  - first:
+      213: -308584613775256706
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_6"
+  - first:
+      213: 5835928467309769990
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_7"
+  - first:
+      213: 7549783685929089468
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_8"
+  - first:
+      213: -673483766296789989
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_9"
+  - first:
+      213: -209732975269461296
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_10"
+  - first:
+      213: -5000289720679398320
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_11"
+  - first:
+      213: -3269951434356979820
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_12"
+  - first:
+      213: 4148449441188429271
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_13"
+  - first:
+      213: 8297692494906133594
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_14"
+  - first:
+      213: -889992177885320157
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_15"
+  - first:
+      213: 2863992618991785473
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_16"
+  - first:
+      213: -1507600736014198685
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_17"
+  - first:
+      213: -1387836176264832809
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_18"
+  - first:
+      213: -2116858077521488271
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_19"
+  - first:
+      213: -6970315440914844378
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_20"
+  - first:
+      213: -2108164158185826510
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_21"
+  - first:
+      213: 719976777551563587
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_22"
+  - first:
+      213: 473903544899641062
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_23"
+  - first:
+      213: -8659992893400232840
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_24"
+  - first:
+      213: -1625709699970562054
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_25"
+  - first:
+      213: 6659994076619350094
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_26"
+  - first:
+      213: -8171249239914615659
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_27"
+  - first:
+      213: 6605746685260895846
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_28"
+  - first:
+      213: 8108530528479764472
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_29"
+  - first:
+      213: -6808669319400090103
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_30"
+  - first:
+      213: -6237749295501333670
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_31"
+  - first:
+      213: -5734896713485645593
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_32"
+  - first:
+      213: 7191682167278070233
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_33"
+  - first:
+      213: 2523637246225528847
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_34"
+  - first:
+      213: 8875303042922016590
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_35"
+  - first:
+      213: 6336078418873507307
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_36"
+  - first:
+      213: 2624319996162616029
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_37"
+  - first:
+      213: 4888900150981215256
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_38"
+  - first:
+      213: -2287042574021116085
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_39"
+  - first:
+      213: 8419976162528611009
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_40"
+  - first:
+      213: -6617452563613873817
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_41"
+  - first:
+      213: -185028351066136559
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_42"
+  - first:
+      213: -8737008188275961382
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_43"
+  - first:
+      213: 191861728945828327
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_44"
+  - first:
+      213: 3059771410557355805
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_45"
+  - first:
+      213: 5536111546825110871
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_46"
+  - first:
+      213: 7794125370153601976
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_47"
+  - first:
+      213: 7004498157459768414
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_48"
+  - first:
+      213: 6409394615347139650
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_49"
+  - first:
+      213: 5458661329809657926
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_50"
+  - first:
+      213: -2747998634695808693
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_51"
+  - first:
+      213: 6778192063675834063
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_52"
+  - first:
+      213: 1735774102552699279
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_53"
+  - first:
+      213: -2217559927536245117
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_54"
+  - first:
+      213: -8201596145871319337
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_55"
+  - first:
+      213: 2770635402482839588
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_56"
+  - first:
+      213: -1344561021432906450
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_57"
+  - first:
+      213: -4248904040509733152
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_58"
+  - first:
+      213: 744204670989677650
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_59"
+  - first:
+      213: -8583441660236490749
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_60"
+  - first:
+      213: 6732110801170655885
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_61"
+  - first:
+      213: -3569309474541735245
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_62"
+  - first:
+      213: 1929034892981601993
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_63"
+  - first:
+      213: 5838030991345810337
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_64"
+  - first:
+      213: 8814334933541917698
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_65"
+  - first:
+      213: 1676643647223713181
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_66"
+  - first:
+      213: -5472520948248521834
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_67"
+  - first:
+      213: -4654363418326899847
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_68"
+  - first:
+      213: -6120102866033493287
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_69"
+  - first:
+      213: 8197899332025644812
+    second: "fare_ba\u015Flang\u0131\xE7_Ui_70"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_0"
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 2982
+        width: 164
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 430187ed6fdf93b60800000000000000
+      internalID: 7726485872466989108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_1"
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 2920
+        width: 152
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13914eac6a84f9860800000000000000
+      internalID: 7538824182447216945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_2"
+      rect:
+        serializedVersion: 2
+        x: 1516
+        y: 2919
+        width: 152
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 985221ff9432bfde0800000000000000
+      internalID: -1298405266847292023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_3"
+      rect:
+        serializedVersion: 2
+        x: 1747
+        y: 2982
+        width: 165
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 482cd9b3e243677d0800000000000000
+      internalID: -2921089935129853308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_4"
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 2840
+        width: 133
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6959062c858cc89d0800000000000000
+      internalID: -2770619387195910762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_5"
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 2723
+        width: 103
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a32956e90f4b10ed0800000000000000
+      internalID: -2449477776770231750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_6"
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 2723
+        width: 103
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7356c0cdefa7bbf0800000000000000
+      internalID: -308584613775256706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_7"
+      rect:
+        serializedVersion: 2
+        x: 1980
+        y: 2840
+        width: 133
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 605b69c55026df050800000000000000
+      internalID: 5835928467309769990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_8"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2611
+        width: 64
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb9b7da034836c860800000000000000
+      internalID: 7549783685929089468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_9"
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 2451
+        width: 165
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1c33e3351e47a6f0800000000000000
+      internalID: -673483766296789989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_10"
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 2569
+        width: 166
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d2c06f58f0e61df0800000000000000
+      internalID: -209732975269461296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_11"
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 2560
+        width: 166
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0540ed0edf66b9ab0800000000000000
+      internalID: -5000289720679398320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_12"
+      rect:
+        serializedVersion: 2
+        x: 1341
+        y: 2537
+        width: 44
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4978f52de7cce92d0800000000000000
+      internalID: -3269951434356979820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_13"
+      rect:
+        serializedVersion: 2
+        x: 2131
+        y: 2611
+        width: 65
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dd34be89c0429930800000000000000
+      internalID: 4148449441188429271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_14"
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 2378
+        width: 100
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5c0e4e6c53572370800000000000000
+      internalID: 8297692494906133594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_15"
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 2435
+        width: 146
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32ce44064dc16a3f0800000000000000
+      internalID: -889992177885320157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_16"
+      rect:
+        serializedVersion: 2
+        x: 2076
+        y: 2379
+        width: 100
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1069856ec12feb720800000000000000
+      internalID: 2863992618991785473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_17"
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 2227
+        width: 151
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36891c24e1de31be0800000000000000
+      internalID: -1507600736014198685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_18"
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 2267
+        width: 122
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d85c4bc95a6dbce0800000000000000
+      internalID: -1387836176264832809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_19"
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 2245
+        width: 118
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1765a694bc86f92e0800000000000000
+      internalID: -2116858077521488271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_20"
+      rect:
+        serializedVersion: 2
+        x: 1882
+        y: 2227
+        width: 151
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 625b9db6907744f90800000000000000
+      internalID: -6970315440914844378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_21"
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 2037
+        width: 108
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2379f1f1edb4eb2e0800000000000000
+      internalID: -2108164158185826510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_22"
+      rect:
+        serializedVersion: 2
+        x: 1697
+        y: 2194
+        width: 108
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34bcd78801fddf900800000000000000
+      internalID: 719976777551563587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_23"
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 1948
+        width: 121
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ee9a8363c4a39600800000000000000
+      internalID: 473903544899641062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_24"
+      rect:
+        serializedVersion: 2
+        x: 1347
+        y: 1948
+        width: 121
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87cc877985681d780800000000000000
+      internalID: -8659992893400232840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_25"
+      rect:
+        serializedVersion: 2
+        x: 1725
+        y: 2011
+        width: 79
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af7095924a15079e0800000000000000
+      internalID: -1625709699970562054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_26"
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1786
+        width: 59
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e402a17935d0d6c50800000000000000
+      internalID: 6659994076619350094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_27"
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 1805
+        width: 239
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59c65b30c14e99e80800000000000000
+      internalID: -8171249239914615659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_28"
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 1657
+        width: 345
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 666903b8c935cab50800000000000000
+      internalID: 6605746685260895846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_29"
+      rect:
+        serializedVersion: 2
+        x: 1382
+        y: 1805
+        width: 239
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ff52780e89478070800000000000000
+      internalID: 8108530528479764472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_30"
+      rect:
+        serializedVersion: 2
+        x: 1745
+        y: 1762
+        width: 67
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9069e00f35fb281a0800000000000000
+      internalID: -6808669319400090103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_31"
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 1575
+        width: 124
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5b23b390101f69a0800000000000000
+      internalID: -6237749295501333670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_32"
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 1689
+        width: 177
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e80229e2dd8960b0800000000000000
+      internalID: -5734896713485645593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_33"
+      rect:
+        serializedVersion: 2
+        x: 1393
+        y: 1689
+        width: 177
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d9ee16f3dcfdc360800000000000000
+      internalID: 7191682167278070233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_34"
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 1558
+        width: 128
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f08b73364b2c50320800000000000000
+      internalID: 2523637246225528847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_35"
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 1441
+        width: 206
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4f6f4b18196b2b70800000000000000
+      internalID: 8875303042922016590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_36"
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 1380
+        width: 167
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bed59f180c54ee750800000000000000
+      internalID: 6336078418873507307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_37"
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 1432
+        width: 222
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dda2a3cd1257b6420800000000000000
+      internalID: 2624319996162616029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_38"
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 1246
+        width: 108
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 814c699e8ccd8d340800000000000000
+      internalID: 4888900150981215256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_39"
+      rect:
+        serializedVersion: 2
+        x: 1136
+        y: 1379
+        width: 168
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4fb64d65eac240e0800000000000000
+      internalID: -2287042574021116085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_40"
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 1241
+        width: 108
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ca46c875b3c9d470800000000000000
+      internalID: 8419976162528611009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_41"
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 1008
+        width: 77
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7690cc344f51a24a0800000000000000
+      internalID: -6617452563613873817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_42"
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 1068
+        width: 93
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 110a35de1b5ae6df0800000000000000
+      internalID: -185028351066136559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_43"
+      rect:
+        serializedVersion: 2
+        x: 1511
+        y: 1068
+        width: 93
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad1d12ae759efb680800000000000000
+      internalID: -8737008188275961382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_44"
+      rect:
+        serializedVersion: 2
+        x: 1755
+        y: 1003
+        width: 75
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e1fec7d931a9a200800000000000000
+      internalID: 191861728945828327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_45"
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 756
+        width: 51
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d17ca24f2ed767a20800000000000000
+      internalID: 3059771410557355805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_46"
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 870
+        width: 81
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 755f279ce1834dc40800000000000000
+      internalID: 5536111546825110871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_47"
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 891
+        width: 78
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bb8dd6aabb4a2c60800000000000000
+      internalID: 7794125370153601976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_48"
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 890
+        width: 79
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e54844976f9f43160800000000000000
+      internalID: 7004498157459768414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_49"
+      rect:
+        serializedVersion: 2
+        x: 1634
+        y: 870
+        width: 81
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2445119b17eb2f850800000000000000
+      internalID: 6409394615347139650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_50"
+      rect:
+        serializedVersion: 2
+        x: 1791
+        y: 750
+        width: 52
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6405778ee8f01cb40800000000000000
+      internalID: 5458661329809657926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_51"
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 788
+        width: 145
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b49a2bf1dc52dd9d0800000000000000
+      internalID: -2747998634695808693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_52"
+      rect:
+        serializedVersion: 2
+        x: 1453
+        y: 788
+        width: 144
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fce15cef4c9f01e50800000000000000
+      internalID: 6778192063675834063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_53"
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 521
+        width: 102
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f81e9f88955b61810800000000000000
+      internalID: 1735774102552699279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_54"
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 517
+        width: 108
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 386af0bbef4a931e0800000000000000
+      internalID: -2217559927536245117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_55"
+      rect:
+        serializedVersion: 2
+        x: 1884
+        y: 475
+        width: 164
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7de802e52c31e2e80800000000000000
+      internalID: -8201596145871319337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_56"
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 354
+        width: 158
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4207c171836437620800000000000000
+      internalID: 2770635402482839588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_57"
+      rect:
+        serializedVersion: 2
+        x: 1505
+        y: 354
+        width: 234
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2db7a2ffd8275de0800000000000000
+      internalID: -1344561021432906450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_58"
+      rect:
+        serializedVersion: 2
+        x: 1808
+        y: 341
+        width: 153
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e602bc694cd805c0800000000000000
+      internalID: -4248904040509733152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_59"
+      rect:
+        serializedVersion: 2
+        x: 2118
+        y: 344
+        width: 136
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 254b68e8432f35a00800000000000000
+      internalID: 744204670989677650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_60"
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 196
+        width: 81
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 308905b794d71e880800000000000000
+      internalID: -8583441660236490749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_61"
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 242
+        width: 166
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8ae85cfa134d6d50800000000000000
+      internalID: 6732110801170655885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_62"
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 260
+        width: 170
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b2f084a1f3477ec0800000000000000
+      internalID: -3569309474541735245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_63"
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 242
+        width: 166
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c68083c30f45ca10800000000000000
+      internalID: 1929034892981601993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_64"
+      rect:
+        serializedVersion: 2
+        x: 1711
+        y: 196
+        width: 82
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ab73e2614ad40150800000000000000
+      internalID: 5838030991345810337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_65"
+      rect:
+        serializedVersion: 2
+        x: 2020
+        y: 202
+        width: 84
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2041515fbeec25a70800000000000000
+      internalID: 8814334933541917698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_66"
+      rect:
+        serializedVersion: 2
+        x: 2127
+        y: 139
+        width: 128
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9d4faf8382a44710800000000000000
+      internalID: 1676643647223713181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_67"
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 172
+        width: 164
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69353c53133bd04b0800000000000000
+      internalID: -5472520948248521834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_68"
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 172
+        width: 163
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9736d038121686fb0800000000000000
+      internalID: -4654363418326899847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_69"
+      rect:
+        serializedVersion: 2
+        x: 1719
+        y: 0
+        width: 107
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9da39397ed6011ba0800000000000000
+      internalID: -6120102866033493287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fare_ba\u015Flang\u0131\xE7_Ui_70"
+      rect:
+        serializedVersion: 2
+        x: 1884
+        y: 34
+        width: 179
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c07fcc5120ac4c170800000000000000
+      internalID: 8197899332025644812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "fare_ba\u015Flang\u0131\xE7_Ui_0": 7726485872466989108
+      "fare_ba\u015Flang\u0131\xE7_Ui_1": 7538824182447216945
+      "fare_ba\u015Flang\u0131\xE7_Ui_10": -209732975269461296
+      "fare_ba\u015Flang\u0131\xE7_Ui_11": -5000289720679398320
+      "fare_ba\u015Flang\u0131\xE7_Ui_12": -3269951434356979820
+      "fare_ba\u015Flang\u0131\xE7_Ui_13": 4148449441188429271
+      "fare_ba\u015Flang\u0131\xE7_Ui_14": 8297692494906133594
+      "fare_ba\u015Flang\u0131\xE7_Ui_15": -889992177885320157
+      "fare_ba\u015Flang\u0131\xE7_Ui_16": 2863992618991785473
+      "fare_ba\u015Flang\u0131\xE7_Ui_17": -1507600736014198685
+      "fare_ba\u015Flang\u0131\xE7_Ui_18": -1387836176264832809
+      "fare_ba\u015Flang\u0131\xE7_Ui_19": -2116858077521488271
+      "fare_ba\u015Flang\u0131\xE7_Ui_2": -1298405266847292023
+      "fare_ba\u015Flang\u0131\xE7_Ui_20": -6970315440914844378
+      "fare_ba\u015Flang\u0131\xE7_Ui_21": -2108164158185826510
+      "fare_ba\u015Flang\u0131\xE7_Ui_22": 719976777551563587
+      "fare_ba\u015Flang\u0131\xE7_Ui_23": 473903544899641062
+      "fare_ba\u015Flang\u0131\xE7_Ui_24": -8659992893400232840
+      "fare_ba\u015Flang\u0131\xE7_Ui_25": -1625709699970562054
+      "fare_ba\u015Flang\u0131\xE7_Ui_26": 6659994076619350094
+      "fare_ba\u015Flang\u0131\xE7_Ui_27": -8171249239914615659
+      "fare_ba\u015Flang\u0131\xE7_Ui_28": 6605746685260895846
+      "fare_ba\u015Flang\u0131\xE7_Ui_29": 8108530528479764472
+      "fare_ba\u015Flang\u0131\xE7_Ui_3": -2921089935129853308
+      "fare_ba\u015Flang\u0131\xE7_Ui_30": -6808669319400090103
+      "fare_ba\u015Flang\u0131\xE7_Ui_31": -6237749295501333670
+      "fare_ba\u015Flang\u0131\xE7_Ui_32": -5734896713485645593
+      "fare_ba\u015Flang\u0131\xE7_Ui_33": 7191682167278070233
+      "fare_ba\u015Flang\u0131\xE7_Ui_34": 2523637246225528847
+      "fare_ba\u015Flang\u0131\xE7_Ui_35": 8875303042922016590
+      "fare_ba\u015Flang\u0131\xE7_Ui_36": 6336078418873507307
+      "fare_ba\u015Flang\u0131\xE7_Ui_37": 2624319996162616029
+      "fare_ba\u015Flang\u0131\xE7_Ui_38": 4888900150981215256
+      "fare_ba\u015Flang\u0131\xE7_Ui_39": -2287042574021116085
+      "fare_ba\u015Flang\u0131\xE7_Ui_4": -2770619387195910762
+      "fare_ba\u015Flang\u0131\xE7_Ui_40": 8419976162528611009
+      "fare_ba\u015Flang\u0131\xE7_Ui_41": -6617452563613873817
+      "fare_ba\u015Flang\u0131\xE7_Ui_42": -185028351066136559
+      "fare_ba\u015Flang\u0131\xE7_Ui_43": -8737008188275961382
+      "fare_ba\u015Flang\u0131\xE7_Ui_44": 191861728945828327
+      "fare_ba\u015Flang\u0131\xE7_Ui_45": 3059771410557355805
+      "fare_ba\u015Flang\u0131\xE7_Ui_46": 5536111546825110871
+      "fare_ba\u015Flang\u0131\xE7_Ui_47": 7794125370153601976
+      "fare_ba\u015Flang\u0131\xE7_Ui_48": 7004498157459768414
+      "fare_ba\u015Flang\u0131\xE7_Ui_49": 6409394615347139650
+      "fare_ba\u015Flang\u0131\xE7_Ui_5": -2449477776770231750
+      "fare_ba\u015Flang\u0131\xE7_Ui_50": 5458661329809657926
+      "fare_ba\u015Flang\u0131\xE7_Ui_51": -2747998634695808693
+      "fare_ba\u015Flang\u0131\xE7_Ui_52": 6778192063675834063
+      "fare_ba\u015Flang\u0131\xE7_Ui_53": 1735774102552699279
+      "fare_ba\u015Flang\u0131\xE7_Ui_54": -2217559927536245117
+      "fare_ba\u015Flang\u0131\xE7_Ui_55": -8201596145871319337
+      "fare_ba\u015Flang\u0131\xE7_Ui_56": 2770635402482839588
+      "fare_ba\u015Flang\u0131\xE7_Ui_57": -1344561021432906450
+      "fare_ba\u015Flang\u0131\xE7_Ui_58": -4248904040509733152
+      "fare_ba\u015Flang\u0131\xE7_Ui_59": 744204670989677650
+      "fare_ba\u015Flang\u0131\xE7_Ui_6": -308584613775256706
+      "fare_ba\u015Flang\u0131\xE7_Ui_60": -8583441660236490749
+      "fare_ba\u015Flang\u0131\xE7_Ui_61": 6732110801170655885
+      "fare_ba\u015Flang\u0131\xE7_Ui_62": -3569309474541735245
+      "fare_ba\u015Flang\u0131\xE7_Ui_63": 1929034892981601993
+      "fare_ba\u015Flang\u0131\xE7_Ui_64": 5838030991345810337
+      "fare_ba\u015Flang\u0131\xE7_Ui_65": 8814334933541917698
+      "fare_ba\u015Flang\u0131\xE7_Ui_66": 1676643647223713181
+      "fare_ba\u015Flang\u0131\xE7_Ui_67": -5472520948248521834
+      "fare_ba\u015Flang\u0131\xE7_Ui_68": -4654363418326899847
+      "fare_ba\u015Flang\u0131\xE7_Ui_69": -6120102866033493287
+      "fare_ba\u015Flang\u0131\xE7_Ui_7": 5835928467309769990
+      "fare_ba\u015Flang\u0131\xE7_Ui_70": 8197899332025644812
+      "fare_ba\u015Flang\u0131\xE7_Ui_8": 7549783685929089468
+      "fare_ba\u015Flang\u0131\xE7_Ui_9": -673483766296789989
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

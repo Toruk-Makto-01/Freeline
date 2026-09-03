@@ -73,11 +73,6 @@ namespace Freeline
             save.LoadGame();
             save.ApplyToManagers();
 
-            // playerLevel artık SaveData'dan yüklendiği için pano doğru filtreyle oluşturulur.
-            // JobManager.Start() da GenerateJobBoard çağırır; her ikisi aynı filtrelenmiş seti üretir,
-            // dolayısıyla çift çağrı işlevsel bir sorun yaratmaz.
-            gm.JobManager.GenerateJobBoard();
-
             LogStatus();
 
             // Yöneticiler DontDestroyOnLoad ile korunduğu için geçişte kaybolmaz.
@@ -95,7 +90,6 @@ namespace Freeline
             var energy = gm.EnergyManager;
             var save   = gm.SaveManager.CurrentData;
             var wt     = save.webtoonData;
-            var jobs   = gm.JobManager.CurrentBoardJobs;
 
             Debug.Log(
                 $"[Freeline] Day: {time.CurrentDay} | " +
@@ -105,7 +99,6 @@ namespace Freeline
                 $"Followers: {wt.followers:F0}"
             );
 
-            Debug.Log($"[Freeline] Job board: {jobs.Count} jobs loaded");
 
             Debug.Log(
                 $"[Freeline] Webtoon: {wt.totalChaptersPublished} chapters, " +

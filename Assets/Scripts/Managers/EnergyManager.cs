@@ -10,8 +10,25 @@ namespace Freeline
         [SerializeField] private EnergyConfig config;
 
         public float CurrentEnergy { get; private set; }
-        public float MaxEnergy => config.maxEnergy;
-        
+        public float MaxEnergy
+        {
+            get
+            {
+                // Kendi sisteminde maksimum enerjiyi nereden çekiyorsan onu yaz (Örn: config.baseMaxEnergy)
+                float normalMax = config.maxEnergy;
+
+                var data = GameManager.Instance?.SaveManager?.CurrentData;
+
+                // Eğer kayıt verisi varsa ve oyuncu bayılarak uyandıysa (ceza aktifse)
+                if (data != null && data.hasPassOutPenalty)
+                {
+                    return normalMax - 30f; // Enerjinin 30'luk kısmına el koyuyoruz
+                }
+
+                return normalMax;
+            }
+        }
+
         // --- YENİ %100 AÇLIK SİSTEMİ ---
         public float CurrentHunger { get; private set; } // 0 (Çok Aç) ile 100 (Tam Tok) arası
         public bool IsHungry => CurrentHunger <= 0f; // Açlık 0 ise debuff (ceza) uygulanır
@@ -48,10 +65,10 @@ namespace Freeline
         {
             CurrentEnergy = Mathf.Clamp(energy, 0f, config.maxEnergy);
             CurrentHunger = Mathf.Clamp(hunger, 0f, 100f);
-            
+
             _lowEnergyFired = CurrentEnergy <= config.energyDepletionWarningThreshold;
             _depletedFired = CurrentEnergy <= 0f;
-            
+
             _activeBuffs.Clear();
             if (savedBuffs != null) _activeBuffs.AddRange(savedBuffs);
 
@@ -80,7 +97,7 @@ namespace Freeline
                 case ConsumableEffectType.EnergyCostReduction:
                 case ConsumableEffectType.EnergyRegenOverTime:
                     DateTime endTime = DateTime.Now.AddMinutes(item.durationInMinutes);
-                    _activeBuffs.Add(new ActiveBuffSaveData 
+                    _activeBuffs.Add(new ActiveBuffSaveData
                     {
                         effectType = item.effectType,
                         effectValue = item.effectValue,
@@ -102,7 +119,7 @@ namespace Freeline
                     buffRemoved = true;
                 }
             }
-            if (buffRemoved) GameManager.Instance.SaveManager.SaveGame(); 
+            if (buffRemoved) GameManager.Instance.SaveManager.SaveGame();
         }
 
         public float CalculateEnergyCost(float baseCost)
@@ -110,9 +127,9 @@ namespace Freeline
             float finalCost = baseCost;
             foreach (var buff in _activeBuffs)
             {
-                if (buff.effectType == ConsumableEffectType.EnergyCostReduction) finalCost -= buff.effectValue; 
+                if (buff.effectType == ConsumableEffectType.EnergyCostReduction) finalCost -= buff.effectValue;
             }
-            return Mathf.Max(1f, finalCost); 
+            return Mathf.Max(1f, finalCost);
         }
 
         public float GetCurrentSpeedMultiplier() => 1f;
@@ -165,6 +182,7 @@ namespace Freeline
             _lowEnergyFired = false;
             _depletedFired = false;
             OnEnergyChanged?.Invoke(CurrentEnergy, config.maxEnergy);
+            GameManager.Instance.SaveManager.CurrentData.dailyFreelanceRefreshCount = 0;
         }
 
         private void HandleTimeAdvanced(float previousHour, float newHour)
@@ -172,8 +190,8 @@ namespace Freeline
             float delta = newHour - previousHour;
             // config.hungerThresholdHours'ı (örn: 24) kullanarak saatlik düşüşü hesaplıyoruz.
             // 24 saatte 100'den 0'a düşmesi için saatte ~4.16 düşer.
-            float decayRate = 100f / config.hungerThresholdHours; 
-            
+            float decayRate = 100f / config.hungerThresholdHours;
+
             CurrentHunger = Mathf.Clamp(CurrentHunger - (delta * decayRate), 0f, 100f);
             OnHungerChanged?.Invoke(CurrentHunger, 100f);
         }

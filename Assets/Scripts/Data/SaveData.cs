@@ -85,6 +85,11 @@ namespace Freeline
 
         // --- Phone Settings ---
         public int selectedPhoneBgIndex = 0; // Seçilen arkaplanın sırası
+
+        // Bayılma cezası
+        public bool hasPassOutPenalty = false;
+
+        public int dailyFreelanceRefreshCount = 0;
     }
 
 }

@@ -35,7 +35,6 @@ namespace Freeline
         [SerializeField] private TimeManager       timeManager;
         [SerializeField] private EnergyManager    energyManager;
         [SerializeField] private SaveManager      saveManager;
-        [SerializeField] private JobManager       jobManager;
         [SerializeField] private WebtoonManager   webtoonManager;
         [SerializeField] private ExhibitionManager exhibitionManager;
 
@@ -47,9 +46,6 @@ namespace Freeline
 
         /// <summary>Kayıt sistemi yöneticisine salt-okunur erişim.</summary>
         public SaveManager       SaveManager       => saveManager;
-
-        /// <summary>İş (komisyon) yöneticisine salt-okunur erişim.</summary>
-        public JobManager        JobManager        => jobManager;
 
         /// <summary>Webtoon üretim ve yayın yöneticisine salt-okunur erişim.</summary>
         public WebtoonManager    WebtoonManager    => webtoonManager;
@@ -90,8 +86,6 @@ namespace Freeline
                 energyManager = GetComponent<EnergyManager>();
             if (saveManager == null)
                 saveManager = GetComponent<SaveManager>();
-            if (jobManager == null)
-                jobManager = GetComponent<JobManager>();
             if (webtoonManager == null)
                 webtoonManager = GetComponent<WebtoonManager>();
             if(exhibitionManager == null)

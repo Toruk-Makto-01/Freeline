@@ -28,6 +28,7 @@ namespace Freeline
         [SerializeField] private RectTransform clockHandImg; // Dönen saat göstergesi ibresi (Saat Göstergesi_Ui)
         [SerializeField] private TextMeshProUGUI digitalClockText;
         [SerializeField] private Image energyBarFill; // Filled tipindeki enerji görseli
+        [SerializeField] private TextMeshProUGUI energyText; // YENİ: Enerji miktarını yazacak Text
         [SerializeField] private TextMeshProUGUI hungerText; // Açlık yüzde metni
         [SerializeField] private TextMeshProUGUI coinText;
         [SerializeField] private TextMeshProUGUI gemText;
@@ -52,10 +53,13 @@ namespace Freeline
         [SerializeField] private DrawingDeskPanel drawingDeskPanel; // Yeni eklediğimiz çizim masası arayüzü
         [Header("Gün Sonu Paneli")]
         [SerializeField] private DailyReportPanel dailyReportPanel;
+        [Header("Bayılma Sistemi")]
+        [SerializeField] private GameObject passOutPanel;
+        [SerializeField] private Button passOutOkButton;
 
-        [Header("Dinamik Renk Ayarları (Grisel Görsel İçin)")]
-        [SerializeField] private Color normalEnergyColor = new Color(0f, 0.8f, 0.4f, 1f); // Yeşil / Mavi buff rengi
-        [SerializeField] private Color lowEnergyColor = new Color(0.9f, 0.1f, 0.1f, 1f); // Kritik kırmızı
+        [Header("Dinamik Renk Ayarları (Görsel İçin)")]
+        [SerializeField] private Color normalEnergyColor = new Color(1f, 0.7f, 0f, 1f); // Turuncumsu Sarı
+        [SerializeField] private Color lowEnergyColor = new Color(0.9f, 0.1f, 0.1f, 1f); // Kritik Kırmızı
 
         // Singleton Yapısı (ZenitoonPanel veya diğer panellerin HUDManager'a kolay erişebilmesi için)
         public static HUDManager Instance { get; private set; }
@@ -82,6 +86,9 @@ namespace Freeline
             if (settingsButton != null) settingsButton.onClick.AddListener(OnSettingsClicked);
             if (addCoinButton != null) addCoinButton.onClick.AddListener(() => OpenMarketTab(MarketCategory.Food));
             if (addGemButton != null) addGemButton.onClick.AddListener(() => OpenMarketTab(MarketCategory.Upgrade));
+
+            GameManager.Instance.TimeManager.OnPassedOut += ShowPassOutPanel;
+            if (passOutOkButton != null) passOutOkButton.onClick.AddListener(OnPassOutOkClicked);
 
             // İlk verileri ekrana yükle
             RefreshAllUI();
@@ -156,7 +163,7 @@ namespace Freeline
                 int hungerPercent = energyManager.GetHungerPercentage();
 
                 // Market panelindeki gibi %25 altına düşünce kırmızı yapma mantığını buraya da ekleyelim
-                string colorHex = hungerPercent <= 25 ? "red" : "white";
+                string colorHex = hungerPercent <= 25 ? "red" : "green";
                 hungerText.text = $"<color={colorHex}>Açlık: %{hungerPercent}</color>";
             }
 
@@ -166,13 +173,20 @@ namespace Freeline
                 followersText.text = $"{data.webtoonData.totalFollowers} Takipçi";
             }
 
-            // 4. Enerji Barı Doluluğu ve Renk Ayarı (Artık anlık canlı veriyi okuyor!)
+            // 4. Enerji Barı Doluluğu, Renk Ayarı ve Metin Yazımı
             if (energyBarFill != null)
             {
-                // Sabit 100 yerine, mevcut enerjiyi maksimum enerjiye bölüyoruz
                 float energyRatio = energyManager.CurrentEnergy / energyManager.MaxEnergy;
                 energyBarFill.fillAmount = energyRatio;
+
+                // %25 ve altındaysa kırmızı, değilse turuncu/sarı yap
                 energyBarFill.color = (energyRatio <= 0.25f) ? lowEnergyColor : normalEnergyColor;
+            }
+
+            // Enerji değerini tam sayıya yuvarlayarak yazdır (Örn: 75 / 100)
+            if (energyText != null)
+            {
+                energyText.text = $"{Mathf.FloorToInt(energyManager.CurrentEnergy)} / {Mathf.FloorToInt(energyManager.MaxEnergy)}";
             }
 
             // 5. Saat Sistemleri (Dijital Metin ve Kadran Dönüşü)
@@ -281,32 +295,118 @@ namespace Freeline
             {
                 GameObject iconObj = Instantiate(buffIconPrefab, buffIconsContainer);
                 Image img = iconObj.GetComponent<Image>();
+                TooltipTrigger tooltip = iconObj.GetComponent<TooltipTrigger>();
+
+                string buffTitle = "Güçlendirme";
+                string buffDesc = "Aktif bir etki.";
+
+                // --- YENİ GERÇEK ZAMAN (DATETIME) HESAPLAMASI ---
+                string timeLeftText = "Bilinmiyor";
+                if (System.DateTime.TryParse(buff.endTimeString, out System.DateTime endTime))
+                {
+                    System.TimeSpan timeLeft = endTime - System.DateTime.Now;
+
+                    if (timeLeft.TotalSeconds > 0)
+                    {
+                        if (timeLeft.TotalHours >= 1)
+                            timeLeftText = $"{(int)timeLeft.TotalHours} saat {(int)timeLeft.Minutes} dk";
+                        else
+                            timeLeftText = $"{(int)timeLeft.Minutes} dakika";
+                    }
+                    else
+                    {
+                        timeLeftText = "Süresi bitti";
+                    }
+                }
 
                 if (img != null)
                 {
-                    // Efekt tipine göre doğru resmi (Sprite) ata
+                    // Efekt tipine göre doğru resmi (Sprite) ve Tooltip yazılarını ata
                     if (buff.effectType == ConsumableEffectType.EnergyCostReduction)
+                    {
                         img.sprite = energyCostSprite;
+                        buffTitle = "Odaklanma";
+                        buffDesc = $"İş yaparken daha az enerji harcarsın.\n(Kalan: {timeLeftText})";
+                    }
                     else if (buff.effectType == ConsumableEffectType.EnergyRegenOverTime)
+                    {
                         img.sprite = energyRegenSprite;
+                        buffTitle = "Enerji Patlaması";
+                        buffDesc = $"Zamanla ekstra enerji kazanırsın.\n(Kalan: {timeLeftText})";
+                    }
                 }
+
+                // TooltipTrigger bileşeni varsa, yazıları içine gönder
+                if (tooltip != null)
+                {
+                    tooltip.Setup(buffTitle, buffDesc, true); // Pozitif buff olduğu için true (Yeşil)
+                }
+            }
+
+            // ... (aktif buff foreach döngüsü bittikten sonra)
+            var data = GameManager.Instance.SaveManager.CurrentData;
+
+            // A. Bayılma Cezası İkonu (Sadece bayılarak uyandıysa görünür)
+            if (data.hasPassOutPenalty)
+            {
+                GameObject penaltyIcon = Instantiate(buffIconPrefab, buffIconsContainer);
+                penaltyIcon.GetComponent<Image>().color = Color.red; // Geçici olarak kırmızı renklendir (veya kendi sprite'ını ata)
+                penaltyIcon.GetComponent<TooltipTrigger>()?.Setup(
+                    "Aşırı Yorgunluk",
+                    "Bayıldığın için maksimum enerjin bir sonraki uykuya kadar kısıtlandı!",
+                    false);
+            }
+
+            // B. Kademeli Uykusuzluk İkonu (16 Saat Üstü)
+            float awake = data.hoursAwake;
+            if (awake >= 16f)
+            {
+                string debuffTitle = "Uykusuz";
+                string debuffDesc = "İş yapma hızın %15 düştü.";
+
+                if (awake >= 24f)
+                {
+                    debuffTitle = "Tükenmiş";
+                    debuffDesc = "İş yapma hızın yarı yarıya (%50) düştü! Uyumazsan bayılacaksın.";
+                }
+                else if (awake >= 20f)
+                {
+                    debuffTitle = "Çok Yorgun";
+                    debuffDesc = "İş yapma hızın %30 düştü.";
+                }
+
+                GameObject fatigueIcon = Instantiate(buffIconPrefab, buffIconsContainer);
+                fatigueIcon.GetComponent<Image>().color = new Color(1f, 0.5f, 0f); // Turuncu uyarı rengi
+                fatigueIcon.GetComponent<TooltipTrigger>()?.Setup(debuffTitle, debuffDesc, false);
             }
         }
 
         private void OnSleepButtonClicked()
         {
             Debug.Log("[HUD] Uyu butonuna basıldı, Gün Sonu Raporu açılıyor...");
-            
+
             // Açık olan diğer panelleri (Tablet, Market vb.) kapat
             if (tabletPanel != null) tabletPanel.SetActive(false);
             if (settingsPanel != null) settingsPanel.SetActive(false);
             if (marketPanel != null) marketPanel.Close();
-            
+
             // Gün sonu panelini aç
             if (dailyReportPanel != null)
             {
                 dailyReportPanel.OpenPanel();
             }
+        }
+
+        private void ShowPassOutPanel()
+        {
+            if (passOutPanel != null) passOutPanel.SetActive(true);
+        }
+
+        private void OnPassOutOkClicked()
+        {
+            passOutPanel.SetActive(false);
+            // Uyku ekranına (Faturaya) zorla geçiş yapıyoruz!
+            if (dailyReportPanel != null) dailyReportPanel.OpenPanel();
         }
     }
 }

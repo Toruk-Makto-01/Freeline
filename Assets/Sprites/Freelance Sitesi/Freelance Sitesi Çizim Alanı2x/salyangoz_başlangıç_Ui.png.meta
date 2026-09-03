@@ -1,0 +1,1885 @@
+fileFormatVersion: 2
+guid: 2ca9aba4aecdda8449009e6b2f6b2a03
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4664038209203055261
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_0"
+  - first:
+      213: -45485577908805137
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_1"
+  - first:
+      213: 7856312791867567891
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_2"
+  - first:
+      213: 8315617424726174030
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_3"
+  - first:
+      213: -8326283802469163463
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_4"
+  - first:
+      213: 4617466583630907751
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_5"
+  - first:
+      213: 1198514625623181324
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_6"
+  - first:
+      213: 3074709997151975175
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_7"
+  - first:
+      213: 354427131607191177
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_8"
+  - first:
+      213: -2711859011983487266
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_9"
+  - first:
+      213: -1643782132379212669
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_10"
+  - first:
+      213: -7562294687146064678
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_11"
+  - first:
+      213: 620232182215107020
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_12"
+  - first:
+      213: 4293773650375353766
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_13"
+  - first:
+      213: -2312790816841555204
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_14"
+  - first:
+      213: -8284669038941140851
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_15"
+  - first:
+      213: 7295073620887927387
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_16"
+  - first:
+      213: 4044464467109914682
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_17"
+  - first:
+      213: -2621510607161438065
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_18"
+  - first:
+      213: 8827170426643328878
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_19"
+  - first:
+      213: -1149448745759101016
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_20"
+  - first:
+      213: -7588509111156806507
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_21"
+  - first:
+      213: -5507514640393241707
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_22"
+  - first:
+      213: -759504237633998979
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_23"
+  - first:
+      213: 6167711014485025096
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_24"
+  - first:
+      213: 5640997117453397973
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_25"
+  - first:
+      213: 2459972438773844084
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_26"
+  - first:
+      213: -3979136277239615300
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_27"
+  - first:
+      213: -1400563786708956265
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_28"
+  - first:
+      213: -3733771847524778756
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_29"
+  - first:
+      213: 3433244009239063457
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_30"
+  - first:
+      213: -2581172601853775136
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_31"
+  - first:
+      213: 4735893091269156087
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_32"
+  - first:
+      213: 4904755426089499045
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_33"
+  - first:
+      213: -9184501313808655371
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_34"
+  - first:
+      213: -7652224576114098085
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_35"
+  - first:
+      213: 7400500051693167169
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_36"
+  - first:
+      213: -556390534507249406
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_37"
+  - first:
+      213: -6666907202244655988
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_38"
+  - first:
+      213: 7623470961118786406
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_39"
+  - first:
+      213: -4557811701812730479
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_40"
+  - first:
+      213: 5737721013740067616
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_41"
+  - first:
+      213: 8696245388285171562
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_42"
+  - first:
+      213: -944374891249813363
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_43"
+  - first:
+      213: 2153489329402723802
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_44"
+  - first:
+      213: -6473384085829551016
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_45"
+  - first:
+      213: -1299193963629638250
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_46"
+  - first:
+      213: -3446501366538350560
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_47"
+  - first:
+      213: -7087307501676769344
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_48"
+  - first:
+      213: -1665773998062555124
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_49"
+  - first:
+      213: -8442066221464274079
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_50"
+  - first:
+      213: -3121101064851545203
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_51"
+  - first:
+      213: 4911972155857824460
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_52"
+  - first:
+      213: -779638836834819385
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_53"
+  - first:
+      213: 7045420884749611528
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_54"
+  - first:
+      213: 8525732650096036336
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_55"
+  - first:
+      213: 4129673306034517195
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_56"
+  - first:
+      213: -4440215867694281616
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_57"
+  - first:
+      213: 4375860492820522116
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_58"
+  - first:
+      213: 501431904583614972
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_59"
+  - first:
+      213: 869881254755986240
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_60"
+  - first:
+      213: -6633821039651112853
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_61"
+  - first:
+      213: -1272490588285465025
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_62"
+  - first:
+      213: -7508962021850767493
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_63"
+  - first:
+      213: -7126480788525699533
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_64"
+  - first:
+      213: 6189124355789592360
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_65"
+  - first:
+      213: 7120687916911176931
+    second: "salyangoz_ba\u015Flang\u0131\xE7_Ui_66"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_0"
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 2928
+        width: 170
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9aa5664a0ef9b040800000000000000
+      internalID: 4664038209203055261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_1"
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 2801
+        width: 95
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe1a75e9b176e5ff0800000000000000
+      internalID: -45485577908805137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_2"
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 2821
+        width: 95
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31faf931cda370d60800000000000000
+      internalID: 7856312791867567891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_3"
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 2948
+        width: 170
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e492ad06df1076370800000000000000
+      internalID: 8315617424726174030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_4"
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 2674
+        width: 95
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93e9cb60ff8137c80800000000000000
+      internalID: -8326283802469163463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_5"
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 2573
+        width: 168
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7698e87b469841040800000000000000
+      internalID: 4617466583630907751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_6"
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 2594
+        width: 169
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c084166b3baf1a010800000000000000
+      internalID: 1198514625623181324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_7"
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 2695
+        width: 95
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 707f59fa3709baa20800000000000000
+      internalID: 3074709997151975175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_8"
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 2562
+        width: 44
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98e053e299d2be400800000000000000
+      internalID: 354427131607191177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_9"
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 2582
+        width: 44
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ede48cdb89a8d5ad0800000000000000
+      internalID: -2711859011983487266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_10"
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 2346
+        width: 45
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38427671cdc1039e0800000000000000
+      internalID: -1643782132379212669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_11"
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 2400
+        width: 56
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad4c5dd7c055d0790800000000000000
+      internalID: -7562294687146064678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_12"
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 2421
+        width: 56
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc1623332e18b9800800000000000000
+      internalID: 620232182215107020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_13"
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 2367
+        width: 44
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a52e88b26c869b30800000000000000
+      internalID: 4293773650375353766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_14"
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 2250
+        width: 198
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf2af5a710157efd0800000000000000
+      internalID: -2312790816841555204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_15"
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 2291
+        width: 173
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d888c343761f60d80800000000000000
+      internalID: -8284669038941140851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_16"
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 2270
+        width: 52
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5af857aece4d3560800000000000000
+      internalID: 7295073620887927387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_17"
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 2193
+        width: 172
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a38a6cc1103d02830800000000000000
+      internalID: 4044464467109914682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_18"
+      rect:
+        serializedVersion: 2
+        x: 1727
+        y: 2252
+        width: 175
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f80593dfdf58e9bd0800000000000000
+      internalID: -2621510607161438065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_19"
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 2130
+        width: 151
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6fa8e31cb8608a70800000000000000
+      internalID: 8827170426643328878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_20"
+      rect:
+        serializedVersion: 2
+        x: 1471
+        y: 2185
+        width: 168
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8afa28da4765c00f0800000000000000
+      internalID: -1149448745759101016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_21"
+      rect:
+        serializedVersion: 2
+        x: 1992
+        y: 2205
+        width: 170
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59ceea64b2330b690800000000000000
+      internalID: -7588509111156806507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_22"
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 1938
+        width: 123
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59bf8185d906193b0800000000000000
+      internalID: -5507514640393241707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_23"
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 2031
+        width: 139
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7feb6e7be2b575f0800000000000000
+      internalID: -759504237633998979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_24"
+      rect:
+        serializedVersion: 2
+        x: 2239
+        y: 2073
+        width: 152
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 841e4af5d7c189550800000000000000
+      internalID: 6167711014485025096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_25"
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 1807
+        width: 100
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dfefc4bdf8d84e40800000000000000
+      internalID: 5640997117453397973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_26"
+      rect:
+        serializedVersion: 2
+        x: 2444
+        y: 1878
+        width: 126
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 478cd5a46e3932220800000000000000
+      internalID: 2459972438773844084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_27"
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1700
+        width: 83
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb0334263a447c8c0800000000000000
+      internalID: -3979136277239615300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_28"
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 1499
+        width: 255
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79bcfef08a2309ce0800000000000000
+      internalID: -1400563786708956265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_29"
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 1499
+        width: 256
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfc7eeb794afe2cc0800000000000000
+      internalID: -3733771847524778756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_30"
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 1554
+        width: 59
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1abaeed7c3555af20800000000000000
+      internalID: 3433244009239063457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_31"
+      rect:
+        serializedVersion: 2
+        x: 2596
+        y: 1643
+        width: 96
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e2f88ab135dd2cd0800000000000000
+      internalID: -2581172601853775136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_32"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1442
+        width: 47
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fc1357bca549b140800000000000000
+      internalID: 4735893091269156087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_33"
+      rect:
+        serializedVersion: 2
+        x: 1858
+        y: 1531
+        width: 157
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a9fb32d211311440800000000000000
+      internalID: 4904755426089499045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_34"
+      rect:
+        serializedVersion: 2
+        x: 2105
+        y: 1599
+        width: 176
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fb935777b81a8080800000000000000
+      internalID: -9184501313808655371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_35"
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 1214
+        width: 435
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b50843f8a46ddc590800000000000000
+      internalID: -7652224576114098085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_36"
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 1294
+        width: 57
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1426e65669bd3b660800000000000000
+      internalID: 7400500051693167169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_37"
+      rect:
+        serializedVersion: 2
+        x: 1740
+        y: 1288
+        width: 85
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2014e4ab1cd4748f0800000000000000
+      internalID: -556390534507249406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_38"
+      rect:
+        serializedVersion: 2
+        x: 2337
+        y: 1381
+        width: 93
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c84c6bbe8336a73a0800000000000000
+      internalID: -6666907202244655988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_39"
+      rect:
+        serializedVersion: 2
+        x: 2688
+        y: 1385
+        width: 64
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 663bdf0c2720cc960800000000000000
+      internalID: 7623470961118786406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_40"
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1192
+        width: 89
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1956550d7666fb0c0800000000000000
+      internalID: -4557811701812730479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_41"
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 1045
+        width: 87
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02b554cbcda70af40800000000000000
+      internalID: 5737721013740067616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_42"
+      rect:
+        serializedVersion: 2
+        x: 1725
+        y: 1016
+        width: 51
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a67dd502b154fa870800000000000000
+      internalID: 8696245388285171562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_43"
+      rect:
+        serializedVersion: 2
+        x: 2038
+        y: 1152
+        width: 46
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d88b1483a08e4e2f0800000000000000
+      internalID: -944374891249813363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_44"
+      rect:
+        serializedVersion: 2
+        x: 2355
+        y: 1114
+        width: 81
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: addb4aaa22bb2ed10800000000000000
+      internalID: 2153489329402723802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_45"
+      rect:
+        serializedVersion: 2
+        x: 2699
+        y: 1119
+        width: 57
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85c767da87be926a0800000000000000
+      internalID: -6473384085829551016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_46"
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 978
+        width: 124
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69d068739f558fde0800000000000000
+      internalID: -1299193963629638250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_47"
+      rect:
+        serializedVersion: 2
+        x: 2118
+        y: 1026
+        width: 177
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 020559974419b20d0800000000000000
+      internalID: -3446501366538350560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_48"
+      rect:
+        serializedVersion: 2
+        x: 2614
+        y: 868
+        width: 94
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cf489c9063d4ad90800000000000000
+      internalID: -7087307501676769344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_49"
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 787
+        width: 102
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c003669df5bf1e8e0800000000000000
+      internalID: -1665773998062555124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_50"
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 818
+        width: 139
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16b3c43ef71c7da80800000000000000
+      internalID: -8442066221464274079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_51"
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 530
+        width: 70
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d832e692e1f9fa4d0800000000000000
+      internalID: -3121101064851545203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_52"
+      rect:
+        serializedVersion: 2
+        x: 1861
+        y: 672
+        width: 151
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccae388a6a4da2440800000000000000
+      internalID: 4911972155857824460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_53"
+      rect:
+        serializedVersion: 2
+        x: 2468
+        y: 648
+        width: 123
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c2ac5dcb9a2e25f0800000000000000
+      internalID: -779638836834819385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_54"
+      rect:
+        serializedVersion: 2
+        x: 2083
+        y: 555
+        width: 161
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8027e9867fc56c160800000000000000
+      internalID: 7045420884749611528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_55"
+      rect:
+        serializedVersion: 2
+        x: 2324
+        y: 465
+        width: 164
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f98cea8cac715670800000000000000
+      internalID: 8525732650096036336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_56"
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 283
+        width: 90
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc4b99cedfb8f4930800000000000000
+      internalID: 4129673306034517195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_57"
+      rect:
+        serializedVersion: 2
+        x: 2558
+        y: 302
+        width: 127
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07c8700913f2162c0800000000000000
+      internalID: -4440215867694281616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_58"
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 90
+        width: 141
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 484ab351fed2abc30800000000000000
+      internalID: 4375860492820522116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_59"
+      rect:
+        serializedVersion: 2
+        x: 2600
+        y: 73
+        width: 115
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf101c719a175f600800000000000000
+      internalID: 501431904583614972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_60"
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 5
+        width: 169
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04b60827460721c00800000000000000
+      internalID: 869881254755986240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_61"
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 0
+        width: 173
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b68351479eeefe3a0800000000000000
+      internalID: -6633821039651112853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_62"
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 0
+        width: 173
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3e87394d84375ee0800000000000000
+      internalID: -1272490588285465025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_63"
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 1
+        width: 173
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7f9fa743decac790800000000000000
+      internalID: -7508962021850767493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_64"
+      rect:
+        serializedVersion: 2
+        x: 1832
+        y: 2
+        width: 173
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33ea7450b77a91d90800000000000000
+      internalID: -7126480788525699533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_65"
+      rect:
+        serializedVersion: 2
+        x: 2093
+        y: 3
+        width: 173
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8279e896fcf24e550800000000000000
+      internalID: 6189124355789592360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "salyangoz_ba\u015Flang\u0131\xE7_Ui_66"
+      rect:
+        serializedVersion: 2
+        x: 2353
+        y: 3
+        width: 172
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ec28e3fee3c1d260800000000000000
+      internalID: 7120687916911176931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_0": 4664038209203055261
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_1": -45485577908805137
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_10": -1643782132379212669
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_11": -7562294687146064678
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_12": 620232182215107020
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_13": 4293773650375353766
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_14": -2312790816841555204
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_15": -8284669038941140851
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_16": 7295073620887927387
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_17": 4044464467109914682
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_18": -2621510607161438065
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_19": 8827170426643328878
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_2": 7856312791867567891
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_20": -1149448745759101016
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_21": -7588509111156806507
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_22": -5507514640393241707
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_23": -759504237633998979
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_24": 6167711014485025096
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_25": 5640997117453397973
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_26": 2459972438773844084
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_27": -3979136277239615300
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_28": -1400563786708956265
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_29": -3733771847524778756
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_3": 8315617424726174030
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_30": 3433244009239063457
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_31": -2581172601853775136
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_32": 4735893091269156087
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_33": 4904755426089499045
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_34": -9184501313808655371
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_35": -7652224576114098085
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_36": 7400500051693167169
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_37": -556390534507249406
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_38": -6666907202244655988
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_39": 7623470961118786406
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_4": -8326283802469163463
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_40": -4557811701812730479
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_41": 5737721013740067616
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_42": 8696245388285171562
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_43": -944374891249813363
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_44": 2153489329402723802
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_45": -6473384085829551016
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_46": -1299193963629638250
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_47": -3446501366538350560
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_48": -7087307501676769344
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_49": -1665773998062555124
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_5": 4617466583630907751
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_50": -8442066221464274079
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_51": -3121101064851545203
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_52": 4911972155857824460
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_53": -779638836834819385
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_54": 7045420884749611528
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_55": 8525732650096036336
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_56": 4129673306034517195
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_57": -4440215867694281616
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_58": 4375860492820522116
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_59": 501431904583614972
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_6": 1198514625623181324
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_60": 869881254755986240
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_61": -6633821039651112853
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_62": -1272490588285465025
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_63": -7508962021850767493
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_64": -7126480788525699533
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_65": 6189124355789592360
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_66": 7120687916911176931
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_7": 3074709997151975175
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_8": 354427131607191177
+      "salyangoz_ba\u015Flang\u0131\xE7_Ui_9": -2711859011983487266
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

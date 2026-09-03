@@ -1,0 +1,2145 @@
+fileFormatVersion: 2
+guid: 04c96d886bc8d9847b2a220ce40b4cce
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5356130724381939847
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_0"
+  - first:
+      213: 5430557311067400210
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_1"
+  - first:
+      213: 140734734522409220
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_2"
+  - first:
+      213: -8606446800374355851
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_3"
+  - first:
+      213: 5141858562632599704
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_4"
+  - first:
+      213: 7504903034676514329
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_5"
+  - first:
+      213: -7268176206117051943
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_6"
+  - first:
+      213: 8838830925502087470
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_7"
+  - first:
+      213: 8793347339879578717
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_8"
+  - first:
+      213: 4773078641809363979
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_9"
+  - first:
+      213: -6561667698990800345
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_10"
+  - first:
+      213: 7421114482881849363
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_11"
+  - first:
+      213: 1979176102686586754
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_12"
+  - first:
+      213: -1675673417199774525
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_13"
+  - first:
+      213: -5615499992937879045
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_14"
+  - first:
+      213: -4597829923364517230
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_15"
+  - first:
+      213: -1398922562936649828
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_16"
+  - first:
+      213: -639461651524234655
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_17"
+  - first:
+      213: 8818973843618785437
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_18"
+  - first:
+      213: 1612442819937670819
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_19"
+  - first:
+      213: 5302457609835934824
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_20"
+  - first:
+      213: -6742235974163152053
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_21"
+  - first:
+      213: -7687625339532357045
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_22"
+  - first:
+      213: 6946974065301396550
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_23"
+  - first:
+      213: 3517165784600706630
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_24"
+  - first:
+      213: -326030169287192152
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_25"
+  - first:
+      213: 5968772015120587589
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_26"
+  - first:
+      213: -6674427378135442782
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_27"
+  - first:
+      213: 7688322652536370137
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_28"
+  - first:
+      213: -4263435340214239122
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_29"
+  - first:
+      213: -606949910970247988
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_30"
+  - first:
+      213: -3811911364745437537
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_31"
+  - first:
+      213: 1868773544318937336
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_32"
+  - first:
+      213: -8113478803775416096
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_33"
+  - first:
+      213: -4235298641024456783
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_34"
+  - first:
+      213: -1696624342575541186
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_35"
+  - first:
+      213: -1338494182180026776
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_36"
+  - first:
+      213: -1891319347633604149
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_37"
+  - first:
+      213: -245040642330337760
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_38"
+  - first:
+      213: 565271806007919627
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_39"
+  - first:
+      213: 3529925851675191952
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_40"
+  - first:
+      213: 4207077345373991872
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_41"
+  - first:
+      213: -3350389627047350320
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_42"
+  - first:
+      213: 6621303454630098346
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_43"
+  - first:
+      213: 6588704984491546939
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_44"
+  - first:
+      213: 1639534678615933874
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_45"
+  - first:
+      213: -1263026812368897064
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_46"
+  - first:
+      213: -1371411453732504868
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_47"
+  - first:
+      213: 3849042471799050798
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_48"
+  - first:
+      213: -8851500086063948181
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_49"
+  - first:
+      213: -8244810023557765499
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_50"
+  - first:
+      213: -3673900479145415766
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_51"
+  - first:
+      213: 2050404025109336388
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_52"
+  - first:
+      213: 739468391407575480
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_53"
+  - first:
+      213: -6372796176459736881
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_54"
+  - first:
+      213: -6036501489475965983
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_55"
+  - first:
+      213: -1888920917537290679
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_56"
+  - first:
+      213: -3940093996353573139
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_57"
+  - first:
+      213: 4345406803841280058
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_58"
+  - first:
+      213: -7058702054355148941
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_59"
+  - first:
+      213: -4960191341465071737
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_60"
+  - first:
+      213: 6413018123652771242
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_61"
+  - first:
+      213: -6835542477634640387
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_62"
+  - first:
+      213: -2681565466858973760
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_63"
+  - first:
+      213: -8929437192057045222
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_64"
+  - first:
+      213: 59662376791375234
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_65"
+  - first:
+      213: 1719270508371772165
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_66"
+  - first:
+      213: -6165834702533541862
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_67"
+  - first:
+      213: 3285347847751644309
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_68"
+  - first:
+      213: -4593156507710864203
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_69"
+  - first:
+      213: 5752624346551801625
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_70"
+  - first:
+      213: -1691521889617869054
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_71"
+  - first:
+      213: 7209233590905213107
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_72"
+  - first:
+      213: -5444667597377781164
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_73"
+  - first:
+      213: -6375925762072162039
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_74"
+  - first:
+      213: 7788208081608846678
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_75"
+  - first:
+      213: -3913956179596637773
+    second: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_76"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_0"
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 2966
+        width: 172
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 788575d048cc45a40800000000000000
+      internalID: 5356130724381939847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_1"
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 2993
+        width: 175
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 218a2922a173d5b40800000000000000
+      internalID: 5430557311067400210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_2"
+      rect:
+        serializedVersion: 2
+        x: 1462
+        y: 2931
+        width: 169
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40164c2de7df3f100800000000000000
+      internalID: 140734734522409220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_3"
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 2866
+        width: 161
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 578a365eb32cf8880800000000000000
+      internalID: -8606446800374355851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_4"
+      rect:
+        serializedVersion: 2
+        x: 1707
+        y: 2808
+        width: 156
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8984407be1d8b5740800000000000000
+      internalID: 5141858562632599704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_5"
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 2712
+        width: 145
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91e05af1c85c62860800000000000000
+      internalID: 7504903034676514329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_6"
+      rect:
+        serializedVersion: 2
+        x: 1924
+        y: 2634
+        width: 137
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d1627dbf30422b90800000000000000
+      internalID: -7268176206117051943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_7"
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 2515
+        width: 125
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e210a4885e5d9aa70800000000000000
+      internalID: 8838830925502087470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_8"
+      rect:
+        serializedVersion: 2
+        x: 2101
+        y: 2423
+        width: 116
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5cf52401de380a70800000000000000
+      internalID: 8793347339879578717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_9"
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 2287
+        width: 101
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b041d026cb16d3240800000000000000
+      internalID: 4773078641809363979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_10"
+      rect:
+        serializedVersion: 2
+        x: 2234
+        y: 2182
+        width: 88
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 722af733ef540f4a0800000000000000
+      internalID: -6561667698990800345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_11"
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 2034
+        width: 71
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 318edadad481df660800000000000000
+      internalID: 7421114482881849363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_12"
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 1893
+        width: 198
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2877394ed22777b10800000000000000
+      internalID: 1979176102686586754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_13"
+      rect:
+        serializedVersion: 2
+        x: 1580
+        y: 1893
+        width: 198
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c41e38b7efceb8e0800000000000000
+      internalID: -1675673417199774525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_14"
+      rect:
+        serializedVersion: 2
+        x: 2308
+        y: 1923
+        width: 54
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf9aab4328cb112b0800000000000000
+      internalID: -5615499992937879045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_15"
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1785
+        width: 83
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29a42388b0a3130c0800000000000000
+      internalID: -4597829923364517230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_16"
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1795
+        width: 355
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c97c1ef3757069ce0800000000000000
+      internalID: -1398922562936649828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_17"
+      rect:
+        serializedVersion: 2
+        x: 2361
+        y: 1674
+        width: 81
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 162d965140d2027f0800000000000000
+      internalID: -639461651524234655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_18"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1533
+        width: 54
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d98eb506cf9436a70800000000000000
+      internalID: 8818973843618785437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_19"
+      rect:
+        serializedVersion: 2
+        x: 2342
+        y: 1428
+        width: 102
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a6930f933c806610800000000000000
+      internalID: 1612442819937670819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_20"
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1367
+        width: 159
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86476de3a1d169940800000000000000
+      internalID: 5302457609835934824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_21"
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 1321
+        width: 172
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4345287a14ce62a0800000000000000
+      internalID: -6742235974163152053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_22"
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1304
+        width: 45
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b42d1e60c71105590800000000000000
+      internalID: -7687625339532357045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_23"
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 1314
+        width: 171
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64c14221b1c986060800000000000000
+      internalID: 6946974065301396550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_24"
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 1268
+        width: 55
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64e784775ab7fc030800000000000000
+      internalID: 3517165784600706630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_25"
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 1294
+        width: 213
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a19395d945b97bf0800000000000000
+      internalID: -326030169287192152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_26"
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 1254
+        width: 170
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54b1e8a168655d250800000000000000
+      internalID: 5968772015120587589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_27"
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 1256
+        width: 199
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aa581789abaf53a0800000000000000
+      internalID: -6674427378135442782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_28"
+      rect:
+        serializedVersion: 2
+        x: 1592
+        y: 1282
+        width: 168
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d3f40fc7b862ba60800000000000000
+      internalID: 7688322652536370137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_29"
+      rect:
+        serializedVersion: 2
+        x: 1847
+        y: 1284
+        width: 161
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e600faf852c35d4c0800000000000000
+      internalID: -4263435340214239122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_30"
+      rect:
+        serializedVersion: 2
+        x: 2073
+        y: 1321
+        width: 196
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc4d920954ea397f0800000000000000
+      internalID: -606949910970247988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_31"
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1070
+        width: 81
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9ed2156fce591bc0800000000000000
+      internalID: -3811911364745437537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_32"
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1052
+        width: 85
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f827ca23a73fe910800000000000000
+      internalID: 1868773544318937336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_33"
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 1012
+        width: 50
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e81e48d302276f80800000000000000
+      internalID: -8113478803775416096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_34"
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 1039
+        width: 56
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b7ea0853523935c0800000000000000
+      internalID: -4235298641024456783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_35"
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 998
+        width: 56
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e34118746216478e0800000000000000
+      internalID: -1696624342575541186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_36"
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 1002
+        width: 56
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8668b3902a6bc6de0800000000000000
+      internalID: -1338494182180026776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_37"
+      rect:
+        serializedVersion: 2
+        x: 1435
+        y: 1039
+        width: 72
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc9b97fe21fa0c5e0800000000000000
+      internalID: -1891319347633604149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_38"
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 1034
+        width: 75
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02edd5685d0799cf0800000000000000
+      internalID: -245040642330337760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_39"
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 1036
+        width: 88
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0445ae66bf38d700800000000000000
+      internalID: 565271806007919627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_40"
+      rect:
+        serializedVersion: 2
+        x: 2086
+        y: 1072
+        width: 81
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09a61981cd0dcf030800000000000000
+      internalID: 3529925851675191952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_41"
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 839
+        width: 95
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c33c993e8a826a30800000000000000
+      internalID: 4207077345373991872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_42"
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 817
+        width: 84
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0df60b4a2660181d0800000000000000
+      internalID: -3350389627047350320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_43"
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 756
+        width: 62
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa53b4b296893eb50800000000000000
+      internalID: 6621303454630098346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_44"
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 783
+        width: 59
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b39d6726648cf6b50800000000000000
+      internalID: 6588704984491546939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_45"
+      rect:
+        serializedVersion: 2
+        x: 1145
+        y: 749
+        width: 66
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b346d38a1cc0c610800000000000000
+      internalID: 1639534678615933874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_46"
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 751
+        width: 56
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8db35f25ec3d87ee0800000000000000
+      internalID: -1263026812368897064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_47"
+      rect:
+        serializedVersion: 2
+        x: 1516
+        y: 809
+        width: 93
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cda3f538c84c7fce0800000000000000
+      internalID: -1371411453732504868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_48"
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 800
+        width: 78
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2259f82cbb8a6530800000000000000
+      internalID: 3849042471799050798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_49"
+      rect:
+        serializedVersion: 2
+        x: 2007
+        y: 802
+        width: 80
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6e91d8a197292580800000000000000
+      internalID: -8851500086063948181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_50"
+      rect:
+        serializedVersion: 2
+        x: 2186
+        y: 843
+        width: 96
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 586624967fc849d80800000000000000
+      internalID: -8244810023557765499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_51"
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 582
+        width: 55
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aab6668bafea30dc0800000000000000
+      internalID: -3673900479145415766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_52"
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 562
+        width: 71
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4415caae89f747c10800000000000000
+      internalID: 2050404025109336388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_53"
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 504
+        width: 66
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b16a78859e134a00800000000000000
+      internalID: 739468391407575480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_54"
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 527
+        width: 57
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc8562c54a74f87a0800000000000000
+      internalID: -6372796176459736881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_55"
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 502
+        width: 80
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eb2ba9c0e90a3ca0800000000000000
+      internalID: -6036501489475965983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_56"
+      rect:
+        serializedVersion: 2
+        x: 1309
+        y: 502
+        width: 78
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9468265fe6439c5e0800000000000000
+      internalID: -1888920917537290679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_57"
+      rect:
+        serializedVersion: 2
+        x: 1542
+        y: 561
+        width: 76
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dee22b5c269f159c0800000000000000
+      internalID: -3940093996353573139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_58"
+      rect:
+        serializedVersion: 2
+        x: 1712
+        y: 552
+        width: 77
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a386683177cfd4c30800000000000000
+      internalID: 4345406803841280058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_59"
+      rect:
+        serializedVersion: 2
+        x: 2012
+        y: 550
+        width: 73
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37f57d251e37a0e90800000000000000
+      internalID: -7058702054355148941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_60"
+      rect:
+        serializedVersion: 2
+        x: 2249
+        y: 589
+        width: 52
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78f8102514cd92bb0800000000000000
+      internalID: -4960191341465071737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_61"
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 349
+        width: 111
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aad277e710e9ff850800000000000000
+      internalID: 6413018123652771242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_62"
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 324
+        width: 90
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df56e7535564321a0800000000000000
+      internalID: -6835542477634640387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_63"
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 263
+        width: 85
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c59ae95a6a29cad0800000000000000
+      internalID: -2681565466858973760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_64"
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 282
+        width: 75
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1f374b1f24441480800000000000000
+      internalID: -8929437192057045222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_65"
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 249
+        width: 56
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28dfa179d96f3d000800000000000000
+      internalID: 59662376791375234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_66"
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 250
+        width: 62
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5030e441b631cd710800000000000000
+      internalID: 1719270508371772165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_67"
+      rect:
+        serializedVersion: 2
+        x: 1511
+        y: 312
+        width: 51
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1046bb810e8e6aa0800000000000000
+      internalID: -6165834702533541862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_68"
+      rect:
+        serializedVersion: 2
+        x: 1705
+        y: 303
+        width: 67
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 594b4d40676e79d20800000000000000
+      internalID: 3285347847751644309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_69"
+      rect:
+        serializedVersion: 2
+        x: 1981
+        y: 319
+        width: 99
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b4ce18ed74d140c0800000000000000
+      internalID: -4593156507710864203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_70"
+      rect:
+        serializedVersion: 2
+        x: 2148
+        y: 357
+        width: 108
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 917db7e4d5d65df40800000000000000
+      internalID: 5752624346551801625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_71"
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 23
+        width: 95
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 207878fadc18688e0800000000000000
+      internalID: -1691521889617869054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_72"
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 34
+        width: 81
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b018b831c75c0460800000000000000
+      internalID: 7209233590905213107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_73"
+      rect:
+        serializedVersion: 2
+        x: 1148
+        y: 22
+        width: 112
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 452c732daa7a074b0800000000000000
+      internalID: -5444667597377781164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_74"
+      rect:
+        serializedVersion: 2
+        x: 1338
+        y: 9
+        width: 71
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9015d6dec492487a0800000000000000
+      internalID: -6375925762072162039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_75"
+      rect:
+        serializedVersion: 2
+        x: 1551
+        y: 84
+        width: 110
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65d2f1d8cf5451c60800000000000000
+      internalID: 7788208081608846678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_76"
+      rect:
+        serializedVersion: 2
+        x: 1738
+        y: 70
+        width: 80
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b982b87795dea9c0800000000000000
+      internalID: -3913956179596637773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_0": 5356130724381939847
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_1": 5430557311067400210
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_10": -6561667698990800345
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_11": 7421114482881849363
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_12": 1979176102686586754
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_13": -1675673417199774525
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_14": -5615499992937879045
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_15": -4597829923364517230
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_16": -1398922562936649828
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_17": -639461651524234655
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_18": 8818973843618785437
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_19": 1612442819937670819
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_2": 140734734522409220
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_20": 5302457609835934824
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_21": -6742235974163152053
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_22": -7687625339532357045
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_23": 6946974065301396550
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_24": 3517165784600706630
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_25": -326030169287192152
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_26": 5968772015120587589
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_27": -6674427378135442782
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_28": 7688322652536370137
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_29": -4263435340214239122
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_3": -8606446800374355851
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_30": -606949910970247988
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_31": -3811911364745437537
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_32": 1868773544318937336
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_33": -8113478803775416096
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_34": -4235298641024456783
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_35": -1696624342575541186
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_36": -1338494182180026776
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_37": -1891319347633604149
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_38": -245040642330337760
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_39": 565271806007919627
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_4": 5141858562632599704
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_40": 3529925851675191952
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_41": 4207077345373991872
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_42": -3350389627047350320
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_43": 6621303454630098346
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_44": 6588704984491546939
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_45": 1639534678615933874
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_46": -1263026812368897064
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_47": -1371411453732504868
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_48": 3849042471799050798
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_49": -8851500086063948181
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_5": 7504903034676514329
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_50": -8244810023557765499
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_51": -3673900479145415766
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_52": 2050404025109336388
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_53": 739468391407575480
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_54": -6372796176459736881
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_55": -6036501489475965983
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_56": -1888920917537290679
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_57": -3940093996353573139
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_58": 4345406803841280058
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_59": -7058702054355148941
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_6": -7268176206117051943
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_60": -4960191341465071737
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_61": 6413018123652771242
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_62": -6835542477634640387
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_63": -2681565466858973760
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_64": -8929437192057045222
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_65": 59662376791375234
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_66": 1719270508371772165
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_67": -6165834702533541862
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_68": 3285347847751644309
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_69": -4593156507710864203
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_7": 8838830925502087470
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_70": 5752624346551801625
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_71": -1691521889617869054
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_72": 7209233590905213107
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_73": -5444667597377781164
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_74": -6375925762072162039
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_75": 7788208081608846678
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_76": -3913956179596637773
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_8": 8793347339879578717
+      "denizanas\u0131_ba\u015Flang\u0131\xE7_Ui_9": 4773078641809363979
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

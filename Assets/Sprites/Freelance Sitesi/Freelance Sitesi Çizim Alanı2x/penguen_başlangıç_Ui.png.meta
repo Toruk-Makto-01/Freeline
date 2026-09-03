@@ -1,0 +1,2093 @@
+fileFormatVersion: 2
+guid: b09436d689f4a4247800e9e045d06fbb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 713060771906852048
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_0"
+  - first:
+      213: -3803360863194986862
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_1"
+  - first:
+      213: -2776919959521693423
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_2"
+  - first:
+      213: -7712444939472784885
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_3"
+  - first:
+      213: -6745345559523137826
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_4"
+  - first:
+      213: -7617619632075109152
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_5"
+  - first:
+      213: -852177875356409401
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_6"
+  - first:
+      213: -1735558560392563352
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_7"
+  - first:
+      213: -357064978511714936
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_8"
+  - first:
+      213: -5381944320939879500
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_9"
+  - first:
+      213: -4238910596519114654
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_10"
+  - first:
+      213: 4011692666617757283
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_11"
+  - first:
+      213: 3502477587738880536
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_12"
+  - first:
+      213: 4885475562256999425
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_13"
+  - first:
+      213: 8625809079539408975
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_14"
+  - first:
+      213: 4511630679710500156
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_15"
+  - first:
+      213: 6936954536172574870
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_16"
+  - first:
+      213: 1083593942781657368
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_17"
+  - first:
+      213: 5395864178614308469
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_18"
+  - first:
+      213: 5401590881157375943
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_19"
+  - first:
+      213: 9064841165587850082
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_20"
+  - first:
+      213: 9039238204364590930
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_21"
+  - first:
+      213: -3076942825390023876
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_22"
+  - first:
+      213: 2059072493889740100
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_23"
+  - first:
+      213: -6661535307382169460
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_24"
+  - first:
+      213: 8127849511841828899
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_25"
+  - first:
+      213: -4535225811728961284
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_26"
+  - first:
+      213: 2861482770013632630
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_27"
+  - first:
+      213: -2115077274170864638
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_28"
+  - first:
+      213: 1919864187142272712
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_29"
+  - first:
+      213: 4374039242590444611
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_30"
+  - first:
+      213: 6095778054448708909
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_31"
+  - first:
+      213: -4057258422123665512
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_32"
+  - first:
+      213: -7411032658889758686
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_33"
+  - first:
+      213: -6710567653750518558
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_34"
+  - first:
+      213: 4133166244530066818
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_35"
+  - first:
+      213: -1030969878244531509
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_36"
+  - first:
+      213: 4435209654456100754
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_37"
+  - first:
+      213: -845925411418851357
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_38"
+  - first:
+      213: 3335589727123854492
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_39"
+  - first:
+      213: -1285790597884092122
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_40"
+  - first:
+      213: -8116633333134289466
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_41"
+  - first:
+      213: -1416637523348187804
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_42"
+  - first:
+      213: 8747323447424897826
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_43"
+  - first:
+      213: 2366594812653782908
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_44"
+  - first:
+      213: -6415979966010178304
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_45"
+  - first:
+      213: 7846377971544592989
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_46"
+  - first:
+      213: 2136792286349536797
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_47"
+  - first:
+      213: 4358524136321927020
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_48"
+  - first:
+      213: 2056025743212498637
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_49"
+  - first:
+      213: -2714793908972728733
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_50"
+  - first:
+      213: -3477564993820284489
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_51"
+  - first:
+      213: -6111577267129505186
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_52"
+  - first:
+      213: -533150996944158993
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_53"
+  - first:
+      213: -918786458926090368
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_54"
+  - first:
+      213: -8844451759460978871
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_55"
+  - first:
+      213: 7651375211341887749
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_56"
+  - first:
+      213: -3105147184122990170
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_57"
+  - first:
+      213: 4434111474116899063
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_58"
+  - first:
+      213: -1953941300579774346
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_59"
+  - first:
+      213: -4272948750776731036
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_60"
+  - first:
+      213: -941566980274179850
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_61"
+  - first:
+      213: 1751340703132449989
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_62"
+  - first:
+      213: 2105780332552970967
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_63"
+  - first:
+      213: 2054603888532911847
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_64"
+  - first:
+      213: 2984851188657776359
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_65"
+  - first:
+      213: 6955084412332639092
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_66"
+  - first:
+      213: -2746020435106477098
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_67"
+  - first:
+      213: -4322196614908933942
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_68"
+  - first:
+      213: -296292988138886295
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_69"
+  - first:
+      213: -8380151486837247430
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_70"
+  - first:
+      213: -5156950461047068416
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_71"
+  - first:
+      213: -9079051599360099373
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_72"
+  - first:
+      213: 4810408646174791584
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_73"
+  - first:
+      213: 265317047108041022
+    second: "penguen_ba\u015Flang\u0131\xE7_Ui_74"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_0"
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 2887
+        width: 157
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d416cc7efc45e900800000000000000
+      internalID: 713060771906852048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_1"
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 2978
+        width: 168
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 296c3ac227fb73bc0800000000000000
+      internalID: -3803360863194986862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_2"
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 2978
+        width: 169
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 111740372066679d0800000000000000
+      internalID: -2776919959521693423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_3"
+      rect:
+        serializedVersion: 2
+        x: 1630
+        y: 2888
+        width: 157
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0237f89034e7f490800000000000000
+      internalID: -7712444939472784885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_4"
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 2729
+        width: 135
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed66d55b3f7b362a0800000000000000
+      internalID: -6745345559523137826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_5"
+      rect:
+        serializedVersion: 2
+        x: 1849
+        y: 2729
+        width: 134
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ec0f14fd47c84690800000000000000
+      internalID: -7617619632075109152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_6"
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 2514
+        width: 101
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c12fe5ccb47c24f0800000000000000
+      internalID: -852177875356409401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_7"
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 2459
+        width: 150
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 865b9e84fae0ae7e0800000000000000
+      internalID: -1735558560392563352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_8"
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 2549
+        width: 175
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 885a31a3b437b0bf0800000000000000
+      internalID: -357064978511714936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_9"
+      rect:
+        serializedVersion: 2
+        x: 1489
+        y: 2549
+        width: 175
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b39275a72e7f45b0800000000000000
+      internalID: -5381944320939879500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_10"
+      rect:
+        serializedVersion: 2
+        x: 1751
+        y: 2459
+        width: 150
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 268c6db654d5c25c0800000000000000
+      internalID: -4238910596519114654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_11"
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 2515
+        width: 101
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36e7ac5b9356ca730800000000000000
+      internalID: 4011692666617757283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_12"
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 2268
+        width: 58
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81a61f22fcc4b9030800000000000000
+      internalID: 3502477587738880536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_13"
+      rect:
+        serializedVersion: 2
+        x: 1268
+        y: 2435
+        width: 148
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1042e27b322bcc340800000000000000
+      internalID: 4885475562256999425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_14"
+      rect:
+        serializedVersion: 2
+        x: 2111
+        y: 2269
+        width: 57
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f40294608a705b770800000000000000
+      internalID: 8625809079539408975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_15"
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 2220
+        width: 85
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3506e513388c9e30800000000000000
+      internalID: 4511630679710500156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_16"
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 2036
+        width: 181
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 698d997a563054060800000000000000
+      internalID: 6936954536172574870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_17"
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 2036
+        width: 181
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 811044823f2b90f00800000000000000
+      internalID: 1083593942781657368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_18"
+      rect:
+        serializedVersion: 2
+        x: 1935
+        y: 2220
+        width: 85
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57e8f86c1e5f1ea40800000000000000
+      internalID: 5395864178614308469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_19"
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 2017
+        width: 68
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c7ef5d994e46fa40800000000000000
+      internalID: 5401590881157375943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_20"
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1955
+        width: 77
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 263a3343309cccd70800000000000000
+      internalID: 9064841165587850082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_21"
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 1873
+        width: 406
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25f8a434143d17d70800000000000000
+      internalID: 9039238204364590930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_22"
+      rect:
+        serializedVersion: 2
+        x: 1945
+        y: 1955
+        width: 77
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3bd07a7dc08c45d0800000000000000
+      internalID: -3076942825390023876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_23"
+      rect:
+        serializedVersion: 2
+        x: 2094
+        y: 2018
+        width: 68
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44d5315168b439c10800000000000000
+      internalID: 2059072493889740100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_24"
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 1803
+        width: 96
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8063c8aee87d83a0800000000000000
+      internalID: -6661535307382169460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_25"
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 1731
+        width: 82
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3201a2d511cebc070800000000000000
+      internalID: 8127849511841828899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_26"
+      rect:
+        serializedVersion: 2
+        x: 1843
+        y: 1731
+        width: 82
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf076b32724af01c0800000000000000
+      internalID: -4535225811728961284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_27"
+      rect:
+        serializedVersion: 2
+        x: 2022
+        y: 1803
+        width: 96
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67830952b6706b720800000000000000
+      internalID: 2861482770013632630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_28"
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 1638
+        width: 140
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20c4b80ec6cb5a2e0800000000000000
+      internalID: -2115077274170864638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_29"
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 1518
+        width: 101
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c6fb9b6e4ab4aa10800000000000000
+      internalID: 1919864187142272712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_30"
+      rect:
+        serializedVersion: 2
+        x: 1946
+        y: 1518
+        width: 101
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34cd8383485b3bc30800000000000000
+      internalID: 4374039242590444611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_31"
+      rect:
+        serializedVersion: 2
+        x: 2179
+        y: 1638
+        width: 140
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2d790df7dd889450800000000000000
+      internalID: 6095778054448708909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_32"
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 1440
+        width: 123
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8976b5b16f8b1b7c0800000000000000
+      internalID: -4057258422123665512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_33"
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 1290
+        width: 82
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 228ae04ef09b62990800000000000000
+      internalID: -7411032658889758686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_34"
+      rect:
+        serializedVersion: 2
+        x: 2053
+        y: 1290
+        width: 82
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ec49f4e5464fd2a0800000000000000
+      internalID: -6710567653750518558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_35"
+      rect:
+        serializedVersion: 2
+        x: 2366
+        y: 1440
+        width: 122
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28599da0dc4fb5930800000000000000
+      internalID: 4133166244530066818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_36"
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 1212
+        width: 99
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc26b19ab5241b1f0800000000000000
+      internalID: -1030969878244531509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_37"
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 1253
+        width: 56
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2972d369ea70d8d30800000000000000
+      internalID: 4435209654456100754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_38"
+      rect:
+        serializedVersion: 2
+        x: 2189
+        y: 1253
+        width: 57
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e737e9f15ba244f0800000000000000
+      internalID: -845925411418851357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_39"
+      rect:
+        serializedVersion: 2
+        x: 2513
+        y: 1212
+        width: 99
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c94d8a12f256a4e20800000000000000
+      internalID: 3335589727123854492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_40"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 962
+        width: 70
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 621e49d7344f72ee0800000000000000
+      internalID: -1285790597884092122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_41"
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 1099
+        width: 69
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c59f6ebcfceb5f80800000000000000
+      internalID: -8116633333134289466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_42"
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 1048
+        width: 60
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 465975d9da7175ce0800000000000000
+      internalID: -1416637523348187804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_43"
+      rect:
+        serializedVersion: 2
+        x: 2121
+        y: 1049
+        width: 60
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 223d433845cb46970800000000000000
+      internalID: 8747323447424897826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_44"
+      rect:
+        serializedVersion: 2
+        x: 2213
+        y: 1099
+        width: 67
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c77c28f7175d7d020800000000000000
+      internalID: 2366594812653782908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_45"
+      rect:
+        serializedVersion: 2
+        x: 2614
+        y: 963
+        width: 70
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 005c0f7d63cd5f6a0800000000000000
+      internalID: -6415979966010178304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_46"
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 819
+        width: 167
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d529d57713fe3ec60800000000000000
+      internalID: 7846377971544592989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_47"
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 864
+        width: 152
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1ea8a2634967ad10800000000000000
+      internalID: 2136792286349536797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_48"
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 803
+        width: 54
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c674f6a0c969c7c30800000000000000
+      internalID: 4358524136321927020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_49"
+      rect:
+        serializedVersion: 2
+        x: 2131
+        y: 803
+        width: 54
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dce4d392588788c10800000000000000
+      internalID: 2056025743212498637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_50"
+      rect:
+        serializedVersion: 2
+        x: 2256
+        y: 865
+        width: 152
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36e4949c25d135ad0800000000000000
+      internalID: -2714793908972728733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_51"
+      rect:
+        serializedVersion: 2
+        x: 2482
+        y: 819
+        width: 167
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b9220420153dbfc0800000000000000
+      internalID: -3477564993820284489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_52"
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 628
+        width: 60
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5aa4672bd05f2ba0800000000000000
+      internalID: -6111577267129505186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_53"
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 568
+        width: 87
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fee7f773efdd998f0800000000000000
+      internalID: -533150996944158993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_54"
+      rect:
+        serializedVersion: 2
+        x: 2060
+        y: 568
+        width: 87
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08775436590df33f0800000000000000
+      internalID: -918786458926090368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_55"
+      rect:
+        serializedVersion: 2
+        x: 2247
+        y: 628
+        width: 60
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94fef341cf1324580800000000000000
+      internalID: -8844451759460978871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_56"
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 414
+        width: 104
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 509334b47352f2a60800000000000000
+      internalID: 7651375211341887749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_57"
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 372
+        width: 125
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a17b0b761d48e4d0800000000000000
+      internalID: -3105147184122990170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_58"
+      rect:
+        serializedVersion: 2
+        x: 1915
+        y: 372
+        width: 125
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f0b83d84e0298d30800000000000000
+      internalID: 4434111474116899063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_59"
+      rect:
+        serializedVersion: 2
+        x: 2149
+        y: 414
+        width: 104
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6705af25db432e4e0800000000000000
+      internalID: -1953941300579774346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_60"
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 121
+        width: 175
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46af08e00cf63b4c0800000000000000
+      internalID: -4272948750776731036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_61"
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 318
+        width: 107
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f03580f1d1eee2f0800000000000000
+      internalID: -941566980274179850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_62"
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 240
+        width: 151
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cc74ea27130e4810800000000000000
+      internalID: 1751340703132449989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_63"
+      rect:
+        serializedVersion: 2
+        x: 1709
+        y: 240
+        width: 151
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d2e2d83e0c393d10800000000000000
+      internalID: 2105780332552970967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_64"
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 318
+        width: 107
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e6f322d95b638c10800000000000000
+      internalID: 2054603888532911847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_65"
+      rect:
+        serializedVersion: 2
+        x: 2006
+        y: 130
+        width: 174
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e6695777525c6920800000000000000
+      internalID: 2984851188657776359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_66"
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 120
+        width: 171
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47381f36c6c658060800000000000000
+      internalID: 6955084412332639092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_67"
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 175
+        width: 140
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dbc38b96fc24e9d0800000000000000
+      internalID: -2746020435106477098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_68"
+      rect:
+        serializedVersion: 2
+        x: 1465
+        y: 120
+        width: 171
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac805f624197404c0800000000000000
+      internalID: -4322196614908933942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_69"
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 15
+        width: 144
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96bea8cd81b53ebf0800000000000000
+      internalID: -296292988138886295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_70"
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 0
+        width: 163
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a32ba176f98b3bb80800000000000000
+      internalID: -8380151486837247430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_71"
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 10
+        width: 109
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 009a00dd0e4de68b0800000000000000
+      internalID: -5156950461047068416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_72"
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 10
+        width: 109
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dbf2ba5caab00280800000000000000
+      internalID: -9079051599360099373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_73"
+      rect:
+        serializedVersion: 2
+        x: 1734
+        y: 0
+        width: 163
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a757b35d2102c240800000000000000
+      internalID: 4810408646174791584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "penguen_ba\u015Flang\u0131\xE7_Ui_74"
+      rect:
+        serializedVersion: 2
+        x: 1975
+        y: 24
+        width: 146
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e39fab9d2789ea300800000000000000
+      internalID: 265317047108041022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "penguen_ba\u015Flang\u0131\xE7_Ui_0": 713060771906852048
+      "penguen_ba\u015Flang\u0131\xE7_Ui_1": -3803360863194986862
+      "penguen_ba\u015Flang\u0131\xE7_Ui_10": -4238910596519114654
+      "penguen_ba\u015Flang\u0131\xE7_Ui_11": 4011692666617757283
+      "penguen_ba\u015Flang\u0131\xE7_Ui_12": 3502477587738880536
+      "penguen_ba\u015Flang\u0131\xE7_Ui_13": 4885475562256999425
+      "penguen_ba\u015Flang\u0131\xE7_Ui_14": 8625809079539408975
+      "penguen_ba\u015Flang\u0131\xE7_Ui_15": 4511630679710500156
+      "penguen_ba\u015Flang\u0131\xE7_Ui_16": 6936954536172574870
+      "penguen_ba\u015Flang\u0131\xE7_Ui_17": 1083593942781657368
+      "penguen_ba\u015Flang\u0131\xE7_Ui_18": 5395864178614308469
+      "penguen_ba\u015Flang\u0131\xE7_Ui_19": 5401590881157375943
+      "penguen_ba\u015Flang\u0131\xE7_Ui_2": -2776919959521693423
+      "penguen_ba\u015Flang\u0131\xE7_Ui_20": 9064841165587850082
+      "penguen_ba\u015Flang\u0131\xE7_Ui_21": 9039238204364590930
+      "penguen_ba\u015Flang\u0131\xE7_Ui_22": -3076942825390023876
+      "penguen_ba\u015Flang\u0131\xE7_Ui_23": 2059072493889740100
+      "penguen_ba\u015Flang\u0131\xE7_Ui_24": -6661535307382169460
+      "penguen_ba\u015Flang\u0131\xE7_Ui_25": 8127849511841828899
+      "penguen_ba\u015Flang\u0131\xE7_Ui_26": -4535225811728961284
+      "penguen_ba\u015Flang\u0131\xE7_Ui_27": 2861482770013632630
+      "penguen_ba\u015Flang\u0131\xE7_Ui_28": -2115077274170864638
+      "penguen_ba\u015Flang\u0131\xE7_Ui_29": 1919864187142272712
+      "penguen_ba\u015Flang\u0131\xE7_Ui_3": -7712444939472784885
+      "penguen_ba\u015Flang\u0131\xE7_Ui_30": 4374039242590444611
+      "penguen_ba\u015Flang\u0131\xE7_Ui_31": 6095778054448708909
+      "penguen_ba\u015Flang\u0131\xE7_Ui_32": -4057258422123665512
+      "penguen_ba\u015Flang\u0131\xE7_Ui_33": -7411032658889758686
+      "penguen_ba\u015Flang\u0131\xE7_Ui_34": -6710567653750518558
+      "penguen_ba\u015Flang\u0131\xE7_Ui_35": 4133166244530066818
+      "penguen_ba\u015Flang\u0131\xE7_Ui_36": -1030969878244531509
+      "penguen_ba\u015Flang\u0131\xE7_Ui_37": 4435209654456100754
+      "penguen_ba\u015Flang\u0131\xE7_Ui_38": -845925411418851357
+      "penguen_ba\u015Flang\u0131\xE7_Ui_39": 3335589727123854492
+      "penguen_ba\u015Flang\u0131\xE7_Ui_4": -6745345559523137826
+      "penguen_ba\u015Flang\u0131\xE7_Ui_40": -1285790597884092122
+      "penguen_ba\u015Flang\u0131\xE7_Ui_41": -8116633333134289466
+      "penguen_ba\u015Flang\u0131\xE7_Ui_42": -1416637523348187804
+      "penguen_ba\u015Flang\u0131\xE7_Ui_43": 8747323447424897826
+      "penguen_ba\u015Flang\u0131\xE7_Ui_44": 2366594812653782908
+      "penguen_ba\u015Flang\u0131\xE7_Ui_45": -6415979966010178304
+      "penguen_ba\u015Flang\u0131\xE7_Ui_46": 7846377971544592989
+      "penguen_ba\u015Flang\u0131\xE7_Ui_47": 2136792286349536797
+      "penguen_ba\u015Flang\u0131\xE7_Ui_48": 4358524136321927020
+      "penguen_ba\u015Flang\u0131\xE7_Ui_49": 2056025743212498637
+      "penguen_ba\u015Flang\u0131\xE7_Ui_5": -7617619632075109152
+      "penguen_ba\u015Flang\u0131\xE7_Ui_50": -2714793908972728733
+      "penguen_ba\u015Flang\u0131\xE7_Ui_51": -3477564993820284489
+      "penguen_ba\u015Flang\u0131\xE7_Ui_52": -6111577267129505186
+      "penguen_ba\u015Flang\u0131\xE7_Ui_53": -533150996944158993
+      "penguen_ba\u015Flang\u0131\xE7_Ui_54": -918786458926090368
+      "penguen_ba\u015Flang\u0131\xE7_Ui_55": -8844451759460978871
+      "penguen_ba\u015Flang\u0131\xE7_Ui_56": 7651375211341887749
+      "penguen_ba\u015Flang\u0131\xE7_Ui_57": -3105147184122990170
+      "penguen_ba\u015Flang\u0131\xE7_Ui_58": 4434111474116899063
+      "penguen_ba\u015Flang\u0131\xE7_Ui_59": -1953941300579774346
+      "penguen_ba\u015Flang\u0131\xE7_Ui_6": -852177875356409401
+      "penguen_ba\u015Flang\u0131\xE7_Ui_60": -4272948750776731036
+      "penguen_ba\u015Flang\u0131\xE7_Ui_61": -941566980274179850
+      "penguen_ba\u015Flang\u0131\xE7_Ui_62": 1751340703132449989
+      "penguen_ba\u015Flang\u0131\xE7_Ui_63": 2105780332552970967
+      "penguen_ba\u015Flang\u0131\xE7_Ui_64": 2054603888532911847
+      "penguen_ba\u015Flang\u0131\xE7_Ui_65": 2984851188657776359
+      "penguen_ba\u015Flang\u0131\xE7_Ui_66": 6955084412332639092
+      "penguen_ba\u015Flang\u0131\xE7_Ui_67": -2746020435106477098
+      "penguen_ba\u015Flang\u0131\xE7_Ui_68": -4322196614908933942
+      "penguen_ba\u015Flang\u0131\xE7_Ui_69": -296292988138886295
+      "penguen_ba\u015Flang\u0131\xE7_Ui_7": -1735558560392563352
+      "penguen_ba\u015Flang\u0131\xE7_Ui_70": -8380151486837247430
+      "penguen_ba\u015Flang\u0131\xE7_Ui_71": -5156950461047068416
+      "penguen_ba\u015Flang\u0131\xE7_Ui_72": -9079051599360099373
+      "penguen_ba\u015Flang\u0131\xE7_Ui_73": 4810408646174791584
+      "penguen_ba\u015Flang\u0131\xE7_Ui_74": 265317047108041022
+      "penguen_ba\u015Flang\u0131\xE7_Ui_8": -357064978511714936
+      "penguen_ba\u015Flang\u0131\xE7_Ui_9": -5381944320939879500
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,1885 @@
+fileFormatVersion: 2
+guid: a3abf3bea57b89f468413f12f0c58121
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1854116287130153406
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_0"
+  - first:
+      213: -270753470191830310
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_1"
+  - first:
+      213: 5397026901375606477
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_2"
+  - first:
+      213: 3120261807240074223
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_3"
+  - first:
+      213: -8311878074148534129
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_4"
+  - first:
+      213: 9025171675057714044
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_5"
+  - first:
+      213: 5862046621056241777
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_6"
+  - first:
+      213: 4950788797507492210
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_7"
+  - first:
+      213: 4357789290273441631
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_8"
+  - first:
+      213: 2429213375496578622
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_9"
+  - first:
+      213: 1018184232531940862
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_10"
+  - first:
+      213: 8568570890170654727
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_11"
+  - first:
+      213: 5173737770973523672
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_12"
+  - first:
+      213: -4455047382722207585
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_13"
+  - first:
+      213: -5854180893937857373
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_14"
+  - first:
+      213: -7820288923698782436
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_15"
+  - first:
+      213: -2679213301740742815
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_16"
+  - first:
+      213: -7598157278486476574
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_17"
+  - first:
+      213: -3622785725883181657
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_18"
+  - first:
+      213: 2223558657848470047
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_19"
+  - first:
+      213: -6441064718700614722
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_20"
+  - first:
+      213: 9008976643425666869
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_21"
+  - first:
+      213: -8454643883204245836
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_22"
+  - first:
+      213: 691142831822113900
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_23"
+  - first:
+      213: -9160136805334723209
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_24"
+  - first:
+      213: 8845617263744216166
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_25"
+  - first:
+      213: -1842263500685794608
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_26"
+  - first:
+      213: 3337673127993950625
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_27"
+  - first:
+      213: 1873136929649199138
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_28"
+  - first:
+      213: -4818343636569465976
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_29"
+  - first:
+      213: 7581840289718096310
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_30"
+  - first:
+      213: 770102303095791100
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_31"
+  - first:
+      213: -5766615373296840700
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_32"
+  - first:
+      213: 2491496056950964670
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_33"
+  - first:
+      213: -6944543127931487098
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_34"
+  - first:
+      213: 6566798242955548031
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_35"
+  - first:
+      213: -7804837141274698580
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_36"
+  - first:
+      213: -6466613902880155979
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_37"
+  - first:
+      213: 1126972240859848904
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_38"
+  - first:
+      213: -5047082030654038841
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_39"
+  - first:
+      213: 5523873929517341055
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_40"
+  - first:
+      213: 1627632401582167298
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_41"
+  - first:
+      213: 8270926478077612331
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_42"
+  - first:
+      213: -399861655983825971
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_43"
+  - first:
+      213: -938231167239454166
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_44"
+  - first:
+      213: 7354217711844338290
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_45"
+  - first:
+      213: 8620163984696146147
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_46"
+  - first:
+      213: -3823780149966998209
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_47"
+  - first:
+      213: 1945381882495338818
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_48"
+  - first:
+      213: 5530885104033197916
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_49"
+  - first:
+      213: -1221970309108141666
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_50"
+  - first:
+      213: 1710207939600627891
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_51"
+  - first:
+      213: -1253397487172920488
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_52"
+  - first:
+      213: 6720152009100038945
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_53"
+  - first:
+      213: 5669009776140911529
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_54"
+  - first:
+      213: -6953465020894321492
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_55"
+  - first:
+      213: 8401856089409668897
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_56"
+  - first:
+      213: -136048717432810723
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_57"
+  - first:
+      213: 4953343931156979002
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_58"
+  - first:
+      213: -5729000719920816154
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_59"
+  - first:
+      213: 51539984925963685
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_60"
+  - first:
+      213: -5789725895731240870
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_61"
+  - first:
+      213: -7747479492496505435
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_62"
+  - first:
+      213: -4295476341155617593
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_63"
+  - first:
+      213: 3778764885360362675
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_64"
+  - first:
+      213: 7136705162190553622
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_65"
+  - first:
+      213: 4524964254889445148
+    second: "mantar_ba\u015Flang\u0131\xE7_Ui_66"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_0"
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 2908
+        width: 166
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24e47557f0bd446e0800000000000000
+      internalID: -1854116287130153406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_1"
+      rect:
+        serializedVersion: 2
+        x: 1215
+        y: 2976
+        width: 171
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adaf28347271e3cf0800000000000000
+      internalID: -270753470191830310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_2"
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 2933
+        width: 213
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dce58b34f5716ea40800000000000000
+      internalID: 5397026901375606477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_3"
+      rect:
+        serializedVersion: 2
+        x: 1731
+        y: 2952
+        width: 170
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe353c2f4956d4b20800000000000000
+      internalID: 3120261807240074223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_4"
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 2796
+        width: 157
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f88c4060ee646ac80800000000000000
+      internalID: -8311878074148534129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_5"
+      rect:
+        serializedVersion: 2
+        x: 1597
+        y: 2729
+        width: 132
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c737bb032d9df3d70800000000000000
+      internalID: 9025171675057714044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_6"
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 2838
+        width: 189
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17016d8e75c2a5150800000000000000
+      internalID: 5862046621056241777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_7"
+      rect:
+        serializedVersion: 2
+        x: 2218
+        y: 2736
+        width: 152
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 279da615e2cb4b440800000000000000
+      internalID: 4950788797507492210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_8"
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 2646
+        width: 145
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5700cc554af97c30800000000000000
+      internalID: 4357789290273441631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_9"
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 2580
+        width: 156
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e36e91ac1bc46b120800000000000000
+      internalID: 2429213375496578622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_10"
+      rect:
+        serializedVersion: 2
+        x: 1085
+        y: 2580
+        width: 156
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef558f73a21512e00800000000000000
+      internalID: 1018184232531940862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_11"
+      rect:
+        serializedVersion: 2
+        x: 1806
+        y: 2703
+        width: 159
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 700ef5d83dda9e670800000000000000
+      internalID: 8568570890170654727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_12"
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 2461
+        width: 129
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dee5ef471fccc740800000000000000
+      internalID: 5173737770973523672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_13"
+      rect:
+        serializedVersion: 2
+        x: 2430
+        y: 2570
+        width: 139
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f902f4f520e7c22c0800000000000000
+      internalID: -4455047382722207585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_14"
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 2247
+        width: 112
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ac84f56e75c1cea0800000000000000
+      internalID: -5854180893937857373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_15"
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 2314
+        width: 86
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1f130658a0c87390800000000000000
+      internalID: -7820288923698782436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_16"
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 2314
+        width: 86
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 167dd3872b581dad0800000000000000
+      internalID: -2679213301740742815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_17"
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 2384
+        width: 156
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e8c344463ced8690800000000000000
+      internalID: -7598157278486476574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_18"
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 2384
+        width: 156
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a5906f939749bdc0800000000000000
+      internalID: -3622785725883181657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_19"
+      rect:
+        serializedVersion: 2
+        x: 2614
+        y: 2371
+        width: 122
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1a6d4281daabde10800000000000000
+      internalID: 2223558657848470047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_20"
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 2221
+        width: 182
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebb6c8ab3cdbc96a0800000000000000
+      internalID: -6441064718700614722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_21"
+      rect:
+        serializedVersion: 2
+        x: 1913
+        y: 2117
+        width: 86
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5378d2d8680560d70800000000000000
+      internalID: 9008976643425666869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_22"
+      rect:
+        serializedVersion: 2
+        x: 2322
+        y: 2118
+        width: 86
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b68e2fce221baa80800000000000000
+      internalID: -8454643883204245836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_23"
+      rect:
+        serializedVersion: 2
+        x: 2764
+        y: 2147
+        width: 103
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6c80d36ebe679900800000000000000
+      internalID: 691142831822113900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_24"
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 1947
+        width: 120
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 775da08ab18a0e080800000000000000
+      internalID: -9160136805334723209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_25"
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 2025
+        width: 182
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66c69880902f1ca70800000000000000
+      internalID: 8845617263744216166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_26"
+      rect:
+        serializedVersion: 2
+        x: 2795
+        y: 1618
+        width: 207
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d2a4fa5b17fe66e0800000000000000
+      internalID: -1842263500685794608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_27"
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1741
+        width: 72
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a14272b60cc15e20800000000000000
+      internalID: 3337673127993950625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_28"
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1680
+        width: 76
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 228086bfc18bef910800000000000000
+      internalID: 1873136929649199138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_29"
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 1845
+        width: 156
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88b5380cdfdc12db0800000000000000
+      internalID: -4818343636569465976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_30"
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 1845
+        width: 156
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b1546cb29b183960800000000000000
+      internalID: 7581840289718096310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_31"
+      rect:
+        serializedVersion: 2
+        x: 2648
+        y: 1857
+        width: 87
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfd1cb8e6f3ffaa00800000000000000
+      internalID: 770102303095791100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_32"
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 1579
+        width: 86
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 400d55eeeddd8ffa0800000000000000
+      internalID: -5766615373296840700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_33"
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 1580
+        width: 86
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb149d99672939220800000000000000
+      internalID: 2491496056950964670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_34"
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 1727
+        width: 156
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68c7344a1d600af90800000000000000
+      internalID: -6944543127931487098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_35"
+      rect:
+        serializedVersion: 2
+        x: 1777
+        y: 1727
+        width: 156
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f755607a534f12b50800000000000000
+      internalID: 6566798242955548031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_36"
+      rect:
+        serializedVersion: 2
+        x: 2678
+        y: 1642
+        width: 135
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cacdb88c8f5afa390800000000000000
+      internalID: -7804837141274698580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_37"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1502
+        width: 107
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b6d93bbae8f146a0800000000000000
+      internalID: -6466613902880155979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_38"
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 1487
+        width: 182
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c06d28384fc3af00800000000000000
+      internalID: 1126972240859848904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_39"
+      rect:
+        serializedVersion: 2
+        x: 1481
+        y: 1460
+        width: 87
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ccdb9a32a925f9b0800000000000000
+      internalID: -5047082030654038841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_40"
+      rect:
+        serializedVersion: 2
+        x: 1891
+        y: 1461
+        width: 85
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f791ce8721eb8ac40800000000000000
+      internalID: 5523873929517341055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_41"
+      rect:
+        serializedVersion: 2
+        x: 2953
+        y: 1390
+        width: 53
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2059831bb03869610800000000000000
+      internalID: 1627632401582167298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_42"
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 1265
+        width: 111
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2150318fcb38c270800000000000000
+      internalID: 8270926478077612331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_43"
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 1368
+        width: 183
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcbd8c341f7637af0800000000000000
+      internalID: -399861655983825971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_44"
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 1183
+        width: 171
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a220e7f69bbbaf2f0800000000000000
+      internalID: -938231167239454166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_45"
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 1183
+        width: 172
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27a2e5b6b0e6f0660800000000000000
+      internalID: 7354217711844338290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_46"
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 1118
+        width: 511
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e8fd65f879f0a770800000000000000
+      internalID: 8620163984696146147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_47"
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 1183
+        width: 233
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f35f60e76343feac0800000000000000
+      internalID: -3823780149966998209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_48"
+      rect:
+        serializedVersion: 2
+        x: 1489
+        y: 1183
+        width: 217
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2498d9ad3826ffa10800000000000000
+      internalID: 1945381882495338818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_49"
+      rect:
+        serializedVersion: 2
+        x: 1749
+        y: 1183
+        width: 200
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5fe56fb2b6a1cc40800000000000000
+      internalID: 5530885104033197916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_50"
+      rect:
+        serializedVersion: 2
+        x: 2009
+        y: 1118
+        width: 172
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e91f8876a70ba0fe0800000000000000
+      internalID: -1221970309108141666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_51"
+      rect:
+        serializedVersion: 2
+        x: 2268
+        y: 1183
+        width: 173
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b8b2fb5f01ebb710800000000000000
+      internalID: 1710207939600627891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_52"
+      rect:
+        serializedVersion: 2
+        x: 2528
+        y: 1183
+        width: 172
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85bd0be40a90b9ee0800000000000000
+      internalID: -1253397487172920488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_53"
+      rect:
+        serializedVersion: 2
+        x: 2785
+        y: 1203
+        width: 149
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 123190bb5a6c24d50800000000000000
+      internalID: 6720152009100038945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_54"
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 868
+        width: 43
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a3881f0b5e5cae40800000000000000
+      internalID: 5669009776140911529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_55"
+      rect:
+        serializedVersion: 2
+        x: 2092
+        y: 868
+        width: 43
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca46d7f8764508f90800000000000000
+      internalID: -6953465020894321492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_56"
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 618
+        width: 43
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 127473f2993699470800000000000000
+      internalID: 8401856089409668897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_57"
+      rect:
+        serializedVersion: 2
+        x: 2092
+        y: 617
+        width: 43
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d13154d8968ac1ef0800000000000000
+      internalID: -136048717432810723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_58"
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 367
+        width: 43
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3dd2fabf00ddb440800000000000000
+      internalID: 4953343931156979002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_59"
+      rect:
+        serializedVersion: 2
+        x: 2092
+        y: 367
+        width: 43
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ef9923e2308e70b0800000000000000
+      internalID: -5729000719920816154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_60"
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 117
+        width: 43
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a5bd3dd75b17b000800000000000000
+      internalID: 51539984925963685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_61"
+      rect:
+        serializedVersion: 2
+        x: 2092
+        y: 117
+        width: 43
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a502f0e19f2c6afa0800000000000000
+      internalID: -5789725895731240870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_62"
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 0
+        width: 166
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a54f11137c6b7490800000000000000
+      internalID: -7747479492496505435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_63"
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 0
+        width: 168
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c42350b6076364c0800000000000000
+      internalID: -4295476341155617593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_64"
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 0
+        width: 168
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b4cf9974aed07430800000000000000
+      internalID: 3778764885360362675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_65"
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 0
+        width: 168
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 612801b788baa0360800000000000000
+      internalID: 7136705162190553622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "mantar_ba\u015Flang\u0131\xE7_Ui_66"
+      rect:
+        serializedVersion: 2
+        x: 1919
+        y: 0
+        width: 167
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c17860af307ebce30800000000000000
+      internalID: 4524964254889445148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "mantar_ba\u015Flang\u0131\xE7_Ui_0": -1854116287130153406
+      "mantar_ba\u015Flang\u0131\xE7_Ui_1": -270753470191830310
+      "mantar_ba\u015Flang\u0131\xE7_Ui_10": 1018184232531940862
+      "mantar_ba\u015Flang\u0131\xE7_Ui_11": 8568570890170654727
+      "mantar_ba\u015Flang\u0131\xE7_Ui_12": 5173737770973523672
+      "mantar_ba\u015Flang\u0131\xE7_Ui_13": -4455047382722207585
+      "mantar_ba\u015Flang\u0131\xE7_Ui_14": -5854180893937857373
+      "mantar_ba\u015Flang\u0131\xE7_Ui_15": -7820288923698782436
+      "mantar_ba\u015Flang\u0131\xE7_Ui_16": -2679213301740742815
+      "mantar_ba\u015Flang\u0131\xE7_Ui_17": -7598157278486476574
+      "mantar_ba\u015Flang\u0131\xE7_Ui_18": -3622785725883181657
+      "mantar_ba\u015Flang\u0131\xE7_Ui_19": 2223558657848470047
+      "mantar_ba\u015Flang\u0131\xE7_Ui_2": 5397026901375606477
+      "mantar_ba\u015Flang\u0131\xE7_Ui_20": -6441064718700614722
+      "mantar_ba\u015Flang\u0131\xE7_Ui_21": 9008976643425666869
+      "mantar_ba\u015Flang\u0131\xE7_Ui_22": -8454643883204245836
+      "mantar_ba\u015Flang\u0131\xE7_Ui_23": 691142831822113900
+      "mantar_ba\u015Flang\u0131\xE7_Ui_24": -9160136805334723209
+      "mantar_ba\u015Flang\u0131\xE7_Ui_25": 8845617263744216166
+      "mantar_ba\u015Flang\u0131\xE7_Ui_26": -1842263500685794608
+      "mantar_ba\u015Flang\u0131\xE7_Ui_27": 3337673127993950625
+      "mantar_ba\u015Flang\u0131\xE7_Ui_28": 1873136929649199138
+      "mantar_ba\u015Flang\u0131\xE7_Ui_29": -4818343636569465976
+      "mantar_ba\u015Flang\u0131\xE7_Ui_3": 3120261807240074223
+      "mantar_ba\u015Flang\u0131\xE7_Ui_30": 7581840289718096310
+      "mantar_ba\u015Flang\u0131\xE7_Ui_31": 770102303095791100
+      "mantar_ba\u015Flang\u0131\xE7_Ui_32": -5766615373296840700
+      "mantar_ba\u015Flang\u0131\xE7_Ui_33": 2491496056950964670
+      "mantar_ba\u015Flang\u0131\xE7_Ui_34": -6944543127931487098
+      "mantar_ba\u015Flang\u0131\xE7_Ui_35": 6566798242955548031
+      "mantar_ba\u015Flang\u0131\xE7_Ui_36": -7804837141274698580
+      "mantar_ba\u015Flang\u0131\xE7_Ui_37": -6466613902880155979
+      "mantar_ba\u015Flang\u0131\xE7_Ui_38": 1126972240859848904
+      "mantar_ba\u015Flang\u0131\xE7_Ui_39": -5047082030654038841
+      "mantar_ba\u015Flang\u0131\xE7_Ui_4": -8311878074148534129
+      "mantar_ba\u015Flang\u0131\xE7_Ui_40": 5523873929517341055
+      "mantar_ba\u015Flang\u0131\xE7_Ui_41": 1627632401582167298
+      "mantar_ba\u015Flang\u0131\xE7_Ui_42": 8270926478077612331
+      "mantar_ba\u015Flang\u0131\xE7_Ui_43": -399861655983825971
+      "mantar_ba\u015Flang\u0131\xE7_Ui_44": -938231167239454166
+      "mantar_ba\u015Flang\u0131\xE7_Ui_45": 7354217711844338290
+      "mantar_ba\u015Flang\u0131\xE7_Ui_46": 8620163984696146147
+      "mantar_ba\u015Flang\u0131\xE7_Ui_47": -3823780149966998209
+      "mantar_ba\u015Flang\u0131\xE7_Ui_48": 1945381882495338818
+      "mantar_ba\u015Flang\u0131\xE7_Ui_49": 5530885104033197916
+      "mantar_ba\u015Flang\u0131\xE7_Ui_5": 9025171675057714044
+      "mantar_ba\u015Flang\u0131\xE7_Ui_50": -1221970309108141666
+      "mantar_ba\u015Flang\u0131\xE7_Ui_51": 1710207939600627891
+      "mantar_ba\u015Flang\u0131\xE7_Ui_52": -1253397487172920488
+      "mantar_ba\u015Flang\u0131\xE7_Ui_53": 6720152009100038945
+      "mantar_ba\u015Flang\u0131\xE7_Ui_54": 5669009776140911529
+      "mantar_ba\u015Flang\u0131\xE7_Ui_55": -6953465020894321492
+      "mantar_ba\u015Flang\u0131\xE7_Ui_56": 8401856089409668897
+      "mantar_ba\u015Flang\u0131\xE7_Ui_57": -136048717432810723
+      "mantar_ba\u015Flang\u0131\xE7_Ui_58": 4953343931156979002
+      "mantar_ba\u015Flang\u0131\xE7_Ui_59": -5729000719920816154
+      "mantar_ba\u015Flang\u0131\xE7_Ui_6": 5862046621056241777
+      "mantar_ba\u015Flang\u0131\xE7_Ui_60": 51539984925963685
+      "mantar_ba\u015Flang\u0131\xE7_Ui_61": -5789725895731240870
+      "mantar_ba\u015Flang\u0131\xE7_Ui_62": -7747479492496505435
+      "mantar_ba\u015Flang\u0131\xE7_Ui_63": -4295476341155617593
+      "mantar_ba\u015Flang\u0131\xE7_Ui_64": 3778764885360362675
+      "mantar_ba\u015Flang\u0131\xE7_Ui_65": 7136705162190553622
+      "mantar_ba\u015Flang\u0131\xE7_Ui_66": 4524964254889445148
+      "mantar_ba\u015Flang\u0131\xE7_Ui_7": 4950788797507492210
+      "mantar_ba\u015Flang\u0131\xE7_Ui_8": 4357789290273441631
+      "mantar_ba\u015Flang\u0131\xE7_Ui_9": 2429213375496578622
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

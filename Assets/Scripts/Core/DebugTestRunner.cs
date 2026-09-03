@@ -51,72 +51,12 @@ namespace Freeline
         {
             var gm = GameManager.Instance;
             if (gm == null) { Debug.LogWarning("[Debug] GameManager not ready"); return; }
-            var jm = gm.JobManager;
-            if (jm == null) { Debug.LogWarning("[Debug] JobManager not ready"); return; }
             var save = gm.SaveManager?.CurrentData;
             if (save == null) { Debug.LogWarning("[Debug] SaveManager not ready"); return; }
 
-            // If a job was already started via the UI, skip straight to completion.
-            if (jm.ActiveJob != null)
-            {
-                string activeTitle = jm.ActiveJob.jobTitle;
-                float coinsBefore = save.currentCoins;
-                jm.CompleteJob();
-                Debug.Log(
-                    $"[DebugTest] J → Completed active job: '{activeTitle}' | " +
-                    $"Payout: +{save.currentCoins - coinsBefore:F0} coins | " +
-                    $"Time: {gm.TimeManager.GetFormattedTime()} | " +
-                    $"Energy: {gm.EnergyManager.CurrentEnergy:F0}/{gm.EnergyManager.MaxEnergy:F0}"
-                );
-                return;
-            }
 
-            if (jm.CurrentBoardJobs.Count == 0)
-            {
-                Debug.LogWarning("[DebugTest] J pressed — no jobs on board. Add JobData assets to JobManager.");
-                return;
-            }
-
-            JobData job = jm.CurrentBoardJobs[0];
             float coinsBefore2 = save.currentCoins;
 
-            Debug.Log(
-                $"[DebugTest] J → Starting job: '{job.jobTitle}' | " +
-                $"Cost: {job.energyCost} energy, {job.durationHours}h | " +
-                $"Payout: {job.basePayout} coins"
-            );
-
-            if (!jm.SelectJob(0))
-            {
-                Debug.LogWarning("[DebugTest] SelectJob(0) failed — energy depleted or job active.");
-                return;
-            }
-
-            if (!jm.StartJob())
-            {
-                Debug.LogWarning(
-                    $"[DebugTest] StartJob() failed — energy ({gm.EnergyManager.CurrentEnergy:F0}) " +
-                    $"< job cost ({job.energyCost:F0})."
-                );
-                return;
-            }
-
-            if (jm.CurrentJobState != JobState.JobActive)
-            {
-                Debug.LogWarning("[DebugTest] State is not JobActive after StartJob (" + jm.CurrentJobState + ") — aborting CompleteJob.");
-                return;
-            }
-
-            jm.CompleteJob();
-
-            float payout = save.currentCoins - coinsBefore2;
-            Debug.Log(
-                $"[DebugTest] J → Job complete | " +
-                $"Payout: +{payout:F0} coins | " +
-                $"Time: {gm.TimeManager.GetFormattedTime()} | " +
-                $"Energy: {gm.EnergyManager.CurrentEnergy:F0}/{gm.EnergyManager.MaxEnergy:F0} | " +
-                $"Total coins: {save.currentCoins:F0}"
-            );
         }
 
         private void SimulateProduceChapter()

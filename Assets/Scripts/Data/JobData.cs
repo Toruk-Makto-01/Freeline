@@ -9,23 +9,14 @@ namespace Freeline
         Advanced
     }
 
-    public enum JobType
-    {
-        SlideBar,
-        LineTrace,
-        Coloring
-    }
-
     [CreateAssetMenu(fileName = "NewJob", menuName = "Freeline/Jobs/Job Data")]
     public class JobData : ScriptableObject
     {
         public string        jobTitle;
-        public string        clientName;
         public float         durationHours;
         public float         basePayout;
         public float         energyCost;
         public JobDifficulty difficulty;
-        public JobType       jobType;
-        public int           requiredLevel;
+        public Sprite        jobIcon;
     }
 }

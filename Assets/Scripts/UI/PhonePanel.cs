@@ -15,6 +15,10 @@ namespace Freeline
 
         [SerializeField] private TMPro.TextMeshProUGUI phoneInfoText;
 
+        [Header("Freelance Uygulamasi")]
+        [SerializeField] private Button freelanceButton;
+        [SerializeField] private FreelancePanel freelancePanel;
+
         [Header("App Buttons")]
         [SerializeField] private Button appBtnZenitoon;
         [SerializeField] private Button appBtnWebtoon;
@@ -23,7 +27,6 @@ namespace Freeline
         [SerializeField] private Button appBtnBackground;
 
         [Header("Panels")]
-        [SerializeField] private ZenitoonPanel zenitoonPanel;
         [SerializeField] private MarketPanel marketPanel;
         [SerializeField] private WebtoonPanel webtoonPanel;
         [SerializeField] private ProductionPanel productionPanel;
@@ -38,8 +41,11 @@ namespace Freeline
 
         void Awake()
         {
-            if (appBtnZenitoon != null && zenitoonPanel != null)
-                appBtnZenitoon.onClick.AddListener(zenitoonPanel.Open);
+            if (freelanceButton != null)
+            {
+                freelanceButton.onClick.RemoveAllListeners();
+                freelanceButton.onClick.AddListener(OnFreelanceClicked);
+            }
             if (appBtnMarket != null && marketPanel != null)
                 appBtnMarket.onClick.AddListener(marketPanel.Open);
             if (appBtnWebtoon != null && webtoonPanel != null)
@@ -62,6 +68,14 @@ namespace Freeline
         {
             Debug.Log("[Phone] Close called");
             gameObject.SetActive(false);
+        }
+
+        private void OnFreelanceClicked()
+        {
+            if (freelancePanel != null)
+            {
+                freelancePanel.OpenPanel();
+            }
         }
     }
 }

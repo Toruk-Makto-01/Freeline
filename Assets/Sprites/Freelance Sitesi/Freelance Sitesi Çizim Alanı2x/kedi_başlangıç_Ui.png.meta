@@ -1,0 +1,1781 @@
+fileFormatVersion: 2
+guid: d05064f59779e364e850a291087a978f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4893036689894913638
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_0"
+  - first:
+      213: -6418058174701960305
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_1"
+  - first:
+      213: 4587772872661230137
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_2"
+  - first:
+      213: -5298519896739250723
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_3"
+  - first:
+      213: 4274280403735519038
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_4"
+  - first:
+      213: -8027495080795001851
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_5"
+  - first:
+      213: 2791901285556089732
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_6"
+  - first:
+      213: -8454323424444254995
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_7"
+  - first:
+      213: -3314370977016708611
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_8"
+  - first:
+      213: 3114202966166661908
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_9"
+  - first:
+      213: -4229305639260967204
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_10"
+  - first:
+      213: 1703637075886281670
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_11"
+  - first:
+      213: -514060768301541658
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_12"
+  - first:
+      213: -5748557198356866012
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_13"
+  - first:
+      213: -8405900204703589688
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_14"
+  - first:
+      213: 7912767938629677403
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_15"
+  - first:
+      213: -2259126151380572290
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_16"
+  - first:
+      213: -2169668907515851876
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_17"
+  - first:
+      213: -8602604730023581624
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_18"
+  - first:
+      213: 553016135407396817
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_19"
+  - first:
+      213: -6757808185446172496
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_20"
+  - first:
+      213: 3571997358983801501
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_21"
+  - first:
+      213: -2145522455468690892
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_22"
+  - first:
+      213: -2384398654398015637
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_23"
+  - first:
+      213: -2410748228721134580
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_24"
+  - first:
+      213: -1676330578870038920
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_25"
+  - first:
+      213: -5357652646052314007
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_26"
+  - first:
+      213: -1548584604117910522
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_27"
+  - first:
+      213: -9064638629896408828
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_28"
+  - first:
+      213: 5825226548395349258
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_29"
+  - first:
+      213: -671302312182143222
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_30"
+  - first:
+      213: -539024552003102958
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_31"
+  - first:
+      213: 7234192328275593479
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_32"
+  - first:
+      213: -6722643433143465610
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_33"
+  - first:
+      213: -7382434595370166497
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_34"
+  - first:
+      213: 4880678620130048737
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_35"
+  - first:
+      213: -1655114454072175169
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_36"
+  - first:
+      213: -120203913017110050
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_37"
+  - first:
+      213: -8977045901403587398
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_38"
+  - first:
+      213: -6763687699280331040
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_39"
+  - first:
+      213: 8262045539730052695
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_40"
+  - first:
+      213: 5237808352064427023
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_41"
+  - first:
+      213: 7830334893623696696
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_42"
+  - first:
+      213: -7152516794752158800
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_43"
+  - first:
+      213: -1060607117260984266
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_44"
+  - first:
+      213: 4902018897191796466
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_45"
+  - first:
+      213: -3667462088593559269
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_46"
+  - first:
+      213: 520369074796245006
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_47"
+  - first:
+      213: 3001837726952607040
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_48"
+  - first:
+      213: 5295158588697710668
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_49"
+  - first:
+      213: -8108466274831904747
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_50"
+  - first:
+      213: 6741413915431194592
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_51"
+  - first:
+      213: -350698312700010376
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_52"
+  - first:
+      213: -7266401342701474015
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_53"
+  - first:
+      213: 568765120705227594
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_54"
+  - first:
+      213: 3800452450137321833
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_55"
+  - first:
+      213: -4575917342198653955
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_56"
+  - first:
+      213: -4025396873251597584
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_57"
+  - first:
+      213: -7683069822298166365
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_58"
+  - first:
+      213: -621797536973818605
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_59"
+  - first:
+      213: -9069356500721266519
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_60"
+  - first:
+      213: 2086256618252495357
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_61"
+  - first:
+      213: -155166016373811824
+    second: "kedi_ba\u015Flang\u0131\xE7_Ui_62"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_0"
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 2913
+        width: 167
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a994cd11e01781cb0800000000000000
+      internalID: -4893036689894913638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_1"
+      rect:
+        serializedVersion: 2
+        x: 1735
+        y: 2961
+        width: 164
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f83091d281a7ee6a0800000000000000
+      internalID: -6418058174701960305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_2"
+      rect:
+        serializedVersion: 2
+        x: 1947
+        y: 2796
+        width: 82
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9326521ee1b0baf30800000000000000
+      internalID: 4587772872661230137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_3"
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 2781
+        width: 91
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddd74870a30e776b0800000000000000
+      internalID: -5298519896739250723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_4"
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 2772
+        width: 148
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3f911f816b415b30800000000000000
+      internalID: 4274280403735519038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_5"
+      rect:
+        serializedVersion: 2
+        x: 1534
+        y: 2798
+        width: 138
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50ca40961cb989090800000000000000
+      internalID: -8027495080795001851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_6"
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 2526
+        width: 60
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 483f6855d63deb620800000000000000
+      internalID: 2791901285556089732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_7"
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 2644
+        width: 155
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de47cbd63a53caa80800000000000000
+      internalID: -8454323424444254995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_8"
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 2649
+        width: 116
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df10e0d182df002d0800000000000000
+      internalID: -3314370977016708611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_9"
+      rect:
+        serializedVersion: 2
+        x: 1337
+        y: 2652
+        width: 150
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41be4d4191fd73b20800000000000000
+      internalID: 3114202966166661908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_10"
+      rect:
+        serializedVersion: 2
+        x: 2013
+        y: 2541
+        width: 58
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cde2b4dcdec7e45c0800000000000000
+      internalID: -4229305639260967204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_11"
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 2269
+        width: 50
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c3136ee4e884a710800000000000000
+      internalID: 1703637075886281670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_12"
+      rect:
+        serializedVersion: 2
+        x: 2032
+        y: 2296
+        width: 84
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e61c607470bdd8f0800000000000000
+      internalID: -514060768301541658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_13"
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 2006
+        width: 302
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42c9cec6fa50930b0800000000000000
+      internalID: -5748557198356866012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_14"
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 2011
+        width: 232
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ca5249dc4e385b80800000000000000
+      internalID: -8405900204703589688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_15"
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 2011
+        width: 231
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b513f1c348ccfcd60800000000000000
+      internalID: 7912767938629677403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_16"
+      rect:
+        serializedVersion: 2
+        x: 2138
+        y: 2059
+        width: 77
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e776a241cb8f5a0e0800000000000000
+      internalID: -2259126151380572290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_17"
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 2006
+        width: 261
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9bce4fbf99c3e1e0800000000000000
+      internalID: -2169668907515851876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_18"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1938
+        width: 305
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84869db93986d9880800000000000000
+      internalID: -8602604730023581624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_19"
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 1881
+        width: 401
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d76402ce35bca700800000000000000
+      internalID: 553016135407396817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_20"
+      rect:
+        serializedVersion: 2
+        x: 2140
+        y: 1729
+        width: 356
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b8f04e72417732a0800000000000000
+      internalID: -6757808185446172496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_21"
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 1729
+        width: 274
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9aecd83ca8429130800000000000000
+      internalID: 3571997358983801501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_22"
+      rect:
+        serializedVersion: 2
+        x: 1999
+        y: 1589
+        width: 125
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4323a28b1b29932e0800000000000000
+      internalID: -2145522455468690892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_23"
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1551
+        width: 127
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b67dfa19e0ae8eed0800000000000000
+      internalID: -2384398654398015637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_24"
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 1387
+        width: 160
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c04bc28324d4b8ed0800000000000000
+      internalID: -2410748228721134580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_25"
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 1352
+        width: 170
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87e8358583a7cb8e0800000000000000
+      internalID: -1676330578870038920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_26"
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 1363
+        width: 168
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 964ce12fd4bc5a5b0800000000000000
+      internalID: -5357652646052314007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_27"
+      rect:
+        serializedVersion: 2
+        x: 1786
+        y: 1406
+        width: 156
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60cb9eed182528ae0800000000000000
+      internalID: -1548584604117910522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_28"
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 1329
+        width: 173
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 401bdbf413fe33280800000000000000
+      internalID: -9064638629896408828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_29"
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 1330
+        width: 173
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a059741beac57d050800000000000000
+      internalID: 5825226548395349258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_30"
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1137
+        width: 77
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a072c719a1e0fa6f0800000000000000
+      internalID: -671302312182143222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_31"
+      rect:
+        serializedVersion: 2
+        x: 1910
+        y: 1162
+        width: 85
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21714ac96000588f0800000000000000
+      internalID: -539024552003102958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_32"
+      rect:
+        serializedVersion: 2
+        x: 2432
+        y: 1083
+        width: 148
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70909bb1893056460800000000000000
+      internalID: 7234192328275593479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_33"
+      rect:
+        serializedVersion: 2
+        x: 2665
+        y: 1136
+        width: 167
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6790fd76a6f54b2a0800000000000000
+      internalID: -6722643433143465610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_34"
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 877
+        width: 60
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f17186d69d25c8990800000000000000
+      internalID: -7382434595370166497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_35"
+      rect:
+        serializedVersion: 2
+        x: 1983
+        y: 904
+        width: 61
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eaf1b79857abb340800000000000000
+      internalID: 4880678620130048737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_36"
+      rect:
+        serializedVersion: 2
+        x: 2291
+        y: 865
+        width: 111
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb5d9665c2ad709e0800000000000000
+      internalID: -1655114454072175169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_37"
+      rect:
+        serializedVersion: 2
+        x: 2778
+        y: 946
+        width: 120
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed1d0009d23f45ef0800000000000000
+      internalID: -120203913017110050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_38"
+      rect:
+        serializedVersion: 2
+        x: 2559
+        y: 817
+        width: 142
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abc767aa0502b6380800000000000000
+      internalID: -8977045901403587398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_39"
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 615
+        width: 52
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ee77b08fdd8222a0800000000000000
+      internalID: -6763687699280331040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_40"
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 654
+        width: 54
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 756d5b9e4aea8a270800000000000000
+      internalID: 8262045539730052695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_41"
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 640
+        width: 51
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f04df52f1fe60b840800000000000000
+      internalID: 5237808352064427023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_42"
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 631
+        width: 51
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83d59ce4910faac60800000000000000
+      internalID: 7830334893623696696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_43"
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 644
+        width: 53
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b338ceeed72dbc90800000000000000
+      internalID: -7152516794752158800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_44"
+      rect:
+        serializedVersion: 2
+        x: 1994
+        y: 641
+        width: 54
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63078693277f741f0800000000000000
+      internalID: -1060607117260984266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_45"
+      rect:
+        serializedVersion: 2
+        x: 2125
+        y: 667
+        width: 132
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fe7e590738770440800000000000000
+      internalID: 4902018897191796466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_46"
+      rect:
+        serializedVersion: 2
+        x: 2397
+        y: 615
+        width: 120
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b113b2659ae8a1dc0800000000000000
+      internalID: -3667462088593559269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_47"
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 361
+        width: 84
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e00345f9ae8b83700800000000000000
+      internalID: 520369074796245006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_48"
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 369
+        width: 67
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04d406c128ba8a920800000000000000
+      internalID: 3001837726952607040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_49"
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 364
+        width: 61
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c409fa47eae2c7940800000000000000
+      internalID: 5295158588697710668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_50"
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 355
+        width: 61
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 510d86f22e0f87f80800000000000000
+      internalID: -8108466274831904747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_51"
+      rect:
+        serializedVersion: 2
+        x: 1436
+        y: 359
+        width: 68
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0efc6211d305e8d50800000000000000
+      internalID: 6741413915431194592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_52"
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 390
+        width: 150
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 870ef202eb1122bf0800000000000000
+      internalID: -350698312700010376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_53"
+      rect:
+        serializedVersion: 2
+        x: 2249
+        y: 402
+        width: 119
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12f6bd45a7e882b90800000000000000
+      internalID: -7266401342701474015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_54"
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 150
+        width: 132
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4b64442dd8a4e700800000000000000
+      internalID: 568765120705227594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_55"
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 162
+        width: 179
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 961b2342e5bedb430800000000000000
+      internalID: 3800452450137321833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_56"
+      rect:
+        serializedVersion: 2
+        x: 1766
+        y: 179
+        width: 183
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfb13b8eb631f70c0800000000000000
+      internalID: -4575917342198653955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_57"
+      rect:
+        serializedVersion: 2
+        x: 2036
+        y: 263
+        width: 162
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f2ded90fdae228c0800000000000000
+      internalID: -4025396873251597584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_58"
+      rect:
+        serializedVersion: 2
+        x: 1276
+        y: 153
+        width: 179
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3abe46904b0406590800000000000000
+      internalID: -7683069822298166365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_59"
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 37
+        width: 166
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 315767e3f6eee57f0800000000000000
+      internalID: -621797536973818605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_60"
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 0
+        width: 174
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a01129605c232280800000000000000
+      internalID: -9069356500721266519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_61"
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 3
+        width: 174
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df96f31475fd3fc10800000000000000
+      internalID: 2086256618252495357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kedi_ba\u015Flang\u0131\xE7_Ui_62"
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 52
+        width: 163
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09593d8845db8ddf0800000000000000
+      internalID: -155166016373811824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "kedi_ba\u015Flang\u0131\xE7_Ui_0": -4893036689894913638
+      "kedi_ba\u015Flang\u0131\xE7_Ui_1": -6418058174701960305
+      "kedi_ba\u015Flang\u0131\xE7_Ui_10": -4229305639260967204
+      "kedi_ba\u015Flang\u0131\xE7_Ui_11": 1703637075886281670
+      "kedi_ba\u015Flang\u0131\xE7_Ui_12": -514060768301541658
+      "kedi_ba\u015Flang\u0131\xE7_Ui_13": -5748557198356866012
+      "kedi_ba\u015Flang\u0131\xE7_Ui_14": -8405900204703589688
+      "kedi_ba\u015Flang\u0131\xE7_Ui_15": 7912767938629677403
+      "kedi_ba\u015Flang\u0131\xE7_Ui_16": -2259126151380572290
+      "kedi_ba\u015Flang\u0131\xE7_Ui_17": -2169668907515851876
+      "kedi_ba\u015Flang\u0131\xE7_Ui_18": -8602604730023581624
+      "kedi_ba\u015Flang\u0131\xE7_Ui_19": 553016135407396817
+      "kedi_ba\u015Flang\u0131\xE7_Ui_2": 4587772872661230137
+      "kedi_ba\u015Flang\u0131\xE7_Ui_20": -6757808185446172496
+      "kedi_ba\u015Flang\u0131\xE7_Ui_21": 3571997358983801501
+      "kedi_ba\u015Flang\u0131\xE7_Ui_22": -2145522455468690892
+      "kedi_ba\u015Flang\u0131\xE7_Ui_23": -2384398654398015637
+      "kedi_ba\u015Flang\u0131\xE7_Ui_24": -2410748228721134580
+      "kedi_ba\u015Flang\u0131\xE7_Ui_25": -1676330578870038920
+      "kedi_ba\u015Flang\u0131\xE7_Ui_26": -5357652646052314007
+      "kedi_ba\u015Flang\u0131\xE7_Ui_27": -1548584604117910522
+      "kedi_ba\u015Flang\u0131\xE7_Ui_28": -9064638629896408828
+      "kedi_ba\u015Flang\u0131\xE7_Ui_29": 5825226548395349258
+      "kedi_ba\u015Flang\u0131\xE7_Ui_3": -5298519896739250723
+      "kedi_ba\u015Flang\u0131\xE7_Ui_30": -671302312182143222
+      "kedi_ba\u015Flang\u0131\xE7_Ui_31": -539024552003102958
+      "kedi_ba\u015Flang\u0131\xE7_Ui_32": 7234192328275593479
+      "kedi_ba\u015Flang\u0131\xE7_Ui_33": -6722643433143465610
+      "kedi_ba\u015Flang\u0131\xE7_Ui_34": -7382434595370166497
+      "kedi_ba\u015Flang\u0131\xE7_Ui_35": 4880678620130048737
+      "kedi_ba\u015Flang\u0131\xE7_Ui_36": -1655114454072175169
+      "kedi_ba\u015Flang\u0131\xE7_Ui_37": -120203913017110050
+      "kedi_ba\u015Flang\u0131\xE7_Ui_38": -8977045901403587398
+      "kedi_ba\u015Flang\u0131\xE7_Ui_39": -6763687699280331040
+      "kedi_ba\u015Flang\u0131\xE7_Ui_4": 4274280403735519038
+      "kedi_ba\u015Flang\u0131\xE7_Ui_40": 8262045539730052695
+      "kedi_ba\u015Flang\u0131\xE7_Ui_41": 5237808352064427023
+      "kedi_ba\u015Flang\u0131\xE7_Ui_42": 7830334893623696696
+      "kedi_ba\u015Flang\u0131\xE7_Ui_43": -7152516794752158800
+      "kedi_ba\u015Flang\u0131\xE7_Ui_44": -1060607117260984266
+      "kedi_ba\u015Flang\u0131\xE7_Ui_45": 4902018897191796466
+      "kedi_ba\u015Flang\u0131\xE7_Ui_46": -3667462088593559269
+      "kedi_ba\u015Flang\u0131\xE7_Ui_47": 520369074796245006
+      "kedi_ba\u015Flang\u0131\xE7_Ui_48": 3001837726952607040
+      "kedi_ba\u015Flang\u0131\xE7_Ui_49": 5295158588697710668
+      "kedi_ba\u015Flang\u0131\xE7_Ui_5": -8027495080795001851
+      "kedi_ba\u015Flang\u0131\xE7_Ui_50": -8108466274831904747
+      "kedi_ba\u015Flang\u0131\xE7_Ui_51": 6741413915431194592
+      "kedi_ba\u015Flang\u0131\xE7_Ui_52": -350698312700010376
+      "kedi_ba\u015Flang\u0131\xE7_Ui_53": -7266401342701474015
+      "kedi_ba\u015Flang\u0131\xE7_Ui_54": 568765120705227594
+      "kedi_ba\u015Flang\u0131\xE7_Ui_55": 3800452450137321833
+      "kedi_ba\u015Flang\u0131\xE7_Ui_56": -4575917342198653955
+      "kedi_ba\u015Flang\u0131\xE7_Ui_57": -4025396873251597584
+      "kedi_ba\u015Flang\u0131\xE7_Ui_58": -7683069822298166365
+      "kedi_ba\u015Flang\u0131\xE7_Ui_59": -621797536973818605
+      "kedi_ba\u015Flang\u0131\xE7_Ui_6": 2791901285556089732
+      "kedi_ba\u015Flang\u0131\xE7_Ui_60": -9069356500721266519
+      "kedi_ba\u015Flang\u0131\xE7_Ui_61": 2086256618252495357
+      "kedi_ba\u015Flang\u0131\xE7_Ui_62": -155166016373811824
+      "kedi_ba\u015Flang\u0131\xE7_Ui_7": -8454323424444254995
+      "kedi_ba\u015Flang\u0131\xE7_Ui_8": -3314370977016708611
+      "kedi_ba\u015Flang\u0131\xE7_Ui_9": 3114202966166661908
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
