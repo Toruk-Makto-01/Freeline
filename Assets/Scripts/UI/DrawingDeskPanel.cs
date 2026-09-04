@@ -115,7 +115,12 @@ namespace Freeline
         {
             if (_currentJob != null)
             {
+                // Parayı kasaya ekle
                 GameManager.Instance.SaveManager.CurrentData.currentCoins += _currentJob.basePayout;
+                
+                // FATURAYA YAZDIRMA KODU (YENİ EKLENDİ)
+                GameManager.Instance.SaveManager.LogDailyTransaction("Freelance İş", _currentJob.basePayout, true);
+
                 GameManager.Instance.SaveManager.SaveGame();
                 HUDManager.Instance.RefreshAllUI();
 

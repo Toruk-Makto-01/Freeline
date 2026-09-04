@@ -164,13 +164,17 @@ namespace Freeline
             Show();
         }
 
-        //Kabul et Butonu
+        // Kabul et Butonu
         private void OnAcceptClicked()
         {
             var save = GameManager.Instance.SaveManager.CurrentData;
 
             // Coin ver
             save.currentCoins += currentOffer;
+
+            // FATURAYA YAZDIRMA KODU (YENİ EKLENDİ)
+            GameManager.Instance.SaveManager.LogDailyTransaction("Sergi Satışı", currentOffer, true);
+
             totalEarnedCoins += currentOffer;
             soldProducts++;
 

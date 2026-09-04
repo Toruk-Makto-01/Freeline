@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
   itemId: a8
   displayName: Aksesuar 8
-  category: 9
+  category: 10
   roomSprite: {fileID: 1360148979363706949, guid: 37c28f1c5018dda408328fb5d70c4618, type: 3}
   shopIcon: {fileID: 8853274630470227018, guid: 0f63a2d0ca31bd74ca9942eb1e014832, type: 3}
   price: 250

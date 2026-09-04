@@ -158,7 +158,26 @@ namespace Freeline
         {
             if (targetContent == null) return;
 
-            foreach (var item in decorationCatalog.GetByCategory(category))
+            List<DecorationItemData> itemsToLoad = new List<DecorationItemData>();
+
+            // 1. Eğer kategori bir Aksesuar ise, tüm aksesuar alt gruplarını (1, 2 ve 3) tek listede birleştir
+            if (category == DecorationCategory.Accessory1 ||
+                category == DecorationCategory.Accessory2 ||
+                category == DecorationCategory.Accessory3)
+            {
+                itemsToLoad = decorationCatalog.allItems.Where(i =>
+                    i.category == DecorationCategory.Accessory1 ||
+                    i.category == DecorationCategory.Accessory2 ||
+                    i.category == DecorationCategory.Accessory3).ToList();
+            }
+            // 2. Aksesuar değilse (Zemin, Duvar, Yatak vb.) sadece kendi kategorisini getir
+            else
+            {
+                itemsToLoad = decorationCatalog.GetByCategory(category);
+            }
+
+            // Oluşturulan listeyi ekrana diz
+            foreach (var item in itemsToLoad)
             {
                 BuildDecorationCard(item, targetContent);
             }
@@ -244,10 +263,8 @@ namespace Freeline
                 var sm = GameManager.Instance.SaveManager;
                 var equippedList = sm.CurrentData.equippedDecorations;
 
-                if (item.category != DecorationCategory.Accessory)
-                {
-                    equippedList.RemoveAll(e => e.category == item.category);
-                }
+                // Her kategori (Accessory1, 2, 3 dahil) kendi yuvasındaki eski eşyayı temizler
+                equippedList.RemoveAll(e => e.category == item.category);
 
                 equippedList.Add(new EquippedDecoration { category = item.category, itemId = item.itemId });
                 sm.SaveGame();

@@ -129,12 +129,12 @@ TextureImporter:
       name: "M\xFC\u015Fteri 2.2_0"
       rect:
         serializedVersion: 2
-        x: 214
-        y: 628
-        width: 936
-        height: 2294
+        x: 0
+        y: 0
+        width: 2160
+        height: 3840
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2db7f4d0e7234214eb16f9b6afe38739
     internalID: 0
     vertices: []
     indices: 

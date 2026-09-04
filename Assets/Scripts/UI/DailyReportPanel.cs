@@ -33,8 +33,24 @@ namespace Freeline
         public void OpenPanel()
         {
             gameObject.SetActive(true);
-            ProcessRentLogic(); // Faturayı çizmeden önce kira döngüsünü kontrol et!
-            RefreshUI();
+            ProcessWebtoonIncome(); // Faturadan önce Webtoon gelirini tahsil et!
+            ProcessRentLogic();     // Kira kontrolünü yap
+            RefreshUI();            // Faturayı çiz
+        }
+
+        private void ProcessWebtoonIncome()
+        {
+            var wm = WebtoonManager.Instance;
+            if (wm != null && wm.TotalFollowers > 0)
+            {
+                float webtoonIncome = wm.DailyIncome;
+
+                // Parayı ana kasaya ekle
+                GameManager.Instance.SaveManager.AddCoins(webtoonIncome);
+
+                // Makbuza "Gelir (true)" olarak yazdır
+                GameManager.Instance.SaveManager.LogDailyTransaction("Webtoon Pasif Gelir", webtoonIncome, true);
+            }
         }
 
         private void ProcessRentLogic()

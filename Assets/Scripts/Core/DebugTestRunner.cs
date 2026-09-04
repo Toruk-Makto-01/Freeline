@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 namespace Freeline
 {
     // Klavye kısayolları (Sadece Unity Editöründe çalışır):
+    //   J  →  Hızlı iş tamamla (Enerji ve zaman harcar, Coin kazandırır)
     //   W  →  Test amaçlı yeni bir Webtoon bölümü yayınla ve takipçi kazan
     //   F  →  Yemek ye (Açlığı sıfırla, 30 enerji kazan)
     //   N  →  Yeni güne geç
@@ -34,10 +35,46 @@ namespace Freeline
             var kb = Keyboard.current;
             if (kb == null) return;
 
+            if (kb.jKey.wasPressedThisFrame) SimulateCompleteJob();
             if (kb.wKey.wasPressedThisFrame) SimulateProduceChapter();
             if (kb.fKey.wasPressedThisFrame) SimulateFeed();
             if (kb.nKey.wasPressedThisFrame) SimulateNewDay();
             if (kb.rKey.wasPressedThisFrame) SimulateReset();
+        }
+
+        private void SimulateCompleteJob()
+        {
+            var gm = GameManager.Instance;
+            var energy = gm.EnergyManager;
+            var time = gm.TimeManager;
+            var save = gm.SaveManager?.CurrentData;
+
+            if (energy == null || time == null || save == null) return;
+
+            // Simüle edilecek işin bedelleri ve ödülü
+            float energyCost = 25f;
+            float timeCost = 3f; // 3 saat
+            float coinReward = Random.Range(100f, 300f);
+
+            if (energy.CurrentEnergy < energyCost)
+            {
+                Debug.LogWarning($"[DebugTest] J → İş yapılamadı! Yetersiz enerji. (Gereken: {energyCost}, Mevcut: {energy.CurrentEnergy:F0})");
+                return;
+            }
+
+            // Enerji düşme metodun "ConsumeEnergy" veya benzeri ise burayı kendi sistemine göre uyarlayabilirsin
+            energy.ConsumeEnergy(energyCost);
+            time.AdvanceTime(timeCost);
+            save.currentCoins += coinReward;
+            GameManager.Instance.SaveManager.LogDailyTransaction("Freelance İş (Debug)", coinReward, true);
+
+            Debug.Log(
+                $"[DebugTest] J → Hızlı İş Tamamlandı! | " +
+                $"Kazanılan: +{coinReward:F0} Coin | " +
+                $"Harcanan Enerji: -{energyCost} | " +
+                $"Geçen Süre: {timeCost} Saat | " +
+                $"Toplam Coin: {save.currentCoins:F0}"
+            );
         }
 
         private void SimulateProduceChapter()
@@ -47,12 +84,10 @@ namespace Freeline
 
             int followersBefore = wm.TotalFollowers;
 
-            // Test için hafızada geçici bir bölüm (Chapter) verisi yaratıyoruz
             WebtoonChapterData dummyChapter = ScriptableObject.CreateInstance<WebtoonChapterData>();
             dummyChapter.chapterName = "Debug Test Bölümü";
-            dummyChapter.baseFollowerGain = Random.Range(300, 800); // Rastgele takipçi versin
+            dummyChapter.baseFollowerGain = Random.Range(300, 800);
 
-            // Bölümü yeni sisteme gönder
             wm.PublishChapter(dummyChapter);
 
             Debug.Log(
@@ -82,7 +117,7 @@ namespace Freeline
             var gm = GameManager.Instance;
             var time = gm.TimeManager;
             var save = gm.SaveManager?.CurrentData;
-            
+
             if (time == null || save == null) return;
 
             float coinsBefore = save.currentCoins;

@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: a5
   displayName: Aksesuar 5
   category: 9
-  roomSprite: {fileID: -3120474196552248160, guid: 35e2f7b2d2203e0429c12be6ba7dffd4, type: 3}
+  roomSprite: {fileID: 21300000, guid: 35e2f7b2d2203e0429c12be6ba7dffd4, type: 3}
   shopIcon: {fileID: 1706997961859576989, guid: e8ec536f4bc798b4398af72452c8f9c8, type: 3}
   price: 200
   deliveryDays: 0

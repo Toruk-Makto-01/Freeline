@@ -4,45 +4,52 @@ using UnityEngine.UI;
 
 namespace Freeline
 {
-    // Hangi kategorinin hangi UI Slot'una (Image) denk geldiğini eşleştiren sınıf
     [System.Serializable]
     public class DecorationSlot
     {
         public DecorationCategory category;
-        public Image slotImage; // ss1.png'deki Slot_Zemin, Slot_Duvar vb. objelerin Image bileşeni
+        public Image slotImage;
     }
 
     public class RoomDecorationManager : MonoBehaviour
     {
         [Header("Oda Katmanları (Slotlar)")]
-        [Tooltip("ss1.png'deki Slot objelerini buraya tanımlayın")]
         [SerializeField] private List<DecorationSlot> roomSlots = new();
+
+        [Header("Başlangıç Odası (Default)")]
+        [Tooltip("Kayıt sıfırlandığında (veya yeni oyunda) otomatik eklenecek temel eşyalar")]
+        [SerializeField] private List<DecorationItemData> defaultStarterItems = new();
 
         [Header("Katalog")]
         [SerializeField] private DecorationCatalog catalog;
 
         private void Start()
         {
-            // Oyun başladığında odayı kayıt dosyasına göre inşa et!
             InitializeRoomFromSave();
         }
 
         public void InitializeRoomFromSave()
         {
-            var equippedItems = GameManager.Instance.SaveManager.CurrentData.equippedDecorations;
+            var data = GameManager.Instance.SaveManager.CurrentData;
 
-            // Önce tüm slotları temizle (Gizle)
+            // 1. EĞER KAYIT DOSYASI BOŞSA BAŞLANGIÇ EŞYALARINI DİZ
+            if (data.equippedDecorations == null || data.equippedDecorations.Count == 0)
+            {
+                SetupDefaultRoom(data);
+            }
+
+            // 2. Önce tüm slotları temizle (Gizle)
             foreach (var slot in roomSlots)
             {
                 if (slot.slotImage != null)
                 {
                     slot.slotImage.sprite = null;
-                    slot.slotImage.enabled = false; // Beyaz ekranı önler!
+                    slot.slotImage.enabled = false;
                 }
             }
 
-            // Kayıt dosyasındaki takılı eşyaları bul ve ilgili slotta göster
-            foreach (var equipped in equippedItems)
+            // 3. Kayıt dosyasındaki takılı eşyaları bul ve göster
+            foreach (var equipped in data.equippedDecorations)
             {
                 var itemData = catalog.GetItemById(equipped.itemId);
                 if (itemData != null)
@@ -52,25 +59,40 @@ namespace Freeline
             }
         }
 
-        // Sadece görseli güncelleyen metod (Kayıt işlemi MarketPanel'de yapılıyor)
+        private void SetupDefaultRoom(SaveData data)
+        {
+            foreach (var item in defaultStarterItems)
+            {
+                // Başlangıç eşyasını envantere ekle
+                if (data.ownedDecorations != null && !data.ownedDecorations.Contains(item.itemId))
+                {
+                    data.ownedDecorations.Add(item.itemId);
+                }
+
+                // Başlangıç eşyasını odaya tak 
+                data.equippedDecorations.Add(new EquippedDecoration { category = item.category, itemId = item.itemId });
+            }
+            
+            GameManager.Instance.SaveManager.SaveGame();
+        }
+
         public void EquipItemVisual(DecorationItemData item)
         {
             var slot = roomSlots.Find(s => s.category == item.category);
             if (slot != null && slot.slotImage != null)
             {
-                slot.slotImage.sprite = item.roomSprite; // Tam ekran olan oda görseli
-                slot.slotImage.enabled = true; // Görsel atandı, görünür yap
+                slot.slotImage.sprite = item.roomSprite;
+                slot.slotImage.enabled = true;
             }
         }
 
-        // Görseli odadan kaldıran metod
         public void UnequipItemVisual(DecorationItemData item)
         {
             var slot = roomSlots.Find(s => s.category == item.category);
             if (slot != null && slot.slotImage != null)
             {
                 slot.slotImage.sprite = null;
-                slot.slotImage.enabled = false; // Eşya çıktı, Image'i kapat (Beyaz ekranı engelle)
+                slot.slotImage.enabled = false; 
             }
         }
     }

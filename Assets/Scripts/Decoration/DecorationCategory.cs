@@ -11,6 +11,8 @@ namespace Freeline
         Bookshelf,
         Sofa,
         Bed,
-        Accessory
+        Accessory1, // Örn: Masa Üstü Aksesuarları (Lamba vb.)
+        Accessory2, // Örn: Duvar Aksesuarları (Tablo, Postit vb.)
+        Accessory3  // Örn: Zemin Aksesuarları (Büyük Saksı, Gitar vb.)
     }
 }

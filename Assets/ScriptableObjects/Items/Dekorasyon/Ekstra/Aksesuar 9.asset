@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Freeline.DecorationItemData
   itemId: a9
   displayName: Aksesuar 9
-  category: 9
+  category: 10
   roomSprite: {fileID: 8412024901158441153, guid: 24e941b82f65d7241a4de9f4c63a7cd7, type: 3}
   shopIcon: {fileID: 2668253736113342315, guid: 0f63a2d0ca31bd74ca9942eb1e014832, type: 3}
   price: 400
