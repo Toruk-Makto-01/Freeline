@@ -168,10 +168,6 @@ namespace Freeline
             }
 
             // 3. Webtoon Takipçi Sayısı
-            if (followersText != null && data.webtoonData != null)
-            {
-                followersText.text = $"{data.webtoonData.totalFollowers} Takipçi";
-            }
 
             // 4. Enerji Barı Doluluğu, Renk Ayarı ve Metin Yazımı
             if (energyBarFill != null)

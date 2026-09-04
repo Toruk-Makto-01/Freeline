@@ -8,18 +8,19 @@ namespace Freeline
     {
         [Header("Üst Bilgi")]
         [SerializeField] private TextMeshProUGUI jobTitleText;
-        [SerializeField] private TextMeshProUGUI progressText; // "%0" yazan metin
+        [SerializeField] private TextMeshProUGUI progressText;
         
-        [Header("Mini Oyun")]
+        [Header("Mini Oyunlar")]
         [SerializeField] private DrawRevealGame revealGame;
+        [SerializeField] private SlideBarGame slideBarGame; 
 
         [Header("Tamamlandı Bildirim Penceresi")]
-        [SerializeField] private GameObject completionPopup; // Bildirim paneli objesi
-        [SerializeField] private TextMeshProUGUI popupRewardText; // "+150 Coin" yazan metin
-        [SerializeField] private Button popupCloseButton; // Kapat butonu
+        [SerializeField] private GameObject completionPopup;
+        [SerializeField] private TextMeshProUGUI popupRewardText;
+        [SerializeField] private Button popupCloseButton;
 
         [Header("Geri Dönülecek Panel")]
-        [SerializeField] private GameObject phonePanel; // Kaldığımız telefon veya freelance arayüzü
+        [SerializeField] private GameObject phonePanel;
 
         private JobData _currentJob;
 
@@ -39,6 +40,11 @@ namespace Freeline
                 revealGame.OnProgressChanged += HandleProgressChanged;
                 revealGame.OnDrawingCompleted += HandleJobCompleted;
             }
+
+            if (slideBarGame != null)
+            {
+                slideBarGame.OnGameFinished += HandleSlideBarFinished;
+            }
         }
 
         private void OnDisable()
@@ -48,35 +54,60 @@ namespace Freeline
                 revealGame.OnProgressChanged -= HandleProgressChanged;
                 revealGame.OnDrawingCompleted -= HandleJobCompleted;
             }
+
+            if (slideBarGame != null)
+            {
+                slideBarGame.OnGameFinished -= HandleSlideBarFinished;
+            }
         }
 
         public void StartJob(JobData job)
         {
             _currentJob = job;
-            
             if (jobTitleText != null) jobTitleText.text = job.jobTitle;
             if (progressText != null) progressText.text = "%0";
             if (completionPopup != null) completionPopup.SetActive(false);
 
-            // Enerjiyi işe başlarken düş
             GameManager.Instance.EnergyManager.ConsumeEnergy(job.energyCost);
             HUDManager.Instance.RefreshAllUI();
 
-            if (revealGame != null)
+            // TAMAMEN BAĞIMSIZ ÇALIŞMA MANTIĞI
+            if (job.difficulty == JobDifficulty.Beginner)
             {
-                revealGame.gameObject.SetActive(true);
-                revealGame.Setup();
+                if (revealGame != null) revealGame.gameObject.SetActive(false);
+                if (slideBarGame != null)
+                {
+                    slideBarGame.gameObject.SetActive(true);
+                    slideBarGame.Setup();
+                }
+            }
+            else
+            {
+                if (slideBarGame != null) slideBarGame.gameObject.SetActive(false);
+                if (revealGame != null)
+                {
+                    revealGame.gameObject.SetActive(true);
+                    revealGame.Setup();
+                }
             }
         }
 
         private void HandleProgressChanged(float rawProgress)
         {
-            if (progressText != null && revealGame != null)
+            if (progressText != null)
             {
-                // Hedef eşiğe (%85'e) göre oyuncuya 0-100 arası ölçeklendirilmiş oran göster
-                float normalizedProgress = rawProgress / revealGame.CompletionThreshold;
-                int percent = Mathf.Clamp(Mathf.FloorToInt(normalizedProgress * 100f), 0, 100);
+                int percent = Mathf.Clamp(Mathf.FloorToInt(rawProgress * 100f), 0, 100);
                 progressText.text = $"%{percent}";
+            }
+        }
+
+        private void HandleSlideBarFinished(bool isSuccess)
+        {
+            if (isSuccess) HandleJobCompleted();
+            else
+            {
+                gameObject.SetActive(false);
+                if (phonePanel != null) phonePanel.SetActive(true);
             }
         }
 
@@ -84,40 +115,20 @@ namespace Freeline
         {
             if (_currentJob != null)
             {
-                // Ödülü ekle ve kaydet
                 GameManager.Instance.SaveManager.CurrentData.currentCoins += _currentJob.basePayout;
                 GameManager.Instance.SaveManager.SaveGame();
                 HUDManager.Instance.RefreshAllUI();
 
-                // Bildirim pop-up'ını hazırla ve aç
-                if (popupRewardText != null)
-                {
-                    popupRewardText.text = $"+{_currentJob.basePayout} Coin";
-                }
-
-                if (completionPopup != null)
-                {
-                    completionPopup.SetActive(true);
-                }
+                if (popupRewardText != null) popupRewardText.text = $"+{_currentJob.basePayout} Coin";
+                if (completionPopup != null) completionPopup.SetActive(true);
             }
         }
 
         private void OnPopupCloseClicked()
         {
-            // 1. Bildirim penceresini kapat
-            if (completionPopup != null)
-            {
-                completionPopup.SetActive(false);
-            }
-
-            // 2. Çizim masasını kapat
+            if (completionPopup != null) completionPopup.SetActive(false);
             gameObject.SetActive(false);
-
-            // 3. Telefondaki ilgili paneli tekrar görünür yap
-            if (phonePanel != null)
-            {
-                phonePanel.SetActive(true);
-            }
+            if (phonePanel != null) phonePanel.SetActive(true);
         }
     }
 }

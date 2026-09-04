@@ -66,7 +66,6 @@ namespace Freeline
         public List<DailyTransaction> dailyTransactions = new List<DailyTransaction>();
 
         // --- Career ---
-        public WebtoonData webtoonData = new WebtoonData();
         public int totalJobsCompleted = 0;
         public int playerLevel = 1;
 

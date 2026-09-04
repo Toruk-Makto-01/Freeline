@@ -6,18 +6,13 @@ using UnityEngine.SceneManagement;
 
 namespace Freeline
 {
-    // Keyboard shortcuts for runtime integration testing — Editor only.
-    //
-    //   J  →  Complete the first board job
-    //   W  →  Produce a webtoon chapter
-    //   F  →  Eat food (reset hunger + restore 30 energy)
-    //   N  →  Force new day (advances time past midnight)
-    //   R  →  Delete save and reload scene
-    //
-    // Attach to the "DebugTools" GameObject in the Bootstrap scene.
+    // Klavye kısayolları (Sadece Unity Editöründe çalışır):
+    //   W  →  Test amaçlı yeni bir Webtoon bölümü yayınla ve takipçi kazan
+    //   F  →  Yemek ye (Açlığı sıfırla, 30 enerji kazan)
+    //   N  →  Yeni güne geç
+    //   R  →  Kayıt dosyasını sil ve sahneyi yeniden yükle
     public class DebugTestRunner : MonoBehaviour
     {
-        // Debug scriptinin sahnedeki tek kopyasını tutar
         public static DebugTestRunner Instance;
 
         void Awake()
@@ -29,7 +24,6 @@ namespace Freeline
             }
             else
             {
-                // Eğer zaten bir tane varsa, bu yeni geleni sil!
                 Destroy(gameObject);
             }
         }
@@ -40,105 +34,70 @@ namespace Freeline
             var kb = Keyboard.current;
             if (kb == null) return;
 
-            if (kb.jKey.wasPressedThisFrame) SimulateCompleteJob();
             if (kb.wKey.wasPressedThisFrame) SimulateProduceChapter();
             if (kb.fKey.wasPressedThisFrame) SimulateFeed();
             if (kb.nKey.wasPressedThisFrame) SimulateNewDay();
             if (kb.rKey.wasPressedThisFrame) SimulateReset();
         }
 
-        private void SimulateCompleteJob()
-        {
-            var gm = GameManager.Instance;
-            if (gm == null) { Debug.LogWarning("[Debug] GameManager not ready"); return; }
-            var save = gm.SaveManager?.CurrentData;
-            if (save == null) { Debug.LogWarning("[Debug] SaveManager not ready"); return; }
-
-
-            float coinsBefore2 = save.currentCoins;
-
-        }
-
         private void SimulateProduceChapter()
         {
-            var gm = GameManager.Instance;
-            if (gm == null) { Debug.LogWarning("[Debug] GameManager not ready"); return; }
-            var wm = gm.WebtoonManager;
-            if (wm == null) { Debug.LogWarning("[Debug] WebtoonManager not ready"); return; }
-            var wt = gm.SaveManager?.CurrentData?.webtoonData;
-            if (wt == null) { Debug.LogWarning("[Debug] SaveManager not ready"); return; }
+            var wm = WebtoonManager.Instance;
+            if (wm == null) { Debug.LogWarning("[Debug] WebtoonManager bulunamadı!"); return; }
 
-            float followersBefore = wt.followers;
-            int chaptersBefore = wt.totalChaptersPublished;
+            int followersBefore = wm.TotalFollowers;
+
+            // Test için hafızada geçici bir bölüm (Chapter) verisi yaratıyoruz
+            WebtoonChapterData dummyChapter = ScriptableObject.CreateInstance<WebtoonChapterData>();
+            dummyChapter.chapterName = "Debug Test Bölümü";
+            dummyChapter.baseFollowerGain = Random.Range(300, 800); // Rastgele takipçi versin
+
+            // Bölümü yeni sisteme gönder
+            wm.PublishChapter(dummyChapter);
 
             Debug.Log(
-                $"[DebugTest] W → Producing chapter | " +
-                $"Energy before: {gm.EnergyManager.CurrentEnergy:F0} | " +
-                $"Followers before: {followersBefore:F0}"
-            );
-
-            bool success = wm.ProduceChapter();
-
-            if (!success)
-            {
-                Debug.LogWarning(
-                    $"[DebugTest] ProduceChapter() failed — not enough energy " +
-                    $"({gm.EnergyManager.CurrentEnergy:F0} available)."
-                );
-                return;
-            }
-
-            float followerDelta = wt.followers - followersBefore;
-            Debug.Log(
-                $"[DebugTest] W → Chapter {wt.totalChaptersPublished} published | " +
-                $"Follower change: +{followerDelta:F0} | " +
-                $"Total followers: {wt.followers:F0} | " +
-                $"Time: {gm.TimeManager.GetFormattedTime()}"
+                $"[DebugTest] W → {dummyChapter.chapterName} yayınlandı! | " +
+                $"Takipçi: {followersBefore} -> {wm.TotalFollowers} (+{dummyChapter.baseFollowerGain}) | " +
+                $"Okunmamış Yorum: {wm.UnreadCommentCount}"
             );
         }
 
         private void SimulateFeed()
         {
             var gm = GameManager.Instance;
-            if (gm == null) { Debug.LogWarning("[Debug] GameManager not ready"); return; }
             var energy = gm.EnergyManager;
-            if (energy == null) { Debug.LogWarning("[Debug] EnergyManager not ready"); return; }
+            if (energy == null) return;
 
             float beforeE = energy.CurrentEnergy;
             float beforeH = energy.CurrentHunger;
 
-            Debug.Log($"[DebugTest] F → Eating food | Hungry: {energy.IsHungry} | Energy before: {beforeE:F0}");
-
-            // Yeni Sistem Testi: Açlığı %100'e fulle ve enerjiyi direkt 30 ver!
             energy.RestoreHunger(100f);
             energy.RestoreEnergyDirect(30f);
 
-            Debug.Log($"[DebugTest] F → Fed! | Hunger: %{beforeH:F0} -> %{energy.CurrentHunger:F0} | Energy: {beforeE:F0} -> {energy.CurrentEnergy:F0}");
+            Debug.Log($"[DebugTest] F → Yemek Yenildi! | Açlık: %{beforeH:F0} -> %{energy.CurrentHunger:F0} | Enerji: {beforeE:F0} -> {energy.CurrentEnergy:F0}");
         }
 
         private void SimulateNewDay()
         {
             var gm = GameManager.Instance;
-            if (gm == null) return;
             var time = gm.TimeManager;
             var save = gm.SaveManager?.CurrentData;
+            
+            if (time == null || save == null) return;
 
-            int dayBefore = time.CurrentDay;
             float coinsBefore = save.currentCoins;
-
             time.AdvanceTime(24f);
 
-            Debug.Log($"[DebugTest] N → Now Day {time.CurrentDay} | Income: +{save.currentCoins - coinsBefore:F2} | Hunger: %{gm.EnergyManager.CurrentHunger:F0}");
+            Debug.Log($"[DebugTest] N → Yeni Gün: {time.CurrentDay} | Pasif Gelir/Fark: +{save.currentCoins - coinsBefore:F2} Coin");
         }
 
         private void SimulateReset()
         {
             var save = GameManager.Instance?.SaveManager;
-            Debug.Log("[DebugTest] R → Deleting save and reloading scene...");
+            Debug.Log("[DebugTest] R → Kayıt dosyası siliniyor ve sahne sıfırlanıyor...");
             save?.DeleteSave();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
-
 #endif

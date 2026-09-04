@@ -49,7 +49,7 @@ namespace Freeline
             if (appBtnMarket != null && marketPanel != null)
                 appBtnMarket.onClick.AddListener(marketPanel.Open);
             if (appBtnWebtoon != null && webtoonPanel != null)
-                appBtnWebtoon.onClick.AddListener(webtoonPanel.Open);
+                appBtnWebtoon.onClick.AddListener(OpenWebtoonApp);
             if (appBtnProduction != null && productionPanel != null)
                 appBtnProduction.onClick.AddListener(productionPanel.Open);
             if (appBtnBackground != null && backgroundPanel != null)
@@ -75,6 +75,13 @@ namespace Freeline
             if (freelancePanel != null)
             {
                 freelancePanel.OpenPanel();
+            }
+        }
+        public void OpenWebtoonApp()
+        {
+            if (webtoonPanel != null)
+            {
+                webtoonPanel.gameObject.SetActive(true);
             }
         }
     }
