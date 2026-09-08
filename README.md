@@ -4,6 +4,15 @@ A 2D cozy mobile game developed in Unity 6 where players step into the shoes of 
 
 *Currently in active development. Core gameplay loops, interactive UI panels, and foundational systems are implemented. Preparing for iOS and Android release.*
 
+## 📸 Screenshots
+
+<!-- Görselleri yan yana düzgün boyutlarda göstermek için genişliği 250px civarında tutuyoruz -->
+<p align="center">
+  <img src="Screenshots/ss1.png" width="250" alt="Gameplay Screen 1">
+  <img src="Screenshots/ss2.png" width="250" alt="Shop System">
+  <img src="Screenshots/ss3.png" width="250" alt="UI Panels">
+</p>
+
 ## 🚀 Core Systems & Architecture
 
 *   **Gameplay & Progression:** Core mechanics centered around drawing routines, managing resources, and progressing the webtoon series.
