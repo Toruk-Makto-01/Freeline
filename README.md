@@ -31,7 +31,7 @@ A 2D cozy mobile game developed in Unity 6 where players step into the shoes of 
 ## 🎨 Credits
 
 *   **Development & Programming:** Hamza Erdal
-*   **Art & Illustrations:** @felixsama_
+*   **Art & Illustrations:** [@felixsama_](https://www.instagram.com/felixsama_/)
 
 ## 📌 Development Status
 
