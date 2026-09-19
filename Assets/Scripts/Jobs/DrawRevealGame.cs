@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Freeline
 {
-    public class DrawRevealGame : MonoBehaviour, IPointerDownHandler, IDragHandler
+    public class DrawRevealGame : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
     {
         [SerializeField] private RawImage maskImage;
         [SerializeField] private Texture2D targetLineTexture;
@@ -77,8 +77,22 @@ namespace Freeline
             OnProgressChanged?.Invoke(0f);
         }
 
-        public void OnPointerDown(PointerEventData eventData) => DrawAt(eventData);
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (AudioManager.Instance != null) AudioManager.Instance.StartPencilSound();
+            DrawAt(eventData);
+        }
         public void OnDrag(PointerEventData eventData) => DrawAt(eventData);
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            if (AudioManager.Instance != null) AudioManager.Instance.StopDrawSound();
+        }
+
+        private void OnDisable()
+        {
+            if (AudioManager.Instance != null) AudioManager.Instance.StopDrawSound();
+        }
 
         private void DrawAt(PointerEventData eventData)
         {

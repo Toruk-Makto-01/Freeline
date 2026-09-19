@@ -1,57 +1,52 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 namespace Freeline
 {
     public class ProductionItemUI : MonoBehaviour
     {
-        [SerializeField] private Image productImage;
-        [SerializeField] private TextMeshProUGUI productNameText;
-        [SerializeField] private TextMeshProUGUI priceText;
-        [SerializeField] private TextMeshProUGUI stockText;
-        [SerializeField] private TextMeshProUGUI infoText;
-        [SerializeField] private Button produceButton;
+        [Header("Kart Elemanlari")]
+        [SerializeField] private Image posterImage;
+        [SerializeField] private GameObject lockOverlay; // Üzerindeki kilit görseli/katmanı
+        [SerializeField] private TextMeshProUGUI stockText; // "2X" yazısı
+        [SerializeField] private Button cardButton;
 
+        private ExhibitionProductData _product;
+        private bool _isUnlocked;
 
-        private ExhibitionProductData currentProduct;
+        public event Action<ExhibitionProductData> OnCardClicked;
 
-        public event Action<ExhibitionProductData> OnProduceClicked;
-
-        public void Setup(ExhibitionProductData product)
+        public void Setup(ExhibitionProductData product, bool isUnlocked, int stockQuantity)
         {
-            currentProduct = product;
+            _product = product;
+            _isUnlocked = isUnlocked;
 
-            productImage.sprite = product.icon;
-            productNameText.text = product.productName;
-            priceText.text = product.basePrice + " Coin";
+            if (posterImage != null) posterImage.sprite = product.icon;
 
-            infoText.text =
-                $"Enerji: {product.energyCost}\n" +
-                $"Süre: {product.productionHours} Saat";
+            // Kilit durumu
+            if (lockOverlay != null) lockOverlay.SetActive(!_isUnlocked);
 
-
-            int stock = 0;
-
-            foreach (var item in GameManager.Instance.SaveManager.CurrentData.exhibitionStock)
+            // Stok durumu (Görseldeki gibi: Stok varsa "2X", yoksa boş)
+            if (stockText != null)
             {
-                if (item.product == product)
-                {
-                    stock = item.quantity;
-                    break;
-                }
+                stockText.text = stockQuantity > 0 ? $"{stockQuantity}X" : "";
             }
 
-            stockText.text = "Stok : x" + stock;
-
-            produceButton.onClick.RemoveAllListeners();
-            produceButton.onClick.AddListener(Produce);
-        }
-
-        private void Produce()
-        {
-            OnProduceClicked?.Invoke(currentProduct);
+            // Tıklama
+            cardButton.onClick.RemoveAllListeners();
+            cardButton.onClick.AddListener(() =>
+            {
+                if (_isUnlocked)
+                {
+                    OnCardClicked?.Invoke(_product);
+                }
+                else
+                {
+                    Debug.Log("[Üretim] Bu ürün kilitli! Açmak için sergi tamamlayın.");
+                }
+            });
         }
     }
 }

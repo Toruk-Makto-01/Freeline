@@ -17,10 +17,10 @@ namespace Freeline
         [SerializeField] private TextMeshProUGUI progressText;
 
         [Header("Fırça Ayarları (Brush Stamp)")]
-        [SerializeField] private Texture2D brushTexture; // Organik fırça PNG'si
-        [SerializeField] private float brushScale = 1f; // Fırça boyutu çarpanı
-        [SerializeField] private float brushSpacing = 0.1f; // Fırça izleri arası boşluk toleransı
-        [SerializeField] private float completionThreshold = 0.90f;
+        [SerializeField] private Texture2D brushTexture;
+        [SerializeField] private float brushScale = 1.2f; // Daha geniş kapatıcılık için hafif büyütüldü
+        [SerializeField] private float brushSpacing = 0.08f;
+        [SerializeField] private float completionThreshold = 0.80f; // %80'e ulaşıldığında kilitlenmeden tamamlanır
 
         private WebtoonChapterData _currentChapter;
         private Texture2D _activeSketch;
@@ -48,22 +48,20 @@ namespace Freeline
             _isDrawing = false;
 
             if (flashEffect != null) flashEffect.SetActive(false);
+
             if (scrollRect != null)
             {
                 scrollRect.horizontal = false;
-                scrollRect.vertical = false;
+                // Oyuncunun eksik yerlere geri dönebilmesi için dikey kaydırma açık kalır
+                scrollRect.vertical = true;
+                scrollRect.inertia = true;
             }
 
-            // Fırça piksellerini önbelleğe al (Performans için)
             if (brushTexture != null)
             {
                 _brushPixels = brushTexture.GetPixels32();
                 _brushWidth = brushTexture.width;
                 _brushHeight = brushTexture.height;
-            }
-            else
-            {
-                Debug.LogError("[Webtoon] Lütfen organik bir fırça PNG'si ekleyin!");
             }
 
             PrepareSketch();
@@ -135,15 +133,13 @@ namespace Freeline
             maskRt.offsetMin = Vector2.zero; maskRt.offsetMax = Vector2.zero;
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(scrollRect.content);
-            if (scrollRect != null) scrollRect.verticalNormalizedPosition = 1f;
+            if (scrollRect != null) scrollRect.verticalNormalizedPosition = 1f; // En baştan başla
         }
 
         private void Update()
         {
-            if (!_isInteractable || brushTexture == null) return;
-            if (Pointer.current == null) return;
+            if (!_isInteractable || brushTexture == null || Pointer.current == null) return;
 
-            // Yeni Input Sistemi (Fare ve Dokunmatik Ekranı otomatik tanır)
             bool isPressedDown = Pointer.current.press.wasPressedThisFrame;
             bool isPressing = Pointer.current.press.isPressed;
             bool isReleased = Pointer.current.press.wasReleasedThisFrame;
@@ -151,11 +147,15 @@ namespace Freeline
 
             if (isPressedDown)
             {
-                _isDrawing = true;
                 if (TryGetPixelPosition(pointerPos, out Vector2 pos))
                 {
+                    _isDrawing = true;
+                    if (scrollRect != null) scrollRect.vertical = false; // Çizerken kaydırmayı kilitle
                     StampBrush((int)pos.x, (int)pos.y);
                     _lastDrawPos = pos;
+
+                    // --- SES BAŞLAT ---
+                    if (AudioManager.Instance != null) AudioManager.Instance.StartBrushSound();
                 }
             }
             else if (isPressing && _isDrawing)
@@ -164,14 +164,20 @@ namespace Freeline
                 {
                     InterpolateAndStamp(_lastDrawPos, currentPos);
                     _lastDrawPos = currentPos;
+
+                    // Ekranın altına yaklaşırsa hafifçe otomatik aşağı kaydır
+                    CheckAutoScroll(pointerPos);
                 }
             }
             else if (isReleased)
             {
                 _isDrawing = false;
+                if (scrollRect != null) scrollRect.vertical = true; // Parmağı kaldırdığında serbestçe kaydırıp eksik yerlere bakabilsin
+
+                // --- SES DURDUR ---
+                if (AudioManager.Instance != null) AudioManager.Instance.StopDrawSound();
             }
 
-            // Sadece bir çizim yapıldıysa materyali bu karenin (frame) sonunda güncelle. 
             if (_textureNeedsApply)
             {
                 _maskTexture.SetPixels32(_maskColors);
@@ -181,20 +187,46 @@ namespace Freeline
             }
         }
 
+        private void OnDisable()
+        {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopDrawSound();
+            }
+        }
+
+        private void CheckAutoScroll(Vector2 screenPos)
+        {
+            if (scrollRect == null) return;
+
+            // Eğer parmak ekranın en alt %15'lik kısmındaysa sayfayı yavaşça aşağı kaydır
+            if (screenPos.y < Screen.height * 0.15f)
+            {
+                scrollRect.verticalNormalizedPosition = Mathf.Clamp01(scrollRect.verticalNormalizedPosition - (0.3f * Time.deltaTime));
+            }
+            // Ekranın en üst %15'lik kısmındaysa yukarı kaydır
+            else if (screenPos.y > Screen.height * 0.85f)
+            {
+                scrollRect.verticalNormalizedPosition = Mathf.Clamp01(scrollRect.verticalNormalizedPosition + (0.3f * Time.deltaTime));
+            }
+        }
+
         private bool TryGetPixelPosition(Vector2 screenPos, out Vector2 pixelPos)
         {
             pixelPos = Vector2.zero;
             RectTransform rt = overlayMask.rectTransform;
 
-            // Arayüz üstündeki dokunmayı Resmin içindeki konuma çevirir
             if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rt, screenPos, null, out Vector2 localPoint))
             {
                 float normalizedX = (localPoint.x + rt.rect.width * 0.5f) / rt.rect.width;
                 float normalizedY = (localPoint.y + rt.rect.height * 0.5f) / rt.rect.height;
 
-                pixelPos.x = normalizedX * _width;
-                pixelPos.y = normalizedY * _height;
-                return true;
+                if (normalizedX >= 0f && normalizedX <= 1f && normalizedY >= 0f && normalizedY <= 1f)
+                {
+                    pixelPos.x = normalizedX * _width;
+                    pixelPos.y = normalizedY * _height;
+                    return true;
+                }
             }
             return false;
         }
@@ -205,7 +237,6 @@ namespace Freeline
             float scaledBrushSize = _brushWidth * brushScale;
             float stepDistance = Mathf.Max(1f, scaledBrushSize * brushSpacing);
 
-            // Hızlı kaydırmalarda boşlukları doldur
             if (distance > stepDistance)
             {
                 int steps = Mathf.CeilToInt(distance / stepDistance);
@@ -237,7 +268,6 @@ namespace Freeline
                     int px = startX + x;
                     if (px < 0 || px >= _width) continue;
 
-                    // Fırça görselinin hangi pikseline denk geldiğini bul
                     int bx = Mathf.RoundToInt((x / (float)scaledWidth) * _brushWidth);
                     int by = Mathf.RoundToInt((y / (float)scaledHeight) * _brushHeight);
                     bx = Mathf.Clamp(bx, 0, _brushWidth - 1);
@@ -245,8 +275,7 @@ namespace Freeline
 
                     int brushIndex = by * _brushWidth + bx;
 
-                    // Eğer fırça PNG'sinin o noktası şeffaf değilse maskeyi del
-                    if (_brushPixels[brushIndex].a > 50)
+                    if (_brushPixels[brushIndex].a > 25) // Eşik hafif düşürüldü, daha çok pikseli temizler
                     {
                         int maskIndex = py * _width + px;
                         if (_maskColors[maskIndex].a != 0)
@@ -262,13 +291,11 @@ namespace Freeline
 
         private void UpdateProgress(float rawProgress)
         {
+            // %80 eşiğine ulaşıldığında oyuncuya %100 göster ve tamamla
             float normalizedProgress = Mathf.Clamp01(rawProgress / completionThreshold);
 
             if (progressText != null)
                 progressText.text = $"%{Mathf.FloorToInt(normalizedProgress * 100)}";
-
-            if (scrollRect != null)
-                scrollRect.verticalNormalizedPosition = 1f - normalizedProgress;
 
             if (normalizedProgress >= 1f && _isInteractable)
             {

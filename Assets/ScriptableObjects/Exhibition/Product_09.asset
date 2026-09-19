@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc9e3da9c67f3d489f2441b85443ec0, type: 3}
+  m_Name: Product_09
+  m_EditorClassIdentifier: Assembly-CSharp::Freeline.ExhibitionProductData
+  productName: "Yelpaze Siyah Sa\xE7"
+  icon: {fileID: 1036992770657470837, guid: 82076f433c439034495d9e6092587db9, type: 3}
+  basePrice: 600
+  energyCost: 40
+  productionHours: 5
+  difficultyLabel: Orta
+  slideSpeedMultiplier: 1.8

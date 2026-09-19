@@ -133,7 +133,7 @@ namespace Freeline
                 // Artık matematiği biz yapmıyoruz, merkezden (EnergyManager) hazır alıyoruz!
                 int hungerPercent = energyManager.GetHungerPercentage();
 
-                string colorHex = hungerPercent <= 25 ? "red" : "white";
+                string colorHex = hungerPercent <= 25 ? "red" : "darkgreen"; // 25% altına düşünce kırmızı, üstü yeşil
                 hungerText.text = $"<color={colorHex}>%{hungerPercent}</color>";
             }
         }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc9e3da9c67f3d489f2441b85443ec0, type: 3}
+  m_Name: Product_12
+  m_EditorClassIdentifier: Assembly-CSharp::Freeline.ExhibitionProductData
+  productName: "Oje Ye\u015Fil"
+  icon: {fileID: 8253510428507666206, guid: 71ff0d49caccb4c489f20d430cb960cd, type: 3}
+  basePrice: 1000
+  energyCost: 60
+  productionHours: 7
+  difficultyLabel: Zor
+  slideSpeedMultiplier: 2.3

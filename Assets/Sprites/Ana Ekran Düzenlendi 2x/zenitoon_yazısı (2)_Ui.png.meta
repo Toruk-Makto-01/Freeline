@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: f5a65cec77d208b47a821cf2e16ee09d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6022886464364078793
+    second: "zenitoon_yaz\u0131s\u0131 (2)_Ui_0"
+  - first:
+      213: -4623781157600673478
+    second: "zenitoon_yaz\u0131s\u0131 (2)_Ui_1"
+  - first:
+      213: 5432300207743126928
+    second: "zenitoon_yaz\u0131s\u0131 (2)_Ui_2"
+  - first:
+      213: -3039288782444308073
+    second: "zenitoon_yaz\u0131s\u0131 (2)_Ui_3"
+  - first:
+      213: 8928968254336803484
+    second: "zenitoon_yaz\u0131s\u0131 (2)_Ui_4"
+  - first:
+      213: -8946644188310576391
+    second: "zenitoon_yaz\u0131s\u0131 (2)_Ui_5"
+  - first:
+      213: 2560739862371708021
+    second: "zenitoon_yaz\u0131s\u0131 (2)_Ui_6"
+  - first:
+      213: 4396979732195437748
+    second: "zenitoon_yaz\u0131s\u0131 (2)_Ui_7"
+  - first:
+      213: 222007193713835465
+    second: "zenitoon_yaz\u0131s\u0131 (2)_Ui_8"
+  - first:
+      213: -3161082852730699980
+    second: "zenitoon_yaz\u0131s\u0131 (2)_Ui_9"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "zenitoon_yaz\u0131s\u0131 (2)_Ui_0"
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 49
+        width: 162
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c6ede62457959350800000000000000
+      internalID: 6022886464364078793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "zenitoon_yaz\u0131s\u0131 (2)_Ui_1"
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 74
+        width: 113
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a314116f88705dfb0800000000000000
+      internalID: -4623781157600673478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "zenitoon_yaz\u0131s\u0131 (2)_Ui_2"
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 74
+        width: 104
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09d4fc3e148636b40800000000000000
+      internalID: 5432300207743126928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "zenitoon_yaz\u0131s\u0131 (2)_Ui_3"
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 74
+        width: 125
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 799d39884f642d5d0800000000000000
+      internalID: -3039288782444308073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "zenitoon_yaz\u0131s\u0131 (2)_Ui_4"
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 74
+        width: 49
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c922c72d1511aeb70800000000000000
+      internalID: 8928968254336803484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "zenitoon_yaz\u0131s\u0131 (2)_Ui_5"
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 74
+        width: 125
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f26fe7138227d380800000000000000
+      internalID: -8946644188310576391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "zenitoon_yaz\u0131s\u0131 (2)_Ui_6"
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 71
+        width: 151
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57c29d26653998320800000000000000
+      internalID: 2560739862371708021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "zenitoon_yaz\u0131s\u0131 (2)_Ui_7"
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 71
+        width: 151
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bce91e25c5350d30800000000000000
+      internalID: 4396979732195437748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "zenitoon_yaz\u0131s\u0131 (2)_Ui_8"
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 74
+        width: 125
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cdf4eecd5ab41300800000000000000
+      internalID: 222007193713835465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "zenitoon_yaz\u0131s\u0131 (2)_Ui_9"
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 25
+        width: 1267
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43f7861c4e39124d0800000000000000
+      internalID: -3161082852730699980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "zenitoon_yaz\u0131s\u0131 (2)_Ui_0": 6022886464364078793
+      "zenitoon_yaz\u0131s\u0131 (2)_Ui_1": -4623781157600673478
+      "zenitoon_yaz\u0131s\u0131 (2)_Ui_2": 5432300207743126928
+      "zenitoon_yaz\u0131s\u0131 (2)_Ui_3": -3039288782444308073
+      "zenitoon_yaz\u0131s\u0131 (2)_Ui_4": 8928968254336803484
+      "zenitoon_yaz\u0131s\u0131 (2)_Ui_5": -8946644188310576391
+      "zenitoon_yaz\u0131s\u0131 (2)_Ui_6": 2560739862371708021
+      "zenitoon_yaz\u0131s\u0131 (2)_Ui_7": 4396979732195437748
+      "zenitoon_yaz\u0131s\u0131 (2)_Ui_8": 222007193713835465
+      "zenitoon_yaz\u0131s\u0131 (2)_Ui_9": -3161082852730699980
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

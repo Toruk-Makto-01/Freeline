@@ -47,7 +47,7 @@ namespace Freeline
         [SerializeField] private string tiktokUrl = "https://www.tiktok.com/@YOUR_TIKTOK_HANDLE";
         [SerializeField] private string supportUrl = "https://www.yourwebsite.com/support";
         [SerializeField] private string xUrl = "https://twitter.com/YOUR_TWITTER_HANDLE";
-        [SerializeField] private string youtubeUrl = "https://www.youtube.com/channel/YOUR_CHANNEL_ID"; 
+        [SerializeField] private string youtubeUrl = "https://www.youtube.com/channel/YOUR_CHANNEL_ID";
         [SerializeField] private string zenitoonUrl = "https://www.zenitoon.com";
 
         [Header("General Settings")]
@@ -61,31 +61,31 @@ namespace Freeline
         private void Awake()
         {
             //  --- Buton tıklamalarını (Listener) bağlıyoruz ---
-            if(musicBtn != null) musicBtn.onClick.AddListener(ToggleMusic);
-            if(soundBtn != null) soundBtn.onClick.AddListener(ToggleSound);
+            if (musicBtn != null) musicBtn.onClick.AddListener(ToggleMusic);
+            if (soundBtn != null) soundBtn.onClick.AddListener(ToggleSound);
 
             // Dil değiştirme butonlarına fonksiyonları bağlıyoruz
-            if(langLeftBtn != null) langLeftBtn.onClick.AddListener(() => ChangeLanguage(-1));
-            if(langRightBtn != null) langRightBtn.onClick.AddListener(() => ChangeLanguage(1));
-            
+            if (langLeftBtn != null) langLeftBtn.onClick.AddListener(() => ChangeLanguage(-1));
+            if (langRightBtn != null) langRightBtn.onClick.AddListener(() => ChangeLanguage(1));
+
             // Play butonuna Close fonksiyonunu bağlıyoruz
-            if(playBtn != null) playBtn.onClick.AddListener(Close);
-            
+            if (playBtn != null) playBtn.onClick.AddListener(Close);
+
             // Hakkımızda panelini açıp kapatma fonksiyonlarını bağlıyoruz
-            if(openInfoBtn != null && infoPanel != null)
+            if (openInfoBtn != null && infoPanel != null)
                 openInfoBtn.onClick.AddListener(() => infoPanel.SetActive(true));
-            if(closeInfoBtn != null && infoPanel != null)
+            if (closeInfoBtn != null && infoPanel != null)
                 closeInfoBtn.onClick.AddListener(() => infoPanel.SetActive(false));
 
             // Sosyal medya butonlarına URL açma fonksiyonlarını bağlıyoruz
-            if(googlePlayBtn != null) googlePlayBtn.onClick.AddListener(() => Application.OpenURL(googlePlayUrl));
-            if(appStoreBtn != null) appStoreBtn.onClick.AddListener(() => Application.OpenURL(appStoreUrl));
-            if(instagramBtn != null) instagramBtn.onClick.AddListener(() => Application.OpenURL(instagramUrl));
-            if(tiktokBtn != null) tiktokBtn.onClick.AddListener(() => Application.OpenURL(tiktokUrl));
-            if(supportBtn != null) supportBtn.onClick.AddListener(() => Application.OpenURL($"mailto:{supportUrl}"));
-            if(xBtn != null) xBtn.onClick.AddListener(() => Application.OpenURL(xUrl));
-            if(youtubeBtn != null) youtubeBtn.onClick.AddListener(() => Application.OpenURL(youtubeUrl));
-            if(ZenitoonBtn != null) ZenitoonBtn.onClick.AddListener(() => Application.OpenURL(zenitoonUrl));
+            if (googlePlayBtn != null) googlePlayBtn.onClick.AddListener(() => Application.OpenURL(googlePlayUrl));
+            if (appStoreBtn != null) appStoreBtn.onClick.AddListener(() => Application.OpenURL(appStoreUrl));
+            if (instagramBtn != null) instagramBtn.onClick.AddListener(() => Application.OpenURL(instagramUrl));
+            if (tiktokBtn != null) tiktokBtn.onClick.AddListener(() => Application.OpenURL(tiktokUrl));
+            if (supportBtn != null) supportBtn.onClick.AddListener(() => Application.OpenURL($"mailto:{supportUrl}"));
+            if (xBtn != null) xBtn.onClick.AddListener(() => Application.OpenURL(xUrl));
+            if (youtubeBtn != null) youtubeBtn.onClick.AddListener(() => Application.OpenURL(youtubeUrl));
+            if (ZenitoonBtn != null) ZenitoonBtn.onClick.AddListener(() => Application.OpenURL(zenitoonUrl));
         }
 
         private void Start()
@@ -108,24 +108,57 @@ namespace Freeline
         // --- Müzik ve ses fonksiyonları ---
         private void ToggleMusic()
         {
-            _isMusicOn = !_isMusicOn;
-            PlayerPrefs.SetInt("Settings_Music", _isMusicOn ? 1 : 0);
-            PlayerPrefs.Save();
+            if (AudioManager.Instance != null)
+            {
+                bool newState = !AudioManager.Instance.IsMusicOn();
+                AudioManager.Instance.SetMusicMute(!newState);
+                _isMusicOn = newState;
+            }
+            else
+            {
+                _isMusicOn = !_isMusicOn;
+                PlayerPrefs.SetInt("Settings_Music", _isMusicOn ? 1 : 0);
+                PlayerPrefs.Save();
+            }
 
             UpdateAudioVisuals();
-
-            // ILERIDE EKLENECEK: GameManager.Instance.AudioManager.SetMusicVolume(_isMusicOn ? 1f : 0f);
         }
 
         private void ToggleSound()
         {
-            _isSoundOn = !_isSoundOn;
-            PlayerPrefs.SetInt("Settings_Sound", _isSoundOn ? 1 : 0);
-            PlayerPrefs.Save();
+            if (AudioManager.Instance != null)
+            {
+                bool newState = !AudioManager.Instance.IsSfxOn();
+                AudioManager.Instance.SetSfxMute(!newState);
+                _isSoundOn = newState;
+            }
+            else
+            {
+                _isSoundOn = !_isSoundOn;
+                PlayerPrefs.SetInt("Settings_Sound", _isSoundOn ? 1 : 0);
+                PlayerPrefs.Save();
+            }
 
             UpdateAudioVisuals();
+        }
 
-            // ILERIDE EKLENECEK: GameManager.Instance.AudioManager.SetSFXVolume(_isSoundOn ? 1f : 0f);
+        private void LoadSettings()
+        {
+            if (AudioManager.Instance != null)
+            {
+                _isMusicOn = AudioManager.Instance.IsMusicOn();
+                _isSoundOn = AudioManager.Instance.IsSfxOn();
+            }
+            else
+            {
+                _isMusicOn = PlayerPrefs.GetInt("Settings_Music", 1) == 1;
+                _isSoundOn = PlayerPrefs.GetInt("Settings_Sound", 1) == 1;
+            }
+
+            _currentLangIndex = PlayerPrefs.GetInt("Settings_Language", 0);
+
+            UpdateAudioVisuals();
+            UpdateLanguageVisuals();
         }
 
         private void UpdateAudioVisuals()
@@ -160,18 +193,6 @@ namespace Freeline
         {
             if (languageText != null)
                 languageText.text = _languages[_currentLangIndex];
-        }
-
-        // --- Ayarları Yükleme Fonksiyonu ---
-        private void LoadSettings()
-        {
-            // PlayerPrefs'ten verileri çekiyoruz. Veri yoksa varsayılan (1 = Açık, 0 = Kapalı) değerleri gelir.
-            _isMusicOn = PlayerPrefs.GetInt("Settings_Music", 1) == 1;
-            _isSoundOn = PlayerPrefs.GetInt("Settings_Sound", 1) == 1;
-            _currentLangIndex = PlayerPrefs.GetInt("Settings_Language", 0);
-
-            UpdateAudioVisuals();
-            UpdateLanguageVisuals();
         }
     }
 }

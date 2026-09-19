@@ -69,11 +69,6 @@ namespace Freeline
             rejectButton.onClick.AddListener(OnRejectClicked);
         }
 
-        private void Start()
-        {
-            panel.SetActive(false);
-        }
-
         public void StartExhibition()
         {
             currentCustomer = 0;
@@ -99,6 +94,10 @@ namespace Freeline
             }
 
             Hide();
+
+            // Bir sonraki ürünün kilidini aç (Maksimum ürün sayısını aşmayacak şekilde)
+            GameManager.Instance.SaveManager.CurrentData.unlockedProductionCount++;
+            GameManager.Instance.SaveManager.SaveGame();
 
             summaryPanel.Open(
                 soldProducts,

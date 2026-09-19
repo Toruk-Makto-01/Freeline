@@ -2,30 +2,19 @@ using UnityEngine;
 
 namespace Freeline
 {
-    public enum ExhibitionProductType
-    {
-        Poster,
-        Painting,
-        MangaPage,
-        OilPainting
-    }
-
-    [CreateAssetMenu(fileName = "Exhibition Product", menuName = "Freeline/Exhibition/Product")]
+    [CreateAssetMenu(fileName = "ExhibitionProduct", menuName = "Freeline/Exhibition Product")]
     public class ExhibitionProductData : ScriptableObject
     {
-        [Header("General")]
         public string productName;
-        public ExhibitionProductType productType;
         public Sprite icon;
-
-        [Header("Production")]
-        public int energyCost;
-        public int productionHours;
-
-        [Header("Exhibition")]
         public int basePrice;
+        public float energyCost;
+        public float productionHours;
 
-        [Header("Unlock")]
-        public int unlockDay;
+        [Header("Mini Oyun Zorluk Ayarlari")]
+        [Tooltip("Kolay, Orta, Zor veya Uzman")]
+        public string difficultyLabel = "Kolay";
+        [Tooltip("Slide bar ibresinin hiz çarpani (örn: 1.0, 1.5, 2.0)")]
+        public float slideSpeedMultiplier = 1f;
     }
 }

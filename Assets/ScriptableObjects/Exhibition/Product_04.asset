@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc9e3da9c67f3d489f2441b85443ec0, type: 3}
+  m_Name: Product_04
+  m_EditorClassIdentifier: Assembly-CSharp::Freeline.ExhibitionProductData
+  productName: "Kovboy \u015Eapkal\u0131"
+  icon: {fileID: -4481574614850407975, guid: d7401b0cdb7c4fb4398a15fbe69c2320, type: 3}
+  basePrice: 200
+  energyCost: 20
+  productionHours: 2
+  difficultyLabel: Kolay
+  slideSpeedMultiplier: 1.3

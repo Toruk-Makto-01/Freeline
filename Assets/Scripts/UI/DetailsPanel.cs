@@ -18,6 +18,10 @@ namespace Freeline
         [Tooltip("Dekorasyon isimlerini ve ozelliklerini bulmak icin katalog referansi")]
         [SerializeField] private DecorationCatalog decorationCatalog;
 
+        [Header("Buff Arka Plan Görselleri")]
+        [SerializeField] private Sprite activeBuffSprite; // Aktif (Süreli) buff görseli
+        [SerializeField] private Sprite passiveBuffSprite; // Pasif (Kalıcı/Dekorasyon) buff görseli
+
         private void Awake()
         {
             if (closeButton != null)
@@ -63,14 +67,14 @@ namespace Freeline
 
             if (activeBuffs == null || activeBuffs.Count == 0)
             {
-                CreateTextItem(activeBuffsContainer, "<i>Şu an aktif bir etkiniz bulunmuyor.<i>");
+                CreateTextItem(activeBuffsContainer, "<i>Şu an aktif bir etkiniz bulunmuyor.<i>", true);
                 return;
             }
 
             foreach (var buff in activeBuffs)
             {
                 // Bitiş süresini hesapla
-                if(DateTime.TryParse(buff.endTimeString, out DateTime endTime))
+                if (DateTime.TryParse(buff.endTimeString, out DateTime endTime))
                 {
                     TimeSpan timeLeft = endTime - DateTime.Now;
                     string timeString = $"{timeLeft.Minutes}dk {timeLeft.Seconds}sn";
@@ -79,18 +83,18 @@ namespace Freeline
                     string buffText = "";
                     if (buff.effectType == ConsumableEffectType.EnergyCostReduction)
                     {
-                        buffText = $"Kahve Etkisi : <color=#00FF00>Enerji Tasarrufu</color> ({timeString})";
+                        buffText = $"Kahve Etkisi : <color=#000000>Enerji Tasarrufu</color> ({timeString})";
                     }
                     else if (buff.effectType == ConsumableEffectType.EnergyRegenOverTime)
                     {
-                        buffText = $"Dinçlik : <color=#00FF00>Enerji Yenileme</color> ({timeString})";
+                        buffText = $"Dinçlik : <color=#000000>Enerji Yenileme</color> ({timeString})";
                     }
                     else
                     {
                         buffText = $"{buff.effectType} : Etki Değeri {buff.effectValue} ({timeString})";
                     }
 
-                    CreateTextItem(activeBuffsContainer, buffText);
+                    CreateTextItem(activeBuffsContainer, buffText, true);
                 }
             }
         }
@@ -102,7 +106,7 @@ namespace Freeline
 
             if (equippedItem == null || equippedItem.Count == 0)
             {
-                CreateTextItem(permanentStatsContainer, "<i>Henüz bir eşya yerleştirmediniz.</i>");
+                CreateTextItem(permanentStatsContainer, "<i>Henüz bir eşya yerleştirmediniz.</i>", false);
                 return;
             }
 
@@ -120,27 +124,38 @@ namespace Freeline
                     // Şimdilik test için statik bir yazı basıyoruz.
 
                     // string statYazisi = string.IsNullOrEmpty(itemData.statDescription) ? "Sadece Dekoratif" : itemData.statDecoration;
-                    string statYazisi = "<color=#00FF00>Ö<ellik Testi +%10</color>"; // Geçici test yazisi
+                    string statYazisi = "<color=#000000>Ö<ellik Testi +%10</color>"; // Geçici test yazisi
 
-                    CreateTextItem(permanentStatsContainer, $"{itemData.displayName} : {statYazisi}");
+                    CreateTextItem(permanentStatsContainer, $"{itemData.displayName} : {statYazisi}", false);
                     hasAnyStat = true;
                 }
             }
 
             if (!hasAnyStat)
             {
-                CreateTextItem(permanentStatsContainer, "<i>Eşyalarınızın ek bir özelliği yok.</i>");
+                CreateTextItem(permanentStatsContainer, "<i>Eşyalarınızın ek bir özelliği yok.</i>", false);
             }
         }
 
-        // Konteyner içine Prefab kullanarak yeni bir yazo (text) objesi oluşturur
-        private void CreateTextItem(Transform parent, string content)
+        // YENİ KOD: Metoda 'isActiveBuff' (aktif buff mı?) adında bir parametre (true/false) ekledik.
+        private void CreateTextItem(Transform parent, string content, bool isActiveBuff)
         {
+            // Prefab'ı üret (En dışta Image, içinde Text var)
             GameObject newObj = Instantiate(statTextPrefab, parent);
-            TextMeshProUGUI textComp = newObj.GetComponent<TextMeshProUGUI>();
+
+            // 1. Yazıyı bul ve içeriğini ata
+            TextMeshProUGUI textComp = newObj.GetComponentInChildren<TextMeshProUGUI>();
             if (textComp != null)
             {
                 textComp.text = content;
+            }
+
+            // 2. Arka plan görselini (Image) bul ve duruma göre değiştir
+            Image bgImage = newObj.GetComponent<Image>();
+            if (bgImage != null)
+            {
+                // Eğer isActiveBuff true ise activeBuffSprite'ı, false ise passiveBuffSprite'ı kullan
+                bgImage.sprite = isActiveBuff ? activeBuffSprite : passiveBuffSprite;
             }
         }
     }

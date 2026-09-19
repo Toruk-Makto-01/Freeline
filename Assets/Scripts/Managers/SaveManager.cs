@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Freeline
 {
@@ -178,6 +179,45 @@ namespace Freeline
         private void HandleNewDayStarted(int newDay)
         {
             SaveGame();
+        }
+
+        /// <summary>
+        /// Tüm oyun ilerlemesini sıfırlar, elmasları korur ve yeni kaydı diske yazar.
+        /// </summary>
+        public void StartNewGame()
+        {
+            // 1. Gerçek parayla alınan Elmas miktarını yedekle
+            int preservedGems = 0;
+            if (CurrentData != null)
+            {
+                preservedGems = CurrentData.currentGems;
+            }
+
+            // 2. Diskteki eski kayıt dosyasını tamamen sil
+            DeleteSave();
+
+            // 3. Sıfır bir SaveData nesnesi oluştur
+            CurrentData = new SaveData
+            {
+                currentDay = 1,
+                currentHour = 9f,
+                currentEnergy = 100f,
+                currentHunger = 100f,
+                currentCoins = 150f,
+                currentGems = preservedGems,
+                totalJobsCompleted = 0,
+                playerLevel = 1,
+                ownedDecorations = new System.Collections.Generic.List<string>(),
+                equippedDecorations = new System.Collections.Generic.List<EquippedDecoration>(),
+                exhibitionStock = new System.Collections.Generic.List<ExhibitionStockItem>(),
+                unlockedProductionCount = 1
+            };
+
+            // 4. Yeni tertemiz kaydı diske yaz
+            SaveGame();
+
+            // 5. Yöneticileri sıfırlanmış veriyle güncelle
+            ApplyToManagers();
         }
     }
 }

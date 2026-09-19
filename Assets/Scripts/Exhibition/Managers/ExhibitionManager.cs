@@ -22,8 +22,12 @@ namespace Freeline
 
         private void OnNewDayStarted(int day)
         {
+            // Eğer bugün 7'nin katı değilse sergi gününü kesinlikle iptal et (Oyuncu atlamış demektir)
             if (day % 7 != 0)
+            {
+                IsExhibitionDay = false;
                 return;
+            }
 
             IsExhibitionDay = true;
             OnExhibitionDay?.Invoke();
@@ -57,6 +61,14 @@ namespace Freeline
                     quantity = 1
                 });
             }
+        }
+
+        public int GetDaysUntilNextExhibition()
+        {
+            // Zaman yöneticisinden mevcut günü al
+            int currentDay = GameManager.Instance.TimeManager.CurrentDay;
+            int remaining = 7 - (currentDay % 7);
+            return remaining == 7 ? 0 : remaining; // 0 ise bugün sergi günü demektir
         }
     }
 }

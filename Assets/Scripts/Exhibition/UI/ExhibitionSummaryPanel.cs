@@ -19,11 +19,6 @@ namespace Freeline
             okButton.onClick.AddListener(Close);
         }
 
-        private void Start()
-        {
-            panel.SetActive(false);
-        }
-
         public void Open(int sold, int earned, int remaining)
         {
             panel.SetActive(true);

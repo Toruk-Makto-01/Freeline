@@ -89,6 +89,8 @@ namespace Freeline
         public bool hasPassOutPenalty = false;
 
         public int dailyFreelanceRefreshCount = 0;
+
+        public int unlockedProductionCount = 1; // Başlangıçta sadece 1. ürün açık
     }
 
 }

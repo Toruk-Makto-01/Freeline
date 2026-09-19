@@ -50,6 +50,7 @@ namespace Freeline
         [SerializeField] private GameObject settingsPanel;
         [SerializeField] private MarketPanel marketPanel;
         [SerializeField] private GameObject tabletPanel; // Senin tasarımdaki ana tablet/telefon (PhonePanel'in root GO'su olabilir)
+        [SerializeField] private ExhibitionPopup exhibitionPopup;
         [SerializeField] private DrawingDeskPanel drawingDeskPanel; // Yeni eklediğimiz çizim masası arayüzü
         [Header("Gün Sonu Paneli")]
         [SerializeField] private DailyReportPanel dailyReportPanel;
@@ -163,7 +164,7 @@ namespace Freeline
                 int hungerPercent = energyManager.GetHungerPercentage();
 
                 // Market panelindeki gibi %25 altına düşünce kırmızı yapma mantığını buraya da ekleyelim
-                string colorHex = hungerPercent <= 25 ? "red" : "green";
+                string colorHex = hungerPercent <= 25 ? "red" : "darkgreen";
                 hungerText.text = $"<color={colorHex}>Açlık: %{hungerPercent}</color>";
             }
 
@@ -239,11 +240,19 @@ namespace Freeline
 
         private void OnExhibitionClicked()
         {
-            Debug.Log("<color=green>[HUD] Home (Ev) Butonuna Basildi! Tüm paneller kapaniyor.</color>");
+            Debug.Log("<color=green>[HUD] Sergi Butonuna Basıldı!</color>");
+
+            // Diğer açık panelleri kapat
             if (tabletPanel != null) tabletPanel.SetActive(false);
             if (settingsPanel != null) settingsPanel.SetActive(false);
             if (drawingDeskPanel != null) drawingDeskPanel.gameObject.SetActive(false);
             if (marketPanel != null) marketPanel.Close();
+
+            // Eksik olan KOD bağlantısı: Popup'ı hesaplamaları yaparak aç!
+            if (exhibitionPopup != null)
+            {
+                exhibitionPopup.Show();
+            }
         }
 
         private void OnDetailsClicked()
