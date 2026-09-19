@@ -1,16 +1,18 @@
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Freeline
 {
-    [RequireComponent(typeof(CanvasGroup))] // Unity'nin Canvas Group'u otomatik eklemesini sağlar
+    [RequireComponent(typeof(CanvasGroup))]
     public class ExhibitionPopup : MonoBehaviour
     {
         [Header("UI Referansları")]
         [SerializeField] private ExhibitionScene exhibitionScene;
         [SerializeField] private TextMeshProUGUI dayText;
-        
+        [SerializeField] private TextMeshProUGUI stockInfoText; // Ürünlerin ve sayıların yazılacağı Text alanı
+
         [Header("Butonlar")]
         [SerializeField] private Button openButton;
         [SerializeField] private Button skipButton;
@@ -29,8 +31,7 @@ namespace Freeline
 
         private void Start()
         {
-            // Oyun başladığında paneli görünmez yap ama scripti açık bırak!
-            Hide(); 
+            Hide();
 
             if (GameManager.Instance != null && GameManager.Instance.ExhibitionManager != null)
             {
@@ -48,40 +49,77 @@ namespace Freeline
 
         public void Show()
         {
-            // Paneli %100 görünür ve tıklanabilir yap
+            // Paneli görünür ve tıklanabilir yap
             _canvasGroup.alpha = 1f;
             _canvasGroup.interactable = true;
             _canvasGroup.blocksRaycasts = true;
 
+            // 1. Gün Durumunu Hesapla ve Yazdır
             int daysLeft = GameManager.Instance.ExhibitionManager.GetDaysUntilNextExhibition();
             bool isExhibitionActive = GameManager.Instance.ExhibitionManager.IsExhibitionDay;
 
             if (daysLeft == 0 && isExhibitionActive)
             {
-                dayText.text = "Bugün sergi günü!";
-                openButton.gameObject.SetActive(true);
-                skipButton.gameObject.SetActive(true);
-                closeButton.gameObject.SetActive(false);
+                if (dayText != null) dayText.text = "Bugün sergi günü!";
+                if (openButton != null) openButton.gameObject.SetActive(true);
+                if (skipButton != null) skipButton.gameObject.SetActive(true);
+                if (closeButton != null) closeButton.gameObject.SetActive(false);
             }
             else if (daysLeft == 0 && !isExhibitionActive)
             {
-                dayText.text = "Bugünkü sergi tamamlandı. Sonraki sergi haftaya!";
-                openButton.gameObject.SetActive(false);
-                skipButton.gameObject.SetActive(false);
-                closeButton.gameObject.SetActive(true);
+                if (dayText != null) dayText.text = "Bugünkü sergi tamamlandı. Sonraki sergi haftaya!";
+                if (openButton != null) openButton.gameObject.SetActive(false);
+                if (skipButton != null) skipButton.gameObject.SetActive(false);
+                if (closeButton != null) closeButton.gameObject.SetActive(true);
             }
             else
             {
-                dayText.text = $"Sonraki sergiye {daysLeft} gün kaldı...";
-                openButton.gameObject.SetActive(false);
-                skipButton.gameObject.SetActive(false);
-                closeButton.gameObject.SetActive(true);
+                if (dayText != null) dayText.text = $"Sonraki sergiye {daysLeft} gün kaldı...";
+                if (openButton != null) openButton.gameObject.SetActive(false);
+                if (skipButton != null) skipButton.gameObject.SetActive(false);
+                if (closeButton != null) closeButton.gameObject.SetActive(true);
+            }
+
+            // 2. KİLİT NOKTA: Stoktaki Güncel Ürünleri ve Miktarları Yazdır
+            RefreshStockDisplay();
+        }
+
+        private void RefreshStockDisplay()
+        {
+            if (stockInfoText == null) return;
+
+            var stock = GameManager.Instance.SaveManager.CurrentData.exhibitionStock;
+
+            if (stock == null || stock.Count == 0)
+            {
+                stockInfoText.text = "<color=white>Sergi için henüz ürün üretilmedi.\n(Üretim masasından poster hazırlayın!)</color>";
+                return;
+            }
+
+            StringBuilder sb = new StringBuilder();
+            int totalCount = 0;
+
+            foreach (var item in stock)
+            {
+                if (item.product != null && item.quantity > 0)
+                {
+                    sb.AppendLine($"• {item.product.productName}: {item.quantity} Adet");
+                    totalCount += item.quantity;
+                }
+            }
+
+            if (totalCount == 0)
+            {
+                stockInfoText.text = "<color=white>Stokta hiç ürün kalmadı!</color>";
+            }
+            else
+            {
+                stockInfoText.text = sb.ToString();
             }
         }
 
         public void Hide()
         {
-            // Paneli görünmez yap ve tıklamaları engelle
             _canvasGroup.alpha = 0f;
             _canvasGroup.interactable = false;
             _canvasGroup.blocksRaycasts = false;

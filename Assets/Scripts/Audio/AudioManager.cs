@@ -226,7 +226,9 @@ namespace Freeline
         {
             if (isVibrationEnabled)
             {
+#if UNITY_ANDROID || UNITY_IOS
                 Handheld.Vibrate();
+#endif
             }
         }
     }
