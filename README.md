@@ -28,6 +28,11 @@ A 2D cozy mobile game developed in Unity 6 where players step into the shoes of 
 *   **Platform:** Mobile (Android / iOS)
 *   **Version Control:** Git & GitHub
 
+## 🎨 Credits
+
+*   **Development & Programming:** Hamza Erdal
+*   **Art & Illustrations:** [@felixsama_](https://www.instagram.com/felixsama_/)
+
 ## 📌 Development Status
 
 The foundational architecture, interactive UI panels, and core economy loops are complete and functional. Current development is focused on audio integration, panel transition animations, game flow enhancements, and economic balancing before the initial mobile build.
